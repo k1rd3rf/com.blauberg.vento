@@ -1,0 +1,10 @@
+{
+"type": "string",
+"title": {
+    "en": "Filter remaining",
+    "nl": "Filter resterend"
+},
+"getable": true,
+"setable": false,
+"icon": "/assets/timer.svg"
+}

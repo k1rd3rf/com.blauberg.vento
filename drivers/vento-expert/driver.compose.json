@@ -1,0 +1,52 @@
+{
+  "name": {
+    "en": "Vento Expert"
+  },
+  "icon": "/assets/fan.svg",
+  "class": "fan",
+  "capabilities": [
+    "alarm_boost",
+    "alarm_filter",
+    "alarm_generic",
+    "boot_timer",
+    "filter_timer",
+    "manualSpeed",
+    "measure_humidity",
+    "measure_RPM",
+    "onoff",
+    "operationMode",
+    "speedMode",
+    "timerMode",
+    "timerMode_timer"
+  ],
+  "platforms": [
+    "local"
+  ],
+  "connectivity": [
+    "lan"
+  ],
+  "images": {
+    "small": "{{driverAssetsPath}}/images/small.png",
+    "large": "{{driverAssetsPath}}/images/large.png",
+    "xlarge": "{{driverAssetsPath}}/images/xlarge.png"
+  },
+  "pair": [
+    {
+      "id": "list_devices",
+      "template": "list_devices",
+      "options": {
+        "singular": false
+      },
+      "navigation": {
+        "next": "device_settings"
+      }
+    },
+    {
+      "id": "device_settings"
+    },
+    {
+      "id": "add_devices",
+      "template": "add_devices"
+    }
+  ]
+}

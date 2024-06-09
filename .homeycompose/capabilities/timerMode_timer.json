@@ -1,0 +1,10 @@
+{
+"type": "string",
+"title": {
+    "en": "Timer mode remaining",
+    "nl": "Timer mode resterend"
+},
+"getable": true,
+"setable": false,
+"icon": "/assets/timer.svg"
+}

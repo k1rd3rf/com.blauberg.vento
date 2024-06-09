@@ -1,0 +1,15 @@
+{
+  "type": "number",
+  "title": {
+    "en": "FAN RPM"
+  },
+  "units": {
+    "en": "RPM"
+  },
+  "getable": true,
+  "setable": false,
+  "uiComponent": "sensor",
+  "decimals": 0,
+  "icon": "/assets/fan-rpm.svg",
+  "insights": true
+}

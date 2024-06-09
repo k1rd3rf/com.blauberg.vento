@@ -1,0 +1,10 @@
+{
+"type": "string",
+"title": {
+    "en": "Boost time remaining",
+    "nl": "Boost tijd resterend"
+},
+"getable": true,
+"setable": false,
+"icon": "/assets/timer.svg"
+}

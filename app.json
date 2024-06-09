@@ -1,0 +1,335 @@
+{
+  "_comment": "This file is generated. Please edit .homeycompose/app.json instead.",
+  "id": "com.blauberg.vento",
+  "version": "1.0.0",
+  "compatibility": ">=5.0.0",
+  "sdk": 3,
+  "platforms": [
+    "local"
+  ],
+  "name": {
+    "en": "Blauberg Vento"
+  },
+  "description": {
+    "en": "Control your Vento Fans"
+  },
+  "category": [
+    "appliances"
+  ],
+  "permissions": [],
+  "images": {
+    "small": "/assets/images/small.png",
+    "large": "/assets/images/large.png",
+    "xlarge": "/assets/images/xlarge.png"
+  },
+  "author": {
+    "name": "Vincent Boer",
+    "email": "vincent@vdboer.nl"
+  },
+  "drivers": [
+    {
+      "name": {
+        "en": "Vento Expert"
+      },
+      "icon": "/assets/fan.svg",
+      "class": "fan",
+      "capabilities": [
+        "alarm_boost",
+        "alarm_filter",
+        "alarm_generic",
+        "boot_timer",
+        "filter_timer",
+        "manualSpeed",
+        "measure_humidity",
+        "measure_RPM",
+        "onoff",
+        "operationMode",
+        "speedMode",
+        "timerMode",
+        "timerMode_timer"
+      ],
+      "platforms": [
+        "local"
+      ],
+      "connectivity": [
+        "lan"
+      ],
+      "images": {
+        "small": "/drivers/vento-expert/assets/images/small.png",
+        "large": "/drivers/vento-expert/assets/images/large.png",
+        "xlarge": "/drivers/vento-expert/assets/images/xlarge.png"
+      },
+      "pair": [
+        {
+          "id": "list_devices",
+          "template": "list_devices",
+          "options": {
+            "singular": false
+          },
+          "navigation": {
+            "next": "device_settings"
+          }
+        },
+        {
+          "id": "device_settings"
+        },
+        {
+          "id": "add_devices",
+          "template": "add_devices"
+        }
+      ],
+      "id": "vento-expert",
+      "settings": [
+        {
+          "type": "group",
+          "label": {
+            "en": "Device info"
+          },
+          "children": [
+            {
+              "id": "devicemodel",
+              "type": "label",
+              "label": {
+                "en": "Model"
+              },
+              "value": "Expert"
+            },
+            {
+              "id": "devicepwd",
+              "type": "password",
+              "label": {
+                "en": "Device password"
+              },
+              "value": "1111",
+              "hint": {
+                "en": "The device password setup in the Blauberg Home app."
+              }
+            }
+          ]
+        },
+        {
+          "type": "group",
+          "label": {
+            "en": "Humidity sensor"
+          },
+          "children": [
+            {
+              "id": "humidity_sensor",
+              "type": "checkbox",
+              "value": true,
+              "label": {
+                "en": "Activate on humidity"
+              }
+            },
+            {
+              "id": "humidity_threshold",
+              "type": "number",
+              "label": {
+                "en": "Threshold"
+              },
+              "value": 70,
+              "min": 1,
+              "max": 99,
+              "units": {
+                "en": "%"
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "capabilities": {
+    "alarm_boost": {
+      "type": "boolean",
+      "title": {
+        "en": "Boost mode",
+        "nl": "Boost mode"
+      },
+      "getable": true,
+      "setable": true,
+      "uiComponent": "button",
+      "icon": "/assets/boost.svg"
+    },
+    "alarm_filter": {
+      "type": "boolean",
+      "title": {
+        "en": "Filter",
+        "nl": "Filter"
+      },
+      "getable": true,
+      "setable": false,
+      "icon": "/assets/air-filter.svg"
+    },
+    "alarm_generic": {
+      "type": "boolean",
+      "title": {
+        "en": "Device alarm",
+        "nl": "Device alarm"
+      },
+      "getable": true,
+      "setable": false,
+      "icon": "/assets/alarm_generic.svg"
+    },
+    "boot_timer": {
+      "type": "string",
+      "title": {
+        "en": "Boost time remaining",
+        "nl": "Boost tijd resterend"
+      },
+      "getable": true,
+      "setable": false,
+      "icon": "/assets/timer.svg"
+    },
+    "filter_timer": {
+      "type": "string",
+      "title": {
+        "en": "Filter remaining",
+        "nl": "Filter resterend"
+      },
+      "getable": true,
+      "setable": false,
+      "icon": "/assets/timer.svg"
+    },
+    "manualSpeed": {
+      "type": "number",
+      "title": {
+        "en": "Manual speed"
+      },
+      "units": {
+        "en": "%"
+      },
+      "getable": true,
+      "setable": true,
+      "uiComponent": "slider",
+      "decimals": 0,
+      "min": 0,
+      "max": 100,
+      "step": 1
+    },
+    "measure_RPM": {
+      "type": "number",
+      "title": {
+        "en": "FAN RPM"
+      },
+      "units": {
+        "en": "RPM"
+      },
+      "getable": true,
+      "setable": false,
+      "uiComponent": "sensor",
+      "decimals": 0,
+      "icon": "/assets/fan-rpm.svg",
+      "insights": true
+    },
+    "operationMode": {
+      "type": "enum",
+      "title": {
+        "en": "Operation mode"
+      },
+      "getable": true,
+      "setable": true,
+      "uiComponent": "picker",
+      "values": [
+        {
+          "id": "0",
+          "title": {
+            "en": "Ventilation"
+          }
+        },
+        {
+          "id": "1",
+          "title": {
+            "en": "Regeneration"
+          }
+        },
+        {
+          "id": "2",
+          "title": {
+            "en": "Supply"
+          }
+        }
+      ]
+    },
+    "speedMode": {
+      "type": "enum",
+      "title": {
+        "en": "Speed mode"
+      },
+      "getable": true,
+      "setable": true,
+      "uiComponent": "picker",
+      "values": [
+        {
+          "id": "0",
+          "title": {
+            "en": "Off"
+          }
+        },
+        {
+          "id": "1",
+          "title": {
+            "en": "Low"
+          }
+        },
+        {
+          "id": "2",
+          "title": {
+            "en": "Medium"
+          }
+        },
+        {
+          "id": "3",
+          "title": {
+            "en": "High"
+          }
+        },
+        {
+          "id": "255",
+          "title": {
+            "en": "Manual"
+          }
+        }
+      ]
+    },
+    "timerMode": {
+      "type": "enum",
+      "title": {
+        "en": "Timer mode"
+      },
+      "getable": true,
+      "setable": true,
+      "uiComponent": "picker",
+      "values": [
+        {
+          "id": "0",
+          "title": {
+            "en": "Off"
+          }
+        },
+        {
+          "id": "1",
+          "title": {
+            "en": "Night mode"
+          }
+        },
+        {
+          "id": "2",
+          "title": {
+            "en": "Party mode"
+          }
+        }
+      ]
+    },
+    "timerMode_timer": {
+      "type": "string",
+      "title": {
+        "en": "Timer mode remaining",
+        "nl": "Timer mode resterend"
+      },
+      "getable": true,
+      "setable": false,
+      "icon": "/assets/timer.svg"
+    }
+  }
+}

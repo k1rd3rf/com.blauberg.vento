@@ -1,0 +1,16 @@
+{
+  "type": "number",
+  "title": {
+    "en": "Manual speed"
+  },
+  "units": {
+    "en": "%"
+  },
+  "getable": true,
+  "setable": true,
+  "uiComponent": "slider",
+  "decimals": 0,
+  "min": 0,
+  "max": 100,
+  "step": 1
+}
