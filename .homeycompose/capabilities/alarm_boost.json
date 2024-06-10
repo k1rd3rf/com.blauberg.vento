@@ -1,11 +1,11 @@
 {
 "type": "boolean",
 "title": {
-    "en": "Boost mode",
-    "nl": "Boost mode"
+    "en": "Boost",
+    "nl": "Boost"
 },
 "getable": true,
 "setable": true,
-"uiComponent": "button",
+"uiComponent": "sensor",
 "icon": "/assets/boost.svg"
 }

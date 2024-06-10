@@ -22,6 +22,42 @@ class VentoDriver extends Driver {
     }, 10000); 
   }
 
+  async setDeviceValue(device,devicepass,param,value)
+  {
+    const packet = new Packet(device.id, devicepass, FunctionType.WRITE, [
+      DataEntry.of(param, value)    
+    ]) 
+    return this.modbusClient.send(packet, device.ip).then((result) => {
+      //Check result
+      console.log(JSON.stringify(result));
+      //throw new Error("device not responding");
+    }); 
+  }
+  async setOnoffStatus(device,devicepass,value){
+    return this.setDeviceValue(device,devicepass,Parameter.ON_OFF,value)
+  }
+  async setSpeedMode(device,devicepass,value){
+    return this.setDeviceValue(device,devicepass,Parameter.SPEED,value)
+  }
+  async setOperationMode(device,devicepass,value){
+    return this.setDeviceValue(device,devicepass,Parameter.VENTILATION_MODE,value)
+  }
+  async setTimerMode(device,devicepass,value){
+    return this.setDeviceValue(device,devicepass,Parameter.TIMER_MODE,value)
+  }
+  async setManualSpeed(device,devicepass,value){
+    return this.setDeviceValue(device,devicepass,Parameter.MANUAL_SPEED,value)
+  }
+  async setHumiditySensor(device,devicepass,value){
+    return this.setDeviceValue(device,devicepass,Parameter.HUMIDITY_SENSOR_ACTIVATION,value)
+  }
+  async setHumiditySensorThreshold(device,devicepass,value){
+    return this.setDeviceValue(device,devicepass,Parameter.HUMIDITY_THRESHOLD,value)
+  }
+  async setBoostDelay(device,devicepass,value){
+    return this.setDeviceValue(device,devicepass,Parameter.BOOST_MODE_DEACTIVATION_DELAY,value)
+  }
+
   async getDeviceState(device,devicepass){
     // Assemble package for reading ON_OFF state
     const packet = new Packet(device.id, devicepass, FunctionType.READ, [
@@ -39,11 +75,12 @@ class VentoDriver extends Driver {
       DataEntry.of(Parameter.UNIT_TYPE),
       DataEntry.of(Parameter.FAN1RPM),
       DataEntry.of(Parameter.TIMER_MODE),
-      DataEntry.of(Parameter.READ_ALARM)      
+      DataEntry.of(Parameter.READ_ALARM),
+      DataEntry.of(11), //Active timer countdown
     ])
     // Send package and wait for response.
     return this.modbusClient.send(packet, device.ip).then((result) => {
-      console.log(JSON.stringify(result));
+      //console.log(JSON.stringify(result));
       if(result!=null)
       {
         let unittypelabel = 'Vento Expert';
@@ -59,7 +96,7 @@ class VentoDriver extends Driver {
             mode:result.packet._dataEntries[1].value["0"],
             manualspeed:result.packet._dataEntries[2].value["0"],
           },
-          boot: {
+          boost: {
             mode:result.packet._dataEntries[3].value["0"],
             deactivationtimer:result.packet._dataEntries[4].value["0"],
           },
@@ -84,11 +121,16 @@ class VentoDriver extends Driver {
           },
           timers: {
             mode:result.packet._dataEntries[13].value["0"],
+            countdown:{
+              sec: result.packet._dataEntries[15].value["0"],
+              min: result.packet._dataEntries[15].value["1"],
+              hour: result.packet._dataEntries[15].value["2"],
+            }
           },
           alarm: result.packet._dataEntries[14].value["0"],
         } 
       }
-      throw new Error("device not responding");      
+      throw new Error("device not responding, is your device password correct?");      
     });
   }
 

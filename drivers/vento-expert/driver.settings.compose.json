@@ -33,9 +33,24 @@
         "type": "number",
         "label": { "en": "Threshold" },
         "value": 70,
-        "min": 1,
-        "max": 99,
+        "min": 40,
+        "max": 80,
         "units": { "en": "%" }
+      }
+    ]
+  },
+  {
+    "type": "group",
+    "label": { "en": "Timers" },
+    "children": [
+      {
+        "id": "boost_delay",
+        "type": "number",
+        "label": { "en": "Boost turn off delay" },
+        "value": 30,
+        "min": 1,
+        "max": 60,
+        "units": { "en": "minutes" }
       }
     ]
   }
