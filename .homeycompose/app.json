@@ -1,6 +1,6 @@
 {
   "id": "com.blauberg.vento",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "compatibility": ">=5.0.0",
   "sdk": 3,
   "brandColor": "#105DAD",
@@ -25,5 +25,7 @@
   "author": {
     "name": "Vincent Boer",
     "email": "vincent@vdboer.nl"
-  }
+  },
+  "homeyCommunityTopicId": 111339,
+  "source": "https://github.com/kaohlive/com.blauberg.vento"
 }

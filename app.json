@@ -1,7 +1,7 @@
 {
   "_comment": "This file is generated. Please edit .homeycompose/app.json instead.",
   "id": "com.blauberg.vento",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "compatibility": ">=5.0.0",
   "sdk": 3,
   "brandColor": "#105DAD",
@@ -27,18 +27,18 @@
     "name": "Vincent Boer",
     "email": "vincent@vdboer.nl"
   },
+  "homeyCommunityTopicId": 111339,
+  "source": "https://github.com/kaohlive/com.blauberg.vento",
   "drivers": [
     {
       "name": {
         "en": "Vento Expert"
       },
-      "icon": "/assets/fan.svg",
       "class": "fan",
       "capabilities": [
         "alarm_boost",
         "alarm_filter",
         "alarm_generic",
-        "boot_timer",
         "filter_timer",
         "manualSpeed",
         "measure_humidity",
@@ -65,7 +65,7 @@
           "id": "list_devices",
           "template": "list_devices",
           "options": {
-            "singular": false
+            "singular": true
           },
           "navigation": {
             "next": "device_settings"
@@ -129,10 +129,31 @@
                 "en": "Threshold"
               },
               "value": 70,
-              "min": 1,
-              "max": 99,
+              "min": 40,
+              "max": 80,
               "units": {
                 "en": "%"
+              }
+            }
+          ]
+        },
+        {
+          "type": "group",
+          "label": {
+            "en": "Timers"
+          },
+          "children": [
+            {
+              "id": "boost_delay",
+              "type": "number",
+              "label": {
+                "en": "Boost turn off delay"
+              },
+              "value": 30,
+              "min": 1,
+              "max": 60,
+              "units": {
+                "en": "minutes"
               }
             }
           ]
@@ -144,12 +165,12 @@
     "alarm_boost": {
       "type": "boolean",
       "title": {
-        "en": "Boost mode",
-        "nl": "Boost mode"
+        "en": "Boost",
+        "nl": "Boost"
       },
       "getable": true,
       "setable": true,
-      "uiComponent": "button",
+      "uiComponent": "sensor",
       "icon": "/assets/boost.svg"
     },
     "alarm_filter": {
@@ -171,16 +192,6 @@
       "getable": true,
       "setable": false,
       "icon": "/assets/alarm_generic.svg"
-    },
-    "boot_timer": {
-      "type": "string",
-      "title": {
-        "en": "Boost time remaining",
-        "nl": "Boost tijd resterend"
-      },
-      "getable": true,
-      "setable": false,
-      "icon": "/assets/timer.svg"
     },
     "filter_timer": {
       "type": "string",
