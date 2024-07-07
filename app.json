@@ -1,7 +1,7 @@
 {
   "_comment": "This file is generated. Please edit .homeycompose/app.json instead.",
   "id": "com.blauberg.vento",
-  "version": "1.0.1",
+  "version": "1.1.0",
   "compatibility": ">=5.0.0",
   "sdk": 3,
   "brandColor": "#105DAD",
@@ -29,6 +29,273 @@
   },
   "homeyCommunityTopicId": 111339,
   "source": "https://github.com/kaohlive/com.blauberg.vento",
+  "flow": {
+    "triggers": [
+      {
+        "id": "alarm_filter_false",
+        "title": {
+          "en": "The Filter alarm turned off"
+        },
+        "args": [
+          {
+            "type": "device",
+            "name": "device",
+            "filter": "driver_id=vento-expert"
+          }
+        ]
+      },
+      {
+        "id": "alarm_filter_true",
+        "title": {
+          "en": "The Filter alarm truned on"
+        },
+        "args": [
+          {
+            "type": "device",
+            "name": "device",
+            "filter": "driver_id=vento-expert"
+          }
+        ]
+      },
+      {
+        "id": "manualSpeed_changed",
+        "title": {
+          "en": "The manual speed changed"
+        },
+        "tokens": [
+          {
+            "name": "manualSpeed",
+            "type": "number",
+            "title": {
+              "en": "Speed"
+            },
+            "example": {
+              "en": "Speed"
+            }
+          }
+        ],
+        "args": [
+          {
+            "type": "device",
+            "name": "device",
+            "filter": "driver_id=vento-expert"
+          }
+        ]
+      },
+      {
+        "id": "measure_RPM_changed",
+        "title": {
+          "en": "FAN RPM changed"
+        },
+        "tokens": [
+          {
+            "name": "manualSpeemeasure_RPM",
+            "type": "number",
+            "title": {
+              "en": "Fan RPM"
+            },
+            "example": {
+              "en": "Fan speed in RPM"
+            }
+          }
+        ],
+        "args": [
+          {
+            "type": "device",
+            "name": "device",
+            "filter": "driver_id=vento-expert"
+          }
+        ]
+      }
+    ],
+    "actions": [
+      {
+        "id": "manualSpeed_set",
+        "title": {
+          "en": "Set the manual speed"
+        },
+        "titleFormatted": {
+          "en": "Sets the manualspeed of the device to [[speed]] "
+        },
+        "hint": {
+          "en": "Use the slider to set the manual speed mode to a certain speed"
+        },
+        "args": [
+          {
+            "type": "device",
+            "name": "device",
+            "filter": "driver_id=vento-expert"
+          },
+          {
+            "type": "range",
+            "name": "speed",
+            "title": {
+              "en": "Speed"
+            },
+            "placeholder": {
+              "en": "Speed"
+            },
+            "min": 0,
+            "max": 100,
+            "step": 1,
+            "label": "%",
+            "labelMultiplier": 1,
+            "labelDecimals": 0
+          }
+        ]
+      },
+      {
+        "id": "timer_mode",
+        "title": {
+          "en": "Set the timer mode"
+        },
+        "titleFormatted": {
+          "en": "Sets the timer mode of the device to [[timerMode]] "
+        },
+        "hint": {
+          "en": "Sets the device to the desired timer mode"
+        },
+        "args": [
+          {
+            "type": "device",
+            "name": "device",
+            "filter": "driver_id=vento-expert"
+          },
+          {
+            "type": "dropdown",
+            "name": "timerMode",
+            "title": {
+              "en": "The desired timer mode"
+            },
+            "values": [
+              {
+                "id": "0",
+                "title": {
+                  "en": "Off"
+                }
+              },
+              {
+                "id": "1",
+                "title": {
+                  "en": "Night mode"
+                }
+              },
+              {
+                "id": "2",
+                "title": {
+                  "en": "Party mode"
+                }
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "speed_mode",
+        "title": {
+          "en": "Set the speed mode"
+        },
+        "titleFormatted": {
+          "en": "Sets the speed mode of the device to [[speedMode]] "
+        },
+        "hint": {
+          "en": "Sets the device to the desired speed mode"
+        },
+        "args": [
+          {
+            "type": "device",
+            "name": "device",
+            "filter": "driver_id=vento-expert"
+          },
+          {
+            "type": "dropdown",
+            "name": "speedMode",
+            "title": {
+              "en": "The desired speed mode"
+            },
+            "values": [
+              {
+                "id": "0",
+                "title": {
+                  "en": "Off"
+                }
+              },
+              {
+                "id": "1",
+                "title": {
+                  "en": "Low"
+                }
+              },
+              {
+                "id": "2",
+                "title": {
+                  "en": "Medium"
+                }
+              },
+              {
+                "id": "3",
+                "title": {
+                  "en": "High"
+                }
+              },
+              {
+                "id": "255",
+                "title": {
+                  "en": "Manual"
+                }
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "operation_mode",
+        "title": {
+          "en": "Set the operation mode"
+        },
+        "titleFormatted": {
+          "en": "Sets the operation mode of the device to [[operationMode]] "
+        },
+        "hint": {
+          "en": "Sets the device to the desired operation mode"
+        },
+        "args": [
+          {
+            "type": "device",
+            "name": "device",
+            "filter": "driver_id=vento-expert"
+          },
+          {
+            "type": "dropdown",
+            "name": "operationMode",
+            "title": {
+              "en": "The desired operation mode"
+            },
+            "values": [
+              {
+                "id": "0",
+                "title": {
+                  "en": "Ventilation"
+                }
+              },
+              {
+                "id": "1",
+                "title": {
+                  "en": "Regeneration"
+                }
+              },
+              {
+                "id": "2",
+                "title": {
+                  "en": "Supply"
+                }
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
   "drivers": [
     {
       "name": {

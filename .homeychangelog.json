@@ -4,5 +4,8 @@
   },
   "1.0.1": {
     "en": "Added links to source and forum"
+  },
+  "1.1.0": {
+    "en": "Added flow card support for the main operations"
   }
 }
