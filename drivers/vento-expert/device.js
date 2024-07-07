@@ -18,15 +18,22 @@ class VentoDevice extends Device {
   {
     if (this.hasCapability('onoff'))
       this.registerCapabilityListener('onoff', this.onCapabilityOnoff.bind(this));
-    if (this.hasCapability('speedMode'))
+    if (this.hasCapability('speedMode')) {
       this.registerCapabilityListener('speedMode', this.onCapabilitySpeedmode.bind(this));
-    if (this.hasCapability('manualSpeed'))
+      await this.setupFlowSpeedMode();
+    }
+    if (this.hasCapability('manualSpeed')) {
       this.registerCapabilityListener('manualSpeed', this.onCapabilityManualSpeed.bind(this));
-    if (this.hasCapability('operationMode'))
+      await this.setupFlowManualSpeed();
+    }
+    if (this.hasCapability('operationMode')) {
       this.registerCapabilityListener('operationMode', this.onCapabilityOperationMode.bind(this));
-    if (this.hasCapability('timerMode'))
+      await this.setupFlowOperationMode();
+    }
+    if (this.hasCapability('timerMode')) {
       this.registerCapabilityListener('timerMode', this.onCapabilityTimerMode.bind(this));
-    
+      await this.setupFlowTimerMode();
+    }    
   }
 
   async discovery(id)
@@ -117,6 +124,55 @@ class VentoDevice extends Device {
   async onCapabilityTimerMode( value, opts ) {
     await this.driver.setTimerMode(this.deviceObject,this.devicepwd, value);
     //this.setCapabilityValue('operationMode', Number(value));
+  }
+
+  async setupFlowOperationMode() {
+    this.log('Create the flow for the operation mode capability');
+    //Now setup the flow cards
+    this._flowOperationMode = await this.homey.flow.getActionCard('operation_mode'); 
+    this._flowOperationMode
+      .registerRunListener(async (args, state) => {
+        this.log('attempt to change operation mode: '+args.operationMode);
+        this.setCapabilityValue('operationMode', args.operationMode);
+        await this.driver.setOperationMode(args.device.deviceObject,args.device.devicepwd, args.operationMode);
+      });
+  }
+
+  async setupFlowSpeedMode() {
+    this.log('Create the flow for the speed mode capability');
+    //Now setup the flow cards
+    this._flowSpeedMode = await this.homey.flow.getActionCard('speed_mode'); 
+    this._flowSpeedMode
+      .registerRunListener(async (args, state) => {
+        this.log('attempt to change speed mode: '+args.speedMode);
+        this.setCapabilityValue('speedMode', args.speedMode);
+        await this.driver.setSpeedMode(args.device.deviceObject,args.device.devicepwd, args.speedMode);
+      });
+  }
+
+  async setupFlowManualSpeed() {
+    this.log('Create the flow for the manual speed capability');
+    //Now setup the flow cards
+    this._flowManualSpeed = await this.homey.flow.getActionCard('manualSpeed_set'); 
+    this._flowManualSpeed
+      .registerRunListener(async (args, state) => {
+        this.log('attempt to change manual speed: '+args.speed);
+        this.setCapabilityValue('manualSpeed', args.speed);
+        await this.driver.setManualSpeed(args.device.deviceObject,args.device.devicepwd, (255*(args.speed/100)));
+
+      });
+  }
+
+  async setupFlowTimerMode() {
+    this.log('Create the flow for the timer mode capability');
+    //Now setup the flow cards
+    this._flowTimerMode = await this.homey.flow.getActionCard('timer_mode'); 
+    this._flowTimerMode
+      .registerRunListener(async (args, state) => {
+        this.log('attempt to change timer mode: '+args.timerMode);
+        this.setCapabilityValue('timerMode', args.timerMode);
+        await this.driver.setTimerMode(args.device.deviceObject,args.device.devicepwd, args.timerMode);
+      });
   }
 }
 
