@@ -30,6 +30,21 @@ class VentoDevice extends Device {
       this.registerCapabilityListener('operationMode', this.onCapabilityOperationMode.bind(this));
       await this.setupFlowOperationMode();
     }
+    if (this.hasCapability('alarm_generic')) {
+      this.homey.flow.getConditionCard('alarm_generic').registerRunListener((args, state) => {
+        return args.device.getCapabilityValue('alarm_generic');
+      });
+    }
+    if (this.hasCapability('alarm_boost')) {
+      this.homey.flow.getConditionCard('alarm_boost').registerRunListener((args, state) => {
+        return args.device.getCapabilityValue('alarm_boost');
+      });
+    }
+    if (this.hasCapability('alarm_filter')) {
+      this.homey.flow.getConditionCard('alarm_filter').registerRunListener((args, state) => {
+        return args.device.getCapabilityValue('alarm_filter');
+      });
+    }
     if (this.hasCapability('timerMode')) {
       this.registerCapabilityListener('timerMode', this.onCapabilityTimerMode.bind(this));
       await this.setupFlowTimerMode();
