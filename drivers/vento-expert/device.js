@@ -19,6 +19,8 @@ class VentoDevice extends Device {
   {
     if(!this.hasCapability('fan_speed'))
       this.addCapability('fan_speed');
+    if(!this.hasCapability('alarm_connectivity'))
+      this.addCapability('alarm_connectivity')
   }
 
   async setupCapabilities()
@@ -79,12 +81,12 @@ class VentoDevice extends Device {
   {
     this.log('Requesting the current device state');
     let state = await this.driver.getDeviceState(this.deviceObject,this.devicepwd).catch((error) => {
-      this.setUnavailable(error);
+      this.setCapabilityValue('alarm_connectivity',true);
     });
     if(state===undefined)
       return;
     else
-      this.setAvailable();
+    this.setCapabilityValue('alarm_connectivity',false);
     this.log(JSON.stringify(state));
     this.setCapabilityValue('onoff',(state.onoff==1));
     this.setCapabilityValue('alarm_boost',(state.boost.mode!=0));
