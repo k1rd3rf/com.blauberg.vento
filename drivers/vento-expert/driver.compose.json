@@ -9,6 +9,7 @@
     "alarm_generic",
     "filter_timer",
     "manualSpeed",
+    "fan_speed",
     "measure_humidity",
     "measure_RPM",
     "onoff",

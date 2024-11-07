@@ -13,5 +13,8 @@
   },
   "1.2.0": {
     "en": "Bug fixes and support for new fan_speed capability"
+  },
+  "1.2.1": {
+    "en": "Bug fix"
   }
 }
