@@ -16,5 +16,8 @@
   },
   "1.2.1": {
     "en": "Bug fix"
+  },
+  "1.2.2": {
+    "en": "Added connectivity alarm"
   }
 }
