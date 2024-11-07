@@ -10,5 +10,8 @@
   },
   "1.1.1": {
     "en": "Added additional flow cards, conditions for the alarms"
+  },
+  "1.2.0": {
+    "en": "Bug fixes and support for new fan_speed capability"
   }
 }
