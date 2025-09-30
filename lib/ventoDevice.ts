@@ -1,7 +1,7 @@
 import { Device } from 'homey';
 import Api from './api';
 import VentoDiscovery from './ventoDiscovery';
-import { Capabilities } from './capabilities';
+import { Capabilities, ActionCards } from './capabilities';
 
 type DeviceSettings = {
     devicepwd: string;
@@ -197,7 +197,7 @@ export default class VentoDevice extends Device {
 
     async setupFlowOperationMode() {
       this.log('Create the flow for the operation mode capability');
-      this.homey.flow.getActionCard('operation_mode')
+      this.homey.flow.getActionCard(ActionCards.operation_mode)
         .registerRunListener(async (args: { operationMode: number }) => {
           this.log(`attempt to change operation mode: ${args.operationMode}`);
           await this.setCapabilityValue(Capabilities.operationMode, args.operationMode);
@@ -207,7 +207,7 @@ export default class VentoDevice extends Device {
 
     async setupFlowSpeedMode() {
       this.log('Create the flow for the speed mode capability');
-      this.homey.flow.getActionCard('speed_mode')
+      this.homey.flow.getActionCard(ActionCards.speed_mode)
         .registerRunListener(async (args: { speedMode: number }) => {
           this.log(`attempt to change speed mode: ${args.speedMode}`);
           await this.setCapabilityValue(Capabilities.speedMode, args.speedMode);
@@ -218,7 +218,7 @@ export default class VentoDevice extends Device {
     async setupFlowManualSpeed() {
       this.log('Create the flow for the manual speed capability');
       // Now setup the flow cards
-      this.homey.flow.getActionCard('manualSpeed_set')
+      this.homey.flow.getActionCard(ActionCards.manualSpeed_set)
         .registerRunListener(async (args: { speed: number }) => {
           this.log(`attempt to change manual speed: ${args.speed}`);
           await this.setCapabilityValue(Capabilities.manualSpeed, args.speed);
@@ -229,7 +229,7 @@ export default class VentoDevice extends Device {
 
     async setupFlowTimerMode() {
       this.log('Create the flow for the timer mode capability');
-      this.homey.flow.getActionCard('timer_mode')
+      this.homey.flow.getActionCard(ActionCards.timer_mode)
         .registerRunListener(async (args: { timerMode: number }) => {
           this.log(`attempt to change timer mode: ${args.timerMode}`);
           await this.setCapabilityValue(Capabilities.timerMode, args.timerMode);
