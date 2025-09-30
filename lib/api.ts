@@ -19,13 +19,15 @@ export default class Api {
       this.deviceIp = deviceIp;
     }
 
-    log(...args: any[]) {
+    log: typeof console.log = (...args) => {
+      // eslint-disable-next-line no-console
       console.log(`[API - ${this.deviceId}]`, ...args);
-    }
+    };
 
-    error(...args: any[]) {
+    error: typeof console.error = (...args) => {
+      // eslint-disable-next-line no-console
       console.error(`[API - ${this.deviceId}]`, ...args);
-    }
+    };
 
     send = async (packet: Packet, ip: string) => this.modbusClient.send(packet, ip).then((r) => {
       if (r != null) {

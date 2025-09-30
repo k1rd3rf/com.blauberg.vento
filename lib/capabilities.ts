@@ -1,5 +1,6 @@
 /* eslint-disable camelcase */
 
+// eslint-disable-next-line import/prefer-default-export
 export enum Capabilities {
     alarm_connectivity = 'alarm_connectivity',
     onoff = 'onoff',
