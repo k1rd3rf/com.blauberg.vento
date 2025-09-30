@@ -129,6 +129,18 @@
     ],
     "conditions": [
       {
+        "id": "alarm_boost",
+        "title": {
+          "en": "The boost alarm is !{{on|off}}"
+        }
+      },
+      {
+        "id": "alarm_filter",
+        "title": {
+          "en": "The filter alarm is !{{on|off}}"
+        }
+      },
+      {
         "id": "alarm_generic",
         "title": {
           "en": "The generic alarm is !{{on|off}}",
@@ -143,40 +155,7 @@
           "ru": "Общий сигнал !{{вкл.|выкл.}}",
           "pl": "Alarm ogólny !{{włączony|wyłączony}}",
           "ko": "일반 알람 !{{켬|끔}}"
-        },
-        "args": [
-          {
-            "type": "device",
-            "name": "device",
-            "filter": "driver_id=vento-expert"
-          }
-        ]
-      },
-      {
-        "id": "alarm_filter",
-        "title": {
-          "en": "The filter alarm is !{{on|off}}"
-        },
-        "args": [
-          {
-            "type": "device",
-            "name": "device",
-            "filter": "driver_id=vento-expert"
-          }
-        ]
-      },
-      {
-        "id": "alarm_boost",
-        "title": {
-          "en": "The boost alarm is !{{on|off}}"
-        },
-        "args": [
-          {
-            "type": "device",
-            "name": "device",
-            "filter": "driver_id=vento-expert"
-          }
-        ]
+        }
       }
     ],
     "actions": [

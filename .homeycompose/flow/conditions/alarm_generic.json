@@ -1,0 +1,17 @@
+{
+  "id": "alarm_generic",
+  "title": {
+    "en": "The generic alarm is !{{on|off}}",
+    "nl": "Het algemene alarm is !{{aan|uit}}",
+    "de": "Der allgemeine Alarm ist !{{an|aus}}",
+    "fr": "L'alarme générique est !{{en marche|arrêtée}}",
+    "it": "L'allarme generico è !{{acceso|spento}}",
+    "sv": "Det generiska larmet är !{{på|av}}",
+    "no": "Den generelle alarmen er !{{på|av}}",
+    "es": "La alarma general está !{{activada|desactivada}}",
+    "da": "Den generiske alarm er !{{tændt|slukket}}",
+    "ru": "Общий сигнал !{{вкл.|выкл.}}",
+    "pl": "Alarm ogólny !{{włączony|wyłączony}}",
+    "ko": "일반 알람 !{{켬|끔}}"
+  }
+}
