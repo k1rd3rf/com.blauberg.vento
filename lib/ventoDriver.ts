@@ -9,16 +9,8 @@ export default class VentoDriver extends Driver {
      */
     async onInit() {
       this.log('Vento driver has been initialized');
-      this.startPolling();
       this.discoveryClient = new VentoDiscovery();
-    }
-
-    startPolling() {
-      this._timer = this.homey.setInterval(() => this.locateDevices(), 10000);
-    }
-
-    async onUninit() {
-      if (this._timer) this.homey.clearInterval(this._timer);
+      await this.locateDevices();
     }
 
     async onPair(session: Driver.PairSession) {

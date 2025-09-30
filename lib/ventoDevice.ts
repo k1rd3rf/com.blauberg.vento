@@ -49,7 +49,11 @@ export default class VentoDevice extends Device {
       } else {
         this.api = new Api(this.id, password, deviceIp);
       }
+    }
 
+    onUninit(): Promise<void> {
+      this.homey.clearInterval(this.pollInterval);
+      return super.onUninit();
     }
 
     async updateCapabilities() {
