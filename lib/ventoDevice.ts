@@ -3,6 +3,16 @@ import Api from './api';
 import VentoDiscovery from './ventoDiscovery';
 import { Capabilities } from './capabilities';
 
+type DeviceSettings = {
+    devicepwd: string;
+    // eslint-disable-next-line camelcase
+    humidity_sensor: number
+    // eslint-disable-next-line camelcase
+    humidity_threshold: number
+    // eslint-disable-next-line camelcase
+    boost_delay: number
+};
+
 export default class VentoDevice extends Device {
     id!: string
     api!: Api
@@ -101,27 +111,27 @@ export default class VentoDevice extends Device {
       }
       await this.setCapabilityValue(Capabilities.alarm_connectivity, false);
       await this.setCapabilityValue(Capabilities.onoff, (state.onoff === 1));
-      await this.setCapabilityValue(Capabilities.alarm_boost, (state.boost.mode !== 0));
-      await this.setCapabilityValue(Capabilities.alarm_filter, (state.filter.alarm === 1));
-      await this.setCapabilityValue(Capabilities.filter_timer, `${state.filter.timer.days}:${state.filter.timer.hour}:${state.filter.timer.min}`);
+      await this.setCapabilityValue(Capabilities.alarm_boost, (state.boost?.mode !== 0));
+      await this.setCapabilityValue(Capabilities.alarm_filter, (state.filter?.alarm === 1));
+      await this.setCapabilityValue(Capabilities.filter_timer, `${state.filter?.timer.days}:${state.filter?.timer.hour}:${state.filter?.timer.min}`);
       await this.setCapabilityValue(Capabilities.alarm_generic, (state.alarm !== 0));
-      await this.setCapabilityValue(Capabilities.measure_humidity, state.humidity.current);
-      await this.setCapabilityValue(Capabilities.measure_RPM, state.fan.rpm);
+      await this.setCapabilityValue(Capabilities.measure_humidity, state.humidity?.current);
+      await this.setCapabilityValue(Capabilities.measure_RPM, state.fan?.rpm);
       // Now handle the different modes
-      await this.setCapabilityValue(Capabilities.speedMode, state.speed.mode.toString());
-      await this.setCapabilityValue(Capabilities.manualSpeed, (state.speed.manualspeed / 255) * 100);
-      await this.setCapabilityValue(Capabilities.fan_speed, (state.speed.manualspeed / 255));
-      await this.setCapabilityValue(Capabilities.operationMode, state.operationmode.toString());
-      await this.setCapabilityValue(Capabilities.timerMode, state.timers.mode.toString());
-      await this.setCapabilityValue(Capabilities.timerMode_timer, `${state.timers.countdown.hour}:${state.timers.countdown.min}:${state.timers.countdown.sec}`);
+      await this.setCapabilityValue(Capabilities.speedMode, state.speed?.mode?.toString());
+      await this.setCapabilityValue(Capabilities.manualSpeed, (state.speed?.manualspeed ?? -1 / 255) * 100);
+      await this.setCapabilityValue(Capabilities.fan_speed, (state.speed?.manualspeed ?? -1 / 255));
+      await this.setCapabilityValue(Capabilities.operationMode, state.operationmode?.toString());
+      await this.setCapabilityValue(Capabilities.timerMode, state.timers?.mode?.toString());
+      await this.setCapabilityValue(Capabilities.timerMode_timer, `${state.timers?.countdown?.hour}:${state.timers?.countdown?.min}:${state.timers?.countdown?.sec}`);
 
       // Update our settings based on current values in the device
       await this.setSettings({
         // only provide keys for the settings you want to change
         devicemodel: state.unittype,
-        humidity_sensor: (state.humidity.sensoractivation === 1),
-        humidity_threshold: state.humidity.threshold,
-        boost_delay: state.boost.deactivationtimer,
+        humidity_sensor: (state.humidity?.sensoractivation === 1),
+        humidity_threshold: state.humidity?.threshold,
+        boost_delay: state.boost?.deactivationtimer,
       });
     }
 
@@ -132,7 +142,11 @@ export default class VentoDevice extends Device {
       this.log('Vento device has been added');
     }
 
-    async onSettings({ newSettings, changedKeys }) {
+    async onSettings({ newSettings, changedKeys }: {
+        oldSettings: DeviceSettings;
+        newSettings: DeviceSettings;
+        changedKeys: (keyof DeviceSettings)[];
+    }) {
       if (changedKeys.includes('devicepwd')) {
         await this.initApi(newSettings.devicepwd);
         await this.updateDeviceState();
@@ -180,7 +194,7 @@ export default class VentoDevice extends Device {
     async setupFlowOperationMode() {
       this.log('Create the flow for the operation mode capability');
       this.homey.flow.getActionCard('operation_mode')
-        .registerRunListener(async (args) => {
+        .registerRunListener(async (args: { operationMode: number }) => {
           this.log(`attempt to change operation mode: ${args.operationMode}`);
           await this.setCapabilityValue(Capabilities.operationMode, args.operationMode);
           await this.api.setOperationMode(args.operationMode);
@@ -190,7 +204,7 @@ export default class VentoDevice extends Device {
     async setupFlowSpeedMode() {
       this.log('Create the flow for the speed mode capability');
       this.homey.flow.getActionCard('speed_mode')
-        .registerRunListener(async (args) => {
+        .registerRunListener(async (args: { speedMode: number }) => {
           this.log(`attempt to change speed mode: ${args.speedMode}`);
           await this.setCapabilityValue(Capabilities.speedMode, args.speedMode);
           await this.api.setSpeedMode(args.speedMode);
@@ -201,7 +215,7 @@ export default class VentoDevice extends Device {
       this.log('Create the flow for the manual speed capability');
       // Now setup the flow cards
       this.homey.flow.getActionCard('manualSpeed_set')
-        .registerRunListener(async (args) => {
+        .registerRunListener(async (args: { speed: number }) => {
           this.log(`attempt to change manual speed: ${args.speed}`);
           await this.setCapabilityValue(Capabilities.manualSpeed, args.speed);
           await this.setCapabilityValue(Capabilities.fan_speed, ((args.speed / 100) - 1));
@@ -212,7 +226,7 @@ export default class VentoDevice extends Device {
     async setupFlowTimerMode() {
       this.log('Create the flow for the timer mode capability');
       this.homey.flow.getActionCard('timer_mode')
-        .registerRunListener(async (args) => {
+        .registerRunListener(async (args: { timerMode: number }) => {
           this.log(`attempt to change timer mode: ${args.timerMode}`);
           await this.setCapabilityValue(Capabilities.timerMode, args.timerMode);
           await this.api.setTimerMode(args.timerMode);

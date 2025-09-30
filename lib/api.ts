@@ -27,10 +27,11 @@ export default class Api {
       console.error(`[API - ${this.deviceId}]`, ...args);
     }
 
-    send = async (packet, ip) => this.modbusClient.send(packet, ip).then((r) => {
+    send = async (packet: Packet, ip: string) => this.modbusClient.send(packet, ip).then((r) => {
       if (r != null) {
         return mapModbusResponse(r);
       }
+      return {};
     });
 
     public getDeviceState = async () => this.send(new Packet(this.deviceId, this.devicePass, FunctionType.READ, [

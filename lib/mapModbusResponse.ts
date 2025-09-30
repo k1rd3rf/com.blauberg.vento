@@ -4,28 +4,28 @@ import { Response, Parameter } from 'blaubergventojs';
 import { getEnumKeyByEnumValue } from './mapEnum';
 
 export type ModbusResponse = {
-    onoff: number;
-    speed: { mode: number; manualspeed: number };
-    boost: { mode: number; deactivationtimer: number };
-    operationmode: number;
-    filter: { alarm: number; timer: { min: number; hour: number; days: number } };
-    humidity: { current: number; sensoractivation: number; threshold: number; activated: number };
+    onoff?: number;
+    speed?: { mode?: number; manualspeed?: number };
+    boost?: { mode?: number; deactivationtimer?: number };
+    operationmode?: number;
+    filter?: { alarm?: number; timer: { min?: number; hour?: number; days?: number } };
+    humidity?: { current?: number; sensoractivation?: number; threshold?: number; activated?: number };
     unittype: string;
-    fan: { rpm: number };
-    timers: { mode: number; countdown: { sec: number; min: number; hour: number } };
-    alarm: number
+    fan: { rpm?: number };
+    timers: { mode?: number; countdown?: { sec?: number; min?: number; hour?: number } };
+    alarm?: number
 };
 
-export default (result: Response): ModbusResponse => {
+export default (result: Response): Partial<ModbusResponse> => {
   if (result != null) {
-    const values: Record<keyof typeof Parameter | string, number[]> = result.packet.dataEntries.reduce((acc, { parameter, value }) => {
+    const values: Record<keyof typeof Parameter | string, number[] | undefined> = result.packet.dataEntries.reduce((acc, { parameter, value }) => {
       // @ts-expect-error: old declared enum
       const key = getEnumKeyByEnumValue(Parameter, parameter) || parameter;
       return key ? { ...acc, [key]: value } : acc;
     }, {});
 
     let unittypelabel = 'Vento Expert';
-    switch (values['UNIT_TYPE'][0]) {
+    switch (values.UNIT_TYPE?.[0]) {
       case 1:
         unittypelabel = 'Vento Expert A50-1 W V.2 | Vento Expert A85-1 W V.2 | Vento Expert A100-1 W V.2';
         break;
@@ -41,43 +41,43 @@ export default (result: Response): ModbusResponse => {
     }
 
     return {
-      onoff: values['ON_OFF'][0],
+      onoff: values.ON_OFF?.[0],
       speed: {
-        mode: values['SPEED'][0],
-        manualspeed: values['MANUAL_SPEED'][0],
+        mode: values.SPEED?.[0],
+        manualspeed: values.MANUAL_SPEED?.[0],
       },
       boost: {
-        mode: values['BOOT_MODE'][0],
-        deactivationtimer: values['BOOST_MODE_DEACTIVATION_DELAY'][0],
+        mode: values.BOOT_MODE?.[0],
+        deactivationtimer: values.BOOST_MODE_DEACTIVATION_DELAY?.[0],
       },
-      operationmode: values['VENTILATION_MODE'][0],
+      operationmode: values.VENTILATION_MODE?.[0],
       filter: {
-        alarm: values['FILTER_ALARM'][0],
+        alarm: values.FILTER_ALARM?.[0],
         timer: {
-          min: values['FILTER_TIMER'][0],
-          hour: values['FILTER_TIMER'][1],
-          days: values['FILTER_TIMER'][2],
+          min: values.FILTER_TIMER?.[0],
+          hour: values.FILTER_TIMER?.[1],
+          days: values.FILTER_TIMER?.[2],
         },
       },
       humidity: {
-        current: values['CURRENT_HUMIDITY'][0],
-        sensoractivation: values['HUMIDITY_SENSOR_ACTIVATION'][0],
-        threshold: values['HUMIDITY_THRESHOLD'][0],
+        current: values.CURRENT_HUMIDITY?.[0],
+        sensoractivation: values.HUMIDITY_SENSOR_ACTIVATION?.[0],
+        threshold: values.HUMIDITY_THRESHOLD?.[0],
         activated: 0,
       },
       unittype: unittypelabel,
       fan: {
-        rpm: values['FAN1RPM'][0],
+        rpm: values.FAN1RPM?.[0],
       },
       timers: {
-        mode: values['TIMER_MODE'][0],
+        mode: values.TIMER_MODE?.[0],
         countdown: {
-          sec: values['11'][0],
-          min: values['11'][1],
-          hour: values['11'][2],
+          sec: values['11']?.[0],
+          min: values['11']?.[1],
+          hour: values['11']?.[2],
         },
       },
-      alarm: values['READ_ALARM'][0],
+      alarm: values.READ_ALARM?.[0],
     };
   }
   throw new Error('device not responding, is your device password correct?');

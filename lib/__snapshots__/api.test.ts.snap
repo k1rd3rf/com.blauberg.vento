@@ -1,0 +1,1609 @@
+// Jest Snapshot v1, https://jestjs.io/docs/snapshot-testing
+
+exports[`Api set functions setBoostDelay sends value 0 1`] = `
+{
+  "calls": [
+    [
+      E {
+        "_dataEntries": [
+          {
+            "parameter": 102,
+            "value": Uint8Array [
+              0,
+            ],
+          },
+        ],
+        "_deviceId": "fanId",
+        "_functionType": 2,
+        "_password": "password",
+      },
+      "127.0.0.1",
+    ],
+  ],
+  "response": {
+    "alarm": undefined,
+    "boost": {
+      "deactivationtimer": 0,
+      "mode": undefined,
+    },
+    "fan": {
+      "rpm": undefined,
+    },
+    "filter": {
+      "alarm": undefined,
+      "timer": {
+        "days": undefined,
+        "hour": undefined,
+        "min": undefined,
+      },
+    },
+    "humidity": {
+      "activated": 0,
+      "current": undefined,
+      "sensoractivation": undefined,
+      "threshold": undefined,
+    },
+    "onoff": undefined,
+    "operationmode": undefined,
+    "speed": {
+      "manualspeed": undefined,
+      "mode": undefined,
+    },
+    "timers": {
+      "countdown": {
+        "hour": undefined,
+        "min": undefined,
+        "sec": undefined,
+      },
+      "mode": undefined,
+    },
+    "unittype": "Vento Expert",
+  },
+}
+`;
+
+exports[`Api set functions setBoostDelay sends value 1 1`] = `
+{
+  "calls": [
+    [
+      E {
+        "_dataEntries": [
+          {
+            "parameter": 102,
+            "value": Uint8Array [
+              1,
+            ],
+          },
+        ],
+        "_deviceId": "fanId",
+        "_functionType": 2,
+        "_password": "password",
+      },
+      "127.0.0.1",
+    ],
+  ],
+  "response": {
+    "alarm": undefined,
+    "boost": {
+      "deactivationtimer": 1,
+      "mode": undefined,
+    },
+    "fan": {
+      "rpm": undefined,
+    },
+    "filter": {
+      "alarm": undefined,
+      "timer": {
+        "days": undefined,
+        "hour": undefined,
+        "min": undefined,
+      },
+    },
+    "humidity": {
+      "activated": 0,
+      "current": undefined,
+      "sensoractivation": undefined,
+      "threshold": undefined,
+    },
+    "onoff": undefined,
+    "operationmode": undefined,
+    "speed": {
+      "manualspeed": undefined,
+      "mode": undefined,
+    },
+    "timers": {
+      "countdown": {
+        "hour": undefined,
+        "min": undefined,
+        "sec": undefined,
+      },
+      "mode": undefined,
+    },
+    "unittype": "Vento Expert",
+  },
+}
+`;
+
+exports[`Api set functions setBoostDelay sends value 2 1`] = `
+{
+  "calls": [
+    [
+      E {
+        "_dataEntries": [
+          {
+            "parameter": 102,
+            "value": Uint8Array [
+              2,
+            ],
+          },
+        ],
+        "_deviceId": "fanId",
+        "_functionType": 2,
+        "_password": "password",
+      },
+      "127.0.0.1",
+    ],
+  ],
+  "response": {
+    "alarm": undefined,
+    "boost": {
+      "deactivationtimer": 2,
+      "mode": undefined,
+    },
+    "fan": {
+      "rpm": undefined,
+    },
+    "filter": {
+      "alarm": undefined,
+      "timer": {
+        "days": undefined,
+        "hour": undefined,
+        "min": undefined,
+      },
+    },
+    "humidity": {
+      "activated": 0,
+      "current": undefined,
+      "sensoractivation": undefined,
+      "threshold": undefined,
+    },
+    "onoff": undefined,
+    "operationmode": undefined,
+    "speed": {
+      "manualspeed": undefined,
+      "mode": undefined,
+    },
+    "timers": {
+      "countdown": {
+        "hour": undefined,
+        "min": undefined,
+        "sec": undefined,
+      },
+      "mode": undefined,
+    },
+    "unittype": "Vento Expert",
+  },
+}
+`;
+
+exports[`Api set functions setHumiditySensor sends value 0 1`] = `
+{
+  "calls": [
+    [
+      E {
+        "_dataEntries": [
+          {
+            "parameter": 15,
+            "value": Uint8Array [
+              0,
+            ],
+          },
+        ],
+        "_deviceId": "fanId",
+        "_functionType": 2,
+        "_password": "password",
+      },
+      "127.0.0.1",
+    ],
+  ],
+  "response": {
+    "alarm": undefined,
+    "boost": {
+      "deactivationtimer": undefined,
+      "mode": undefined,
+    },
+    "fan": {
+      "rpm": undefined,
+    },
+    "filter": {
+      "alarm": undefined,
+      "timer": {
+        "days": undefined,
+        "hour": undefined,
+        "min": undefined,
+      },
+    },
+    "humidity": {
+      "activated": 0,
+      "current": undefined,
+      "sensoractivation": 0,
+      "threshold": undefined,
+    },
+    "onoff": undefined,
+    "operationmode": undefined,
+    "speed": {
+      "manualspeed": undefined,
+      "mode": undefined,
+    },
+    "timers": {
+      "countdown": {
+        "hour": undefined,
+        "min": undefined,
+        "sec": undefined,
+      },
+      "mode": undefined,
+    },
+    "unittype": "Vento Expert",
+  },
+}
+`;
+
+exports[`Api set functions setHumiditySensor sends value 1 1`] = `
+{
+  "calls": [
+    [
+      E {
+        "_dataEntries": [
+          {
+            "parameter": 15,
+            "value": Uint8Array [
+              1,
+            ],
+          },
+        ],
+        "_deviceId": "fanId",
+        "_functionType": 2,
+        "_password": "password",
+      },
+      "127.0.0.1",
+    ],
+  ],
+  "response": {
+    "alarm": undefined,
+    "boost": {
+      "deactivationtimer": undefined,
+      "mode": undefined,
+    },
+    "fan": {
+      "rpm": undefined,
+    },
+    "filter": {
+      "alarm": undefined,
+      "timer": {
+        "days": undefined,
+        "hour": undefined,
+        "min": undefined,
+      },
+    },
+    "humidity": {
+      "activated": 0,
+      "current": undefined,
+      "sensoractivation": 1,
+      "threshold": undefined,
+    },
+    "onoff": undefined,
+    "operationmode": undefined,
+    "speed": {
+      "manualspeed": undefined,
+      "mode": undefined,
+    },
+    "timers": {
+      "countdown": {
+        "hour": undefined,
+        "min": undefined,
+        "sec": undefined,
+      },
+      "mode": undefined,
+    },
+    "unittype": "Vento Expert",
+  },
+}
+`;
+
+exports[`Api set functions setHumiditySensor sends value 2 1`] = `
+{
+  "calls": [
+    [
+      E {
+        "_dataEntries": [
+          {
+            "parameter": 15,
+            "value": Uint8Array [
+              2,
+            ],
+          },
+        ],
+        "_deviceId": "fanId",
+        "_functionType": 2,
+        "_password": "password",
+      },
+      "127.0.0.1",
+    ],
+  ],
+  "response": {
+    "alarm": undefined,
+    "boost": {
+      "deactivationtimer": undefined,
+      "mode": undefined,
+    },
+    "fan": {
+      "rpm": undefined,
+    },
+    "filter": {
+      "alarm": undefined,
+      "timer": {
+        "days": undefined,
+        "hour": undefined,
+        "min": undefined,
+      },
+    },
+    "humidity": {
+      "activated": 0,
+      "current": undefined,
+      "sensoractivation": 2,
+      "threshold": undefined,
+    },
+    "onoff": undefined,
+    "operationmode": undefined,
+    "speed": {
+      "manualspeed": undefined,
+      "mode": undefined,
+    },
+    "timers": {
+      "countdown": {
+        "hour": undefined,
+        "min": undefined,
+        "sec": undefined,
+      },
+      "mode": undefined,
+    },
+    "unittype": "Vento Expert",
+  },
+}
+`;
+
+exports[`Api set functions setHumiditySensorThreshold sends value 0 1`] = `
+{
+  "calls": [
+    [
+      E {
+        "_dataEntries": [
+          {
+            "parameter": 25,
+            "value": Uint8Array [
+              0,
+            ],
+          },
+        ],
+        "_deviceId": "fanId",
+        "_functionType": 2,
+        "_password": "password",
+      },
+      "127.0.0.1",
+    ],
+  ],
+  "response": {
+    "alarm": undefined,
+    "boost": {
+      "deactivationtimer": undefined,
+      "mode": undefined,
+    },
+    "fan": {
+      "rpm": undefined,
+    },
+    "filter": {
+      "alarm": undefined,
+      "timer": {
+        "days": undefined,
+        "hour": undefined,
+        "min": undefined,
+      },
+    },
+    "humidity": {
+      "activated": 0,
+      "current": undefined,
+      "sensoractivation": undefined,
+      "threshold": 0,
+    },
+    "onoff": undefined,
+    "operationmode": undefined,
+    "speed": {
+      "manualspeed": undefined,
+      "mode": undefined,
+    },
+    "timers": {
+      "countdown": {
+        "hour": undefined,
+        "min": undefined,
+        "sec": undefined,
+      },
+      "mode": undefined,
+    },
+    "unittype": "Vento Expert",
+  },
+}
+`;
+
+exports[`Api set functions setHumiditySensorThreshold sends value 1 1`] = `
+{
+  "calls": [
+    [
+      E {
+        "_dataEntries": [
+          {
+            "parameter": 25,
+            "value": Uint8Array [
+              1,
+            ],
+          },
+        ],
+        "_deviceId": "fanId",
+        "_functionType": 2,
+        "_password": "password",
+      },
+      "127.0.0.1",
+    ],
+  ],
+  "response": {
+    "alarm": undefined,
+    "boost": {
+      "deactivationtimer": undefined,
+      "mode": undefined,
+    },
+    "fan": {
+      "rpm": undefined,
+    },
+    "filter": {
+      "alarm": undefined,
+      "timer": {
+        "days": undefined,
+        "hour": undefined,
+        "min": undefined,
+      },
+    },
+    "humidity": {
+      "activated": 0,
+      "current": undefined,
+      "sensoractivation": undefined,
+      "threshold": 1,
+    },
+    "onoff": undefined,
+    "operationmode": undefined,
+    "speed": {
+      "manualspeed": undefined,
+      "mode": undefined,
+    },
+    "timers": {
+      "countdown": {
+        "hour": undefined,
+        "min": undefined,
+        "sec": undefined,
+      },
+      "mode": undefined,
+    },
+    "unittype": "Vento Expert",
+  },
+}
+`;
+
+exports[`Api set functions setHumiditySensorThreshold sends value 2 1`] = `
+{
+  "calls": [
+    [
+      E {
+        "_dataEntries": [
+          {
+            "parameter": 25,
+            "value": Uint8Array [
+              2,
+            ],
+          },
+        ],
+        "_deviceId": "fanId",
+        "_functionType": 2,
+        "_password": "password",
+      },
+      "127.0.0.1",
+    ],
+  ],
+  "response": {
+    "alarm": undefined,
+    "boost": {
+      "deactivationtimer": undefined,
+      "mode": undefined,
+    },
+    "fan": {
+      "rpm": undefined,
+    },
+    "filter": {
+      "alarm": undefined,
+      "timer": {
+        "days": undefined,
+        "hour": undefined,
+        "min": undefined,
+      },
+    },
+    "humidity": {
+      "activated": 0,
+      "current": undefined,
+      "sensoractivation": undefined,
+      "threshold": 2,
+    },
+    "onoff": undefined,
+    "operationmode": undefined,
+    "speed": {
+      "manualspeed": undefined,
+      "mode": undefined,
+    },
+    "timers": {
+      "countdown": {
+        "hour": undefined,
+        "min": undefined,
+        "sec": undefined,
+      },
+      "mode": undefined,
+    },
+    "unittype": "Vento Expert",
+  },
+}
+`;
+
+exports[`Api set functions setManualSpeed sends value 0 1`] = `
+{
+  "calls": [
+    [
+      E {
+        "_dataEntries": [
+          {
+            "parameter": 68,
+            "value": Uint8Array [
+              0,
+            ],
+          },
+        ],
+        "_deviceId": "fanId",
+        "_functionType": 2,
+        "_password": "password",
+      },
+      "127.0.0.1",
+    ],
+  ],
+  "response": {
+    "alarm": undefined,
+    "boost": {
+      "deactivationtimer": undefined,
+      "mode": undefined,
+    },
+    "fan": {
+      "rpm": undefined,
+    },
+    "filter": {
+      "alarm": undefined,
+      "timer": {
+        "days": undefined,
+        "hour": undefined,
+        "min": undefined,
+      },
+    },
+    "humidity": {
+      "activated": 0,
+      "current": undefined,
+      "sensoractivation": undefined,
+      "threshold": undefined,
+    },
+    "onoff": undefined,
+    "operationmode": undefined,
+    "speed": {
+      "manualspeed": 0,
+      "mode": undefined,
+    },
+    "timers": {
+      "countdown": {
+        "hour": undefined,
+        "min": undefined,
+        "sec": undefined,
+      },
+      "mode": undefined,
+    },
+    "unittype": "Vento Expert",
+  },
+}
+`;
+
+exports[`Api set functions setManualSpeed sends value 1 1`] = `
+{
+  "calls": [
+    [
+      E {
+        "_dataEntries": [
+          {
+            "parameter": 68,
+            "value": Uint8Array [
+              1,
+            ],
+          },
+        ],
+        "_deviceId": "fanId",
+        "_functionType": 2,
+        "_password": "password",
+      },
+      "127.0.0.1",
+    ],
+  ],
+  "response": {
+    "alarm": undefined,
+    "boost": {
+      "deactivationtimer": undefined,
+      "mode": undefined,
+    },
+    "fan": {
+      "rpm": undefined,
+    },
+    "filter": {
+      "alarm": undefined,
+      "timer": {
+        "days": undefined,
+        "hour": undefined,
+        "min": undefined,
+      },
+    },
+    "humidity": {
+      "activated": 0,
+      "current": undefined,
+      "sensoractivation": undefined,
+      "threshold": undefined,
+    },
+    "onoff": undefined,
+    "operationmode": undefined,
+    "speed": {
+      "manualspeed": 1,
+      "mode": undefined,
+    },
+    "timers": {
+      "countdown": {
+        "hour": undefined,
+        "min": undefined,
+        "sec": undefined,
+      },
+      "mode": undefined,
+    },
+    "unittype": "Vento Expert",
+  },
+}
+`;
+
+exports[`Api set functions setManualSpeed sends value 2 1`] = `
+{
+  "calls": [
+    [
+      E {
+        "_dataEntries": [
+          {
+            "parameter": 68,
+            "value": Uint8Array [
+              2,
+            ],
+          },
+        ],
+        "_deviceId": "fanId",
+        "_functionType": 2,
+        "_password": "password",
+      },
+      "127.0.0.1",
+    ],
+  ],
+  "response": {
+    "alarm": undefined,
+    "boost": {
+      "deactivationtimer": undefined,
+      "mode": undefined,
+    },
+    "fan": {
+      "rpm": undefined,
+    },
+    "filter": {
+      "alarm": undefined,
+      "timer": {
+        "days": undefined,
+        "hour": undefined,
+        "min": undefined,
+      },
+    },
+    "humidity": {
+      "activated": 0,
+      "current": undefined,
+      "sensoractivation": undefined,
+      "threshold": undefined,
+    },
+    "onoff": undefined,
+    "operationmode": undefined,
+    "speed": {
+      "manualspeed": 2,
+      "mode": undefined,
+    },
+    "timers": {
+      "countdown": {
+        "hour": undefined,
+        "min": undefined,
+        "sec": undefined,
+      },
+      "mode": undefined,
+    },
+    "unittype": "Vento Expert",
+  },
+}
+`;
+
+exports[`Api set functions setOnOffStatus sends value 0 1`] = `
+{
+  "calls": [
+    [
+      E {
+        "_dataEntries": [
+          {
+            "parameter": 1,
+            "value": Uint8Array [
+              0,
+            ],
+          },
+        ],
+        "_deviceId": "fanId",
+        "_functionType": 2,
+        "_password": "password",
+      },
+      "127.0.0.1",
+    ],
+  ],
+  "response": {
+    "alarm": undefined,
+    "boost": {
+      "deactivationtimer": undefined,
+      "mode": undefined,
+    },
+    "fan": {
+      "rpm": undefined,
+    },
+    "filter": {
+      "alarm": undefined,
+      "timer": {
+        "days": undefined,
+        "hour": undefined,
+        "min": undefined,
+      },
+    },
+    "humidity": {
+      "activated": 0,
+      "current": undefined,
+      "sensoractivation": undefined,
+      "threshold": undefined,
+    },
+    "onoff": 0,
+    "operationmode": undefined,
+    "speed": {
+      "manualspeed": undefined,
+      "mode": undefined,
+    },
+    "timers": {
+      "countdown": {
+        "hour": undefined,
+        "min": undefined,
+        "sec": undefined,
+      },
+      "mode": undefined,
+    },
+    "unittype": "Vento Expert",
+  },
+}
+`;
+
+exports[`Api set functions setOnOffStatus sends value 1 1`] = `
+{
+  "calls": [
+    [
+      E {
+        "_dataEntries": [
+          {
+            "parameter": 1,
+            "value": Uint8Array [
+              1,
+            ],
+          },
+        ],
+        "_deviceId": "fanId",
+        "_functionType": 2,
+        "_password": "password",
+      },
+      "127.0.0.1",
+    ],
+  ],
+  "response": {
+    "alarm": undefined,
+    "boost": {
+      "deactivationtimer": undefined,
+      "mode": undefined,
+    },
+    "fan": {
+      "rpm": undefined,
+    },
+    "filter": {
+      "alarm": undefined,
+      "timer": {
+        "days": undefined,
+        "hour": undefined,
+        "min": undefined,
+      },
+    },
+    "humidity": {
+      "activated": 0,
+      "current": undefined,
+      "sensoractivation": undefined,
+      "threshold": undefined,
+    },
+    "onoff": 1,
+    "operationmode": undefined,
+    "speed": {
+      "manualspeed": undefined,
+      "mode": undefined,
+    },
+    "timers": {
+      "countdown": {
+        "hour": undefined,
+        "min": undefined,
+        "sec": undefined,
+      },
+      "mode": undefined,
+    },
+    "unittype": "Vento Expert",
+  },
+}
+`;
+
+exports[`Api set functions setOnOffStatus sends value 2 1`] = `
+{
+  "calls": [
+    [
+      E {
+        "_dataEntries": [
+          {
+            "parameter": 1,
+            "value": Uint8Array [
+              2,
+            ],
+          },
+        ],
+        "_deviceId": "fanId",
+        "_functionType": 2,
+        "_password": "password",
+      },
+      "127.0.0.1",
+    ],
+  ],
+  "response": {
+    "alarm": undefined,
+    "boost": {
+      "deactivationtimer": undefined,
+      "mode": undefined,
+    },
+    "fan": {
+      "rpm": undefined,
+    },
+    "filter": {
+      "alarm": undefined,
+      "timer": {
+        "days": undefined,
+        "hour": undefined,
+        "min": undefined,
+      },
+    },
+    "humidity": {
+      "activated": 0,
+      "current": undefined,
+      "sensoractivation": undefined,
+      "threshold": undefined,
+    },
+    "onoff": 2,
+    "operationmode": undefined,
+    "speed": {
+      "manualspeed": undefined,
+      "mode": undefined,
+    },
+    "timers": {
+      "countdown": {
+        "hour": undefined,
+        "min": undefined,
+        "sec": undefined,
+      },
+      "mode": undefined,
+    },
+    "unittype": "Vento Expert",
+  },
+}
+`;
+
+exports[`Api set functions setOperationMode sends value 0 1`] = `
+{
+  "calls": [
+    [
+      E {
+        "_dataEntries": [
+          {
+            "parameter": 183,
+            "value": Uint8Array [
+              0,
+            ],
+          },
+        ],
+        "_deviceId": "fanId",
+        "_functionType": 2,
+        "_password": "password",
+      },
+      "127.0.0.1",
+    ],
+  ],
+  "response": {
+    "alarm": undefined,
+    "boost": {
+      "deactivationtimer": undefined,
+      "mode": undefined,
+    },
+    "fan": {
+      "rpm": undefined,
+    },
+    "filter": {
+      "alarm": undefined,
+      "timer": {
+        "days": undefined,
+        "hour": undefined,
+        "min": undefined,
+      },
+    },
+    "humidity": {
+      "activated": 0,
+      "current": undefined,
+      "sensoractivation": undefined,
+      "threshold": undefined,
+    },
+    "onoff": undefined,
+    "operationmode": 0,
+    "speed": {
+      "manualspeed": undefined,
+      "mode": undefined,
+    },
+    "timers": {
+      "countdown": {
+        "hour": undefined,
+        "min": undefined,
+        "sec": undefined,
+      },
+      "mode": undefined,
+    },
+    "unittype": "Vento Expert",
+  },
+}
+`;
+
+exports[`Api set functions setOperationMode sends value 1 1`] = `
+{
+  "calls": [
+    [
+      E {
+        "_dataEntries": [
+          {
+            "parameter": 183,
+            "value": Uint8Array [
+              1,
+            ],
+          },
+        ],
+        "_deviceId": "fanId",
+        "_functionType": 2,
+        "_password": "password",
+      },
+      "127.0.0.1",
+    ],
+  ],
+  "response": {
+    "alarm": undefined,
+    "boost": {
+      "deactivationtimer": undefined,
+      "mode": undefined,
+    },
+    "fan": {
+      "rpm": undefined,
+    },
+    "filter": {
+      "alarm": undefined,
+      "timer": {
+        "days": undefined,
+        "hour": undefined,
+        "min": undefined,
+      },
+    },
+    "humidity": {
+      "activated": 0,
+      "current": undefined,
+      "sensoractivation": undefined,
+      "threshold": undefined,
+    },
+    "onoff": undefined,
+    "operationmode": 1,
+    "speed": {
+      "manualspeed": undefined,
+      "mode": undefined,
+    },
+    "timers": {
+      "countdown": {
+        "hour": undefined,
+        "min": undefined,
+        "sec": undefined,
+      },
+      "mode": undefined,
+    },
+    "unittype": "Vento Expert",
+  },
+}
+`;
+
+exports[`Api set functions setOperationMode sends value 2 1`] = `
+{
+  "calls": [
+    [
+      E {
+        "_dataEntries": [
+          {
+            "parameter": 183,
+            "value": Uint8Array [
+              2,
+            ],
+          },
+        ],
+        "_deviceId": "fanId",
+        "_functionType": 2,
+        "_password": "password",
+      },
+      "127.0.0.1",
+    ],
+  ],
+  "response": {
+    "alarm": undefined,
+    "boost": {
+      "deactivationtimer": undefined,
+      "mode": undefined,
+    },
+    "fan": {
+      "rpm": undefined,
+    },
+    "filter": {
+      "alarm": undefined,
+      "timer": {
+        "days": undefined,
+        "hour": undefined,
+        "min": undefined,
+      },
+    },
+    "humidity": {
+      "activated": 0,
+      "current": undefined,
+      "sensoractivation": undefined,
+      "threshold": undefined,
+    },
+    "onoff": undefined,
+    "operationmode": 2,
+    "speed": {
+      "manualspeed": undefined,
+      "mode": undefined,
+    },
+    "timers": {
+      "countdown": {
+        "hour": undefined,
+        "min": undefined,
+        "sec": undefined,
+      },
+      "mode": undefined,
+    },
+    "unittype": "Vento Expert",
+  },
+}
+`;
+
+exports[`Api set functions setSpeedMode sends value 0 1`] = `
+{
+  "calls": [
+    [
+      E {
+        "_dataEntries": [
+          {
+            "parameter": 2,
+            "value": Uint8Array [
+              0,
+            ],
+          },
+        ],
+        "_deviceId": "fanId",
+        "_functionType": 2,
+        "_password": "password",
+      },
+      "127.0.0.1",
+    ],
+  ],
+  "response": {
+    "alarm": undefined,
+    "boost": {
+      "deactivationtimer": undefined,
+      "mode": undefined,
+    },
+    "fan": {
+      "rpm": undefined,
+    },
+    "filter": {
+      "alarm": undefined,
+      "timer": {
+        "days": undefined,
+        "hour": undefined,
+        "min": undefined,
+      },
+    },
+    "humidity": {
+      "activated": 0,
+      "current": undefined,
+      "sensoractivation": undefined,
+      "threshold": undefined,
+    },
+    "onoff": undefined,
+    "operationmode": undefined,
+    "speed": {
+      "manualspeed": undefined,
+      "mode": 0,
+    },
+    "timers": {
+      "countdown": {
+        "hour": undefined,
+        "min": undefined,
+        "sec": undefined,
+      },
+      "mode": undefined,
+    },
+    "unittype": "Vento Expert",
+  },
+}
+`;
+
+exports[`Api set functions setSpeedMode sends value 1 1`] = `
+{
+  "calls": [
+    [
+      E {
+        "_dataEntries": [
+          {
+            "parameter": 2,
+            "value": Uint8Array [
+              1,
+            ],
+          },
+        ],
+        "_deviceId": "fanId",
+        "_functionType": 2,
+        "_password": "password",
+      },
+      "127.0.0.1",
+    ],
+  ],
+  "response": {
+    "alarm": undefined,
+    "boost": {
+      "deactivationtimer": undefined,
+      "mode": undefined,
+    },
+    "fan": {
+      "rpm": undefined,
+    },
+    "filter": {
+      "alarm": undefined,
+      "timer": {
+        "days": undefined,
+        "hour": undefined,
+        "min": undefined,
+      },
+    },
+    "humidity": {
+      "activated": 0,
+      "current": undefined,
+      "sensoractivation": undefined,
+      "threshold": undefined,
+    },
+    "onoff": undefined,
+    "operationmode": undefined,
+    "speed": {
+      "manualspeed": undefined,
+      "mode": 1,
+    },
+    "timers": {
+      "countdown": {
+        "hour": undefined,
+        "min": undefined,
+        "sec": undefined,
+      },
+      "mode": undefined,
+    },
+    "unittype": "Vento Expert",
+  },
+}
+`;
+
+exports[`Api set functions setSpeedMode sends value 2 1`] = `
+{
+  "calls": [
+    [
+      E {
+        "_dataEntries": [
+          {
+            "parameter": 2,
+            "value": Uint8Array [
+              2,
+            ],
+          },
+        ],
+        "_deviceId": "fanId",
+        "_functionType": 2,
+        "_password": "password",
+      },
+      "127.0.0.1",
+    ],
+  ],
+  "response": {
+    "alarm": undefined,
+    "boost": {
+      "deactivationtimer": undefined,
+      "mode": undefined,
+    },
+    "fan": {
+      "rpm": undefined,
+    },
+    "filter": {
+      "alarm": undefined,
+      "timer": {
+        "days": undefined,
+        "hour": undefined,
+        "min": undefined,
+      },
+    },
+    "humidity": {
+      "activated": 0,
+      "current": undefined,
+      "sensoractivation": undefined,
+      "threshold": undefined,
+    },
+    "onoff": undefined,
+    "operationmode": undefined,
+    "speed": {
+      "manualspeed": undefined,
+      "mode": 2,
+    },
+    "timers": {
+      "countdown": {
+        "hour": undefined,
+        "min": undefined,
+        "sec": undefined,
+      },
+      "mode": undefined,
+    },
+    "unittype": "Vento Expert",
+  },
+}
+`;
+
+exports[`Api set functions setTimerMode sends value 0 1`] = `
+{
+  "calls": [
+    [
+      E {
+        "_dataEntries": [
+          {
+            "parameter": 7,
+            "value": Uint8Array [
+              0,
+            ],
+          },
+        ],
+        "_deviceId": "fanId",
+        "_functionType": 2,
+        "_password": "password",
+      },
+      "127.0.0.1",
+    ],
+  ],
+  "response": {
+    "alarm": undefined,
+    "boost": {
+      "deactivationtimer": undefined,
+      "mode": undefined,
+    },
+    "fan": {
+      "rpm": undefined,
+    },
+    "filter": {
+      "alarm": undefined,
+      "timer": {
+        "days": undefined,
+        "hour": undefined,
+        "min": undefined,
+      },
+    },
+    "humidity": {
+      "activated": 0,
+      "current": undefined,
+      "sensoractivation": undefined,
+      "threshold": undefined,
+    },
+    "onoff": undefined,
+    "operationmode": undefined,
+    "speed": {
+      "manualspeed": undefined,
+      "mode": undefined,
+    },
+    "timers": {
+      "countdown": {
+        "hour": undefined,
+        "min": undefined,
+        "sec": undefined,
+      },
+      "mode": 0,
+    },
+    "unittype": "Vento Expert",
+  },
+}
+`;
+
+exports[`Api set functions setTimerMode sends value 1 1`] = `
+{
+  "calls": [
+    [
+      E {
+        "_dataEntries": [
+          {
+            "parameter": 7,
+            "value": Uint8Array [
+              1,
+            ],
+          },
+        ],
+        "_deviceId": "fanId",
+        "_functionType": 2,
+        "_password": "password",
+      },
+      "127.0.0.1",
+    ],
+  ],
+  "response": {
+    "alarm": undefined,
+    "boost": {
+      "deactivationtimer": undefined,
+      "mode": undefined,
+    },
+    "fan": {
+      "rpm": undefined,
+    },
+    "filter": {
+      "alarm": undefined,
+      "timer": {
+        "days": undefined,
+        "hour": undefined,
+        "min": undefined,
+      },
+    },
+    "humidity": {
+      "activated": 0,
+      "current": undefined,
+      "sensoractivation": undefined,
+      "threshold": undefined,
+    },
+    "onoff": undefined,
+    "operationmode": undefined,
+    "speed": {
+      "manualspeed": undefined,
+      "mode": undefined,
+    },
+    "timers": {
+      "countdown": {
+        "hour": undefined,
+        "min": undefined,
+        "sec": undefined,
+      },
+      "mode": 1,
+    },
+    "unittype": "Vento Expert",
+  },
+}
+`;
+
+exports[`Api set functions setTimerMode sends value 2 1`] = `
+{
+  "calls": [
+    [
+      E {
+        "_dataEntries": [
+          {
+            "parameter": 7,
+            "value": Uint8Array [
+              2,
+            ],
+          },
+        ],
+        "_deviceId": "fanId",
+        "_functionType": 2,
+        "_password": "password",
+      },
+      "127.0.0.1",
+    ],
+  ],
+  "response": {
+    "alarm": undefined,
+    "boost": {
+      "deactivationtimer": undefined,
+      "mode": undefined,
+    },
+    "fan": {
+      "rpm": undefined,
+    },
+    "filter": {
+      "alarm": undefined,
+      "timer": {
+        "days": undefined,
+        "hour": undefined,
+        "min": undefined,
+      },
+    },
+    "humidity": {
+      "activated": 0,
+      "current": undefined,
+      "sensoractivation": undefined,
+      "threshold": undefined,
+    },
+    "onoff": undefined,
+    "operationmode": undefined,
+    "speed": {
+      "manualspeed": undefined,
+      "mode": undefined,
+    },
+    "timers": {
+      "countdown": {
+        "hour": undefined,
+        "min": undefined,
+        "sec": undefined,
+      },
+      "mode": 2,
+    },
+    "unittype": "Vento Expert",
+  },
+}
+`;
+
+exports[`Api set functions update sends correct data 1`] = `
+{
+  "calls": [
+    [
+      E {
+        "_dataEntries": [
+          {
+            "parameter": 1,
+            "value": undefined,
+          },
+          {
+            "parameter": 2,
+            "value": undefined,
+          },
+          {
+            "parameter": 68,
+            "value": undefined,
+          },
+          {
+            "parameter": 6,
+            "value": undefined,
+          },
+          {
+            "parameter": 102,
+            "value": undefined,
+          },
+          {
+            "parameter": 183,
+            "value": undefined,
+          },
+          {
+            "parameter": 136,
+            "value": undefined,
+          },
+          {
+            "parameter": 100,
+            "value": undefined,
+          },
+          {
+            "parameter": 37,
+            "value": undefined,
+          },
+          {
+            "parameter": 15,
+            "value": undefined,
+          },
+          {
+            "parameter": 25,
+            "value": undefined,
+          },
+          {
+            "parameter": 185,
+            "value": undefined,
+          },
+          {
+            "parameter": 74,
+            "value": undefined,
+          },
+          {
+            "parameter": 7,
+            "value": undefined,
+          },
+          {
+            "parameter": 131,
+            "value": undefined,
+          },
+          {
+            "parameter": 11,
+            "value": undefined,
+          },
+        ],
+        "_deviceId": "fanId",
+        "_functionType": 1,
+        "_password": "password",
+      },
+      "127.0.0.1",
+    ],
+  ],
+  "response": {
+    "alarm": undefined,
+    "boost": {
+      "deactivationtimer": undefined,
+      "mode": undefined,
+    },
+    "fan": {
+      "rpm": undefined,
+    },
+    "filter": {
+      "alarm": undefined,
+      "timer": {
+        "days": undefined,
+        "hour": undefined,
+        "min": undefined,
+      },
+    },
+    "humidity": {
+      "activated": 0,
+      "current": undefined,
+      "sensoractivation": undefined,
+      "threshold": undefined,
+    },
+    "onoff": undefined,
+    "operationmode": undefined,
+    "speed": {
+      "manualspeed": undefined,
+      "mode": undefined,
+    },
+    "timers": {
+      "countdown": {
+        "hour": undefined,
+        "min": undefined,
+        "sec": undefined,
+      },
+      "mode": undefined,
+    },
+    "unittype": "Vento Expert",
+  },
+}
+`;
