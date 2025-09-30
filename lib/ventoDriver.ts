@@ -17,35 +17,35 @@ export default class VentoDriver extends Driver {
       this._timer = this.homey.setInterval(() => this.locateDevices(), 10000);
     }
 
-    onDeleted = () => {
+    async onUninit() {
       if (this._timer) this.homey.clearInterval(this._timer);
-    };
+    }
 
-    async onPair(session) {
-      session.setHandler('list_devices', async (data) => {
-        console.log('Provide user list of discovered Vento fans to choose from.');
+    async onPair(session: Driver.PairSession) {
+      session.setHandler('list_devices', async () => {
+        this.log('Provide user list of discovered Vento fans to choose from.');
         this.log('Start discovery of Vento Expert devices on the local network');
         const deviceList = await this.locateDevices();
         this.log(`Located [${deviceList.length}] Vento expert devices`);
 
         return deviceList.map((device) => {
-          const ventodevice = {
+          const ventoDevice = {
             id: device.id,
             name: `Vento Expert ${device.id}`,
             data: {
               id: device.id,
             },
           };
-          this.log(`located: ${JSON.stringify(ventodevice)}`);
-          return ventodevice;
+          this.log(`located: ${JSON.stringify(ventoDevice)}`);
+          return ventoDevice;
         });
       });
 
       session.setHandler('add_devices', async (data) => {
-        session.showView('add_devices');
+        await session.showView('add_devices');
         if (data.length > 0) {
-          console.log(`Vento fan [${data[0].name}] added`);
-        } else console.log('no Vento fan added');
+          this.log(`Vento fan [${data[0].name}] added`);
+        } else this.log('no Vento fan added');
       });
     }
 
@@ -56,11 +56,10 @@ export default class VentoDriver extends Driver {
       this.log(`Current we located ${(existingDevices.length)} devices, lets see if we found more: amount located ${locatedDevices.length}`);
 
       locatedDevices.forEach((locatedDevice) => {
-        // Lets see if we already knew about this device
-        const knowndevice = existingDevices.find((device) => device.id === locatedDevice.id);
-        if (!knowndevice) {
+        const hasDevice = existingDevices.find((device) => device.id === locatedDevice.id);
+        if (!hasDevice) {
           this.log(`Located new device with id ${locatedDevice.id} remember it and initialize it`);
-          existingDevices.push(locatedDevice); // So we remember the located device and its IP
+          existingDevices.push(locatedDevice);
         }
       });
       return existingDevices;
