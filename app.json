@@ -426,9 +426,6 @@
   },
   "drivers": [
     {
-      "name": {
-        "en": "Vento Expert"
-      },
       "class": "fan",
       "capabilities": [
         "alarm_boost",
@@ -475,6 +472,9 @@
           "template": "add_devices"
         }
       ],
+      "name": {
+        "en": "Vento Expert"
+      },
       "id": "vento-expert",
       "settings": [
         {
