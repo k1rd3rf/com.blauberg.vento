@@ -1,0 +1,17 @@
+{
+  "id": "alarm_generic_true",
+  "title": {
+    "en": "The generic alarm turned on",
+    "nl": "Het algemene alarm gaat aan",
+    "de": "Der allgemeine Alarm ist angegangen",
+    "fr": "L'alarme générique s'est activée",
+    "it": "L'allarme generico è stato attivato",
+    "sv": "Det generiska larmet är aktiverat",
+    "no": "Den generelle alarmen er aktivert",
+    "es": "La alarma general se ha activado",
+    "da": "Den generiske alarm blev aktiveret",
+    "ru": "Общий сигнал включен",
+    "pl": "Alarm ogólny włączony",
+    "ko": "일반 알람 켜짐"
+  }
+}

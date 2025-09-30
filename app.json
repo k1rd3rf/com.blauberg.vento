@@ -32,80 +32,28 @@
   "flow": {
     "triggers": [
       {
-        "id": "alarm_filter_false",
-        "title": {
-          "en": "The Filter alarm turned off"
-        },
-        "args": [
-          {
-            "type": "device",
-            "name": "device",
-            "filter": "driver_id=vento-expert"
-          }
-        ]
-      },
-      {
-        "id": "alarm_filter_true",
-        "title": {
-          "en": "The Filter alarm truned on"
-        },
-        "args": [
-          {
-            "type": "device",
-            "name": "device",
-            "filter": "driver_id=vento-expert"
-          }
-        ]
-      },
-      {
         "id": "alarm_boost_false",
         "title": {
           "en": "The Boost mode turned off"
-        },
-        "args": [
-          {
-            "type": "device",
-            "name": "device",
-            "filter": "driver_id=vento-expert"
-          }
-        ]
+        }
       },
       {
         "id": "alarm_boost_true",
         "title": {
-          "en": "The boost mode truned on"
-        },
-        "args": [
-          {
-            "type": "device",
-            "name": "device",
-            "filter": "driver_id=vento-expert"
-          }
-        ]
+          "en": "The Boost mode turned on"
+        }
       },
       {
-        "id": "alarm_generic_true",
+        "id": "alarm_filter_false",
         "title": {
-          "en": "The generic alarm turned on",
-          "nl": "Het algemene alarm gaat aan",
-          "de": "Der allgemeine Alarm ist angegangen",
-          "fr": "L'alarme générique s'est activée",
-          "it": "L'allarme generico è stato attivato",
-          "sv": "Det generiska larmet är aktiverat",
-          "no": "Den generelle alarmen er aktivert",
-          "es": "La alarma general se ha activado",
-          "da": "Den generiske alarm blev aktiveret",
-          "ru": "Общий сигнал включен",
-          "pl": "Alarm ogólny włączony",
-          "ko": "일반 알람 켜짐"
-        },
-        "args": [
-          {
-            "type": "device",
-            "name": "device",
-            "filter": "driver_id=vento-expert"
-          }
-        ]
+          "en": "The Filter alarm turned off"
+        }
+      },
+      {
+        "id": "alarm_filter_true",
+        "title": {
+          "en": "The Filter alarm turned on"
+        }
       },
       {
         "id": "alarm_generic_false",
@@ -122,14 +70,24 @@
           "ru": "Общий сигнал выключен",
           "pl": "Alarm ogólny wyłączony",
           "ko": "일반 알람 꺼짐"
-        },
-        "args": [
-          {
-            "type": "device",
-            "name": "device",
-            "filter": "driver_id=vento-expert"
-          }
-        ]
+        }
+      },
+      {
+        "id": "alarm_generic_true",
+        "title": {
+          "en": "The generic alarm turned on",
+          "nl": "Het algemene alarm gaat aan",
+          "de": "Der allgemeine Alarm ist angegangen",
+          "fr": "L'alarme générique s'est activée",
+          "it": "L'allarme generico è stato attivato",
+          "sv": "Det generiska larmet är aktiverat",
+          "no": "Den generelle alarmen er aktivert",
+          "es": "La alarma general se ha activado",
+          "da": "Den generiske alarm blev aktiveret",
+          "ru": "Общий сигнал включен",
+          "pl": "Alarm ogólny włączony",
+          "ko": "일반 알람 켜짐"
+        }
       },
       {
         "deprecated": true,
@@ -148,13 +106,6 @@
               "en": "Speed"
             }
           }
-        ],
-        "args": [
-          {
-            "type": "device",
-            "name": "device",
-            "filter": "driver_id=vento-expert"
-          }
         ]
       },
       {
@@ -172,13 +123,6 @@
             "example": {
               "en": "Fan speed in RPM"
             }
-          }
-        ],
-        "args": [
-          {
-            "type": "device",
-            "name": "device",
-            "filter": "driver_id=vento-expert"
           }
         ]
       }
