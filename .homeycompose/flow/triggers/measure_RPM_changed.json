@@ -1,0 +1,18 @@
+{
+  "id": "measure_RPM_changed",
+  "title": {
+    "en": "FAN RPM changed"
+  },
+  "tokens": [
+    {
+      "name": "manualSpeemeasure_RPM",
+      "type": "number",
+      "title": {
+        "en": "Fan RPM"
+      },
+      "example": {
+        "en": "Fan speed in RPM"
+      }
+    }
+  ]
+}
