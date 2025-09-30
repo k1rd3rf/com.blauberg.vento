@@ -1,11 +1,25 @@
 'use strict';
 
-const { Parameter } = require('blaubergventojs');
-const { getEnumKeyByEnumValue } = require('./mapEnum');
+import { Response, Parameter } from 'blaubergventojs';
+import { getEnumKeyByEnumValue } from './mapEnum';
 
-module.exports = (result) => {
+export type ModbusResponse = {
+    onoff: number;
+    speed: { mode: number; manualspeed: number };
+    boost: { mode: number; deactivationtimer: number };
+    operationmode: number;
+    filter: { alarm: number; timer: { min: number; hour: number; days: number } };
+    humidity: { current: number; sensoractivation: number; threshold: number; activated: number };
+    unittype: string;
+    fan: { rpm: number };
+    timers: { mode: number; countdown: { sec: number; min: number; hour: number } };
+    alarm: number
+};
+
+export default (result: Response): ModbusResponse => {
   if (result != null) {
-    const values = result.packet._dataEntries.reduce((acc, { parameter, value }) => {
+    const values: Record<keyof typeof Parameter | string, number[]> = result.packet.dataEntries.reduce((acc, { parameter, value }) => {
+      // @ts-expect-error: old declared enum
       const key = getEnumKeyByEnumValue(Parameter, parameter) || parameter;
       return key ? { ...acc, [key]: value } : acc;
     }, {});
@@ -58,9 +72,9 @@ module.exports = (result) => {
       timers: {
         mode: values['TIMER_MODE'][0],
         countdown: {
-          sec: values[11][0],
-          min: values[11][1],
-          hour: values[11][2],
+          sec: values['11'][0],
+          min: values['11'][1],
+          hour: values['11'][2],
         },
       },
       alarm: values['READ_ALARM'][0],
