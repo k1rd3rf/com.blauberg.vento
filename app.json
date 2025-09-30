@@ -173,11 +173,6 @@
         },
         "args": [
           {
-            "type": "device",
-            "name": "device",
-            "filter": "driver_id=vento-expert"
-          },
-          {
             "type": "range",
             "name": "speed",
             "title": {
@@ -196,45 +191,40 @@
         ]
       },
       {
-        "id": "timer_mode",
+        "id": "operation_mode",
         "title": {
-          "en": "Set the timer mode"
+          "en": "Set the operation mode"
         },
         "titleFormatted": {
-          "en": "Sets the timer mode of the device to [[timerMode]] "
+          "en": "Sets the operation mode of the device to [[operationMode]] "
         },
         "hint": {
-          "en": "Sets the device to the desired timer mode"
+          "en": "Sets the device to the desired operation mode"
         },
         "args": [
           {
-            "type": "device",
-            "name": "device",
-            "filter": "driver_id=vento-expert"
-          },
-          {
             "type": "dropdown",
-            "name": "timerMode",
+            "name": "operationMode",
             "title": {
-              "en": "The desired timer mode"
+              "en": "The desired operation mode"
             },
             "values": [
               {
                 "id": "0",
                 "title": {
-                  "en": "Off"
+                  "en": "Ventilation"
                 }
               },
               {
                 "id": "1",
                 "title": {
-                  "en": "Night mode"
+                  "en": "Regeneration"
                 }
               },
               {
                 "id": "2",
                 "title": {
-                  "en": "Party mode"
+                  "en": "Supply"
                 }
               }
             ]
@@ -253,11 +243,6 @@
           "en": "Sets the device to the desired speed mode"
         },
         "args": [
-          {
-            "type": "device",
-            "name": "device",
-            "filter": "driver_id=vento-expert"
-          },
           {
             "type": "dropdown",
             "name": "speedMode",
@@ -300,45 +285,40 @@
         ]
       },
       {
-        "id": "operation_mode",
+        "id": "timer_mode",
         "title": {
-          "en": "Set the operation mode"
+          "en": "Set the timer mode"
         },
         "titleFormatted": {
-          "en": "Sets the operation mode of the device to [[operationMode]] "
+          "en": "Sets the timer mode of the device to [[timerMode]] "
         },
         "hint": {
-          "en": "Sets the device to the desired operation mode"
+          "en": "Sets the device to the desired timer mode"
         },
         "args": [
           {
-            "type": "device",
-            "name": "device",
-            "filter": "driver_id=vento-expert"
-          },
-          {
             "type": "dropdown",
-            "name": "operationMode",
+            "name": "timerMode",
             "title": {
-              "en": "The desired operation mode"
+              "en": "The desired timer mode"
             },
             "values": [
               {
                 "id": "0",
                 "title": {
-                  "en": "Ventilation"
+                  "en": "Off"
                 }
               },
               {
                 "id": "1",
                 "title": {
-                  "en": "Regeneration"
+                  "en": "Night mode"
                 }
               },
               {
                 "id": "2",
                 "title": {
-                  "en": "Supply"
+                  "en": "Party mode"
                 }
               }
             ]
