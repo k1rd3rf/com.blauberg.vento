@@ -1,7 +1,7 @@
 import {
   BlaubergVentoClient, Packet, FunctionType, DataEntry, Parameter,
 } from 'blaubergventojs';
-import mapModbusResponse from './mapModbusResponse';
+import mapModbusResponse, { ModbusResponse } from './mapModbusResponse';
 
 export default class Api {
     modbusClient!: BlaubergVentoClient
@@ -29,7 +29,7 @@ export default class Api {
       console.error(`[API - ${this.deviceId}]`, ...args);
     };
 
-    send = async (packet: Packet, ip: string) => this.modbusClient.send(packet, ip).then((r) => {
+    send = async (packet: Packet, ip: string): Promise<Partial<ModbusResponse>> => this.modbusClient.send(packet, ip).then((r) => {
       if (r != null) {
         return mapModbusResponse(r);
       }

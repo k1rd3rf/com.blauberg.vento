@@ -16,13 +16,20 @@ export type ModbusResponse = {
     alarm?: number
 };
 
-export default (result: Response): Partial<ModbusResponse> => {
+export const parametersToValues = (result: Response): Record<keyof typeof Parameter | string, number[] | undefined> => {
+  return result.packet.dataEntries.reduce((acc, {
+    parameter,
+    value,
+  }) => {
+    // @ts-expect-error: old declared enum
+    const key = getEnumKeyByEnumValue(Parameter, parameter) || parameter;
+    return key ? { ...acc, [key]: value } : acc;
+  }, {});
+};
+
+export default (result: Response): ModbusResponse => {
   if (result != null) {
-    const values: Record<keyof typeof Parameter | string, number[] | undefined> = result.packet.dataEntries.reduce((acc, { parameter, value }) => {
-      // @ts-expect-error: old declared enum
-      const key = getEnumKeyByEnumValue(Parameter, parameter) || parameter;
-      return key ? { ...acc, [key]: value } : acc;
-    }, {});
+    const values = parametersToValues(result);
 
     let unittypelabel = 'Vento Expert';
     switch (values.UNIT_TYPE?.[0]) {

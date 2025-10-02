@@ -4,13 +4,14 @@ import VentoDiscovery from './ventoDiscovery';
 import { Capabilities, ActionCards } from './capabilities';
 
 type DeviceSettings = {
+    devicemodel?: string;
     devicepwd: string;
     // eslint-disable-next-line camelcase
-    humidity_sensor: number
+    humidity_sensor: boolean
     // eslint-disable-next-line camelcase
-    humidity_threshold: number
+    humidity_threshold?: number
     // eslint-disable-next-line camelcase
-    boost_delay: number
+    boost_delay?: number
 };
 
 export default class VentoDevice extends Device {
@@ -107,12 +108,18 @@ export default class VentoDevice extends Device {
 
     async updateDeviceState() {
       this.log('Requesting the current device state');
-      const state = await this.api.getDeviceState().catch(async () => {
+      const state = await this.api.getDeviceState().catch(async (e) => {
         await this.setCapabilityValue(Capabilities.alarm_connectivity, true);
+        await this.setUnavailable();
+        this.error('Failed to get device state, device unreachable', e);
       });
       if (state === undefined) {
         return;
       }
+
+      this.log('Device state received: ', state);
+
+      await this.setAvailable();
       await this.setCapabilityValue(Capabilities.alarm_connectivity, false);
       await this.setCapabilityValue(Capabilities.onoff, (state.onoff === 1));
       await this.setCapabilityValue(Capabilities.alarm_boost, (state.boost?.mode !== 0));
@@ -129,14 +136,13 @@ export default class VentoDevice extends Device {
       await this.setCapabilityValue(Capabilities.timerMode, state.timers?.mode?.toString());
       await this.setCapabilityValue(Capabilities.timerMode_timer, `${state.timers?.countdown?.hour}:${state.timers?.countdown?.min}:${state.timers?.countdown?.sec}`);
 
-      // Update our settings based on current values in the device
-      await this.setSettings({
-        // only provide keys for the settings you want to change
+      const settingsOnDevice: Partial<DeviceSettings> = {
         devicemodel: state.unittype,
         humidity_sensor: (state.humidity?.sensoractivation === 1),
         humidity_threshold: state.humidity?.threshold,
         boost_delay: state.boost?.deactivationtimer,
-      });
+      };
+      await this.setSettings(settingsOnDevice);
     }
 
     /**
@@ -157,12 +163,12 @@ export default class VentoDevice extends Device {
       }
       // For the other settings we probably need to push the new value to the device
       if (changedKeys.includes('humidity_sensor')) {
-        await this.api.setHumiditySensor(newSettings.humidity_sensor);
+        await this.api.setHumiditySensor(newSettings.humidity_sensor ? 1 : 0);
       }
-      if (changedKeys.includes('humidity_threshold')) {
+      if (changedKeys.includes('humidity_threshold') && newSettings.humidity_threshold) {
         await this.api.setHumiditySensorThreshold(newSettings.humidity_threshold);
       }
-      if (changedKeys.includes('boost_delay')) {
+      if (changedKeys.includes('boost_delay') && newSettings.boost_delay) {
         await this.api.setBoostDelay(newSettings.boost_delay);
       }
     }
@@ -217,7 +223,6 @@ export default class VentoDevice extends Device {
 
     async setupFlowManualSpeed() {
       this.log('Create the flow for the manual speed capability');
-      // Now setup the flow cards
       this.homey.flow.getActionCard(ActionCards.manualSpeed_set)
         .registerRunListener(async (args: { speed: number }) => {
           this.log(`attempt to change manual speed: ${args.speed}`);
