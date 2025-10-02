@@ -381,6 +381,7 @@
       "id": "vento-expert",
       "settings": [
         {
+          "id": "info",
           "type": "group",
           "label": {
             "en": "Device info"
@@ -408,6 +409,7 @@
           ]
         },
         {
+          "id": "humidity",
           "type": "group",
           "label": {
             "en": "Humidity sensor"
@@ -437,6 +439,7 @@
           ]
         },
         {
+          "id": "timers",
           "type": "group",
           "label": {
             "en": "Timers"
