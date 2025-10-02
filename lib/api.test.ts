@@ -1,5 +1,6 @@
 import { DeviceAddress } from 'blaubergventojs';
 import Api from './api';
+import { statusResponse } from './__mockdata__/statusResponse';
 
 describe('Api set functions', () => {
   let api: Api;
@@ -27,6 +28,11 @@ describe('Api set functions', () => {
   });
 
   it('update sends correct data', async () => {
+    const response = await api.getDeviceState().catch((err) => err);
+    expect(getMockCalls(response)).toMatchSnapshot();
+  });
+  it('update gets response', async () => {
+    (api.modbusClient.send as jest.Mock).mockReturnValue(Promise.resolve(statusResponse));
     const response = await api.getDeviceState().catch((err) => err);
     expect(getMockCalls(response)).toMatchSnapshot();
   });

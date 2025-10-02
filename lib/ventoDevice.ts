@@ -30,11 +30,12 @@ export default class VentoDevice extends Device {
       this.id = id;
       this.log(`Locating device with id ${id}`);
 
-      await this.updateCapabilities();
-      await this.setupCapabilities();
       this.discoveryClient = new VentoDiscovery();
 
       await this.initApi(this.getSetting('devicepwd'));
+
+      await this.updateCapabilities();
+      await this.setupCapabilities();
 
       this.pollInterval = this.homey.setInterval(() => this.updateDeviceState(), 15000);
 
