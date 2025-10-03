@@ -94,7 +94,6 @@ exports[`ventoDevice should be able to get status from modbus on init 1`] = `
         "Device state received: ",
         {
           "alarm_boost": false,
-          "alarm_connectivity": false,
           "alarm_filter": false,
           "alarm_generic": false,
           "boost_delay": 30,
@@ -186,7 +185,7 @@ exports[`ventoDevice should be able to get status from modbus on init 1`] = `
       "alarm_connectivity": [
         {
           "result": "calling unregistered capability",
-          "value": false,
+          "value": undefined,
         },
       ],
       "alarm_filter": [
@@ -493,11 +492,13 @@ exports[`ventoDevice should be able to setup all capabilities 1`] = `
         "Device state received: ",
         {
           "alarm_boost": false,
-          "alarm_connectivity": false,
           "alarm_filter": false,
           "alarm_generic": false,
+          "boost_delay": 30,
           "fan_speed": 0.7019607843137254,
           "filter_timer": "31:20:34",
+          "humidity_sensor": true,
+          "humidity_threshold": 70,
           "manualSpeed": 70.19607843137254,
           "measure_RPM": 236,
           "measure_humidity": 45,
@@ -506,6 +507,7 @@ exports[`ventoDevice should be able to setup all capabilities 1`] = `
           "speedMode": "1",
           "timerMode": "0",
           "timerMode_timer": "00:00:00",
+          "unit_type": "Vento Expert Duo A30-1 W V.2",
         },
       ],
       [
@@ -541,11 +543,13 @@ exports[`ventoDevice should be able to setup all capabilities 1`] = `
         "Device state received: ",
         {
           "alarm_boost": false,
-          "alarm_connectivity": false,
           "alarm_filter": false,
           "alarm_generic": false,
+          "boost_delay": 30,
           "fan_speed": 0.7019607843137254,
           "filter_timer": "31:20:34",
+          "humidity_sensor": true,
+          "humidity_threshold": 70,
           "manualSpeed": 70.19607843137254,
           "measure_RPM": 236,
           "measure_humidity": 45,
@@ -554,6 +558,7 @@ exports[`ventoDevice should be able to setup all capabilities 1`] = `
           "speedMode": "1",
           "timerMode": "0",
           "timerMode_timer": "00:00:00",
+          "unit_type": "Vento Expert Duo A30-1 W V.2",
         },
       ],
       [
@@ -589,11 +594,13 @@ exports[`ventoDevice should be able to setup all capabilities 1`] = `
         "Device state received: ",
         {
           "alarm_boost": false,
-          "alarm_connectivity": false,
           "alarm_filter": false,
           "alarm_generic": false,
+          "boost_delay": 30,
           "fan_speed": 0.7019607843137254,
           "filter_timer": "31:20:34",
+          "humidity_sensor": true,
+          "humidity_threshold": 70,
           "manualSpeed": 70.19607843137254,
           "measure_RPM": 236,
           "measure_humidity": 45,
@@ -602,6 +609,7 @@ exports[`ventoDevice should be able to setup all capabilities 1`] = `
           "speedMode": "1",
           "timerMode": "0",
           "timerMode_timer": "00:00:00",
+          "unit_type": "Vento Expert Duo A30-1 W V.2",
         },
       ],
       [
@@ -861,15 +869,15 @@ exports[`ventoDevice should be able to setup all capabilities 1`] = `
       "alarm_connectivity": [
         {
           "result": "calling unregistered capability",
-          "value": false,
+          "value": undefined,
         },
         {
           "result": "calling unregistered capability",
-          "value": false,
+          "value": undefined,
         },
         {
           "result": "calling unregistered capability",
-          "value": false,
+          "value": undefined,
         },
       ],
       "alarm_filter": [
@@ -917,19 +925,19 @@ exports[`ventoDevice should be able to setup all capabilities 1`] = `
           "result": {
             "result": undefined,
           },
-          "value": 179,
+          "value": 0.7019607843137254,
         },
         {
           "result": {
             "result": undefined,
           },
-          "value": 179,
+          "value": 0.7019607843137254,
         },
         {
           "result": {
             "result": undefined,
           },
-          "value": 179,
+          "value": 0.7019607843137254,
         },
       ],
       "filter_timer": [
@@ -951,19 +959,19 @@ exports[`ventoDevice should be able to setup all capabilities 1`] = `
           "result": {
             "result": undefined,
           },
-          "value": 17900,
+          "value": 70.19607843137254,
         },
         {
           "result": {
             "result": undefined,
           },
-          "value": 17900,
+          "value": 70.19607843137254,
         },
         {
           "result": {
             "result": undefined,
           },
-          "value": 17900,
+          "value": 70.19607843137254,
         },
       ],
       "measure_RPM": [
