@@ -18,52 +18,23 @@ exports[`ventoDevice should be able to get status from modbus on init 1`] = `
       "timerMode": [Function],
       "timer_mode": [Function],
     },
-    "getCapabilityValue": [
-      [
-        "alarm_boost",
-      ],
-      [
-        "alarm_filter",
-      ],
-      [
-        "alarm_generic",
-      ],
-    ],
-    "hasCapability": [
-      [
-        "fan_speed",
-      ],
-      [
-        "alarm_connectivity",
-      ],
-      [
-        "onoff",
-      ],
-      [
-        "speedMode",
-      ],
-      [
-        "manualSpeed",
-      ],
-      [
-        "fan_speed",
-      ],
-      [
-        "operationMode",
-      ],
-      [
-        "alarm_generic",
-      ],
-      [
-        "alarm_boost",
-      ],
-      [
-        "alarm_filter",
-      ],
-      [
-        "timerMode",
-      ],
-    ],
+    "getCapabilityValue": {
+      "alarm_boost": 1,
+      "alarm_filter": 1,
+      "alarm_generic": 1,
+    },
+    "hasCapability": {
+      "alarm_boost": 1,
+      "alarm_connectivity": 1,
+      "alarm_filter": 1,
+      "alarm_generic": 1,
+      "fan_speed": 2,
+      "manualSpeed": 1,
+      "onoff": 1,
+      "operationMode": 1,
+      "speedMode": 1,
+      "timerMode": 1,
+    },
     "log": [
       [
         "log",
@@ -117,164 +88,153 @@ exports[`ventoDevice should be able to get status from modbus on init 1`] = `
         undefined,
       ],
     ],
-    "registerCapabilityListener": [
-      [
-        "onoff",
-        [Function],
-      ],
-      [
-        "speedMode",
-        [Function],
-      ],
-      [
-        "manualSpeed",
-        [Function],
-      ],
-      [
-        "fan_speed",
-        [Function],
-      ],
-      [
-        "operationMode",
-        [Function],
-      ],
-      [
-        "timerMode",
-        [Function],
-      ],
-    ],
-    "registerRunListener": [
-      [
-        "speed_mode",
-        [Function],
-      ],
-      [
-        "manualSpeed_set",
-        [Function],
-      ],
-      [
-        "operation_mode",
-        [Function],
-      ],
-      [
-        "alarm_generic",
-        [Function],
-      ],
-      [
-        "alarm_boost",
-        [Function],
-      ],
-      [
-        "alarm_filter",
-        [Function],
-      ],
-      [
-        "timer_mode",
-        [Function],
-      ],
-    ],
-    "setCapabilityValue": {
+    "registerCapabilityListener": {
+      "fan_speed": 1,
+      "manualSpeed": 1,
+      "onoff": 1,
+      "operationMode": 1,
+      "speedMode": 1,
+      "timerMode": 1,
+    },
+    "registerRunListener": {
       "alarm_boost": [
-        {
-          "result": {
-            "result": false,
-          },
-          "value": false,
-        },
-      ],
-      "alarm_connectivity": [
-        {
-          "result": "calling unregistered capability",
-          "value": undefined,
-        },
+        [
+          [Function],
+        ],
       ],
       "alarm_filter": [
-        {
-          "result": {
-            "result": false,
-          },
-          "value": false,
-        },
+        [
+          [Function],
+        ],
       ],
       "alarm_generic": [
-        {
-          "result": {
+        [
+          [Function],
+        ],
+      ],
+      "manualSpeed_set": [
+        [
+          [Function],
+        ],
+      ],
+      "operation_mode": [
+        [
+          [Function],
+        ],
+      ],
+      "speed_mode": [
+        [
+          [Function],
+        ],
+      ],
+      "timer_mode": [
+        [
+          [Function],
+        ],
+      ],
+    },
+    "setCapabilityValue": {
+      "alarm_boost": [
+        [
+          false,
+          {
             "result": false,
           },
-          "value": false,
-        },
+        ],
+      ],
+      "alarm_connectivity": [
+        [
+          undefined,
+          "calling unregistered capability",
+        ],
+      ],
+      "alarm_filter": [
+        [
+          false,
+          {
+            "result": false,
+          },
+        ],
+      ],
+      "alarm_generic": [
+        [
+          false,
+          {
+            "result": false,
+          },
+        ],
       ],
       "fan_speed": [
-        {
-          "result": {
+        [
+          0.7019607843137254,
+          {
             "result": undefined,
           },
-          "value": 0.7019607843137254,
-        },
+        ],
       ],
       "filter_timer": [
-        {
-          "result": "calling unregistered capability",
-          "value": "31:20:34",
-        },
+        [
+          "31:20:34",
+          "calling unregistered capability",
+        ],
       ],
       "manualSpeed": [
-        {
-          "result": {
+        [
+          70.19607843137254,
+          {
             "result": undefined,
           },
-          "value": 70.19607843137254,
-        },
+        ],
       ],
       "measure_RPM": [
-        {
-          "result": "calling unregistered capability",
-          "value": 236,
-        },
+        [
+          236,
+          "calling unregistered capability",
+        ],
       ],
       "measure_humidity": [
-        {
-          "result": "calling unregistered capability",
-          "value": 45,
-        },
+        [
+          45,
+          "calling unregistered capability",
+        ],
       ],
       "onoff": [
-        {
-          "result": {
+        [
+          true,
+          {
             "result": undefined,
           },
-          "value": true,
-        },
+        ],
       ],
       "operationMode": [
-        {
-          "result": {
+        [
+          "2",
+          {
             "result": undefined,
           },
-          "value": "2",
-        },
+        ],
       ],
       "speedMode": [
-        {
-          "result": {
+        [
+          "1",
+          {
             "result": undefined,
           },
-          "value": "1",
-        },
+        ],
       ],
       "timerMode": [
-        {
-          "result": {
+        [
+          "0",
+          {
             "result": undefined,
           },
-          "value": "0",
-        },
+        ],
       ],
       "timerMode_timer": [
-        {
-          "result": "calling unregistered capability",
-          "value": "00:00:00",
-        },
+        [
+          "00:00:00",
+          "calling unregistered capability",
+        ],
       ],
     },
     "settings": {
@@ -305,163 +265,23 @@ exports[`ventoDevice should be able to setup all capabilities 1`] = `
       "timerMode": [Function],
       "timer_mode": [Function],
     },
-    "getCapabilityValue": [
-      [
-        "alarm_boost",
-      ],
-      [
-        "alarm_filter",
-      ],
-      [
-        "alarm_generic",
-      ],
-      [
-        "alarm_boost",
-      ],
-      [
-        "alarm_filter",
-      ],
-      [
-        "alarm_generic",
-      ],
-      [
-        "alarm_boost",
-      ],
-      [
-        "alarm_filter",
-      ],
-      [
-        "alarm_generic",
-      ],
-    ],
-    "hasCapability": [
-      [
-        "fan_speed",
-      ],
-      [
-        "alarm_connectivity",
-      ],
-      [
-        "onoff",
-      ],
-      [
-        "speedMode",
-      ],
-      [
-        "manualSpeed",
-      ],
-      [
-        "fan_speed",
-      ],
-      [
-        "operationMode",
-      ],
-      [
-        "alarm_generic",
-      ],
-      [
-        "alarm_boost",
-      ],
-      [
-        "alarm_filter",
-      ],
-      [
-        "timerMode",
-      ],
-      [
-        "fan_speed",
-      ],
-      [
-        "alarm_connectivity",
-      ],
-      [
-        "onoff",
-      ],
-      [
-        "speedMode",
-      ],
-      [
-        "manualSpeed",
-      ],
-      [
-        "fan_speed",
-      ],
-      [
-        "operationMode",
-      ],
-      [
-        "alarm_generic",
-      ],
-      [
-        "alarm_boost",
-      ],
-      [
-        "alarm_filter",
-      ],
-      [
-        "timerMode",
-      ],
-      [
-        "fan_speed",
-      ],
-      [
-        "alarm_connectivity",
-      ],
-      [
-        "onoff",
-      ],
-      [
-        "speedMode",
-      ],
-      [
-        "manualSpeed",
-      ],
-      [
-        "fan_speed",
-      ],
-      [
-        "operationMode",
-      ],
-      [
-        "alarm_generic",
-      ],
-      [
-        "alarm_boost",
-      ],
-      [
-        "alarm_filter",
-      ],
-      [
-        "timerMode",
-      ],
-      [
-        "onoff",
-      ],
-      [
-        "speedMode",
-      ],
-      [
-        "manualSpeed",
-      ],
-      [
-        "fan_speed",
-      ],
-      [
-        "operationMode",
-      ],
-      [
-        "alarm_generic",
-      ],
-      [
-        "alarm_boost",
-      ],
-      [
-        "alarm_filter",
-      ],
-      [
-        "timerMode",
-      ],
-    ],
+    "getCapabilityValue": {
+      "alarm_boost": 3,
+      "alarm_filter": 3,
+      "alarm_generic": 3,
+    },
+    "hasCapability": {
+      "alarm_boost": 4,
+      "alarm_connectivity": 3,
+      "alarm_filter": 4,
+      "alarm_generic": 4,
+      "fan_speed": 7,
+      "manualSpeed": 4,
+      "onoff": 4,
+      "operationMode": 4,
+      "speedMode": 4,
+      "timerMode": 4,
+    },
     "log": [
       [
         "log",
@@ -633,468 +453,364 @@ exports[`ventoDevice should be able to setup all capabilities 1`] = `
         "Create the flow for the timer mode capability",
       ],
     ],
-    "registerCapabilityListener": [
-      [
-        "onoff",
-        [Function],
-      ],
-      [
-        "speedMode",
-        [Function],
-      ],
-      [
-        "manualSpeed",
-        [Function],
-      ],
-      [
-        "fan_speed",
-        [Function],
-      ],
-      [
-        "operationMode",
-        [Function],
-      ],
-      [
-        "timerMode",
-        [Function],
-      ],
-      [
-        "onoff",
-        [Function],
-      ],
-      [
-        "speedMode",
-        [Function],
-      ],
-      [
-        "manualSpeed",
-        [Function],
-      ],
-      [
-        "fan_speed",
-        [Function],
-      ],
-      [
-        "operationMode",
-        [Function],
-      ],
-      [
-        "timerMode",
-        [Function],
-      ],
-      [
-        "onoff",
-        [Function],
-      ],
-      [
-        "speedMode",
-        [Function],
-      ],
-      [
-        "manualSpeed",
-        [Function],
-      ],
-      [
-        "fan_speed",
-        [Function],
-      ],
-      [
-        "operationMode",
-        [Function],
-      ],
-      [
-        "timerMode",
-        [Function],
-      ],
-      [
-        "onoff",
-        [Function],
-      ],
-      [
-        "speedMode",
-        [Function],
-      ],
-      [
-        "manualSpeed",
-        [Function],
-      ],
-      [
-        "fan_speed",
-        [Function],
-      ],
-      [
-        "operationMode",
-        [Function],
-      ],
-      [
-        "timerMode",
-        [Function],
-      ],
-    ],
-    "registerRunListener": [
-      [
-        "speed_mode",
-        [Function],
-      ],
-      [
-        "manualSpeed_set",
-        [Function],
-      ],
-      [
-        "operation_mode",
-        [Function],
-      ],
-      [
-        "alarm_generic",
-        [Function],
-      ],
-      [
-        "alarm_boost",
-        [Function],
-      ],
-      [
-        "alarm_filter",
-        [Function],
-      ],
-      [
-        "timer_mode",
-        [Function],
-      ],
-      [
-        "speed_mode",
-        [Function],
-      ],
-      [
-        "manualSpeed_set",
-        [Function],
-      ],
-      [
-        "operation_mode",
-        [Function],
-      ],
-      [
-        "alarm_generic",
-        [Function],
-      ],
-      [
-        "alarm_boost",
-        [Function],
-      ],
-      [
-        "alarm_filter",
-        [Function],
-      ],
-      [
-        "timer_mode",
-        [Function],
-      ],
-      [
-        "speed_mode",
-        [Function],
-      ],
-      [
-        "manualSpeed_set",
-        [Function],
-      ],
-      [
-        "operation_mode",
-        [Function],
-      ],
-      [
-        "alarm_generic",
-        [Function],
-      ],
-      [
-        "alarm_boost",
-        [Function],
-      ],
-      [
-        "alarm_filter",
-        [Function],
-      ],
-      [
-        "timer_mode",
-        [Function],
-      ],
-      [
-        "speed_mode",
-        [Function],
-      ],
-      [
-        "manualSpeed_set",
-        [Function],
-      ],
-      [
-        "operation_mode",
-        [Function],
-      ],
-      [
-        "alarm_generic",
-        [Function],
-      ],
-      [
-        "alarm_boost",
-        [Function],
-      ],
-      [
-        "alarm_filter",
-        [Function],
-      ],
-      [
-        "timer_mode",
-        [Function],
-      ],
-    ],
-    "setCapabilityValue": {
+    "registerCapabilityListener": {
+      "fan_speed": 4,
+      "manualSpeed": 4,
+      "onoff": 4,
+      "operationMode": 4,
+      "speedMode": 4,
+      "timerMode": 4,
+    },
+    "registerRunListener": {
       "alarm_boost": [
-        {
-          "result": {
-            "result": false,
-          },
-          "value": false,
-        },
-        {
-          "result": {
-            "result": false,
-          },
-          "value": false,
-        },
-        {
-          "result": {
-            "result": false,
-          },
-          "value": false,
-        },
-      ],
-      "alarm_connectivity": [
-        {
-          "result": "calling unregistered capability",
-          "value": undefined,
-        },
-        {
-          "result": "calling unregistered capability",
-          "value": undefined,
-        },
-        {
-          "result": "calling unregistered capability",
-          "value": undefined,
-        },
+        [
+          [Function],
+        ],
+        [
+          [Function],
+        ],
+        [
+          [Function],
+        ],
+        [
+          [Function],
+        ],
       ],
       "alarm_filter": [
-        {
-          "result": {
-            "result": false,
-          },
-          "value": false,
-        },
-        {
-          "result": {
-            "result": false,
-          },
-          "value": false,
-        },
-        {
-          "result": {
-            "result": false,
-          },
-          "value": false,
-        },
+        [
+          [Function],
+        ],
+        [
+          [Function],
+        ],
+        [
+          [Function],
+        ],
+        [
+          [Function],
+        ],
       ],
       "alarm_generic": [
-        {
-          "result": {
+        [
+          [Function],
+        ],
+        [
+          [Function],
+        ],
+        [
+          [Function],
+        ],
+        [
+          [Function],
+        ],
+      ],
+      "manualSpeed_set": [
+        [
+          [Function],
+        ],
+        [
+          [Function],
+        ],
+        [
+          [Function],
+        ],
+        [
+          [Function],
+        ],
+      ],
+      "operation_mode": [
+        [
+          [Function],
+        ],
+        [
+          [Function],
+        ],
+        [
+          [Function],
+        ],
+        [
+          [Function],
+        ],
+      ],
+      "speed_mode": [
+        [
+          [Function],
+        ],
+        [
+          [Function],
+        ],
+        [
+          [Function],
+        ],
+        [
+          [Function],
+        ],
+      ],
+      "timer_mode": [
+        [
+          [Function],
+        ],
+        [
+          [Function],
+        ],
+        [
+          [Function],
+        ],
+        [
+          [Function],
+        ],
+      ],
+    },
+    "setCapabilityValue": {
+      "alarm_boost": [
+        [
+          false,
+          {
             "result": false,
           },
-          "value": false,
-        },
-        {
-          "result": {
+        ],
+        [
+          false,
+          {
             "result": false,
           },
-          "value": false,
-        },
-        {
-          "result": {
+        ],
+        [
+          false,
+          {
             "result": false,
           },
-          "value": false,
-        },
+        ],
+      ],
+      "alarm_connectivity": [
+        [
+          undefined,
+          "calling unregistered capability",
+        ],
+        [
+          undefined,
+          "calling unregistered capability",
+        ],
+        [
+          undefined,
+          "calling unregistered capability",
+        ],
+      ],
+      "alarm_filter": [
+        [
+          false,
+          {
+            "result": false,
+          },
+        ],
+        [
+          false,
+          {
+            "result": false,
+          },
+        ],
+        [
+          false,
+          {
+            "result": false,
+          },
+        ],
+      ],
+      "alarm_generic": [
+        [
+          false,
+          {
+            "result": false,
+          },
+        ],
+        [
+          false,
+          {
+            "result": false,
+          },
+        ],
+        [
+          false,
+          {
+            "result": false,
+          },
+        ],
       ],
       "fan_speed": [
-        {
-          "result": {
+        [
+          0.7019607843137254,
+          {
             "result": undefined,
           },
-          "value": 0.7019607843137254,
-        },
-        {
-          "result": {
+        ],
+        [
+          0.7019607843137254,
+          {
             "result": undefined,
           },
-          "value": 0.7019607843137254,
-        },
-        {
-          "result": {
+        ],
+        [
+          0.7019607843137254,
+          {
             "result": undefined,
           },
-          "value": 0.7019607843137254,
-        },
+        ],
       ],
       "filter_timer": [
-        {
-          "result": "calling unregistered capability",
-          "value": "31:20:34",
-        },
-        {
-          "result": "calling unregistered capability",
-          "value": "31:20:34",
-        },
-        {
-          "result": "calling unregistered capability",
-          "value": "31:20:34",
-        },
+        [
+          "31:20:34",
+          "calling unregistered capability",
+        ],
+        [
+          "31:20:34",
+          "calling unregistered capability",
+        ],
+        [
+          "31:20:34",
+          "calling unregistered capability",
+        ],
       ],
       "manualSpeed": [
-        {
-          "result": {
+        [
+          70.19607843137254,
+          {
             "result": undefined,
           },
-          "value": 70.19607843137254,
-        },
-        {
-          "result": {
+        ],
+        [
+          70.19607843137254,
+          {
             "result": undefined,
           },
-          "value": 70.19607843137254,
-        },
-        {
-          "result": {
+        ],
+        [
+          70.19607843137254,
+          {
             "result": undefined,
           },
-          "value": 70.19607843137254,
-        },
+        ],
       ],
       "measure_RPM": [
-        {
-          "result": "calling unregistered capability",
-          "value": 236,
-        },
-        {
-          "result": "calling unregistered capability",
-          "value": 236,
-        },
-        {
-          "result": "calling unregistered capability",
-          "value": 236,
-        },
+        [
+          236,
+          "calling unregistered capability",
+        ],
+        [
+          236,
+          "calling unregistered capability",
+        ],
+        [
+          236,
+          "calling unregistered capability",
+        ],
       ],
       "measure_humidity": [
-        {
-          "result": "calling unregistered capability",
-          "value": 45,
-        },
-        {
-          "result": "calling unregistered capability",
-          "value": 45,
-        },
-        {
-          "result": "calling unregistered capability",
-          "value": 45,
-        },
+        [
+          45,
+          "calling unregistered capability",
+        ],
+        [
+          45,
+          "calling unregistered capability",
+        ],
+        [
+          45,
+          "calling unregistered capability",
+        ],
       ],
       "onoff": [
-        {
-          "result": {
+        [
+          true,
+          {
             "result": undefined,
           },
-          "value": true,
-        },
-        {
-          "result": {
+        ],
+        [
+          true,
+          {
             "result": undefined,
           },
-          "value": true,
-        },
-        {
-          "result": {
+        ],
+        [
+          true,
+          {
             "result": undefined,
           },
-          "value": true,
-        },
+        ],
       ],
       "operationMode": [
-        {
-          "result": {
+        [
+          "2",
+          {
             "result": undefined,
           },
-          "value": "2",
-        },
-        {
-          "result": {
+        ],
+        [
+          "2",
+          {
             "result": undefined,
           },
-          "value": "2",
-        },
-        {
-          "result": {
+        ],
+        [
+          "2",
+          {
             "result": undefined,
           },
-          "value": "2",
-        },
+        ],
       ],
       "speedMode": [
-        {
-          "result": {
+        [
+          "1",
+          {
             "result": undefined,
           },
-          "value": "1",
-        },
-        {
-          "result": {
+        ],
+        [
+          "1",
+          {
             "result": undefined,
           },
-          "value": "1",
-        },
-        {
-          "result": {
+        ],
+        [
+          "1",
+          {
             "result": undefined,
           },
-          "value": "1",
-        },
+        ],
       ],
       "timerMode": [
-        {
-          "result": {
+        [
+          "0",
+          {
             "result": undefined,
           },
-          "value": "0",
-        },
-        {
-          "result": {
+        ],
+        [
+          "0",
+          {
             "result": undefined,
           },
-          "value": "0",
-        },
-        {
-          "result": {
+        ],
+        [
+          "0",
+          {
             "result": undefined,
           },
-          "value": "0",
-        },
+        ],
       ],
       "timerMode_timer": [
-        {
-          "result": "calling unregistered capability",
-          "value": "00:00:00",
-        },
-        {
-          "result": "calling unregistered capability",
-          "value": "00:00:00",
-        },
-        {
-          "result": "calling unregistered capability",
-          "value": "00:00:00",
-        },
+        [
+          "00:00:00",
+          "calling unregistered capability",
+        ],
+        [
+          "00:00:00",
+          "calling unregistered capability",
+        ],
+        [
+          "00:00:00",
+          "calling unregistered capability",
+        ],
       ],
     },
     "settings": {},

@@ -88,17 +88,26 @@ export class Device {
       logMock('setAvailable', reason);
     }
 
-    getMockCalls = () => ({
-      setCapabilityValue: setCapabilityValueMock.mock.calls.reduce((acc, c) => {
-        const [capabilityId, value, result] = c;
-        return { ...acc, [capabilityId]: [...(acc[capabilityId] || []), { value, result }] };
-      }, {}),
-      hasCapability: hasCapabilityMock.mock.calls,
-      registerCapabilityListener: registerCapabilityListenerMock.mock.calls,
-      registerRunListener: registerRunListenerMock.mock.calls,
-      getCapabilityValue: getCapabilityValueMock.mock.calls,
-      log: logMock.mock.calls,
-      settings: this.settings,
-      capabilities,
-    });
+    getMockCalls = () => {
+      const callCount = (calls: any[]) => calls.reduce((acc, c) => {
+        const [capabilityId] = c;
+        return { ...acc, [capabilityId]: (acc[capabilityId] || 0) + 1 };
+      }, {});
+
+      const callsWithArgs = (calls1: any[]) => calls1.reduce((acc, c) => {
+        const [capabilityId, ...args] = c;
+        return { ...acc, [capabilityId]: [...(acc[capabilityId] || []), args] };
+      }, {});
+
+      return ({
+        setCapabilityValue: callsWithArgs(setCapabilityValueMock.mock.calls),
+        hasCapability: callCount(hasCapabilityMock.mock.calls),
+        registerCapabilityListener: callCount(registerCapabilityListenerMock.mock.calls),
+        registerRunListener: callsWithArgs(registerRunListenerMock.mock.calls),
+        getCapabilityValue: callCount(getCapabilityValueMock.mock.calls),
+        log: logMock.mock.calls,
+        settings: this.settings,
+        capabilities,
+      });
+    };
 }
