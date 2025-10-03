@@ -1,4 +1,6 @@
 // eslint-disable-next-line max-classes-per-file
+import { callsWithArgs, callCount } from '../testTools';
+
 const setCapabilityValueMock = jest.fn();
 const hasCapabilityMock = jest.fn().mockReturnValue(true);
 const registerCapabilityListenerMock = jest.fn().mockReturnValue(true);
@@ -22,7 +24,11 @@ class FlowCard {
     registerRunListener = (fn: (value: unknown) => Promise<void>) => {
       capabilities[this.capability] = fn;
       registerRunListenerMock(this.capability, fn);
-      return Promise.resolve({ device: this.device, capability: this.capability, [this.capability]: capabilityValue[this.capability] });
+      return Promise.resolve({
+        device: this.device,
+        capability: this.capability,
+        [this.capability]: capabilityValue[this.capability],
+      });
     }
 }
 
@@ -88,26 +94,14 @@ export class Device {
       logMock('setAvailable', reason);
     }
 
-    getMockCalls = () => {
-      const callCount = (calls: any[]) => calls.reduce((acc, c) => {
-        const [capabilityId] = c;
-        return { ...acc, [capabilityId]: (acc[capabilityId] || 0) + 1 };
-      }, {});
-
-      const callsWithArgs = (calls1: any[]) => calls1.reduce((acc, c) => {
-        const [capabilityId, ...args] = c;
-        return { ...acc, [capabilityId]: [...(acc[capabilityId] || []), args] };
-      }, {});
-
-      return ({
-        setCapabilityValue: callsWithArgs(setCapabilityValueMock.mock.calls),
-        hasCapability: callCount(hasCapabilityMock.mock.calls),
-        registerCapabilityListener: callCount(registerCapabilityListenerMock.mock.calls),
-        registerRunListener: callsWithArgs(registerRunListenerMock.mock.calls),
-        getCapabilityValue: callCount(getCapabilityValueMock.mock.calls),
-        log: logMock.mock.calls,
-        settings: this.settings,
-        capabilities,
-      });
-    };
+    getMockCalls = () => ({
+      setCapabilityValue: callsWithArgs(setCapabilityValueMock.mock.calls),
+      hasCapability: callCount(hasCapabilityMock.mock.calls),
+      registerCapabilityListener: callCount(registerCapabilityListenerMock.mock.calls),
+      registerRunListener: callsWithArgs(registerRunListenerMock.mock.calls),
+      getCapabilityValue: callCount(getCapabilityValueMock.mock.calls),
+      log: logMock.mock.calls,
+      settings: this.settings,
+      capabilities,
+    });
 }

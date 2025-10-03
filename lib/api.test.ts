@@ -1,6 +1,7 @@
 import { DeviceAddress } from 'blaubergventojs';
 import Api from './api';
 import { statusResponse } from './__mockdata__/statusResponse';
+import { removeUndefinedDeep } from './testTools';
 
 describe('Api set functions', () => {
   let api: Api;
@@ -21,24 +22,6 @@ describe('Api set functions', () => {
   afterEach(() => {
     jest.clearAllMocks();
   });
-
-  const removeUndefinedDeep = (obj: Record<string, unknown>) => {
-    const ret: Record<string, unknown> = {};
-    Object.keys(obj).forEach((key) => {
-      const value = obj[key];
-      if (value !== undefined) {
-        if (value && typeof value === 'object' && !Array.isArray(value)) {
-          const nested = removeUndefinedDeep(value as Record<string, unknown>);
-          if (Object.keys(nested).length > 0) {
-            ret[key] = nested;
-          }
-        } else {
-          ret[key] = value;
-        }
-      }
-    });
-    return ret;
-  };
 
   const getMockCalls = (response: any) => ({
     calls: (api.modbusClient.send as jest.Mock).mock.calls,
