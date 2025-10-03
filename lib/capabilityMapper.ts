@@ -5,8 +5,8 @@ import { parametersToValues } from './mapModbusResponse';
 type MappableCapabilities = Capabilities | DeviceSettings;
 
 type CapabilityTypes = keyof typeof Capabilities | keyof typeof DeviceSettings;
-
-type ResponseToCapabilityFunctions = Record<CapabilityTypes, (values: number[] | undefined) => any>;
+type PossibleValues = number | string | boolean | undefined;
+type ResponseToCapabilityFunctions = Record<CapabilityTypes, (values: number[] | undefined) => PossibleValues>;
 
 const paramsForCapability: Record<CapabilityTypes, keyof typeof Parameter> = {
   alarm_boost: 'BOOT_MODE',
@@ -51,33 +51,31 @@ const capabilityToParameterMap: ResponseToCapabilityFunctions = {
     switch (values?.[0]) {
       case 1:
         return 'Vento Expert A50-1 W V.2 | Vento Expert A85-1 W V.2 | Vento Expert A100-1 W V.2';
-        break;
       case 4:
         return 'Vento Expert Duo A30-1 W V.2';
-        break;
       case 5:
         return 'Vento Expert A30 W V.2';
-        break;
       default:
         return 'Vento Expert';
-        break;
     }
   },
 };
-export type CapabilityResponse = Record<MappableCapabilities, number | string | boolean | undefined>;
 
-export default (result: Response): CapabilityResponse => {
+export type CapabilityResponse = Record<MappableCapabilities, PossibleValues>;
+
+const capabilitiesMapper = (result: Response): CapabilityResponse => {
   const values = parametersToValues(result);
   // @ts-expect-error: not typed yet
-  return [...Object.keys(Capabilities), ...Object.keys(DeviceSettings)].map((capability) => {
-    // @ts-expect-error: ok now
+  return [...Object.keys(Capabilities), ...Object.keys(DeviceSettings)].map((capability: CapabilityTypes) => {
     const mapFunction = capabilityToParameterMap[capability];
     if (mapFunction) {
-      // @ts-expect-error: ok now
       const hasValue = values[paramsForCapability[capability]];
       if (hasValue !== undefined && hasValue.length > 0) {
         return { [capability]: mapFunction(hasValue) };
       }
     }
+    return { };
   }).reduce((a, b) => ({ ...a, ...b }), {});
 };
+
+export default capabilitiesMapper;
