@@ -2,6 +2,7 @@ import { Device } from 'homey';
 import Api from './api';
 import VentoDiscovery from './ventoDiscovery';
 import { Capabilities, ActionCards } from './capabilities';
+import { CapabilityResponse } from './capabilityMapper';
 
 type DeviceSettings = {
     devicemodel?: string;
@@ -109,39 +110,30 @@ export default class VentoDevice extends Device {
 
     async updateDeviceState() {
       this.log('Requesting the current device state');
-      const state = await this.api.getDeviceState().catch(async (e) => {
+      const state: Partial<CapabilityResponse> = await this.api.getDeviceState().catch(async (e) => {
         await this.setCapabilityValue(Capabilities.alarm_connectivity, true);
         await this.setUnavailable();
         this.error('Failed to get device state, device unreachable', e);
+        return {
+          [Capabilities.alarm_connectivity]: true,
+        };
       });
-      if (state === undefined) {
-        return;
-      }
 
       this.log('Device state received: ', state);
 
       await this.setAvailable();
-      await this.setCapabilityValue(Capabilities.alarm_connectivity, false);
-      await this.setCapabilityValue(Capabilities.onoff, (state.onoff === 1));
-      await this.setCapabilityValue(Capabilities.alarm_boost, (state.boost?.mode !== 0));
-      await this.setCapabilityValue(Capabilities.alarm_filter, (state.filter?.alarm === 1));
-      await this.setCapabilityValue(Capabilities.filter_timer, `${state.filter?.timer.days}:${state.filter?.timer.hour}:${state.filter?.timer.min}`);
-      await this.setCapabilityValue(Capabilities.alarm_generic, (state.alarm !== 0));
-      await this.setCapabilityValue(Capabilities.measure_humidity, state.humidity?.current);
-      await this.setCapabilityValue(Capabilities.measure_RPM, state.fan?.rpm);
-      // Now handle the different modes
-      await this.setCapabilityValue(Capabilities.speedMode, state.speed?.mode?.toString());
-      await this.setCapabilityValue(Capabilities.manualSpeed, (state.speed?.manualspeed ?? -1 / 255) * 100);
-      await this.setCapabilityValue(Capabilities.fan_speed, (state.speed?.manualspeed ?? -1 / 255));
-      await this.setCapabilityValue(Capabilities.operationMode, state.operationmode?.toString());
-      await this.setCapabilityValue(Capabilities.timerMode, state.timers?.mode?.toString());
-      await this.setCapabilityValue(Capabilities.timerMode_timer, `${state.timers?.countdown?.hour}:${state.timers?.countdown?.min}:${state.timers?.countdown?.sec}`);
+
+      await Promise.all(Object.keys(Capabilities).map(async (cap) => {
+        // @ts-expect-error: dynamic key
+        const stateElement = state[cap];
+        return this.setCapabilityValue(cap, stateElement);
+      }));
 
       const settingsOnDevice: Partial<DeviceSettings> = {
-        devicemodel: state.unittype,
-        humidity_sensor: (state.humidity?.sensoractivation === 1),
-        humidity_threshold: state.humidity?.threshold,
-        boost_delay: state.boost?.deactivationtimer,
+        devicemodel: state.unit_type as string,
+        humidity_sensor: state.humidity_sensor as boolean,
+        humidity_threshold: state.humidity_threshold as number,
+        boost_delay: state.boost_delay as number,
       };
       await this.setSettings(settingsOnDevice);
     }

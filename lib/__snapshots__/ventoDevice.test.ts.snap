@@ -93,43 +93,24 @@ exports[`ventoDevice should be able to get status from modbus on init 1`] = `
         "log",
         "Device state received: ",
         {
-          "alarm": 0,
-          "boost": {
-            "deactivationtimer": 30,
-            "mode": 0,
-          },
-          "fan": {
-            "rpm": 236,
-          },
-          "filter": {
-            "alarm": 0,
-            "timer": {
-              "days": 31,
-              "hour": 20,
-              "min": 34,
-            },
-          },
-          "humidity": {
-            "activated": 0,
-            "current": 45,
-            "sensoractivation": 1,
-            "threshold": 70,
-          },
-          "onoff": 1,
-          "operationmode": 2,
-          "speed": {
-            "manualspeed": 179,
-            "mode": 1,
-          },
-          "timers": {
-            "countdown": {
-              "hour": 0,
-              "min": 0,
-              "sec": 0,
-            },
-            "mode": 0,
-          },
-          "unittype": "Vento Expert Duo A30-1 W V.2",
+          "alarm_boost": false,
+          "alarm_connectivity": false,
+          "alarm_filter": false,
+          "alarm_generic": false,
+          "boost_delay": 30,
+          "fan_speed": 0.7019607843137254,
+          "filter_timer": "31:20:34",
+          "humidity_sensor": true,
+          "humidity_threshold": 70,
+          "manualSpeed": 70.19607843137254,
+          "measure_RPM": 236,
+          "measure_humidity": 45,
+          "onoff": true,
+          "operationMode": "2",
+          "speedMode": "1",
+          "timerMode": "0",
+          "timerMode_timer": "00:00:00",
+          "unit_type": "Vento Expert Duo A30-1 W V.2",
         },
       ],
       [
@@ -229,7 +210,7 @@ exports[`ventoDevice should be able to get status from modbus on init 1`] = `
           "result": {
             "result": undefined,
           },
-          "value": 179,
+          "value": 0.7019607843137254,
         },
       ],
       "filter_timer": [
@@ -243,7 +224,7 @@ exports[`ventoDevice should be able to get status from modbus on init 1`] = `
           "result": {
             "result": undefined,
           },
-          "value": 17900,
+          "value": 70.19607843137254,
         },
       ],
       "measure_RPM": [
@@ -293,7 +274,7 @@ exports[`ventoDevice should be able to get status from modbus on init 1`] = `
       "timerMode_timer": [
         {
           "result": "calling unregistered capability",
-          "value": "0:0:0",
+          "value": "00:00:00",
         },
       ],
     },
@@ -511,43 +492,20 @@ exports[`ventoDevice should be able to setup all capabilities 1`] = `
         "log",
         "Device state received: ",
         {
-          "alarm": 0,
-          "boost": {
-            "deactivationtimer": 30,
-            "mode": 0,
-          },
-          "fan": {
-            "rpm": 236,
-          },
-          "filter": {
-            "alarm": 0,
-            "timer": {
-              "days": 31,
-              "hour": 20,
-              "min": 34,
-            },
-          },
-          "humidity": {
-            "activated": 0,
-            "current": 45,
-            "sensoractivation": 1,
-            "threshold": 70,
-          },
-          "onoff": 1,
-          "operationmode": 2,
-          "speed": {
-            "manualspeed": 179,
-            "mode": 1,
-          },
-          "timers": {
-            "countdown": {
-              "hour": 0,
-              "min": 0,
-              "sec": 0,
-            },
-            "mode": 0,
-          },
-          "unittype": "Vento Expert Duo A30-1 W V.2",
+          "alarm_boost": false,
+          "alarm_connectivity": false,
+          "alarm_filter": false,
+          "alarm_generic": false,
+          "fan_speed": 0.7019607843137254,
+          "filter_timer": "31:20:34",
+          "manualSpeed": 70.19607843137254,
+          "measure_RPM": 236,
+          "measure_humidity": 45,
+          "onoff": true,
+          "operationMode": "2",
+          "speedMode": "1",
+          "timerMode": "0",
+          "timerMode_timer": "00:00:00",
         },
       ],
       [
@@ -582,43 +540,20 @@ exports[`ventoDevice should be able to setup all capabilities 1`] = `
         "log",
         "Device state received: ",
         {
-          "alarm": 0,
-          "boost": {
-            "deactivationtimer": 30,
-            "mode": 0,
-          },
-          "fan": {
-            "rpm": 236,
-          },
-          "filter": {
-            "alarm": 0,
-            "timer": {
-              "days": 31,
-              "hour": 20,
-              "min": 34,
-            },
-          },
-          "humidity": {
-            "activated": 0,
-            "current": 45,
-            "sensoractivation": 1,
-            "threshold": 70,
-          },
-          "onoff": 1,
-          "operationmode": 2,
-          "speed": {
-            "manualspeed": 179,
-            "mode": 1,
-          },
-          "timers": {
-            "countdown": {
-              "hour": 0,
-              "min": 0,
-              "sec": 0,
-            },
-            "mode": 0,
-          },
-          "unittype": "Vento Expert Duo A30-1 W V.2",
+          "alarm_boost": false,
+          "alarm_connectivity": false,
+          "alarm_filter": false,
+          "alarm_generic": false,
+          "fan_speed": 0.7019607843137254,
+          "filter_timer": "31:20:34",
+          "manualSpeed": 70.19607843137254,
+          "measure_RPM": 236,
+          "measure_humidity": 45,
+          "onoff": true,
+          "operationMode": "2",
+          "speedMode": "1",
+          "timerMode": "0",
+          "timerMode_timer": "00:00:00",
         },
       ],
       [
@@ -653,43 +588,20 @@ exports[`ventoDevice should be able to setup all capabilities 1`] = `
         "log",
         "Device state received: ",
         {
-          "alarm": 0,
-          "boost": {
-            "deactivationtimer": 30,
-            "mode": 0,
-          },
-          "fan": {
-            "rpm": 236,
-          },
-          "filter": {
-            "alarm": 0,
-            "timer": {
-              "days": 31,
-              "hour": 20,
-              "min": 34,
-            },
-          },
-          "humidity": {
-            "activated": 0,
-            "current": 45,
-            "sensoractivation": 1,
-            "threshold": 70,
-          },
-          "onoff": 1,
-          "operationmode": 2,
-          "speed": {
-            "manualspeed": 179,
-            "mode": 1,
-          },
-          "timers": {
-            "countdown": {
-              "hour": 0,
-              "min": 0,
-              "sec": 0,
-            },
-            "mode": 0,
-          },
-          "unittype": "Vento Expert Duo A30-1 W V.2",
+          "alarm_boost": false,
+          "alarm_connectivity": false,
+          "alarm_filter": false,
+          "alarm_generic": false,
+          "fan_speed": 0.7019607843137254,
+          "filter_timer": "31:20:34",
+          "manualSpeed": 70.19607843137254,
+          "measure_RPM": 236,
+          "measure_humidity": 45,
+          "onoff": true,
+          "operationMode": "2",
+          "speedMode": "1",
+          "timerMode": "0",
+          "timerMode_timer": "00:00:00",
         },
       ],
       [
@@ -1165,15 +1077,15 @@ exports[`ventoDevice should be able to setup all capabilities 1`] = `
       "timerMode_timer": [
         {
           "result": "calling unregistered capability",
-          "value": "0:0:0",
+          "value": "00:00:00",
         },
         {
           "result": "calling unregistered capability",
-          "value": "0:0:0",
+          "value": "00:00:00",
         },
         {
           "result": "calling unregistered capability",
-          "value": "0:0:0",
+          "value": "00:00:00",
         },
       ],
     },
@@ -1279,22 +1191,6 @@ exports[`ventoDevice should get and set values trough the api and modbus 1`] = `
       E {
         "_dataEntries": [
           {
-            "parameter": 2,
-            "value": Uint8Array [
-              0,
-            ],
-          },
-        ],
-        "_deviceId": "TEST1234",
-        "_functionType": 2,
-        "_password": undefined,
-      },
-      "127.0.0.2",
-    ],
-    [
-      E {
-        "_dataEntries": [
-          {
             "parameter": 68,
             "value": Uint8Array [
               0,
@@ -1328,6 +1224,22 @@ exports[`ventoDevice should get and set values trough the api and modbus 1`] = `
         "_dataEntries": [
           {
             "parameter": 183,
+            "value": Uint8Array [
+              0,
+            ],
+          },
+        ],
+        "_deviceId": "TEST1234",
+        "_functionType": 2,
+        "_password": undefined,
+      },
+      "127.0.0.2",
+    ],
+    [
+      E {
+        "_dataEntries": [
+          {
+            "parameter": 2,
             "value": Uint8Array [
               0,
             ],
