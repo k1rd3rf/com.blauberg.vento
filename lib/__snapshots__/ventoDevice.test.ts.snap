@@ -186,7 +186,7 @@ exports[`ventoDevice should be able to get status from modbus on init 1`] = `
       ],
       "fan_speed": [
         [
-          179,
+          0.7019607843137254,
           {
             "result": undefined,
           },
@@ -200,7 +200,7 @@ exports[`ventoDevice should be able to get status from modbus on init 1`] = `
       ],
       "manualSpeed": [
         [
-          17900,
+          70.19607843137254,
           {
             "result": undefined,
           },
@@ -718,19 +718,19 @@ exports[`ventoDevice should be able to setup all capabilities 1`] = `
       ],
       "fan_speed": [
         [
-          179,
+          0.7019607843137254,
           {
             "result": undefined,
           },
         ],
         [
-          179,
+          0.7019607843137254,
           {
             "result": undefined,
           },
         ],
         [
-          179,
+          0.7019607843137254,
           {
             "result": undefined,
           },
@@ -752,19 +752,19 @@ exports[`ventoDevice should be able to setup all capabilities 1`] = `
       ],
       "manualSpeed": [
         [
-          17900,
+          70.19607843137254,
           {
             "result": undefined,
           },
         ],
         [
-          17900,
+          70.19607843137254,
           {
             "result": undefined,
           },
         ],
         [
-          17900,
+          70.19607843137254,
           {
             "result": undefined,
           },

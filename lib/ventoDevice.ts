@@ -131,8 +131,8 @@ export default class VentoDevice extends Device {
       await this.setCapabilityValue(Capabilities.measure_RPM, state.fan?.rpm);
       // Now handle the different modes
       await this.setCapabilityValue(Capabilities.speedMode, state.speed?.mode?.toString());
-      await this.setCapabilityValue(Capabilities.manualSpeed, (state.speed?.manualspeed ?? -1 / 255) * 100);
-      await this.setCapabilityValue(Capabilities.fan_speed, (state.speed?.manualspeed ?? -1 / 255));
+      await this.setCapabilityValue(Capabilities.manualSpeed, ((state.speed?.manualspeed ?? -1) / 255) * 100);
+      await this.setCapabilityValue(Capabilities.fan_speed, ((state.speed?.manualspeed ?? -1) / 255));
       await this.setCapabilityValue(Capabilities.operationMode, state.operationmode?.toString());
       await this.setCapabilityValue(Capabilities.timerMode, state.timers?.mode?.toString());
       await this.setCapabilityValue(Capabilities.timerMode_timer, `${state.timers?.countdown?.hour}:${state.timers?.countdown?.min}:${state.timers?.countdown?.sec}`);
