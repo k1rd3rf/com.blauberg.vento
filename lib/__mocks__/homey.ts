@@ -1,4 +1,6 @@
 // eslint-disable-next-line max-classes-per-file
+import { callsWithArgs, callCount } from '../testTools';
+
 const setCapabilityValueMock = jest.fn();
 const hasCapabilityMock = jest.fn().mockReturnValue(true);
 const registerCapabilityListenerMock = jest.fn().mockReturnValue(true);
@@ -89,16 +91,6 @@ export class Device {
     }
 
     getMockCalls = () => {
-      const callCount = (calls: any[]) => calls.reduce((acc, c) => {
-        const [capabilityId] = c;
-        return { ...acc, [capabilityId]: (acc[capabilityId] || 0) + 1 };
-      }, {});
-
-      const callsWithArgs = (calls1: any[]) => calls1.reduce((acc, c) => {
-        const [capabilityId, ...args] = c;
-        return { ...acc, [capabilityId]: [...(acc[capabilityId] || []), args] };
-      }, {});
-
       return ({
         setCapabilityValue: callsWithArgs(setCapabilityValueMock.mock.calls),
         hasCapability: callCount(hasCapabilityMock.mock.calls),
