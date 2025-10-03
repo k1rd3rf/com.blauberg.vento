@@ -21,41 +21,11 @@ exports[`Api set functions setBoostDelay sends value 0 1`] = `
     ],
   ],
   "response": {
-    "alarm": undefined,
     "boost": {
       "deactivationtimer": 0,
-      "mode": undefined,
-    },
-    "fan": {
-      "rpm": undefined,
-    },
-    "filter": {
-      "alarm": undefined,
-      "timer": {
-        "days": undefined,
-        "hour": undefined,
-        "min": undefined,
-      },
     },
     "humidity": {
       "activated": 0,
-      "current": undefined,
-      "sensoractivation": undefined,
-      "threshold": undefined,
-    },
-    "onoff": undefined,
-    "operationmode": undefined,
-    "speed": {
-      "manualspeed": undefined,
-      "mode": undefined,
-    },
-    "timers": {
-      "countdown": {
-        "hour": undefined,
-        "min": undefined,
-        "sec": undefined,
-      },
-      "mode": undefined,
     },
     "unittype": "Vento Expert",
   },
@@ -83,41 +53,11 @@ exports[`Api set functions setBoostDelay sends value 1 1`] = `
     ],
   ],
   "response": {
-    "alarm": undefined,
     "boost": {
       "deactivationtimer": 1,
-      "mode": undefined,
-    },
-    "fan": {
-      "rpm": undefined,
-    },
-    "filter": {
-      "alarm": undefined,
-      "timer": {
-        "days": undefined,
-        "hour": undefined,
-        "min": undefined,
-      },
     },
     "humidity": {
       "activated": 0,
-      "current": undefined,
-      "sensoractivation": undefined,
-      "threshold": undefined,
-    },
-    "onoff": undefined,
-    "operationmode": undefined,
-    "speed": {
-      "manualspeed": undefined,
-      "mode": undefined,
-    },
-    "timers": {
-      "countdown": {
-        "hour": undefined,
-        "min": undefined,
-        "sec": undefined,
-      },
-      "mode": undefined,
     },
     "unittype": "Vento Expert",
   },
@@ -145,41 +85,11 @@ exports[`Api set functions setBoostDelay sends value 2 1`] = `
     ],
   ],
   "response": {
-    "alarm": undefined,
     "boost": {
       "deactivationtimer": 2,
-      "mode": undefined,
-    },
-    "fan": {
-      "rpm": undefined,
-    },
-    "filter": {
-      "alarm": undefined,
-      "timer": {
-        "days": undefined,
-        "hour": undefined,
-        "min": undefined,
-      },
     },
     "humidity": {
       "activated": 0,
-      "current": undefined,
-      "sensoractivation": undefined,
-      "threshold": undefined,
-    },
-    "onoff": undefined,
-    "operationmode": undefined,
-    "speed": {
-      "manualspeed": undefined,
-      "mode": undefined,
-    },
-    "timers": {
-      "countdown": {
-        "hour": undefined,
-        "min": undefined,
-        "sec": undefined,
-      },
-      "mode": undefined,
     },
     "unittype": "Vento Expert",
   },
@@ -207,41 +117,9 @@ exports[`Api set functions setHumiditySensor sends value 0 1`] = `
     ],
   ],
   "response": {
-    "alarm": undefined,
-    "boost": {
-      "deactivationtimer": undefined,
-      "mode": undefined,
-    },
-    "fan": {
-      "rpm": undefined,
-    },
-    "filter": {
-      "alarm": undefined,
-      "timer": {
-        "days": undefined,
-        "hour": undefined,
-        "min": undefined,
-      },
-    },
     "humidity": {
       "activated": 0,
-      "current": undefined,
       "sensoractivation": 0,
-      "threshold": undefined,
-    },
-    "onoff": undefined,
-    "operationmode": undefined,
-    "speed": {
-      "manualspeed": undefined,
-      "mode": undefined,
-    },
-    "timers": {
-      "countdown": {
-        "hour": undefined,
-        "min": undefined,
-        "sec": undefined,
-      },
-      "mode": undefined,
     },
     "unittype": "Vento Expert",
   },
@@ -269,41 +147,9 @@ exports[`Api set functions setHumiditySensor sends value 1 1`] = `
     ],
   ],
   "response": {
-    "alarm": undefined,
-    "boost": {
-      "deactivationtimer": undefined,
-      "mode": undefined,
-    },
-    "fan": {
-      "rpm": undefined,
-    },
-    "filter": {
-      "alarm": undefined,
-      "timer": {
-        "days": undefined,
-        "hour": undefined,
-        "min": undefined,
-      },
-    },
     "humidity": {
       "activated": 0,
-      "current": undefined,
       "sensoractivation": 1,
-      "threshold": undefined,
-    },
-    "onoff": undefined,
-    "operationmode": undefined,
-    "speed": {
-      "manualspeed": undefined,
-      "mode": undefined,
-    },
-    "timers": {
-      "countdown": {
-        "hour": undefined,
-        "min": undefined,
-        "sec": undefined,
-      },
-      "mode": undefined,
     },
     "unittype": "Vento Expert",
   },
@@ -331,41 +177,9 @@ exports[`Api set functions setHumiditySensor sends value 2 1`] = `
     ],
   ],
   "response": {
-    "alarm": undefined,
-    "boost": {
-      "deactivationtimer": undefined,
-      "mode": undefined,
-    },
-    "fan": {
-      "rpm": undefined,
-    },
-    "filter": {
-      "alarm": undefined,
-      "timer": {
-        "days": undefined,
-        "hour": undefined,
-        "min": undefined,
-      },
-    },
     "humidity": {
       "activated": 0,
-      "current": undefined,
       "sensoractivation": 2,
-      "threshold": undefined,
-    },
-    "onoff": undefined,
-    "operationmode": undefined,
-    "speed": {
-      "manualspeed": undefined,
-      "mode": undefined,
-    },
-    "timers": {
-      "countdown": {
-        "hour": undefined,
-        "min": undefined,
-        "sec": undefined,
-      },
-      "mode": undefined,
     },
     "unittype": "Vento Expert",
   },
@@ -393,41 +207,9 @@ exports[`Api set functions setHumiditySensorThreshold sends value 0 1`] = `
     ],
   ],
   "response": {
-    "alarm": undefined,
-    "boost": {
-      "deactivationtimer": undefined,
-      "mode": undefined,
-    },
-    "fan": {
-      "rpm": undefined,
-    },
-    "filter": {
-      "alarm": undefined,
-      "timer": {
-        "days": undefined,
-        "hour": undefined,
-        "min": undefined,
-      },
-    },
     "humidity": {
       "activated": 0,
-      "current": undefined,
-      "sensoractivation": undefined,
       "threshold": 0,
-    },
-    "onoff": undefined,
-    "operationmode": undefined,
-    "speed": {
-      "manualspeed": undefined,
-      "mode": undefined,
-    },
-    "timers": {
-      "countdown": {
-        "hour": undefined,
-        "min": undefined,
-        "sec": undefined,
-      },
-      "mode": undefined,
     },
     "unittype": "Vento Expert",
   },
@@ -455,41 +237,9 @@ exports[`Api set functions setHumiditySensorThreshold sends value 1 1`] = `
     ],
   ],
   "response": {
-    "alarm": undefined,
-    "boost": {
-      "deactivationtimer": undefined,
-      "mode": undefined,
-    },
-    "fan": {
-      "rpm": undefined,
-    },
-    "filter": {
-      "alarm": undefined,
-      "timer": {
-        "days": undefined,
-        "hour": undefined,
-        "min": undefined,
-      },
-    },
     "humidity": {
       "activated": 0,
-      "current": undefined,
-      "sensoractivation": undefined,
       "threshold": 1,
-    },
-    "onoff": undefined,
-    "operationmode": undefined,
-    "speed": {
-      "manualspeed": undefined,
-      "mode": undefined,
-    },
-    "timers": {
-      "countdown": {
-        "hour": undefined,
-        "min": undefined,
-        "sec": undefined,
-      },
-      "mode": undefined,
     },
     "unittype": "Vento Expert",
   },
@@ -517,41 +267,9 @@ exports[`Api set functions setHumiditySensorThreshold sends value 2 1`] = `
     ],
   ],
   "response": {
-    "alarm": undefined,
-    "boost": {
-      "deactivationtimer": undefined,
-      "mode": undefined,
-    },
-    "fan": {
-      "rpm": undefined,
-    },
-    "filter": {
-      "alarm": undefined,
-      "timer": {
-        "days": undefined,
-        "hour": undefined,
-        "min": undefined,
-      },
-    },
     "humidity": {
       "activated": 0,
-      "current": undefined,
-      "sensoractivation": undefined,
       "threshold": 2,
-    },
-    "onoff": undefined,
-    "operationmode": undefined,
-    "speed": {
-      "manualspeed": undefined,
-      "mode": undefined,
-    },
-    "timers": {
-      "countdown": {
-        "hour": undefined,
-        "min": undefined,
-        "sec": undefined,
-      },
-      "mode": undefined,
     },
     "unittype": "Vento Expert",
   },
@@ -579,41 +297,11 @@ exports[`Api set functions setManualSpeed sends value 0 1`] = `
     ],
   ],
   "response": {
-    "alarm": undefined,
-    "boost": {
-      "deactivationtimer": undefined,
-      "mode": undefined,
-    },
-    "fan": {
-      "rpm": undefined,
-    },
-    "filter": {
-      "alarm": undefined,
-      "timer": {
-        "days": undefined,
-        "hour": undefined,
-        "min": undefined,
-      },
-    },
     "humidity": {
       "activated": 0,
-      "current": undefined,
-      "sensoractivation": undefined,
-      "threshold": undefined,
     },
-    "onoff": undefined,
-    "operationmode": undefined,
     "speed": {
       "manualspeed": 0,
-      "mode": undefined,
-    },
-    "timers": {
-      "countdown": {
-        "hour": undefined,
-        "min": undefined,
-        "sec": undefined,
-      },
-      "mode": undefined,
     },
     "unittype": "Vento Expert",
   },
@@ -641,41 +329,11 @@ exports[`Api set functions setManualSpeed sends value 1 1`] = `
     ],
   ],
   "response": {
-    "alarm": undefined,
-    "boost": {
-      "deactivationtimer": undefined,
-      "mode": undefined,
-    },
-    "fan": {
-      "rpm": undefined,
-    },
-    "filter": {
-      "alarm": undefined,
-      "timer": {
-        "days": undefined,
-        "hour": undefined,
-        "min": undefined,
-      },
-    },
     "humidity": {
       "activated": 0,
-      "current": undefined,
-      "sensoractivation": undefined,
-      "threshold": undefined,
     },
-    "onoff": undefined,
-    "operationmode": undefined,
     "speed": {
       "manualspeed": 1,
-      "mode": undefined,
-    },
-    "timers": {
-      "countdown": {
-        "hour": undefined,
-        "min": undefined,
-        "sec": undefined,
-      },
-      "mode": undefined,
     },
     "unittype": "Vento Expert",
   },
@@ -703,41 +361,11 @@ exports[`Api set functions setManualSpeed sends value 2 1`] = `
     ],
   ],
   "response": {
-    "alarm": undefined,
-    "boost": {
-      "deactivationtimer": undefined,
-      "mode": undefined,
-    },
-    "fan": {
-      "rpm": undefined,
-    },
-    "filter": {
-      "alarm": undefined,
-      "timer": {
-        "days": undefined,
-        "hour": undefined,
-        "min": undefined,
-      },
-    },
     "humidity": {
       "activated": 0,
-      "current": undefined,
-      "sensoractivation": undefined,
-      "threshold": undefined,
     },
-    "onoff": undefined,
-    "operationmode": undefined,
     "speed": {
       "manualspeed": 2,
-      "mode": undefined,
-    },
-    "timers": {
-      "countdown": {
-        "hour": undefined,
-        "min": undefined,
-        "sec": undefined,
-      },
-      "mode": undefined,
     },
     "unittype": "Vento Expert",
   },
@@ -765,42 +393,10 @@ exports[`Api set functions setOnOffStatus sends value 0 1`] = `
     ],
   ],
   "response": {
-    "alarm": undefined,
-    "boost": {
-      "deactivationtimer": undefined,
-      "mode": undefined,
-    },
-    "fan": {
-      "rpm": undefined,
-    },
-    "filter": {
-      "alarm": undefined,
-      "timer": {
-        "days": undefined,
-        "hour": undefined,
-        "min": undefined,
-      },
-    },
     "humidity": {
       "activated": 0,
-      "current": undefined,
-      "sensoractivation": undefined,
-      "threshold": undefined,
     },
     "onoff": 0,
-    "operationmode": undefined,
-    "speed": {
-      "manualspeed": undefined,
-      "mode": undefined,
-    },
-    "timers": {
-      "countdown": {
-        "hour": undefined,
-        "min": undefined,
-        "sec": undefined,
-      },
-      "mode": undefined,
-    },
     "unittype": "Vento Expert",
   },
 }
@@ -827,42 +423,10 @@ exports[`Api set functions setOnOffStatus sends value 1 1`] = `
     ],
   ],
   "response": {
-    "alarm": undefined,
-    "boost": {
-      "deactivationtimer": undefined,
-      "mode": undefined,
-    },
-    "fan": {
-      "rpm": undefined,
-    },
-    "filter": {
-      "alarm": undefined,
-      "timer": {
-        "days": undefined,
-        "hour": undefined,
-        "min": undefined,
-      },
-    },
     "humidity": {
       "activated": 0,
-      "current": undefined,
-      "sensoractivation": undefined,
-      "threshold": undefined,
     },
     "onoff": 1,
-    "operationmode": undefined,
-    "speed": {
-      "manualspeed": undefined,
-      "mode": undefined,
-    },
-    "timers": {
-      "countdown": {
-        "hour": undefined,
-        "min": undefined,
-        "sec": undefined,
-      },
-      "mode": undefined,
-    },
     "unittype": "Vento Expert",
   },
 }
@@ -889,42 +453,10 @@ exports[`Api set functions setOnOffStatus sends value 2 1`] = `
     ],
   ],
   "response": {
-    "alarm": undefined,
-    "boost": {
-      "deactivationtimer": undefined,
-      "mode": undefined,
-    },
-    "fan": {
-      "rpm": undefined,
-    },
-    "filter": {
-      "alarm": undefined,
-      "timer": {
-        "days": undefined,
-        "hour": undefined,
-        "min": undefined,
-      },
-    },
     "humidity": {
       "activated": 0,
-      "current": undefined,
-      "sensoractivation": undefined,
-      "threshold": undefined,
     },
     "onoff": 2,
-    "operationmode": undefined,
-    "speed": {
-      "manualspeed": undefined,
-      "mode": undefined,
-    },
-    "timers": {
-      "countdown": {
-        "hour": undefined,
-        "min": undefined,
-        "sec": undefined,
-      },
-      "mode": undefined,
-    },
     "unittype": "Vento Expert",
   },
 }
@@ -951,42 +483,10 @@ exports[`Api set functions setOperationMode sends value 0 1`] = `
     ],
   ],
   "response": {
-    "alarm": undefined,
-    "boost": {
-      "deactivationtimer": undefined,
-      "mode": undefined,
-    },
-    "fan": {
-      "rpm": undefined,
-    },
-    "filter": {
-      "alarm": undefined,
-      "timer": {
-        "days": undefined,
-        "hour": undefined,
-        "min": undefined,
-      },
-    },
     "humidity": {
       "activated": 0,
-      "current": undefined,
-      "sensoractivation": undefined,
-      "threshold": undefined,
     },
-    "onoff": undefined,
     "operationmode": 0,
-    "speed": {
-      "manualspeed": undefined,
-      "mode": undefined,
-    },
-    "timers": {
-      "countdown": {
-        "hour": undefined,
-        "min": undefined,
-        "sec": undefined,
-      },
-      "mode": undefined,
-    },
     "unittype": "Vento Expert",
   },
 }
@@ -1013,42 +513,10 @@ exports[`Api set functions setOperationMode sends value 1 1`] = `
     ],
   ],
   "response": {
-    "alarm": undefined,
-    "boost": {
-      "deactivationtimer": undefined,
-      "mode": undefined,
-    },
-    "fan": {
-      "rpm": undefined,
-    },
-    "filter": {
-      "alarm": undefined,
-      "timer": {
-        "days": undefined,
-        "hour": undefined,
-        "min": undefined,
-      },
-    },
     "humidity": {
       "activated": 0,
-      "current": undefined,
-      "sensoractivation": undefined,
-      "threshold": undefined,
     },
-    "onoff": undefined,
     "operationmode": 1,
-    "speed": {
-      "manualspeed": undefined,
-      "mode": undefined,
-    },
-    "timers": {
-      "countdown": {
-        "hour": undefined,
-        "min": undefined,
-        "sec": undefined,
-      },
-      "mode": undefined,
-    },
     "unittype": "Vento Expert",
   },
 }
@@ -1075,42 +543,10 @@ exports[`Api set functions setOperationMode sends value 2 1`] = `
     ],
   ],
   "response": {
-    "alarm": undefined,
-    "boost": {
-      "deactivationtimer": undefined,
-      "mode": undefined,
-    },
-    "fan": {
-      "rpm": undefined,
-    },
-    "filter": {
-      "alarm": undefined,
-      "timer": {
-        "days": undefined,
-        "hour": undefined,
-        "min": undefined,
-      },
-    },
     "humidity": {
       "activated": 0,
-      "current": undefined,
-      "sensoractivation": undefined,
-      "threshold": undefined,
     },
-    "onoff": undefined,
     "operationmode": 2,
-    "speed": {
-      "manualspeed": undefined,
-      "mode": undefined,
-    },
-    "timers": {
-      "countdown": {
-        "hour": undefined,
-        "min": undefined,
-        "sec": undefined,
-      },
-      "mode": undefined,
-    },
     "unittype": "Vento Expert",
   },
 }
@@ -1137,41 +573,11 @@ exports[`Api set functions setSpeedMode sends value 0 1`] = `
     ],
   ],
   "response": {
-    "alarm": undefined,
-    "boost": {
-      "deactivationtimer": undefined,
-      "mode": undefined,
-    },
-    "fan": {
-      "rpm": undefined,
-    },
-    "filter": {
-      "alarm": undefined,
-      "timer": {
-        "days": undefined,
-        "hour": undefined,
-        "min": undefined,
-      },
-    },
     "humidity": {
       "activated": 0,
-      "current": undefined,
-      "sensoractivation": undefined,
-      "threshold": undefined,
     },
-    "onoff": undefined,
-    "operationmode": undefined,
     "speed": {
-      "manualspeed": undefined,
       "mode": 0,
-    },
-    "timers": {
-      "countdown": {
-        "hour": undefined,
-        "min": undefined,
-        "sec": undefined,
-      },
-      "mode": undefined,
     },
     "unittype": "Vento Expert",
   },
@@ -1199,41 +605,11 @@ exports[`Api set functions setSpeedMode sends value 1 1`] = `
     ],
   ],
   "response": {
-    "alarm": undefined,
-    "boost": {
-      "deactivationtimer": undefined,
-      "mode": undefined,
-    },
-    "fan": {
-      "rpm": undefined,
-    },
-    "filter": {
-      "alarm": undefined,
-      "timer": {
-        "days": undefined,
-        "hour": undefined,
-        "min": undefined,
-      },
-    },
     "humidity": {
       "activated": 0,
-      "current": undefined,
-      "sensoractivation": undefined,
-      "threshold": undefined,
     },
-    "onoff": undefined,
-    "operationmode": undefined,
     "speed": {
-      "manualspeed": undefined,
       "mode": 1,
-    },
-    "timers": {
-      "countdown": {
-        "hour": undefined,
-        "min": undefined,
-        "sec": undefined,
-      },
-      "mode": undefined,
     },
     "unittype": "Vento Expert",
   },
@@ -1261,41 +637,11 @@ exports[`Api set functions setSpeedMode sends value 2 1`] = `
     ],
   ],
   "response": {
-    "alarm": undefined,
-    "boost": {
-      "deactivationtimer": undefined,
-      "mode": undefined,
-    },
-    "fan": {
-      "rpm": undefined,
-    },
-    "filter": {
-      "alarm": undefined,
-      "timer": {
-        "days": undefined,
-        "hour": undefined,
-        "min": undefined,
-      },
-    },
     "humidity": {
       "activated": 0,
-      "current": undefined,
-      "sensoractivation": undefined,
-      "threshold": undefined,
     },
-    "onoff": undefined,
-    "operationmode": undefined,
     "speed": {
-      "manualspeed": undefined,
       "mode": 2,
-    },
-    "timers": {
-      "countdown": {
-        "hour": undefined,
-        "min": undefined,
-        "sec": undefined,
-      },
-      "mode": undefined,
     },
     "unittype": "Vento Expert",
   },
@@ -1323,40 +669,10 @@ exports[`Api set functions setTimerMode sends value 0 1`] = `
     ],
   ],
   "response": {
-    "alarm": undefined,
-    "boost": {
-      "deactivationtimer": undefined,
-      "mode": undefined,
-    },
-    "fan": {
-      "rpm": undefined,
-    },
-    "filter": {
-      "alarm": undefined,
-      "timer": {
-        "days": undefined,
-        "hour": undefined,
-        "min": undefined,
-      },
-    },
     "humidity": {
       "activated": 0,
-      "current": undefined,
-      "sensoractivation": undefined,
-      "threshold": undefined,
-    },
-    "onoff": undefined,
-    "operationmode": undefined,
-    "speed": {
-      "manualspeed": undefined,
-      "mode": undefined,
     },
     "timers": {
-      "countdown": {
-        "hour": undefined,
-        "min": undefined,
-        "sec": undefined,
-      },
       "mode": 0,
     },
     "unittype": "Vento Expert",
@@ -1385,40 +701,10 @@ exports[`Api set functions setTimerMode sends value 1 1`] = `
     ],
   ],
   "response": {
-    "alarm": undefined,
-    "boost": {
-      "deactivationtimer": undefined,
-      "mode": undefined,
-    },
-    "fan": {
-      "rpm": undefined,
-    },
-    "filter": {
-      "alarm": undefined,
-      "timer": {
-        "days": undefined,
-        "hour": undefined,
-        "min": undefined,
-      },
-    },
     "humidity": {
       "activated": 0,
-      "current": undefined,
-      "sensoractivation": undefined,
-      "threshold": undefined,
-    },
-    "onoff": undefined,
-    "operationmode": undefined,
-    "speed": {
-      "manualspeed": undefined,
-      "mode": undefined,
     },
     "timers": {
-      "countdown": {
-        "hour": undefined,
-        "min": undefined,
-        "sec": undefined,
-      },
       "mode": 1,
     },
     "unittype": "Vento Expert",
@@ -1447,40 +733,10 @@ exports[`Api set functions setTimerMode sends value 2 1`] = `
     ],
   ],
   "response": {
-    "alarm": undefined,
-    "boost": {
-      "deactivationtimer": undefined,
-      "mode": undefined,
-    },
-    "fan": {
-      "rpm": undefined,
-    },
-    "filter": {
-      "alarm": undefined,
-      "timer": {
-        "days": undefined,
-        "hour": undefined,
-        "min": undefined,
-      },
-    },
     "humidity": {
       "activated": 0,
-      "current": undefined,
-      "sensoractivation": undefined,
-      "threshold": undefined,
-    },
-    "onoff": undefined,
-    "operationmode": undefined,
-    "speed": {
-      "manualspeed": undefined,
-      "mode": undefined,
     },
     "timers": {
-      "countdown": {
-        "hour": undefined,
-        "min": undefined,
-        "sec": undefined,
-      },
       "mode": 2,
     },
     "unittype": "Vento Expert",
@@ -1687,41 +943,8 @@ exports[`Api set functions update sends correct data 1`] = `
     ],
   ],
   "response": {
-    "alarm": undefined,
-    "boost": {
-      "deactivationtimer": undefined,
-      "mode": undefined,
-    },
-    "fan": {
-      "rpm": undefined,
-    },
-    "filter": {
-      "alarm": undefined,
-      "timer": {
-        "days": undefined,
-        "hour": undefined,
-        "min": undefined,
-      },
-    },
     "humidity": {
       "activated": 0,
-      "current": undefined,
-      "sensoractivation": undefined,
-      "threshold": undefined,
-    },
-    "onoff": undefined,
-    "operationmode": undefined,
-    "speed": {
-      "manualspeed": undefined,
-      "mode": undefined,
-    },
-    "timers": {
-      "countdown": {
-        "hour": undefined,
-        "min": undefined,
-        "sec": undefined,
-      },
-      "mode": undefined,
     },
     "unittype": "Vento Expert",
   },
