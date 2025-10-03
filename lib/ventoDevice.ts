@@ -126,7 +126,9 @@ export default class VentoDevice extends Device {
       await Promise.all(Object.keys(Capabilities).map(async (cap) => {
         // @ts-expect-error: dynamic key
         const stateElement = state[cap];
-        return this.setCapabilityValue(cap, stateElement);
+        if (stateElement !== undefined) {
+          return this.setCapabilityValue(cap, stateElement);
+        }
       }));
 
       const settingsOnDevice: Partial<DeviceSettings> = {

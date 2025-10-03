@@ -34,7 +34,7 @@ export default class Api {
       if (r != null) {
         return capabilityMapper(r);
       }
-      return {};
+      return { alarm_connectivity: true };
     });
 
     public getDeviceState = async () => this.send(new Packet(this.deviceId, this.devicePass, FunctionType.READ, [

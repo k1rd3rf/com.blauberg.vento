@@ -142,12 +142,6 @@ exports[`ventoDevice should be able to get status from modbus on init 1`] = `
           },
         ],
       ],
-      "alarm_connectivity": [
-        [
-          undefined,
-          "calling unregistered capability",
-        ],
-      ],
       "alarm_filter": [
         [
           false,
@@ -580,20 +574,6 @@ exports[`ventoDevice should be able to setup all capabilities 1`] = `
           {
             "result": false,
           },
-        ],
-      ],
-      "alarm_connectivity": [
-        [
-          undefined,
-          "calling unregistered capability",
-        ],
-        [
-          undefined,
-          "calling unregistered capability",
-        ],
-        [
-          undefined,
-          "calling unregistered capability",
         ],
       ],
       "alarm_filter": [
