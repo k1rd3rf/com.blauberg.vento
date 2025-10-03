@@ -6,28 +6,49 @@ type MappableCapabilities = Capabilities | DeviceSettings;
 
 type CapabilityTypes = keyof typeof Capabilities | keyof typeof DeviceSettings;
 
-type ResponseToCapabilityFunctions = Record<CapabilityTypes, (values: Record<keyof typeof Parameter | string, number[] | undefined>) => any>;
+type ResponseToCapabilityFunctions = Record<CapabilityTypes, (values: number[] | undefined) => any>;
+
+const paramsForCapability: Record<CapabilityTypes, keyof typeof Parameter> = {
+  alarm_boost: 'BOOT_MODE',
+  alarm_filter: 'FILTER_ALARM',
+  filter_timer: 'FILTER_TIMER',
+  alarm_generic: 'READ_ALARM',
+  measure_humidity: 'CURRENT_HUMIDITY',
+  measure_RPM: 'FAN1RPM',
+  speedMode: 'SPEED',
+  manualSpeed: 'MANUAL_SPEED',
+  fan_speed: 'MANUAL_SPEED',
+  operationMode: 'VENTILATION_MODE',
+  timerMode: 'TIMER_MODE',
+  timerMode_timer: '11' as keyof typeof Parameter, // Active timer countdown
+  alarm_connectivity: 'CURRENT_IP_ADDRESS',
+  onoff: 'ON_OFF',
+  boost_delay: 'BOOST_MODE_DEACTIVATION_DELAY',
+  humidity_sensor: 'HUMIDITY_SENSOR_ACTIVATION',
+  humidity_threshold: 'HUMIDITY_THRESHOLD',
+  unit_type: 'UNIT_TYPE',
+};
 
 const capabilityToParameterMap: ResponseToCapabilityFunctions = {
-  alarm_boost: (values) => (values.BOOT_MODE?.[0] !== 0),
-  alarm_filter: (values) => (values.FILTER_ALARM?.[0] === 1),
-  filter_timer: (values) => [values.FILTER_TIMER?.[2], values.FILTER_TIMER?.[1], values.FILTER_TIMER?.[0]].map((n) => n?.toString().padStart(2, '0')).join(':'),
-  alarm_generic: (values) => (values.READ_ALARM?.[0] !== 0),
-  measure_humidity: (values) => values.CURRENT_HUMIDITY?.[0],
-  measure_RPM: (values) => values.FAN1RPM?.[0],
-  speedMode: (values) => values.SPEED?.[0].toString(),
-  manualSpeed: (values) => ((values.MANUAL_SPEED?.[0] ?? -1) / 255) * 100,
-  fan_speed: (values) => ((values.MANUAL_SPEED?.[0] ?? -1) / 255),
-  operationMode: (values) => values.VENTILATION_MODE?.[0].toString(),
-  timerMode: (values) => values.TIMER_MODE?.[0].toString(),
-  timerMode_timer: (values) => [values['11']?.[2], values['11']?.[1], values['11']?.[0]].map((n) => n?.toString().padStart(2, '0')).join(':'),
+  alarm_boost: (values) => (values?.[0] !== 0),
+  alarm_filter: (values) => (values?.[0] === 1),
+  filter_timer: (values) => [values?.[2], values?.[1], values?.[0]].map((n) => n?.toString().padStart(2, '0')).join(':'),
+  alarm_generic: (values) => (values?.[0] !== 0),
+  measure_humidity: (values) => values?.[0],
+  measure_RPM: (values) => values?.[0],
+  speedMode: (values) => values?.[0].toString(),
+  manualSpeed: (values) => ((values?.[0] ?? -1) / 255) * 100,
+  fan_speed: (values) => ((values?.[0] ?? -1) / 255),
+  operationMode: (values) => values?.[0].toString(),
+  timerMode: (values) => values?.[0].toString(),
+  timerMode_timer: (values) => [values?.[2], values?.[1], values?.[0]].map((n) => n?.toString().padStart(2, '0')).join(':'),
   alarm_connectivity: (values) => !values,
-  onoff: (values) => values.ON_OFF?.[0] === 1,
-  boost_delay: (values) => values.BOOST_MODE_DEACTIVATION_DELAY?.[0],
-  humidity_sensor: (values) => values.HUMIDITY_SENSOR_ACTIVATION?.[0] === 1,
-  humidity_threshold: (values) => values.HUMIDITY_THRESHOLD?.[0],
+  onoff: (values) => values?.[0] === 1,
+  boost_delay: (values) => values?.[0],
+  humidity_sensor: (values) => values?.[0] === 1,
+  humidity_threshold: (values) => values?.[0],
   unit_type: (values) => {
-    switch (values.UNIT_TYPE?.[0]) {
+    switch (values?.[0]) {
       case 1:
         return 'Vento Expert A50-1 W V.2 | Vento Expert A85-1 W V.2 | Vento Expert A100-1 W V.2';
         break;
@@ -52,7 +73,11 @@ export default (result: Response): CapabilityResponse => {
     // @ts-expect-error: ok now
     const mapFunction = capabilityToParameterMap[capability];
     if (mapFunction) {
-      return { [capability]: mapFunction(values) };
+      // @ts-expect-error: ok now
+      const hasValue = values[paramsForCapability[capability]];
+      if (hasValue && hasValue.length > 0) {
+        return { [capability]: mapFunction(hasValue) };
+      }
     }
   }).reduce((a, b) => ({ ...a, ...b }), {});
 };
