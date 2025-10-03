@@ -75,7 +75,7 @@ export default (result: Response): CapabilityResponse => {
     if (mapFunction) {
       // @ts-expect-error: ok now
       const hasValue = values[paramsForCapability[capability]];
-      if (hasValue && hasValue.length > 0) {
+      if (hasValue !== undefined && hasValue.length > 0) {
         return { [capability]: mapFunction(hasValue) };
       }
     }
