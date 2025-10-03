@@ -1,7 +1,6 @@
 import {
   BlaubergVentoClient, Packet, FunctionType, DataEntry, Parameter,
 } from 'blaubergventojs';
-import mapModbusResponse, { ModbusResponse } from './mapModbusResponse';
 import capabilityMapper, { CapabilityResponse } from './capabilityMapper';
 
 export default class Api {
@@ -37,7 +36,7 @@ export default class Api {
       return { alarm_connectivity: true };
     });
 
-    public getDeviceState = async () => this.send(new Packet(this.deviceId, this.devicePass, FunctionType.READ, [
+    public getDeviceState: () => Promise<Partial<CapabilityResponse>> = async () => this.send(new Packet(this.deviceId, this.devicePass, FunctionType.READ, [
       DataEntry.of(Parameter.ON_OFF),
       DataEntry.of(Parameter.SPEED),
       DataEntry.of(Parameter.MANUAL_SPEED),

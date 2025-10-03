@@ -16,11 +16,13 @@ export const removeUndefinedDeep = (obj: Record<string, unknown>) => {
   return ret;
 };
 
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 export const callCount = (calls: any[]) => calls.reduce((acc, c) => {
   const [capabilityId] = c;
   return { ...acc, [capabilityId]: (acc[capabilityId] || 0) + 1 };
 }, {});
 
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 export const callsWithArgs = (calls1: any[]) => calls1.reduce((acc, c) => {
   const [capabilityId, ...args] = c;
   return { ...acc, [capabilityId]: [...(acc[capabilityId] || []), args] };

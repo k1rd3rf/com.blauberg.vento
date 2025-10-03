@@ -129,6 +129,7 @@ export default class VentoDevice extends Device {
         if (stateElement !== undefined) {
           return this.setCapabilityValue(cap, stateElement);
         }
+        return undefined;
       }));
 
       const settingsOnDevice: Partial<DeviceSettings> = {

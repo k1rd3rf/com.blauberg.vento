@@ -2,6 +2,7 @@ import { DeviceAddress } from 'blaubergventojs';
 import Api from './api';
 import { statusResponse } from './__mockdata__/statusResponse';
 import { removeUndefinedDeep } from './testTools';
+import { CapabilityResponse } from './capabilityMapper';
 
 describe('Api set functions', () => {
   let api: Api;
@@ -23,52 +24,52 @@ describe('Api set functions', () => {
     jest.clearAllMocks();
   });
 
-  const getMockCalls = (response: any) => ({
+  const getMockCalls = (response: Partial<CapabilityResponse>) => ({
     calls: (api.modbusClient.send as jest.Mock).mock.calls,
     response: removeUndefinedDeep(response),
   });
 
   it('update sends correct data', async () => {
-    const response = await api.getDeviceState().catch((err) => err);
+    const response = await api.getDeviceState();
     expect(getMockCalls(response)).toMatchSnapshot();
   });
   it('update gets response', async () => {
     (api.modbusClient.send as jest.Mock).mockReturnValue(Promise.resolve(statusResponse));
-    const response = await api.getDeviceState().catch((err) => err);
+    const response = await api.getDeviceState();
     expect(getMockCalls(response)).toMatchSnapshot();
   });
 
   [0, 1, 2].forEach((value) => {
     it(`setOnOffStatus sends value ${value}`, async () => {
-      const response = await api.setOnOffStatus(value).catch((err) => err);
+      const response = await api.setOnOffStatus(value);
       expect(getMockCalls(response)).toMatchSnapshot();
     });
     it(`setSpeedMode sends value ${value}`, async () => {
-      const response = await api.setSpeedMode(value).catch((err) => err);
+      const response = await api.setSpeedMode(value);
       expect(getMockCalls(response)).toMatchSnapshot();
     });
     it(`setOperationMode sends value ${value}`, async () => {
-      const response = await api.setOperationMode(value).catch((err) => err);
+      const response = await api.setOperationMode(value);
       expect(getMockCalls(response)).toMatchSnapshot();
     });
     it(`setTimerMode sends value ${value}`, async () => {
-      const response = await api.setTimerMode(value).catch((err) => err);
+      const response = await api.setTimerMode(value);
       expect(getMockCalls(response)).toMatchSnapshot();
     });
     it(`setManualSpeed sends value ${value}`, async () => {
-      const response = await api.setManualSpeed(value).catch((err) => err);
+      const response = await api.setManualSpeed(value);
       expect(getMockCalls(response)).toMatchSnapshot();
     });
     it(`setHumiditySensor sends value ${value}`, async () => {
-      const response = await api.setHumiditySensor(value).catch((err) => err);
+      const response = await api.setHumiditySensor(value);
       expect(getMockCalls(response)).toMatchSnapshot();
     });
     it(`setHumiditySensorThreshold sends value ${value}`, async () => {
-      const response = await api.setHumiditySensorThreshold(value).catch((err) => err);
+      const response = await api.setHumiditySensorThreshold(value);
       expect(getMockCalls(response)).toMatchSnapshot();
     });
     it(`setBoostDelay sends value ${value}`, async () => {
-      const response = await api.setBoostDelay(value).catch((err) => err);
+      const response = await api.setBoostDelay(value);
       expect(getMockCalls(response)).toMatchSnapshot();
     });
   });
