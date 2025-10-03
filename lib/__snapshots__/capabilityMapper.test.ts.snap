@@ -3,7 +3,6 @@
 exports[`capabilityMapper maps packet to capability response 1`] = `
 {
   "alarm_boost": false,
-  "alarm_connectivity": false,
   "alarm_filter": false,
   "alarm_generic": false,
   "boost_delay": 30,
