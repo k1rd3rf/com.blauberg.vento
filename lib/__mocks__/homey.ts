@@ -24,7 +24,11 @@ class FlowCard {
     registerRunListener = (fn: (value: unknown) => Promise<void>) => {
       capabilities[this.capability] = fn;
       registerRunListenerMock(this.capability, fn);
-      return Promise.resolve({ device: this.device, capability: this.capability, [this.capability]: capabilityValue[this.capability] });
+      return Promise.resolve({
+        device: this.device,
+        capability: this.capability,
+        [this.capability]: capabilityValue[this.capability],
+      });
     }
 }
 
@@ -90,16 +94,14 @@ export class Device {
       logMock('setAvailable', reason);
     }
 
-    getMockCalls = () => {
-      return ({
-        setCapabilityValue: callsWithArgs(setCapabilityValueMock.mock.calls),
-        hasCapability: callCount(hasCapabilityMock.mock.calls),
-        registerCapabilityListener: callCount(registerCapabilityListenerMock.mock.calls),
-        registerRunListener: callsWithArgs(registerRunListenerMock.mock.calls),
-        getCapabilityValue: callCount(getCapabilityValueMock.mock.calls),
-        log: logMock.mock.calls,
-        settings: this.settings,
-        capabilities,
-      });
-    };
+    getMockCalls = () => ({
+      setCapabilityValue: callsWithArgs(setCapabilityValueMock.mock.calls),
+      hasCapability: callCount(hasCapabilityMock.mock.calls),
+      registerCapabilityListener: callCount(registerCapabilityListenerMock.mock.calls),
+      registerRunListener: callsWithArgs(registerRunListenerMock.mock.calls),
+      getCapabilityValue: callCount(getCapabilityValueMock.mock.calls),
+      log: logMock.mock.calls,
+      settings: this.settings,
+      capabilities,
+    });
 }
