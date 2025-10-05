@@ -9,6 +9,15 @@ jobs:
     steps:
       - uses: actions/checkout@v5
 
+      - name: Setup Node.js
+        uses: actions/setup-node@v5
+        with:
+          node-version: 24.x
+          cache: npm
+
+      - name: Install
+        run: npm ci
+
       - name: Publish Homey App
         uses: athombv/github-action-homey-app-publish@master
         id: publish
