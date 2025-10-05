@@ -34,10 +34,7 @@ class VentoDriver extends Driver {
     const packet = new Packet(device.id, devicepass, FunctionType.WRITE, [
       DataEntry.of(param, value),
     ]);
-    return this.modbusClient.send(packet, device.ip).then((result) => {
-      // Check result
-      this.log(JSON.stringify(result));
-    });
+    return this.modbusClient.send(packet, device.ip).then((result) => result);
   }
 
   async setOnoffStatus(device, devicepass, value) {

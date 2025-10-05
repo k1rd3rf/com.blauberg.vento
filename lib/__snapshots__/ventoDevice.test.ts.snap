@@ -34,6 +34,10 @@ exports[`ventoDevice should be able to get status from modbus on init 1`] = `
     "log": [
       [
         "log",
+        "Vento driver has been initialized",
+      ],
+      [
+        "log",
         "Locating device with id TEST1234",
       ],
       [
@@ -146,31 +150,7 @@ exports[`ventoDevice should be able to setup all capabilities 1`] = `
     "log": [
       [
         "log",
-        "Locating device with id TEST1234",
-      ],
-      [
-        "setUnavailable was called",
-        "Device not discovered yet",
-      ],
-      [
-        "log",
-        "Vento device could not be located",
-      ],
-      [
-        "log",
-        "Create the flow for the speed mode capability",
-      ],
-      [
-        "log",
-        "Create the flow for the manual speed capability",
-      ],
-      [
-        "log",
-        "Create the flow for the operation mode capability",
-      ],
-      [
-        "log",
-        "Create the flow for the timer mode capability",
+        "Vento driver has been initialized",
       ],
       [
         "log",
@@ -199,6 +179,42 @@ exports[`ventoDevice should be able to setup all capabilities 1`] = `
       [
         "log",
         "Create the flow for the timer mode capability",
+      ],
+      [
+        "log",
+        "Vento driver has been initialized",
+      ],
+      [
+        "log",
+        "Locating device with id TEST1234",
+      ],
+      [
+        "setUnavailable was called",
+        "Device not discovered yet",
+      ],
+      [
+        "log",
+        "Vento device could not be located",
+      ],
+      [
+        "log",
+        "Create the flow for the speed mode capability",
+      ],
+      [
+        "log",
+        "Create the flow for the manual speed capability",
+      ],
+      [
+        "log",
+        "Create the flow for the operation mode capability",
+      ],
+      [
+        "log",
+        "Create the flow for the timer mode capability",
+      ],
+      [
+        "log",
+        "Vento driver has been initialized",
       ],
       [
         "log",
@@ -310,4 +326,8 @@ exports[`ventoDevice should be able to setup all capabilities 1`] = `
 }
 `;
 
-exports[`ventoDevice should get and set values trough the api and modbus 1`] = `{}`;
+exports[`ventoDevice should get and set values trough the api and modbus 1`] = `
+{
+  "modbusCalls": [],
+}
+`;
