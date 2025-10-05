@@ -5,4 +5,3 @@ Unofficial app for the Blauberg Vento Expert Fans. This app uses local LAN commu
 Getting started
 You need to use the Blauberg Home app to create device passwords for your fans.
 Then after installing this app you can set the device password during the adding of the device.
-
