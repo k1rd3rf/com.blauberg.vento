@@ -1,0 +1,313 @@
+// Jest Snapshot v1, https://jestjs.io/docs/snapshot-testing
+
+exports[`ventoDevice should be able to get status from modbus on init 1`] = `
+{
+  "apiCalls": {
+    "capabilities": {
+      "alarm_boost": [Function],
+      "alarm_filter": [Function],
+      "alarm_generic": [Function],
+      "fan_speed": [Function],
+      "manualSpeed": [Function],
+      "manualSpeed_set": [Function],
+      "onoff": [Function],
+      "operationMode": [Function],
+      "operation_mode": [Function],
+      "speedMode": [Function],
+      "speed_mode": [Function],
+      "timerMode": [Function],
+      "timer_mode": [Function],
+    },
+    "getCapabilityValue": {},
+    "hasCapability": {
+      "alarm_boost": 1,
+      "alarm_connectivity": 1,
+      "alarm_filter": 1,
+      "alarm_generic": 1,
+      "fan_speed": 2,
+      "manualSpeed": 1,
+      "onoff": 1,
+      "operationMode": 1,
+      "speedMode": 1,
+      "timerMode": 1,
+    },
+    "log": [
+      [
+        "log",
+        "Locating device with id TEST1234",
+      ],
+      [
+        "setUnavailable was called",
+        "Device not discovered yet",
+      ],
+      [
+        "log",
+        "Vento device could not be located",
+      ],
+      [
+        "log",
+        "Create the flow for the speed mode capability",
+      ],
+      [
+        "log",
+        "Create the flow for the manual speed capability",
+      ],
+      [
+        "log",
+        "Create the flow for the operation mode capability",
+      ],
+      [
+        "log",
+        "Create the flow for the timer mode capability",
+      ],
+    ],
+    "registerCapabilityListener": {
+      "fan_speed": 1,
+      "manualSpeed": 1,
+      "onoff": 1,
+      "operationMode": 1,
+      "speedMode": 1,
+      "timerMode": 1,
+    },
+    "registerRunListener": {
+      "alarm_boost": [
+        [
+          [Function],
+        ],
+      ],
+      "alarm_filter": [
+        [
+          [Function],
+        ],
+      ],
+      "alarm_generic": [
+        [
+          [Function],
+        ],
+      ],
+      "manualSpeed_set": [
+        [
+          [Function],
+        ],
+      ],
+      "operation_mode": [
+        [
+          [Function],
+        ],
+      ],
+      "speed_mode": [
+        [
+          [Function],
+        ],
+      ],
+      "timer_mode": [
+        [
+          [Function],
+        ],
+      ],
+    },
+    "setCapabilityValue": {},
+    "settings": {},
+  },
+}
+`;
+
+exports[`ventoDevice should be able to setup all capabilities 1`] = `
+{
+  "calls": {
+    "capabilities": {
+      "alarm_boost": [Function],
+      "alarm_filter": [Function],
+      "alarm_generic": [Function],
+      "fan_speed": [Function],
+      "manualSpeed": [Function],
+      "manualSpeed_set": [Function],
+      "onoff": [Function],
+      "operationMode": [Function],
+      "operation_mode": [Function],
+      "speedMode": [Function],
+      "speed_mode": [Function],
+      "timerMode": [Function],
+      "timer_mode": [Function],
+    },
+    "getCapabilityValue": {},
+    "hasCapability": {
+      "alarm_boost": 3,
+      "alarm_connectivity": 2,
+      "alarm_filter": 3,
+      "alarm_generic": 3,
+      "fan_speed": 5,
+      "manualSpeed": 3,
+      "onoff": 3,
+      "operationMode": 3,
+      "speedMode": 3,
+      "timerMode": 3,
+    },
+    "log": [
+      [
+        "log",
+        "Locating device with id TEST1234",
+      ],
+      [
+        "setUnavailable was called",
+        "Device not discovered yet",
+      ],
+      [
+        "log",
+        "Vento device could not be located",
+      ],
+      [
+        "log",
+        "Create the flow for the speed mode capability",
+      ],
+      [
+        "log",
+        "Create the flow for the manual speed capability",
+      ],
+      [
+        "log",
+        "Create the flow for the operation mode capability",
+      ],
+      [
+        "log",
+        "Create the flow for the timer mode capability",
+      ],
+      [
+        "log",
+        "Locating device with id TEST1234",
+      ],
+      [
+        "setUnavailable was called",
+        "Device not discovered yet",
+      ],
+      [
+        "log",
+        "Vento device could not be located",
+      ],
+      [
+        "log",
+        "Create the flow for the speed mode capability",
+      ],
+      [
+        "log",
+        "Create the flow for the manual speed capability",
+      ],
+      [
+        "log",
+        "Create the flow for the operation mode capability",
+      ],
+      [
+        "log",
+        "Create the flow for the timer mode capability",
+      ],
+      [
+        "log",
+        "Create the flow for the speed mode capability",
+      ],
+      [
+        "log",
+        "Create the flow for the manual speed capability",
+      ],
+      [
+        "log",
+        "Create the flow for the operation mode capability",
+      ],
+      [
+        "log",
+        "Create the flow for the timer mode capability",
+      ],
+    ],
+    "registerCapabilityListener": {
+      "fan_speed": 3,
+      "manualSpeed": 3,
+      "onoff": 3,
+      "operationMode": 3,
+      "speedMode": 3,
+      "timerMode": 3,
+    },
+    "registerRunListener": {
+      "alarm_boost": [
+        [
+          [Function],
+        ],
+        [
+          [Function],
+        ],
+        [
+          [Function],
+        ],
+      ],
+      "alarm_filter": [
+        [
+          [Function],
+        ],
+        [
+          [Function],
+        ],
+        [
+          [Function],
+        ],
+      ],
+      "alarm_generic": [
+        [
+          [Function],
+        ],
+        [
+          [Function],
+        ],
+        [
+          [Function],
+        ],
+      ],
+      "manualSpeed_set": [
+        [
+          [Function],
+        ],
+        [
+          [Function],
+        ],
+        [
+          [Function],
+        ],
+      ],
+      "operation_mode": [
+        [
+          [Function],
+        ],
+        [
+          [Function],
+        ],
+        [
+          [Function],
+        ],
+      ],
+      "speed_mode": [
+        [
+          [Function],
+        ],
+        [
+          [Function],
+        ],
+        [
+          [Function],
+        ],
+      ],
+      "timer_mode": [
+        [
+          [Function],
+        ],
+        [
+          [Function],
+        ],
+        [
+          [Function],
+        ],
+      ],
+    },
+    "setCapabilityValue": {},
+    "settings": {},
+  },
+}
+`;
+
+exports[`ventoDevice should get and set values trough the api and modbus 1`] = `{}`;
