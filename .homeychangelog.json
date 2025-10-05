@@ -24,6 +24,9 @@
     "en": "Fix eslint issues"
   },
   "1.2.4": {
+    "en": "Add prettier"
+  },
+  "1.2.5": {
     "en": "Add workflows to verify app"
   }
 }
