@@ -19,5 +19,8 @@
   },
   "1.2.2": {
     "en": "Added connectivity alarm"
+  },
+  "1.2.3": {
+    "en": "Fix eslint issues"
   }
 }
