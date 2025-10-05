@@ -115,4 +115,11 @@ export class Device {
   });
 }
 
-export class Driver {}
+export class Driver {
+  homey = {
+    setInterval: jest.fn(),
+  };
+
+  log = (...args: unknown[]) => logMock('log', ...args);
+  error = (...args: unknown[]) => logMock('error', ...args);
+}
