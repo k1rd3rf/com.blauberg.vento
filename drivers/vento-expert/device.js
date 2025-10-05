@@ -17,10 +17,10 @@ class VentoDevice extends Device {
 
   async updateCapabilities() {
     if (!this.hasCapability('fan_speed')) {
-      this.addCapability('fan_speed');
+      await this.addCapability('fan_speed');
     }
     if (!this.hasCapability('alarm_connectivity')) {
-      this.addCapability('alarm_connectivity');
+      await this.addCapability('alarm_connectivity');
     }
   }
 
@@ -38,7 +38,6 @@ class VentoDevice extends Device {
     }
     if (this.hasCapability('fan_speed')) {
       this.registerCapabilityListener('fan_speed', this.onCapabilityFanSpeed.bind(this));
-      // await this.setupFlowManualSpeed();
     }
     if (this.hasCapability('operationMode')) {
       this.registerCapabilityListener('operationMode', this.onCapabilityOperationMode.bind(this));
@@ -68,10 +67,10 @@ class VentoDevice extends Device {
   async discovery(id) {
     this.deviceObject = this.driver.locateDeviceById(id);
     if (this.deviceObject == null) {
-      this.setUnavailable('Device not discovered yet');
+      await this.setUnavailable('Device not discovered yet');
       this.log('Vento device could not be located');
     } else {
-      this.setAvailable();
+      await this.setAvailable();
       this.log(`Vento device has been initialized: [${this.deviceObject.ip}]`);
       this.devicepwd = await this.getSetting('devicepwd');
     }
@@ -79,38 +78,37 @@ class VentoDevice extends Device {
 
   async updateDeviceState() {
     this.log('Requesting the current device state');
-    const state = await this.driver.getDeviceState(this.deviceObject, this.devicepwd).catch((error) => {
-      this.setCapabilityValue('alarm_connectivity', true);
+    const state = await this.driver.getDeviceState(this.deviceObject, this.devicepwd).catch(async (error) => {
+      await this.setCapabilityValue('alarm_connectivity', true);
     });
     if (state === undefined) {
       return;
     }
-    this.setCapabilityValue('alarm_connectivity', false);
+    await this.setCapabilityValue('alarm_connectivity', false);
     this.log(JSON.stringify(state));
-    this.setCapabilityValue('onoff', (state.onoff == 1));
-    this.setCapabilityValue('alarm_boost', (state.boost.mode != 0));
-    this.setCapabilityValue('alarm_filter', (state.filter.alarm == 1));
-    this.setCapabilityValue('filter_timer', `${state.filter.timer.days}:${state.filter.timer.hour}:${state.filter.timer.min}`);
-    this.setCapabilityValue('alarm_generic', (state.alarm != 0));
-    this.setCapabilityValue('measure_humidity', state.humidity.current);
-    this.setCapabilityValue('measure_RPM', state.fan.rpm);
+    await this.setCapabilityValue('onoff', (state.onoff === 1));
+    await this.setCapabilityValue('alarm_boost', (state.boost.mode !== 0));
+    await this.setCapabilityValue('alarm_filter', (state.filter.alarm === 1));
+    await this.setCapabilityValue('filter_timer', `${state.filter.timer.days}:${state.filter.timer.hour}:${state.filter.timer.min}`);
+    await this.setCapabilityValue('alarm_generic', (state.alarm !== 0));
+    await this.setCapabilityValue('measure_humidity', state.humidity.current);
+    await this.setCapabilityValue('measure_RPM', state.fan.rpm);
     // Now handle the different modes
-    this.setCapabilityValue('speedMode', state.speed.mode.toString());
-    this.setCapabilityValue('manualSpeed', (state.speed.manualspeed / 255) * 100);
-    this.setCapabilityValue('fan_speed', (state.speed.manualspeed / 255));
-    this.setCapabilityValue('operationMode', state.operationmode.toString());
-    this.setCapabilityValue('timerMode', state.timers.mode.toString());
-    this.setCapabilityValue('timerMode_timer', `${state.timers.countdown.hour}:${state.timers.countdown.min}:${state.timers.countdown.sec}`);
+    await this.setCapabilityValue('speedMode', state.speed.mode.toString());
+    await this.setCapabilityValue('manualSpeed', (state.speed.manualspeed / 255) * 100);
+    await this.setCapabilityValue('fan_speed', (state.speed.manualspeed / 255));
+    await this.setCapabilityValue('operationMode', state.operationmode.toString());
+    await this.setCapabilityValue('timerMode', state.timers.mode.toString());
+    await this.setCapabilityValue('timerMode_timer', `${state.timers.countdown.hour}:${state.timers.countdown.min}:${state.timers.countdown.sec}`);
 
     // Update our settings based on current values in the device
     await this.setSettings({
       // only provide keys for the settings you want to change
       devicemodel: state.unittype,
-      humidity_sensor: (state.humidity.sensoractivation == 1),
+      humidity_sensor: (state.humidity.sensoractivation === 1),
       humidity_threshold: state.humidity.threshold,
       boost_delay: state.boost.deactivationtimer,
     });
-    this.setSettings;
   }
 
   /**
@@ -123,7 +121,7 @@ class VentoDevice extends Device {
   async onSettings({ oldSettings, newSettings, changedKeys }) {
     if (changedKeys.includes('devicepwd')) {
       this.devicepwd = newSettings.devicepwd;
-      this.updateDeviceState();
+      await this.updateDeviceState();
     }
     // For the other settings we probably need to push the new value to the device
     if (changedKeys.includes('humidity_sensor')) {
@@ -177,7 +175,7 @@ class VentoDevice extends Device {
     this._flowOperationMode
       .registerRunListener(async (args, state) => {
         this.log(`attempt to change operation mode: ${args.operationMode}`);
-        this.setCapabilityValue('operationMode', args.operationMode);
+        await this.setCapabilityValue('operationMode', args.operationMode);
         await this.driver.setOperationMode(args.device.deviceObject, args.device.devicepwd, args.operationMode);
       });
   }
@@ -189,7 +187,7 @@ class VentoDevice extends Device {
     this._flowSpeedMode
       .registerRunListener(async (args, state) => {
         this.log(`attempt to change speed mode: ${args.speedMode}`);
-        this.setCapabilityValue('speedMode', args.speedMode);
+        await this.setCapabilityValue('speedMode', args.speedMode);
         await this.driver.setSpeedMode(args.device.deviceObject, args.device.devicepwd, args.speedMode);
       });
   }
@@ -201,8 +199,8 @@ class VentoDevice extends Device {
     this._flowManualSpeed
       .registerRunListener(async (args, state) => {
         this.log(`attempt to change manual speed: ${args.speed}`);
-        this.setCapabilityValue('manualSpeed', args.speed);
-        this.setCapabilityValue('fan_speed', ((args.speed / 100) - 1));
+        await this.setCapabilityValue('manualSpeed', args.speed);
+        await this.setCapabilityValue('fan_speed', ((args.speed / 100) - 1));
         await this.driver.setManualSpeed(args.device.deviceObject, args.device.devicepwd, (255 * (args.speed / 100)));
 
       });
@@ -214,8 +212,8 @@ class VentoDevice extends Device {
     this._flowFanSpeed
       .registerRunListener(async (args, state) => {
         this.log(`attempt to change fan speed: ${args.speed}`);
-        this.setCapabilityValue('fan_speed', (args.fan_speed - 1));
-        this.setCapabilityValue('manualSpeed', (args.fan_speed * 100));
+        await this.setCapabilityValue('fan_speed', (args.fan_speed - 1));
+        await this.setCapabilityValue('manualSpeed', (args.fan_speed * 100));
         await this.driver.setManualSpeed(args.device.deviceObject, args.device.devicepwd, (255 * (args.speed / 100)));
 
       });
@@ -228,7 +226,7 @@ class VentoDevice extends Device {
     this._flowTimerMode
       .registerRunListener(async (args, state) => {
         this.log(`attempt to change timer mode: ${args.timerMode}`);
-        this.setCapabilityValue('timerMode', args.timerMode);
+        await this.setCapabilityValue('timerMode', args.timerMode);
         await this.driver.setTimerMode(args.device.deviceObject, args.device.devicepwd, args.timerMode);
       });
   }
