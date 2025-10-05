@@ -23,6 +23,7 @@ describe('Api set functions', () => {
     jest.clearAllMocks();
   });
 
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const getMockCalls = (response: any) => ({
     calls: (api.modbusClient.send as jest.Mock).mock.calls,
     response: removeUndefinedDeep(response),
