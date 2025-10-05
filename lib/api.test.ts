@@ -34,7 +34,9 @@ describe('Api set functions', () => {
     expect(getMockCalls(response)).toMatchSnapshot();
   });
   it('update gets response', async () => {
-    (api.modbusClient.send as jest.Mock).mockReturnValue(Promise.resolve(statusResponse));
+    (api.modbusClient.send as jest.Mock).mockReturnValue(
+      Promise.resolve(statusResponse)
+    );
     const response = await api.getDeviceState();
     expect(getMockCalls(response)).toMatchSnapshot();
   });

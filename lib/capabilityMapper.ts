@@ -6,7 +6,10 @@ type MappableCapabilities = Capabilities | DeviceSettings;
 
 type CapabilityTypes = keyof typeof Capabilities | keyof typeof DeviceSettings;
 type PossibleValues = number | string | boolean | undefined;
-type ResponseToCapabilityFunctions = Record<CapabilityTypes, (values: number[] | undefined) => PossibleValues>;
+type ResponseToCapabilityFunctions = Record<
+  CapabilityTypes,
+  (values: number[] | undefined) => PossibleValues
+>;
 
 const paramsForCapability: Record<CapabilityTypes, keyof typeof Parameter> = {
   alarm_boost: 'BOOT_MODE',
@@ -30,18 +33,24 @@ const paramsForCapability: Record<CapabilityTypes, keyof typeof Parameter> = {
 };
 
 const capabilityToParameterMap: ResponseToCapabilityFunctions = {
-  alarm_boost: (values) => (values?.[0] !== 0),
-  alarm_filter: (values) => (values?.[0] === 1),
-  filter_timer: (values) => [values?.[2], values?.[1], values?.[0]].map((n) => n?.toString().padStart(2, '0')).join(':'),
-  alarm_generic: (values) => (values?.[0] !== 0),
+  alarm_boost: (values) => values?.[0] !== 0,
+  alarm_filter: (values) => values?.[0] === 1,
+  filter_timer: (values) =>
+    [values?.[2], values?.[1], values?.[0]]
+      .map((n) => n?.toString().padStart(2, '0'))
+      .join(':'),
+  alarm_generic: (values) => values?.[0] !== 0,
   measure_humidity: (values) => values?.[0],
   measure_RPM: (values) => values?.[0],
   speedMode: (values) => values?.[0].toString(),
   manualSpeed: (values) => ((values?.[0] ?? -1) / 255) * 100,
-  fan_speed: (values) => ((values?.[0] ?? -1) / 255),
+  fan_speed: (values) => (values?.[0] ?? -1) / 255,
   operationMode: (values) => values?.[0].toString(),
   timerMode: (values) => values?.[0].toString(),
-  timerMode_timer: (values) => [values?.[2], values?.[1], values?.[0]].map((n) => n?.toString().padStart(2, '0')).join(':'),
+  timerMode_timer: (values) =>
+    [values?.[2], values?.[1], values?.[0]]
+      .map((n) => n?.toString().padStart(2, '0'))
+      .join(':'),
   alarm_connectivity: (values) => !values,
   onoff: (values) => values?.[0] === 1,
   boost_delay: (values) => values?.[0],
@@ -66,16 +75,18 @@ export type CapabilityResponse = Record<MappableCapabilities, PossibleValues>;
 const capabilitiesMapper = (result: Response): CapabilityResponse => {
   const values = parametersToValues(result);
   // @ts-expect-error: not typed yet
-  return [...Object.keys(Capabilities), ...Object.keys(DeviceSettings)].map((capability: CapabilityTypes) => {
-    const mapFunction = capabilityToParameterMap[capability];
-    if (mapFunction) {
-      const hasValue = values[paramsForCapability[capability]];
-      if (hasValue !== undefined && hasValue.length > 0) {
-        return { [capability]: mapFunction(hasValue) };
+  return [...Object.keys(Capabilities), ...Object.keys(DeviceSettings)]
+    .map((capability: CapabilityTypes) => {
+      const mapFunction = capabilityToParameterMap[capability];
+      if (mapFunction) {
+        const hasValue = values[paramsForCapability[capability]];
+        if (hasValue !== undefined && hasValue.length > 0) {
+          return { [capability]: mapFunction(hasValue) };
+        }
       }
-    }
-    return { };
-  }).reduce((a, b) => ({ ...a, ...b }), {});
+      return {};
+    })
+    .reduce((a, b) => ({ ...a, ...b }), {});
 };
 
 export default capabilitiesMapper;
