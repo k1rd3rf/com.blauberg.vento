@@ -31,5 +31,8 @@
   },
   "1.2.6": {
     "en": "Move driver json configurations to .homeycompose folder to ease future support for more brands"
+  },
+  "1.2.7": {
+    "en": "Extract mapping of modbus responses to separate file"
   }
 }
