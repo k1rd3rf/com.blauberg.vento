@@ -33,7 +33,9 @@ describe('Api set functions', () => {
     expect(getMockCalls(response)).toMatchSnapshot();
   });
   it('update gets response', async () => {
-    (api.modbusClient.send as jest.Mock).mockReturnValue(Promise.resolve(statusResponse));
+    (api.modbusClient.send as jest.Mock).mockReturnValue(
+      Promise.resolve(statusResponse)
+    );
     const response = await api.getDeviceState().catch((err) => err);
     expect(getMockCalls(response)).toMatchSnapshot();
   });
@@ -64,7 +66,9 @@ describe('Api set functions', () => {
       expect(getMockCalls(response)).toMatchSnapshot();
     });
     it(`setHumiditySensorThreshold sends value ${value}`, async () => {
-      const response = await api.setHumiditySensorThreshold(value).catch((err) => err);
+      const response = await api
+        .setHumiditySensorThreshold(value)
+        .catch((err) => err);
       expect(getMockCalls(response)).toMatchSnapshot();
     });
     it(`setBoostDelay sends value ${value}`, async () => {

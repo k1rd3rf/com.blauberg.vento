@@ -16,12 +16,14 @@ export const removeUndefinedDeep = (obj: Record<string, unknown>) => {
   return ret;
 };
 
-export const callCount = (calls: any[]) => calls.reduce((acc, c) => {
-  const [capabilityId] = c;
-  return { ...acc, [capabilityId]: (acc[capabilityId] || 0) + 1 };
-}, {});
+export const callCount = (mockCalls: any[]) =>
+  mockCalls.reduce((acc, c) => {
+    const [capabilityId] = c;
+    return { ...acc, [capabilityId]: (acc[capabilityId] || 0) + 1 };
+  }, {});
 
-export const callsWithArgs = (calls1: any[]) => calls1.reduce((acc, c) => {
-  const [capabilityId, ...args] = c;
-  return { ...acc, [capabilityId]: [...(acc[capabilityId] || []), args] };
-}, {});
+export const callsWithArgs = (mockCalls: any[]) =>
+  mockCalls.reduce((acc, c) => {
+    const [capabilityId, ...args] = c;
+    return { ...acc, [capabilityId]: [...(acc[capabilityId] || []), args] };
+  }, {});

@@ -6,7 +6,10 @@ type MappableCapabilities = Capabilities | DeviceSettings;
 
 type CapabilityTypes = keyof typeof Capabilities | keyof typeof DeviceSettings;
 
-type ResponseToCapabilityFunctions = Record<CapabilityTypes, (values: number[] | undefined) => any>;
+type ResponseToCapabilityFunctions = Record<
+  CapabilityTypes,
+  (values: number[] | undefined) => any
+>;
 
 const paramsForCapability: Record<CapabilityTypes, keyof typeof Parameter> = {
   alarm_boost: 'BOOT_MODE',
@@ -30,18 +33,24 @@ const paramsForCapability: Record<CapabilityTypes, keyof typeof Parameter> = {
 };
 
 const capabilityToParameterMap: ResponseToCapabilityFunctions = {
-  alarm_boost: (values) => (values?.[0] !== 0),
-  alarm_filter: (values) => (values?.[0] === 1),
-  filter_timer: (values) => [values?.[2], values?.[1], values?.[0]].map((n) => n?.toString().padStart(2, '0')).join(':'),
-  alarm_generic: (values) => (values?.[0] !== 0),
+  alarm_boost: (values) => values?.[0] !== 0,
+  alarm_filter: (values) => values?.[0] === 1,
+  filter_timer: (values) =>
+    [values?.[2], values?.[1], values?.[0]]
+      .map((n) => n?.toString().padStart(2, '0'))
+      .join(':'),
+  alarm_generic: (values) => values?.[0] !== 0,
   measure_humidity: (values) => values?.[0],
   measure_RPM: (values) => values?.[0],
   speedMode: (values) => values?.[0].toString(),
   manualSpeed: (values) => ((values?.[0] ?? -1) / 255) * 100,
-  fan_speed: (values) => ((values?.[0] ?? -1) / 255),
+  fan_speed: (values) => (values?.[0] ?? -1) / 255,
   operationMode: (values) => values?.[0].toString(),
   timerMode: (values) => values?.[0].toString(),
-  timerMode_timer: (values) => [values?.[2], values?.[1], values?.[0]].map((n) => n?.toString().padStart(2, '0')).join(':'),
+  timerMode_timer: (values) =>
+    [values?.[2], values?.[1], values?.[0]]
+      .map((n) => n?.toString().padStart(2, '0'))
+      .join(':'),
   alarm_connectivity: (values) => !values,
   onoff: (values) => values?.[0] === 1,
   boost_delay: (values) => values?.[0],
@@ -64,20 +73,25 @@ const capabilityToParameterMap: ResponseToCapabilityFunctions = {
     }
   },
 };
-export type CapabilityResponse = Record<MappableCapabilities, number | string | boolean | undefined>;
+export type CapabilityResponse = Record<
+  MappableCapabilities,
+  number | string | boolean | undefined
+>;
 
 export default (result: Response): CapabilityResponse => {
   const values = parametersToValues(result);
   // @ts-expect-error: not typed yet
-  return [...Object.keys(Capabilities), ...Object.keys(DeviceSettings)].map((capability) => {
-    // @ts-expect-error: ok now
-    const mapFunction = capabilityToParameterMap[capability];
-    if (mapFunction) {
+  return [...Object.keys(Capabilities), ...Object.keys(DeviceSettings)]
+    .map((capability) => {
       // @ts-expect-error: ok now
-      const hasValue = values[paramsForCapability[capability]];
-      if (hasValue && hasValue.length > 0) {
-        return { [capability]: mapFunction(hasValue) };
+      const mapFunction = capabilityToParameterMap[capability];
+      if (mapFunction) {
+        // @ts-expect-error: ok now
+        const hasValue = values[paramsForCapability[capability]];
+        if (hasValue && hasValue.length > 0) {
+          return { [capability]: mapFunction(hasValue) };
+        }
       }
-    }
-  }).reduce((a, b) => ({ ...a, ...b }), {});
+    })
+    .reduce((a, b) => ({ ...a, ...b }), {});
 };

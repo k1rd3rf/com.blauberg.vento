@@ -5,13 +5,15 @@ import { statusResponse } from './__mockdata__/statusResponse';
 jest.mock('blaubergventojs', () => ({
   ...jest.requireActual('blaubergventojs'),
   BlaubergVentoClient: class BlaubergVentoClient {
-        send = jest.fn().mockResolvedValue(statusResponse)
+    send = jest.fn().mockResolvedValue(statusResponse);
   },
 }));
 
-jest.mock('./ventoDiscovery', () => jest.fn().mockImplementation(() => ({
-  findById: (id: string) => Promise.resolve({ id, ip: '127.0.0.2' }),
-})));
+jest.mock('./ventoDiscovery', () =>
+  jest.fn().mockImplementation(() => ({
+    findById: (id: string) => Promise.resolve({ id, ip: '127.0.0.2' }),
+  }))
+);
 
 describe('ventoDevice', () => {
   it('should be able to get status from modbus on init', async () => {
