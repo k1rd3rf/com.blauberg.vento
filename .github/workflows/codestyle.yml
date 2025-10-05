@@ -24,7 +24,7 @@ jobs:
       - name: Test
         timeout-minutes: 5
         run: |
-          npm run test
+          npm run test -- --coverage
 
   lint:
     name: linting

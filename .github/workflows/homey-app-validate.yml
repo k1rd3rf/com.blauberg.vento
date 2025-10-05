@@ -13,20 +13,3 @@ jobs:
       - uses: athombv/github-action-homey-app-validate@master
         with:
           level: verified
-      - name: Install
-        run: npm ci
-
-      - name: Compile
-        run: npm run compile
-
-      - name: Test
-        timeout-minutes: 5
-        run: |
-          npm run test -- --coverage
-
-      - name: Check diff for eslint
-        run: |
-          npm run lint -- --fix --max-warnings=0
-          npm run test -- config -u
-        continue-on-error: ${{ github.event_name != 'push' }}
-        id: eslint
