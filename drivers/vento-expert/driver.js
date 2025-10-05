@@ -18,9 +18,10 @@ class VentoDriver extends Driver {
     this.start_discover_loop();
   }
 
+  // eslint-disable-next-line camelcase
   start_discover_loop() {
-    this._timer = setInterval(() => {
-      this.locateDevices();
+    this._timer = this.homey.setInterval(async () => {
+      await this.locateDevices();
     }, 10000);
   }
 
@@ -30,8 +31,7 @@ class VentoDriver extends Driver {
     ]);
     return this.modbusClient.send(packet, device.ip).then((result) => {
       // Check result
-      console.log(JSON.stringify(result));
-      // throw new Error("device not responding");
+      this.log(JSON.stringify(result));
     });
   }
 
@@ -89,7 +89,6 @@ class VentoDriver extends Driver {
     ]);
     // Send package and wait for response.
     return this.modbusClient.send(packet, device.ip).then((result) => {
-      // console.log(JSON.stringify(result));
       if (result != null) {
         let unittypelabel = 'Vento Expert';
         switch (result.packet._dataEntries[11].value['0']) {
@@ -176,42 +175,16 @@ class VentoDriver extends Driver {
     });
   }
 
-  /**
-   * onPairListDevices is called when a user is adding a device
-   * and the 'list_devices' view is called.
-   * This should return an array with the data of devices that are available for pairing.
-   */
-  // async onPairListDevices() {
-  //   // Find all devices on the local network
-  //   this.log('Start discovery of Vento Expert devices on the local network');
-  //   await this.locateDevices();
-  //   console.log(JSON.stringify(this.deviceList));
-  //   this.log('Located ['+this.deviceList.length+'] Vento expert devices');
-
-  //   return this.deviceList.map((device) => {
-  //     console.log(JSON.stringify(device))
-  //     let ventodevice = {
-  //       id: device.id,
-  //       name: "Vento Expert "+device.id,
-  //       data: {
-  //         id: device.id,
-  //       }
-  //     }
-  //     this.log('located: '+JSON.stringify(ventodevice));
-  //     return ventodevice;
-  //   });
-  // }
-
   async onPair(session) {
     session.setHandler('list_devices', async (data) => {
-      console.log('Provide user list of discovered Vento fans to choose from.');
+      this.log('Provide user list of discovered Vento fans to choose from.');
       this.log('Start discovery of Vento Expert devices on the local network');
       await this.locateDevices();
-      console.log(JSON.stringify(this.deviceList));
+      this.log(JSON.stringify(this.deviceList));
       this.log(`Located [${this.deviceList.length}] Vento expert devices`);
       // Lets return the mapped list
       return this.deviceList.map((device) => {
-        console.log(JSON.stringify(device));
+        this.log(JSON.stringify(device));
         const ventodevice = {
           id: device.id,
           name: `Vento Expert ${device.id}`,
@@ -225,10 +198,10 @@ class VentoDriver extends Driver {
     });
 
     session.setHandler('add_devices', async (data) => {
-      session.showView('add_devices');
+      await session.showView('add_devices');
       if (data.length > 0) {
-        console.log(`Vento fan [${data[0].name}] added`);
-      } else console.log('no Vento fan added');
+        this.log(`Vento fan [${data[0].name}] added`);
+      } else this.log('no Vento fan added');
     });
   }
 
