@@ -8,6 +8,7 @@ const {
   Parameter,
   DataEntry,
 } = require('blaubergventojs');
+// eslint-disable-next-line node/no-missing-require
 const mapModbusResponse = require('../../lib/mapModbusResponse');
 
 class VentoDriver extends Driver {
