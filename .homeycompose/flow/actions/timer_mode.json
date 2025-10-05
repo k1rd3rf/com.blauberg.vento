@@ -1,0 +1,41 @@
+{
+  "id": "timer_mode",
+  "title": {
+    "en": "Set the timer mode"
+  },
+  "titleFormatted": {
+    "en": "Sets the timer mode of the device to [[timerMode]] "
+  },
+  "hint": {
+    "en": "Sets the device to the desired timer mode"
+  },
+  "args": [
+    {
+      "type": "dropdown",
+      "name": "timerMode",
+      "title": {
+        "en": "The desired timer mode"
+      },
+      "values": [
+        {
+          "id": "0",
+          "title": {
+            "en": "Off"
+          }
+        },
+        {
+          "id": "1",
+          "title": {
+            "en": "Night mode"
+          }
+        },
+        {
+          "id": "2",
+          "title": {
+            "en": "Party mode"
+          }
+        }
+      ]
+    }
+  ]
+}

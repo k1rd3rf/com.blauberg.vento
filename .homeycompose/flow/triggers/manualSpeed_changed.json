@@ -1,0 +1,19 @@
+{
+  "deprecated": true,
+  "id": "manualSpeed_changed",
+  "title": {
+    "en": "The manual speed changed"
+  },
+  "tokens": [
+    {
+      "name": "manualSpeed",
+      "type": "number",
+      "title": {
+        "en": "Speed"
+      },
+      "example": {
+        "en": "Speed"
+      }
+    }
+  ]
+}

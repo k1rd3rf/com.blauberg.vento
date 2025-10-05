@@ -1,0 +1,17 @@
+{
+  "id": "alarm_generic_false",
+  "title": {
+    "en": "The generic alarm turned off",
+    "nl": "Het algemene alarm ging uit",
+    "de": "Der allgemeine Alarm ist ausgegangen",
+    "fr": "L'alarme générique s'est désactivée",
+    "it": "L'allarme generico è stato disattivato",
+    "sv": "Det generiska larmet är inaktiverat",
+    "no": "Den generelle alarmen er deaktivert",
+    "es": "La alarma general se ha desactivado",
+    "da": "Den generiske alarm blev deaktiveret",
+    "ru": "Общий сигнал выключен",
+    "pl": "Alarm ogólny wyłączony",
+    "ko": "일반 알람 꺼짐"
+  }
+}
