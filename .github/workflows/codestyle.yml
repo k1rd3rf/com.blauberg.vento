@@ -24,3 +24,7 @@ jobs:
       - name: Check diff for eslint
         run: |
           npm run lint -- --max-warnings=0
+
+      - name: Check prettier
+        run: |
+          npm run prettier -- --check
