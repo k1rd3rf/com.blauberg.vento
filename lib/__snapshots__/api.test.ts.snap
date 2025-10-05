@@ -1,0 +1,543 @@
+// Jest Snapshot v1, https://jestjs.io/docs/snapshot-testing
+
+exports[`Api set functions setBoostDelay sends value 0 1`] = `
+{
+  "calls": [
+    [
+      E {
+        "_dataEntries": [
+          {
+            "parameter": 102,
+            "value": undefined,
+          },
+        ],
+        "_deviceId": undefined,
+        "_functionType": 2,
+        "_password": undefined,
+      },
+      undefined,
+    ],
+  ],
+  "response": {},
+}
+`;
+
+exports[`Api set functions setBoostDelay sends value 1 1`] = `
+{
+  "calls": [
+    [
+      E {
+        "_dataEntries": [
+          {
+            "parameter": 102,
+            "value": undefined,
+          },
+        ],
+        "_deviceId": undefined,
+        "_functionType": 2,
+        "_password": undefined,
+      },
+      undefined,
+    ],
+  ],
+  "response": {},
+}
+`;
+
+exports[`Api set functions setBoostDelay sends value 2 1`] = `
+{
+  "calls": [
+    [
+      E {
+        "_dataEntries": [
+          {
+            "parameter": 102,
+            "value": undefined,
+          },
+        ],
+        "_deviceId": undefined,
+        "_functionType": 2,
+        "_password": undefined,
+      },
+      undefined,
+    ],
+  ],
+  "response": {},
+}
+`;
+
+exports[`Api set functions setHumiditySensor sends value 0 1`] = `
+{
+  "calls": [
+    [
+      E {
+        "_dataEntries": [
+          {
+            "parameter": 15,
+            "value": undefined,
+          },
+        ],
+        "_deviceId": undefined,
+        "_functionType": 2,
+        "_password": undefined,
+      },
+      undefined,
+    ],
+  ],
+  "response": {},
+}
+`;
+
+exports[`Api set functions setHumiditySensor sends value 1 1`] = `
+{
+  "calls": [
+    [
+      E {
+        "_dataEntries": [
+          {
+            "parameter": 15,
+            "value": undefined,
+          },
+        ],
+        "_deviceId": undefined,
+        "_functionType": 2,
+        "_password": undefined,
+      },
+      undefined,
+    ],
+  ],
+  "response": {},
+}
+`;
+
+exports[`Api set functions setHumiditySensor sends value 2 1`] = `
+{
+  "calls": [
+    [
+      E {
+        "_dataEntries": [
+          {
+            "parameter": 15,
+            "value": undefined,
+          },
+        ],
+        "_deviceId": undefined,
+        "_functionType": 2,
+        "_password": undefined,
+      },
+      undefined,
+    ],
+  ],
+  "response": {},
+}
+`;
+
+exports[`Api set functions setHumiditySensorThreshold sends value 0 1`] = `
+{
+  "calls": [
+    [
+      E {
+        "_dataEntries": [
+          {
+            "parameter": 25,
+            "value": undefined,
+          },
+        ],
+        "_deviceId": undefined,
+        "_functionType": 2,
+        "_password": undefined,
+      },
+      undefined,
+    ],
+  ],
+  "response": {},
+}
+`;
+
+exports[`Api set functions setHumiditySensorThreshold sends value 1 1`] = `
+{
+  "calls": [
+    [
+      E {
+        "_dataEntries": [
+          {
+            "parameter": 25,
+            "value": undefined,
+          },
+        ],
+        "_deviceId": undefined,
+        "_functionType": 2,
+        "_password": undefined,
+      },
+      undefined,
+    ],
+  ],
+  "response": {},
+}
+`;
+
+exports[`Api set functions setHumiditySensorThreshold sends value 2 1`] = `
+{
+  "calls": [
+    [
+      E {
+        "_dataEntries": [
+          {
+            "parameter": 25,
+            "value": undefined,
+          },
+        ],
+        "_deviceId": undefined,
+        "_functionType": 2,
+        "_password": undefined,
+      },
+      undefined,
+    ],
+  ],
+  "response": {},
+}
+`;
+
+exports[`Api set functions setManualSpeed sends value 0 1`] = `
+{
+  "calls": [
+    [
+      E {
+        "_dataEntries": [
+          {
+            "parameter": 68,
+            "value": undefined,
+          },
+        ],
+        "_deviceId": undefined,
+        "_functionType": 2,
+        "_password": undefined,
+      },
+      undefined,
+    ],
+  ],
+  "response": {},
+}
+`;
+
+exports[`Api set functions setManualSpeed sends value 1 1`] = `
+{
+  "calls": [
+    [
+      E {
+        "_dataEntries": [
+          {
+            "parameter": 68,
+            "value": undefined,
+          },
+        ],
+        "_deviceId": undefined,
+        "_functionType": 2,
+        "_password": undefined,
+      },
+      undefined,
+    ],
+  ],
+  "response": {},
+}
+`;
+
+exports[`Api set functions setManualSpeed sends value 2 1`] = `
+{
+  "calls": [
+    [
+      E {
+        "_dataEntries": [
+          {
+            "parameter": 68,
+            "value": undefined,
+          },
+        ],
+        "_deviceId": undefined,
+        "_functionType": 2,
+        "_password": undefined,
+      },
+      undefined,
+    ],
+  ],
+  "response": {},
+}
+`;
+
+exports[`Api set functions setOnOffStatus sends value 0 1`] = `
+{
+  "calls": [
+    [
+      E {
+        "_dataEntries": [
+          {
+            "parameter": 1,
+            "value": undefined,
+          },
+        ],
+        "_deviceId": undefined,
+        "_functionType": 2,
+        "_password": undefined,
+      },
+      undefined,
+    ],
+  ],
+  "response": {},
+}
+`;
+
+exports[`Api set functions setOnOffStatus sends value 1 1`] = `
+{
+  "calls": [
+    [
+      E {
+        "_dataEntries": [
+          {
+            "parameter": 1,
+            "value": undefined,
+          },
+        ],
+        "_deviceId": undefined,
+        "_functionType": 2,
+        "_password": undefined,
+      },
+      undefined,
+    ],
+  ],
+  "response": {},
+}
+`;
+
+exports[`Api set functions setOnOffStatus sends value 2 1`] = `
+{
+  "calls": [
+    [
+      E {
+        "_dataEntries": [
+          {
+            "parameter": 1,
+            "value": undefined,
+          },
+        ],
+        "_deviceId": undefined,
+        "_functionType": 2,
+        "_password": undefined,
+      },
+      undefined,
+    ],
+  ],
+  "response": {},
+}
+`;
+
+exports[`Api set functions setOperationMode sends value 0 1`] = `
+{
+  "calls": [
+    [
+      E {
+        "_dataEntries": [
+          {
+            "parameter": 183,
+            "value": undefined,
+          },
+        ],
+        "_deviceId": undefined,
+        "_functionType": 2,
+        "_password": undefined,
+      },
+      undefined,
+    ],
+  ],
+  "response": {},
+}
+`;
+
+exports[`Api set functions setOperationMode sends value 1 1`] = `
+{
+  "calls": [
+    [
+      E {
+        "_dataEntries": [
+          {
+            "parameter": 183,
+            "value": undefined,
+          },
+        ],
+        "_deviceId": undefined,
+        "_functionType": 2,
+        "_password": undefined,
+      },
+      undefined,
+    ],
+  ],
+  "response": {},
+}
+`;
+
+exports[`Api set functions setOperationMode sends value 2 1`] = `
+{
+  "calls": [
+    [
+      E {
+        "_dataEntries": [
+          {
+            "parameter": 183,
+            "value": undefined,
+          },
+        ],
+        "_deviceId": undefined,
+        "_functionType": 2,
+        "_password": undefined,
+      },
+      undefined,
+    ],
+  ],
+  "response": {},
+}
+`;
+
+exports[`Api set functions setSpeedMode sends value 0 1`] = `
+{
+  "calls": [
+    [
+      E {
+        "_dataEntries": [
+          {
+            "parameter": 2,
+            "value": undefined,
+          },
+        ],
+        "_deviceId": undefined,
+        "_functionType": 2,
+        "_password": undefined,
+      },
+      undefined,
+    ],
+  ],
+  "response": {},
+}
+`;
+
+exports[`Api set functions setSpeedMode sends value 1 1`] = `
+{
+  "calls": [
+    [
+      E {
+        "_dataEntries": [
+          {
+            "parameter": 2,
+            "value": undefined,
+          },
+        ],
+        "_deviceId": undefined,
+        "_functionType": 2,
+        "_password": undefined,
+      },
+      undefined,
+    ],
+  ],
+  "response": {},
+}
+`;
+
+exports[`Api set functions setSpeedMode sends value 2 1`] = `
+{
+  "calls": [
+    [
+      E {
+        "_dataEntries": [
+          {
+            "parameter": 2,
+            "value": undefined,
+          },
+        ],
+        "_deviceId": undefined,
+        "_functionType": 2,
+        "_password": undefined,
+      },
+      undefined,
+    ],
+  ],
+  "response": {},
+}
+`;
+
+exports[`Api set functions setTimerMode sends value 0 1`] = `
+{
+  "calls": [
+    [
+      E {
+        "_dataEntries": [
+          {
+            "parameter": 7,
+            "value": undefined,
+          },
+        ],
+        "_deviceId": undefined,
+        "_functionType": 2,
+        "_password": undefined,
+      },
+      undefined,
+    ],
+  ],
+  "response": {},
+}
+`;
+
+exports[`Api set functions setTimerMode sends value 1 1`] = `
+{
+  "calls": [
+    [
+      E {
+        "_dataEntries": [
+          {
+            "parameter": 7,
+            "value": undefined,
+          },
+        ],
+        "_deviceId": undefined,
+        "_functionType": 2,
+        "_password": undefined,
+      },
+      undefined,
+    ],
+  ],
+  "response": {},
+}
+`;
+
+exports[`Api set functions setTimerMode sends value 2 1`] = `
+{
+  "calls": [
+    [
+      E {
+        "_dataEntries": [
+          {
+            "parameter": 7,
+            "value": undefined,
+          },
+        ],
+        "_deviceId": undefined,
+        "_functionType": 2,
+        "_password": undefined,
+      },
+      undefined,
+    ],
+  ],
+  "response": {},
+}
+`;
+
+exports[`Api set functions update gets response 1`] = `
+{
+  "calls": [],
+  "response": {},
+}
+`;
+
+exports[`Api set functions update sends correct data 1`] = `
+{
+  "calls": [],
+  "response": {},
+}
+`;
