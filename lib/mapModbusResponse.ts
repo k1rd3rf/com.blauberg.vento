@@ -4,30 +4,40 @@ import { Response, Parameter } from 'blaubergventojs';
 import { getEnumKeyByEnumValue } from './mapEnum';
 
 export type ModbusResponse = {
-    onoff: number;
-    speed: { mode: number; manualspeed: number };
-    boost: { mode: number; deactivationtimer: number };
-    operationmode: number;
-    filter: { alarm: number; timer: { min: number; hour: number; days: number } };
-    humidity: { current: number; sensoractivation: number; threshold: number; activated: number };
-    unittype: string;
-    fan: { rpm: number };
-    timers: { mode: number; countdown: { sec: number; min: number; hour: number } };
-    alarm: number
+  onoff: number;
+  speed: { mode: number; manualspeed: number };
+  boost: { mode: number; deactivationtimer: number };
+  operationmode: number;
+  filter: { alarm: number; timer: { min: number; hour: number; days: number } };
+  humidity: {
+    current: number;
+    sensoractivation: number;
+    threshold: number;
+    activated: number;
+  };
+  unittype: string;
+  fan: { rpm: number };
+  timers: {
+    mode: number;
+    countdown: { sec: number; min: number; hour: number };
+  };
+  alarm: number;
 };
 
 export default (result: Response): ModbusResponse => {
   if (result != null) {
-    const values: Record<keyof typeof Parameter | string, number[]> = result.packet.dataEntries.reduce((acc, { parameter, value }) => {
-      // @ts-expect-error: old declared enum
-      const key = getEnumKeyByEnumValue(Parameter, parameter) || parameter;
-      return key ? { ...acc, [key]: value } : acc;
-    }, {});
+    const values: Record<keyof typeof Parameter | string, number[]> =
+      result.packet.dataEntries.reduce((acc, { parameter, value }) => {
+        // @ts-expect-error: old declared enum
+        const key = getEnumKeyByEnumValue(Parameter, parameter) || parameter;
+        return key ? { ...acc, [key]: value } : acc;
+      }, {});
 
     let unittypelabel = 'Vento Expert';
     switch (values['UNIT_TYPE'][0]) {
       case 1:
-        unittypelabel = 'Vento Expert A50-1 W V.2 | Vento Expert A85-1 W V.2 | Vento Expert A100-1 W V.2';
+        unittypelabel =
+          'Vento Expert A50-1 W V.2 | Vento Expert A85-1 W V.2 | Vento Expert A100-1 W V.2';
         break;
       case 4:
         unittypelabel = 'Vento Expert Duo A30-1 W V.2';
