@@ -10,9 +10,10 @@ jest.mock('blaubergventojs', () => ({
   },
 }));
 
-function getDevice() {
+async function getDevice() {
   const device = new VentoDevice();
   device.driver = new VentoDriver();
+  await device.driver.onInit();
   // @ts-expect-error: mock
   device.driver.deviceList = [];
   return device;
@@ -20,7 +21,7 @@ function getDevice() {
 
 describe('ventoDevice', () => {
   it('should be able to get status from modbus on init', async () => {
-    const device = getDevice();
+    const device = await getDevice();
     await device.onInit();
 
     expect({
@@ -29,16 +30,17 @@ describe('ventoDevice', () => {
   });
 
   it('should get and set values trough the api and modbus', async () => {
-    const device = getDevice();
+    const device = await getDevice();
     await device.onInit();
 
     expect({
-      // modbusCalls: (device.api.modbusClient.send as jest.Mock).mock.calls,
+      // @ts-expect-error: mock
+      modbusCalls: (device.driver.modbusClient.send as jest.Mock).mock.calls,
     }).toMatchSnapshot();
   });
 
   it('should be able to setup all capabilities', async () => {
-    const device = getDevice();
+    const device = await getDevice();
     await device.setupCapabilities();
 
     expect({
