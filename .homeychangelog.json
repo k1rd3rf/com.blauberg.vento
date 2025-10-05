@@ -19,5 +19,20 @@
   },
   "1.2.2": {
     "en": "Added connectivity alarm"
+  },
+  "1.2.3": {
+    "en": "Fix eslint issues"
+  },
+  "1.2.4": {
+    "en": "Add prettier"
+  },
+  "1.2.5": {
+    "en": "Add workflows to verify app"
+  },
+  "1.2.6": {
+    "en": "Move driver json configurations to .homeycompose folder to ease future support for more brands"
+  },
+  "1.2.7": {
+    "en": "Extract mapping of modbus responses to separate file"
   }
 }
