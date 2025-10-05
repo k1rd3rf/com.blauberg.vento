@@ -114,3 +114,5 @@ export class Device {
     capabilities,
   });
 }
+
+export class Driver {}
