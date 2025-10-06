@@ -67,12 +67,36 @@ class VentoDevice extends Device {
   async discovery(id) {
     this.deviceObject = this.driver.locateDeviceById(id);
     if (this.deviceObject == null) {
+      // Try to use last known IP if discovery failed
+      const lastKnownIP = this.getStoreValue('lastKnownIP');
+      if (lastKnownIP && lastKnownIP !== '0.0.0.0') {
+        this.log(`Discovery failed, attempting to use last known IP: ${lastKnownIP}`);
+        this.deviceObject = {
+          id,
+          ip: lastKnownIP,
+        };
+        // Test if device responds at this IP
+        try {
+          this.devicepwd = await this.getSetting('devicepwd');
+          const state = await this.driver.getDeviceState(this.deviceObject, this.devicepwd);
+          if (state) {
+            await this.setAvailable();
+            this.log(`Vento device reconnected using last known IP: [${lastKnownIP}]`);
+            return;
+          }
+        } catch (error) {
+          this.log(`Failed to connect using last known IP: ${error.message}`);
+        }
+      }
       await this.setUnavailable('Device not discovered yet');
       this.log('Vento device could not be located');
     } else {
       await this.setAvailable();
       this.log(`Vento device has been initialized: [${this.deviceObject.ip}]`);
       this.devicepwd = await this.getSetting('devicepwd');
+      // Store IP address for future fallback
+      await this.setStoreValue('lastKnownIP', this.deviceObject.ip);
+      await this.setSettings({ last_known_ip: this.deviceObject.ip });
     }
   }
 
@@ -85,12 +109,44 @@ class VentoDevice extends Device {
       return;
     }
     await this.setCapabilityValue('alarm_connectivity', false);
+
+    // Update stored IP if it changed (device might have gotten new DHCP address)
+    const currentStoredIP = this.getStoreValue('lastKnownIP');
+    if (this.deviceObject && this.deviceObject.ip && currentStoredIP !== this.deviceObject.ip) {
+      this.log(`Device IP changed from ${currentStoredIP} to ${this.deviceObject.ip}`);
+      await this.setStoreValue('lastKnownIP', this.deviceObject.ip);
+      await this.setSettings({ last_known_ip: this.deviceObject.ip });
+    }
+
     this.log(JSON.stringify(state));
+
+    // Store old values to detect changes
+    const oldBoost = this.getCapabilityValue('alarm_boost');
+    const oldFilter = this.getCapabilityValue('alarm_filter');
+    const oldGeneric = this.getCapabilityValue('alarm_generic');
+
+    // Update capabilities
     await this.setCapabilityValue('onoff', (state.onoff === 1));
-    await this.setCapabilityValue('alarm_boost', (state.boost.mode !== 0));
-    await this.setCapabilityValue('alarm_filter', (state.filter.alarm === 1));
+
+    const newBoost = (state.boost.mode !== 0);
+    await this.setCapabilityValue('alarm_boost', newBoost);
+    if (oldBoost !== null && oldBoost !== newBoost) {
+      await this.triggerBoostAlarm(newBoost);
+    }
+
+    const newFilter = (state.filter.alarm === 1);
+    await this.setCapabilityValue('alarm_filter', newFilter);
+    if (oldFilter !== null && oldFilter !== newFilter) {
+      await this.triggerFilterAlarm(newFilter);
+    }
+
     await this.setCapabilityValue('filter_timer', `${state.filter.timer.days}:${state.filter.timer.hour}:${state.filter.timer.min}`);
-    await this.setCapabilityValue('alarm_generic', (state.alarm !== 0));
+
+    const newGeneric = (state.alarm !== 0);
+    await this.setCapabilityValue('alarm_generic', newGeneric);
+    if (oldGeneric !== null && oldGeneric !== newGeneric) {
+      await this.triggerGenericAlarm(newGeneric);
+    }
     await this.setCapabilityValue('measure_humidity', state.humidity.current);
     await this.setCapabilityValue('measure_RPM', state.fan.rpm);
     // Now handle the different modes
@@ -233,6 +289,24 @@ class VentoDevice extends Device {
         await this.setCapabilityValue('timerMode', args.timerMode);
         await this.driver.setTimerMode(args.device.deviceObject, args.device.devicepwd, args.timerMode);
       });
+  }
+
+  async triggerBoostAlarm(isOn) {
+    const triggerCard = isOn ? 'alarm_boost_true' : 'alarm_boost_false';
+    this.log(`Triggering ${triggerCard}`);
+    await this.homey.flow.getDeviceTriggerCard(triggerCard).trigger(this, {}, {});
+  }
+
+  async triggerFilterAlarm(isOn) {
+    const triggerCard = isOn ? 'alarm_filter_true' : 'alarm_filter_false';
+    this.log(`Triggering ${triggerCard}`);
+    await this.homey.flow.getDeviceTriggerCard(triggerCard).trigger(this, {}, {});
+  }
+
+  async triggerGenericAlarm(isOn) {
+    const triggerCard = isOn ? 'alarm_generic_true' : 'alarm_generic_false';
+    this.log(`Triggering ${triggerCard}`);
+    await this.homey.flow.getDeviceTriggerCard(triggerCard).trigger(this, {}, {});
   }
 }
 

@@ -32,6 +32,90 @@
   "flow": {
     "triggers": [
       {
+        "id": "smartwifi_alarm_boost_true",
+        "title": {
+          "en": "Boost mode turned on"
+        },
+        "titleFormatted": {
+          "en": "Boost mode turned on for [[device]]"
+        },
+        "args": [
+          {
+            "type": "device",
+            "name": "device",
+            "filter": "driver_id=smart-wifi"
+          },
+          {
+            "type": "device",
+            "name": "device",
+            "filter": "driver_id=smart-wifi"
+          }
+        ]
+      },
+      {
+        "id": "smartwifi_alarm_boost_false",
+        "title": {
+          "en": "Boost mode turned off"
+        },
+        "titleFormatted": {
+          "en": "Boost mode turned off for [[device]]"
+        },
+        "args": [
+          {
+            "type": "device",
+            "name": "device",
+            "filter": "driver_id=smart-wifi"
+          },
+          {
+            "type": "device",
+            "name": "device",
+            "filter": "driver_id=smart-wifi"
+          }
+        ]
+      },
+      {
+        "id": "smartwifi_alarm_battery_true",
+        "title": {
+          "en": "Battery alarm turned on"
+        },
+        "titleFormatted": {
+          "en": "Battery alarm turned on for [[device]]"
+        },
+        "args": [
+          {
+            "type": "device",
+            "name": "device",
+            "filter": "driver_id=smart-wifi"
+          },
+          {
+            "type": "device",
+            "name": "device",
+            "filter": "driver_id=smart-wifi"
+          }
+        ]
+      },
+      {
+        "id": "smartwifi_alarm_battery_false",
+        "title": {
+          "en": "Battery alarm turned off"
+        },
+        "titleFormatted": {
+          "en": "Battery alarm turned off for [[device]]"
+        },
+        "args": [
+          {
+            "type": "device",
+            "name": "device",
+            "filter": "driver_id=smart-wifi"
+          },
+          {
+            "type": "device",
+            "name": "device",
+            "filter": "driver_id=smart-wifi"
+          }
+        ]
+      },
+      {
         "id": "alarm_filter_false",
         "title": {
           "en": "The Filter alarm turned off"
@@ -185,6 +269,27 @@
     ],
     "conditions": [
       {
+        "id": "smartwifi_alarm_boost",
+        "title": {
+          "en": "Boost mode is !{{on|off}}"
+        },
+        "titleFormatted": {
+          "en": "Boost mode is !{{on|off}} for [[device]]"
+        },
+        "args": [
+          {
+            "type": "device",
+            "name": "device",
+            "filter": "driver_id=smart-wifi"
+          },
+          {
+            "type": "device",
+            "name": "device",
+            "filter": "driver_id=smart-wifi"
+          }
+        ]
+      },
+      {
         "id": "alarm_generic",
         "title": {
           "en": "The generic alarm is !{{on|off}}",
@@ -236,6 +341,62 @@
       }
     ],
     "actions": [
+      {
+        "id": "smartwifi_set_boost",
+        "title": {
+          "en": "Set boost mode"
+        },
+        "titleFormatted": {
+          "en": "Set [[device]] boost mode to [[boost]]"
+        },
+        "args": [
+          {
+            "type": "device",
+            "name": "device",
+            "filter": "driver_id=smart-wifi"
+          },
+          {
+            "type": "device",
+            "name": "device",
+            "filter": "driver_id=smart-wifi"
+          },
+          {
+            "type": "checkbox",
+            "name": "boost",
+            "title": {
+              "en": "Boost"
+            }
+          }
+        ]
+      },
+      {
+        "id": "smartwifi_set_silent_mode",
+        "title": {
+          "en": "Set silent mode"
+        },
+        "titleFormatted": {
+          "en": "Set [[device]] silent mode to [[silent]]"
+        },
+        "args": [
+          {
+            "type": "device",
+            "name": "device",
+            "filter": "driver_id=smart-wifi"
+          },
+          {
+            "type": "device",
+            "name": "device",
+            "filter": "driver_id=smart-wifi"
+          },
+          {
+            "type": "checkbox",
+            "name": "silent",
+            "title": {
+              "en": "Silent mode"
+            }
+          }
+        ]
+      },
       {
         "deprecated": true,
         "id": "manualSpeed_set",
@@ -425,6 +586,191 @@
     ]
   },
   "drivers": [
+    {
+      "name": {
+        "en": "Smart Wi-Fi"
+      },
+      "class": "fan",
+      "capabilities": [
+        "onoff",
+        "dim",
+        "alarm_boost",
+        "alarm_battery",
+        "alarm_connectivity",
+        "measure_RPM"
+      ],
+      "platforms": [
+        "local"
+      ],
+      "connectivity": [
+        "lan"
+      ],
+      "images": {
+        "small": "/drivers/smart-wifi/assets/images/small.png",
+        "large": "/drivers/smart-wifi/assets/images/large.png",
+        "xlarge": "/drivers/smart-wifi/assets/images/xlarge.png"
+      },
+      "pair": [
+        {
+          "id": "list_devices",
+          "template": "list_devices",
+          "options": {
+            "singular": true
+          },
+          "navigation": {
+            "next": "device_settings"
+          }
+        },
+        {
+          "id": "device_settings"
+        },
+        {
+          "id": "add_devices",
+          "template": "add_devices"
+        }
+      ],
+      "id": "smart-wifi",
+      "settings": [
+        {
+          "type": "group",
+          "label": {
+            "en": "Device info"
+          },
+          "children": [
+            {
+              "id": "devicepwd",
+              "type": "password",
+              "label": {
+                "en": "Device password"
+              },
+              "value": "1111",
+              "hint": {
+                "en": "The device password setup in the Blauberg Home app."
+              }
+            }
+          ]
+        },
+        {
+          "type": "group",
+          "label": {
+            "en": "Speed settings"
+          },
+          "children": [
+            {
+              "id": "max_speed",
+              "type": "number",
+              "label": {
+                "en": "Maximum speed"
+              },
+              "value": 100,
+              "min": 30,
+              "max": 100,
+              "units": {
+                "en": "%"
+              }
+            },
+            {
+              "id": "silent_speed",
+              "type": "number",
+              "label": {
+                "en": "Silent speed"
+              },
+              "value": 50,
+              "min": 30,
+              "max": 100,
+              "units": {
+                "en": "%"
+              }
+            },
+            {
+              "id": "interval_speed",
+              "type": "number",
+              "label": {
+                "en": "Interval ventilation speed"
+              },
+              "value": 60,
+              "min": 30,
+              "max": 100,
+              "units": {
+                "en": "%"
+              }
+            }
+          ]
+        },
+        {
+          "type": "group",
+          "label": {
+            "en": "Modes"
+          },
+          "children": [
+            {
+              "id": "silent_mode",
+              "type": "checkbox",
+              "label": {
+                "en": "Silent mode"
+              },
+              "value": false
+            },
+            {
+              "id": "interval_mode",
+              "type": "checkbox",
+              "label": {
+                "en": "Interval ventilation mode"
+              },
+              "value": false
+            }
+          ]
+        },
+        {
+          "type": "group",
+          "label": {
+            "en": "Sensors"
+          },
+          "children": [
+            {
+              "id": "humidity_sensor",
+              "type": "checkbox",
+              "label": {
+                "en": "Humidity sensor"
+              },
+              "value": false
+            },
+            {
+              "id": "temp_sensor",
+              "type": "checkbox",
+              "label": {
+                "en": "Temperature sensor"
+              },
+              "value": false
+            },
+            {
+              "id": "motion_sensor",
+              "type": "checkbox",
+              "label": {
+                "en": "Motion sensor"
+              },
+              "value": false
+            }
+          ]
+        },
+        {
+          "type": "group",
+          "label": {
+            "en": "Network"
+          },
+          "children": [
+            {
+              "id": "last_known_ip",
+              "type": "text",
+              "label": {
+                "en": "IP address"
+              },
+              "value": "0.0.0.0"
+            }
+          ]
+        }
+      ]
+    },
     {
       "name": {
         "en": "Vento Expert"

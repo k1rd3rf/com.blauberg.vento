@@ -1,0 +1,140 @@
+[
+  {
+    "type": "group",
+    "label": {
+      "en": "Device info"
+    },
+    "children": [
+      {
+        "id": "devicepwd",
+        "type": "password",
+        "label": {
+          "en": "Device password"
+        },
+        "value": "1111",
+        "hint": {
+          "en": "The device password setup in the Blauberg Home app."
+        }
+      }
+    ]
+  },
+  {
+    "type": "group",
+    "label": {
+      "en": "Speed settings"
+    },
+    "children": [
+      {
+        "id": "max_speed",
+        "type": "number",
+        "label": {
+          "en": "Maximum speed"
+        },
+        "value": 100,
+        "min": 30,
+        "max": 100,
+        "units": {
+          "en": "%"
+        }
+      },
+      {
+        "id": "silent_speed",
+        "type": "number",
+        "label": {
+          "en": "Silent speed"
+        },
+        "value": 50,
+        "min": 30,
+        "max": 100,
+        "units": {
+          "en": "%"
+        }
+      },
+      {
+        "id": "interval_speed",
+        "type": "number",
+        "label": {
+          "en": "Interval ventilation speed"
+        },
+        "value": 60,
+        "min": 30,
+        "max": 100,
+        "units": {
+          "en": "%"
+        }
+      }
+    ]
+  },
+  {
+    "type": "group",
+    "label": {
+      "en": "Modes"
+    },
+    "children": [
+      {
+        "id": "silent_mode",
+        "type": "checkbox",
+        "label": {
+          "en": "Silent mode"
+        },
+        "value": false
+      },
+      {
+        "id": "interval_mode",
+        "type": "checkbox",
+        "label": {
+          "en": "Interval ventilation mode"
+        },
+        "value": false
+      }
+    ]
+  },
+  {
+    "type": "group",
+    "label": {
+      "en": "Sensors"
+    },
+    "children": [
+      {
+        "id": "humidity_sensor",
+        "type": "checkbox",
+        "label": {
+          "en": "Humidity sensor"
+        },
+        "value": false
+      },
+      {
+        "id": "temp_sensor",
+        "type": "checkbox",
+        "label": {
+          "en": "Temperature sensor"
+        },
+        "value": false
+      },
+      {
+        "id": "motion_sensor",
+        "type": "checkbox",
+        "label": {
+          "en": "Motion sensor"
+        },
+        "value": false
+      }
+    ]
+  },
+  {
+    "type": "group",
+    "label": {
+      "en": "Network"
+    },
+    "children": [
+      {
+        "id": "last_known_ip",
+        "type": "text",
+        "label": {
+          "en": "IP address"
+        },
+        "value": "0.0.0.0"
+      }
+    ]
+  }
+]

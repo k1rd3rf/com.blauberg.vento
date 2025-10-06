@@ -1,0 +1,44 @@
+{
+  "name": {
+    "en": "Smart Wi-Fi"
+  },
+  "class": "fan",
+  "capabilities": [
+    "onoff",
+    "dim",
+    "alarm_boost",
+    "alarm_battery",
+    "alarm_connectivity",
+    "measure_RPM"
+  ],
+  "platforms": [
+    "local"
+  ],
+  "connectivity": [
+    "lan"
+  ],
+  "images": {
+    "small": "{{driverAssetsPath}}/images/small.png",
+    "large": "{{driverAssetsPath}}/images/large.png",
+    "xlarge": "{{driverAssetsPath}}/images/xlarge.png"
+  },
+  "pair": [
+    {
+      "id": "list_devices",
+      "template": "list_devices",
+      "options": {
+        "singular": true
+      },
+      "navigation": {
+        "next": "device_settings"
+      }
+    },
+    {
+      "id": "device_settings"
+    },
+    {
+      "id": "add_devices",
+      "template": "add_devices"
+    }
+  ]
+}
