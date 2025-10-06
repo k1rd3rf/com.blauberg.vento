@@ -1,54 +1,47 @@
+<header class="homey-header">
+    <h1 class="homey-title" data-i18n="settings.title"></h1>
+    <p class="homey-subtitle" data-i18n="settings.description"></p>
+</header>
 
-    <h1>Device password</h1>
-    <p>In the Blauberg Home app you can set a device password to protect the device from local tempering.
-    Make sure you ave done that (settings on each of your Vento devices) and provide the device password here.
-    </p>
-
-    <fieldset>
-        <legend>Device password</legend>
-
-        <div class="field row">
-            <label for="devicepwd">Password</label>
-            <input id="devicepwd" value="" type="password" />
+<form class="homey-form">
+    <fieldset class="homey-form-fieldset">
+        <div class="homey-form-group">
+            <label class="homey-form-label" for="devicepwd" data-i18n="settings.field.devicepwd.label"></label>
+            <input class="homey-form-input" id="devicepwd" value="" type="password" />
         </div>
     </fieldset>
+</form>
 
-    <button id="saveconfig" class="right">Save and continue</button>
+<fieldset class="homey-form-fieldset">
+    <button class="homey-button-secondary-shadow right" id="saveconfig" data-i18n="settings.field.saveconfig.label">
+    </button>
+</fieldset>
 
-    <script type="text/javascript">
-        var pwdElement = document.getElementById('devicepwd');
-        var saveElement = document.getElementById('saveconfig');
-        var ventodevice;
-        saveElement.addEventListener('click', function(e) {
-            let device_settings = {
-                devicepwd:pwdElement.value
-            };
-            ventodevice.settings=device_settings;
-            var devices = new Array(ventodevice);
-            //Homey.alert(JSON.stringify(devices));
-            Homey.setViewStoreValue( 'add_devices', 'devices', devices, function( err, result ){
-                if(result)
-                {
-                    console.log('update devices ok, go to next screen');
-                    Homey.emit( 'add_devices', devices, function( err, result ){
-                        if(result)
-                            console.log(result); 
-                        //else
-                            //Homey.alert(err);
-                    });
-                }
-                else
-                {
-                    Homey.alert(err);
-                }
-            });
-        });
-
-        Homey.getViewStoreValue( 'add_devices', 'devices', function( err, result ){
+<script type="text/javascript">
+  var pwdElement = document.getElementById('devicepwd');
+  var saveElement = document.getElementById('saveconfig');
+  var ventodevice;
+  saveElement.addEventListener('click', function (e) {
+    ventodevice.settings = {
+      devicepwd: pwdElement.value,
+    };
+    var devices = new Array(ventodevice);
+    Homey.setViewStoreValue('add_devices', 'devices', devices, function (err, result) {
+      if (result) {
+        console.log('update devices ok, go to next screen');
+        Homey.emit('add_devices', devices, function (err, result) {
+          if (result)
             console.log(result);
-            ventodevice=result[0];
         });
+      } else {
+        Homey.alert(err);
+      }
+    });
+  });
 
-    </script>
+  Homey.getViewStoreValue('add_devices', 'devices', function (err, result) {
+    console.log(result);
+    ventodevice = result[0];
+  });
 
-</body>
+</script>
