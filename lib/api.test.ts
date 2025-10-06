@@ -44,7 +44,7 @@ describe('Api set functions', () => {
 
   [0, 1, 2].forEach((value) => {
     it(`setOnOffStatus sends value ${value}`, async () => {
-      const response = await api.setOnoffStatus(value);
+      const response = await api.setOnOffStatus(value);
       expect(getMockCalls(response)).toMatchSnapshot();
     });
     it(`setSpeedMode sends value ${value}`, async () => {

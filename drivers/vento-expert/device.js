@@ -216,9 +216,9 @@ class VentoDevice extends Device {
 
   onCapabilityOnOff = async (value) => {
     if (value) {
-      await this.driver.setOnoffStatus(this.deviceObject, this.devicepwd, 1);
+      await this.driver.setOnOffStatus(this.deviceObject, this.devicepwd, 1);
     } else {
-      await this.driver.setOnoffStatus(this.deviceObject, this.devicepwd, 0);
+      await this.driver.setOnOffStatus(this.deviceObject, this.devicepwd, 0);
     }
   };
 
