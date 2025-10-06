@@ -179,15 +179,59 @@ class VentoDriver extends Driver {
     });
   }
 
+  async getDeviceType(device, devicepass) {
+    // Query parameter 0x00B9 (UNIT_TYPE) to determine device type
+    const packet = new Packet(device.id, devicepass, FunctionType.READ, [
+      DataEntry.of(0x00B9), // UNIT_TYPE parameter
+    ]);
+
+    return this.modbusClient.send(packet, device.ip).then((result) => {
+      if (result != null) {
+        const unitType = (result.packet._dataEntries[0].value['1'] << 8) | result.packet._dataEntries[0].value['0'];
+        this.log(`Device ${device.id} reports unit type: ${unitType}`);
+        return unitType;
+      }
+      throw new Error('Unable to determine device type');
+    }).catch((error) => {
+      this.log(`Error getting device type: ${error.message}`);
+      return null;
+    });
+  }
+
+  isVentoExpertDevice(unitType) {
+    // Vento Expert devices return 3, 4, or 5
+    // 3: Vento Expert A50-1/A85-1/A100-1 W V.2
+    // 4: Vento Expert Duo A30-1 W V.2
+    // 5: Vento Expert A30 W V.2
+    return unitType === 3 || unitType === 4 || unitType === 5;
+  }
+
   async onPair(session) {
+    let devicePassword = '1111'; // Default password
+
     session.setHandler('list_devices', async (data) => {
       this.log('Provide user list of discovered Vento fans to choose from.');
       this.log('Start discovery of Vento Expert devices on the local network');
       await this.locateDevices();
       this.log(JSON.stringify(this.deviceList));
-      this.log(`Located [${this.deviceList.length}] Vento expert devices`);
-      // Lets return the mapped list
-      return this.deviceList.map((device) => {
+      this.log(`Located [${this.deviceList.length}] devices total`);
+
+      // Filter devices by checking unit type
+      const ventoExpertDevices = [];
+      for (const device of this.deviceList) {
+        const unitType = await this.getDeviceType(device, devicePassword);
+        if (unitType !== null && this.isVentoExpertDevice(unitType)) {
+          this.log(`Device ${device.id} is a Vento Expert (type ${unitType})`);
+          ventoExpertDevices.push(device);
+        } else {
+          this.log(`Device ${device.id} is not a Vento Expert (type ${unitType}), skipping`);
+        }
+      }
+
+      this.log(`Filtered to [${ventoExpertDevices.length}] Vento Expert devices`);
+
+      // Return the mapped list of Vento Expert devices only
+      return ventoExpertDevices.map((device) => {
         this.log(JSON.stringify(device));
         const ventodevice = {
           id: device.id,

@@ -1,6 +1,45 @@
-Unofficial app for the Blauberg Vento Expert Fans. This app uses local LAN communication using MODBUS to talk to your Blauberg fans. A special thanks to github user michaelkrog for creating the module that saved me lots of time.
+Unofficial app for Blauberg ventilation devices. This app uses local LAN communication using MODBUS over UDP to control your Blauberg fans.
 
-Getting started
-You need to use the Blauberg Home app to create device passwords for your fans.
-Then after installing this app you can set the device password during the adding of the device.
+SUPPORTED DEVICES
+-----------------
+This app supports two types of Blauberg devices with automatic detection during pairing:
+
+Vento Expert Series:
+- Vento Expert A30 W V.2
+- Vento Expert A50-1 W V.2
+- Vento Expert A85-1 W V.2
+- Vento Expert A100-1 W V.2
+- Vento Expert Duo A30-1 W V.2
+
+Smart Wi-Fi Series:
+- Smart Wi-Fi fans with battery-powered operation
+- Features humidity, temperature, and motion sensors
+- Silent mode and interval ventilation support
+
+COMPATIBLE BRANDS
+-----------------
+This app also works with other brands that use the same OEM platform/white label source, including:
+- Flexit ventilation devices
+- Other rebranded Blauberg devices using the same MODBUS protocol
+
+During pairing, the app automatically detects your device type and assigns the correct driver with the appropriate parameter mappings.
+
+GETTING STARTED
+---------------
+1. Use the Blauberg Home mobile app to set up your device and create a device password
+2. Ensure your Blauberg device is connected to your local network
+3. Install this Homey app
+4. Add your device
+5. Enter the device password you created in step 1
+
+TECHNICAL DETAILS
+-----------------
+- Protocol: MODBUS over UDP (port 4000)
+- Communication: Local network only (no cloud required)
+- Discovery: Automatic UDP broadcast discovery
+- IP Tracking: Fallback to last known IP if DHCP address changes
+
+CREDITS
+-------
+Special thanks to GitHub user michaelkrog for creating the blaubergventojs module.
 

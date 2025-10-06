@@ -169,14 +169,56 @@ class SmartWiFiDriver extends Driver {
     return this.deviceList.find((e) => e.id === id);
   }
 
+  async getDeviceType(device, devicepass) {
+    // Query parameter 0x00B9 (UNIT_TYPE) to determine device type
+    const packet = new Packet(device.id, devicepass, FunctionType.READ, [
+      DataEntry.of(SmartWiFiParameter.UNIT_TYPE),
+    ]);
+
+    return this.modbusClient.send(packet, device.ip).then((result) => {
+      if (result != null) {
+        const unitType = (result.packet._dataEntries[0].value['1'] << 8) | result.packet._dataEntries[0].value['0'];
+        this.log(`Device ${device.id} reports unit type: ${unitType}`);
+        return unitType;
+      }
+      throw new Error('Unable to determine device type');
+    }).catch((error) => {
+      this.log(`Error getting device type: ${error.message}`);
+      return null;
+    });
+  }
+
+  isSmartWiFiDevice(unitType) {
+    // Smart Wi-Fi devices return values other than 3, 4, or 5
+    // Vento Expert uses 3, 4, 5, so anything else is Smart Wi-Fi
+    return unitType !== null && unitType !== 3 && unitType !== 4 && unitType !== 5;
+  }
+
   async onPair(session) {
+    let devicePassword = '1111'; // Default password
+
     session.setHandler('list_devices', async (data) => {
       this.log('Provide user list of discovered Smart Wi-Fi fans');
       await this.locateDevices();
       this.log(JSON.stringify(this.deviceList));
-      this.log(`Located [${this.deviceList.length}] Smart Wi-Fi devices`);
+      this.log(`Located [${this.deviceList.length}] devices total`);
 
-      return this.deviceList.map((device) => {
+      // Filter devices by checking unit type
+      const smartWiFiDevices = [];
+      for (const device of this.deviceList) {
+        const unitType = await this.getDeviceType(device, devicePassword);
+        if (this.isSmartWiFiDevice(unitType)) {
+          this.log(`Device ${device.id} is a Smart Wi-Fi device (type ${unitType})`);
+          smartWiFiDevices.push(device);
+        } else {
+          this.log(`Device ${device.id} is not a Smart Wi-Fi device (type ${unitType}), skipping`);
+        }
+      }
+
+      this.log(`Filtered to [${smartWiFiDevices.length}] Smart Wi-Fi devices`);
+
+      // Return the mapped list of Smart Wi-Fi devices only
+      return smartWiFiDevices.map((device) => {
         const smartwifidevice = {
           id: device.id,
           name: `Smart Wi-Fi ${device.id}`,

@@ -4,12 +4,22 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Project Overview
 
-Unofficial Homey app for controlling Blauberg ventilation fans via local LAN using MODBUS protocol. Supports two device families:
+Unofficial Homey app for controlling Blauberg ventilation fans via local LAN using MODBUS protocol. Supports two device families with **automatic device type detection during pairing**:
 
 1. **Vento Expert** (A30/A50/A85/A100 W V.2) - Heat recovery ventilation units
+   - Device type identifier: Parameter 0x00B9 returns 3, 4, or 5
 2. **Smart Wi-Fi** - Battery-powered smart fans with Wi-Fi connectivity
+   - Device type identifier: Parameter 0x00B9 returns values other than 3, 4, or 5
 
 Uses the `blaubergventojs` library for device communication (UDP packet building), with custom parameter mappings for different device types.
+
+### Compatible Brands
+
+Also supports white-label/OEM devices using the same MODBUS protocol:
+- **Flexit** ventilation devices
+- Other rebranded Blauberg devices
+
+The app automatically detects device type during pairing and assigns the correct driver.
 
 ## Build and Development Commands
 
@@ -55,7 +65,28 @@ Configuration is split across:
 3. New devices added to `deviceList` with their IP addresses
 4. Device init calls `discovery(id)` to locate device object from driver's list
 5. If device not found, marked unavailable until next discovery
-6. Recent addition: Stores last known IP address in settings to handle discovery failures
+6. Stores last known IP address in settings to handle discovery failures (DHCP resilience)
+
+### Device Type Detection
+
+**Automatic driver selection during pairing:**
+
+Both drivers query parameter **0x00B9 (UNIT_TYPE)** to determine device compatibility:
+
+**Vento Expert Driver** ([drivers/vento-expert/driver.js](drivers/vento-expert/driver.js)):
+- `getDeviceType(device, devicepass)` - Queries 0x00B9 and returns unit type value
+- `isVentoExpertDevice(unitType)` - Returns true if unitType is 3, 4, or 5
+  - Type 3: Vento Expert A50-1/A85-1/A100-1 W V.2
+  - Type 4: Vento Expert Duo A30-1 W V.2
+  - Type 5: Vento Expert A30 W V.2
+- Pairing flow filters devices to show only Vento Expert types
+
+**Smart Wi-Fi Driver** ([drivers/smart-wifi/driver.js](drivers/smart-wifi/driver.js)):
+- `getDeviceType(device, devicepass)` - Queries SmartWiFiParameter.UNIT_TYPE (0x00B9)
+- `isSmartWiFiDevice(unitType)` - Returns true if unitType is NOT 3, 4, or 5
+- Pairing flow filters devices to show only Smart Wi-Fi types
+
+This ensures users cannot accidentally pair a device with the wrong driver, preventing parameter mapping mismatches and ensuring correct capabilities.
 
 ### MODBUS Communication Pattern
 
