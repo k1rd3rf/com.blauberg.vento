@@ -237,7 +237,10 @@ export default class VentoDevice extends Device {
     ) {
       await this.api.setHumiditySensorThreshold(newSettings.humidity_threshold);
     }
-    if (changedKeys.includes('boost_delay') && newSettings.boost_delay) {
+    if (
+      changedKeys.includes('boost_delay') &&
+      newSettings.boost_delay !== undefined
+    ) {
       await this.api.setBoostDelay(newSettings.boost_delay);
     }
   }
