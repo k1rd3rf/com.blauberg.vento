@@ -34,5 +34,8 @@
   },
   "1.2.7": {
     "en": "Extract mapping of modbus responses to separate file"
+  },
+  "1.2.8": {
+    "en": "Make it possible to i18n device settings page. Add classes for Homey look and feel."
   }
 }
