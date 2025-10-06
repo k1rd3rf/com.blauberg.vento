@@ -27,7 +27,7 @@ describe('Api set functions', () => {
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const getMockCalls = (response: any) => ({
     calls: (api.modbusClient?.send as jest.Mock).mock.calls,
-    response: removeUndefinedDeep(mapModbusResponse(response)),
+    response: removeUndefinedDeep(response),
   });
   const device = { id: 'fanId', ip: '127.0.0.1' };
 
