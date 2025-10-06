@@ -44,7 +44,6 @@ describe('ventoDevice', () => {
 
   it('should be able to setup all capabilities', async () => {
     const device = new VentoDevice();
-    await device.setupCapabilities();
 
     expect({
       calls: (device as unknown as Device).getMockCalls(),
