@@ -37,5 +37,8 @@
   },
   "1.2.8": {
     "en": "Make it possible to i18n device settings page. Add classes for Homey look and feel."
+  },
+  "1.2.9": {
+    "en": "Clean up device and add enum for capabilities"
   }
 }

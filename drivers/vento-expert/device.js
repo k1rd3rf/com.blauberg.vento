@@ -1,6 +1,11 @@
 'use strict';
 
 const { Device } = require('homey');
+const {
+  Capabilities,
+  ActionCards,
+  // eslint-disable-next-line node/no-missing-require
+} = require('../../lib/capabilities');
 
 class VentoDevice extends Device {
   /**
@@ -15,72 +20,72 @@ class VentoDevice extends Device {
   }
 
   async updateCapabilities() {
-    if (!this.hasCapability('fan_speed')) {
-      await this.addCapability('fan_speed');
+    if (!this.hasCapability(Capabilities.fan_speed)) {
+      await this.addCapability(Capabilities.fan_speed);
     }
-    if (!this.hasCapability('alarm_connectivity')) {
-      await this.addCapability('alarm_connectivity');
+    if (!this.hasCapability(Capabilities.alarm_connectivity)) {
+      await this.addCapability(Capabilities.alarm_connectivity);
     }
   }
 
   async setupCapabilities() {
-    if (this.hasCapability('onoff')) {
+    if (this.hasCapability(Capabilities.onoff)) {
       this.registerCapabilityListener(
-        'onoff',
-        this.onCapabilityOnoff.bind(this)
+        Capabilities.onoff,
+        this.onCapabilityOnOff.bind(this)
       );
     }
-    if (this.hasCapability('speedMode')) {
+    if (this.hasCapability(Capabilities.speedMode)) {
       this.registerCapabilityListener(
-        'speedMode',
-        this.onCapabilitySpeedmode.bind(this)
+        Capabilities.speedMode,
+        this.onCapabilitySpeedMode.bind(this)
       );
       await this.setupFlowSpeedMode();
     }
-    if (this.hasCapability('manualSpeed')) {
+    if (this.hasCapability(Capabilities.manualSpeed)) {
       this.registerCapabilityListener(
-        'manualSpeed',
+        Capabilities.manualSpeed,
         this.onCapabilityManualSpeed.bind(this)
       );
       await this.setupFlowManualSpeed();
     }
-    if (this.hasCapability('fan_speed')) {
+    if (this.hasCapability(Capabilities.fan_speed)) {
       this.registerCapabilityListener(
-        'fan_speed',
+        Capabilities.fan_speed,
         this.onCapabilityFanSpeed.bind(this)
       );
     }
-    if (this.hasCapability('operationMode')) {
+    if (this.hasCapability(Capabilities.operationMode)) {
       this.registerCapabilityListener(
-        'operationMode',
+        Capabilities.operationMode,
         this.onCapabilityOperationMode.bind(this)
       );
       await this.setupFlowOperationMode();
     }
-    if (this.hasCapability('alarm_generic')) {
+    if (this.hasCapability(Capabilities.alarm_generic)) {
       this.homey.flow
-        .getConditionCard('alarm_generic')
-        .registerRunListener((args, state) => {
-          return args.device.getCapabilityValue('alarm_generic');
+        .getConditionCard(Capabilities.alarm_generic)
+        .registerRunListener((args) => {
+          return args.device.getCapabilityValue(Capabilities.alarm_generic);
         });
     }
-    if (this.hasCapability('alarm_boost')) {
+    if (this.hasCapability(Capabilities.alarm_boost)) {
       this.homey.flow
-        .getConditionCard('alarm_boost')
-        .registerRunListener((args, state) => {
-          return args.device.getCapabilityValue('alarm_boost');
+        .getConditionCard(Capabilities.alarm_boost)
+        .registerRunListener((args) => {
+          return args.device.getCapabilityValue(Capabilities.alarm_boost);
         });
     }
-    if (this.hasCapability('alarm_filter')) {
+    if (this.hasCapability(Capabilities.alarm_filter)) {
       this.homey.flow
-        .getConditionCard('alarm_filter')
-        .registerRunListener((args, state) => {
-          return args.device.getCapabilityValue('alarm_filter');
+        .getConditionCard(Capabilities.alarm_filter)
+        .registerRunListener((args) => {
+          return args.device.getCapabilityValue(Capabilities.alarm_filter);
         });
     }
-    if (this.hasCapability('timerMode')) {
+    if (this.hasCapability(Capabilities.timerMode)) {
       this.registerCapabilityListener(
-        'timerMode',
+        Capabilities.timerMode,
         this.onCapabilityTimerMode.bind(this)
       );
       await this.setupFlowTimerMode();
@@ -103,55 +108,80 @@ class VentoDevice extends Device {
     this.log('Requesting the current device state');
     const state = await this.driver
       .getDeviceState(this.deviceObject, this.devicepwd)
-      .catch(async (error) => {
-        await this.setCapabilityValue('alarm_connectivity', true);
+      .catch(async (e) => {
+        await this.setCapabilityValue(Capabilities.alarm_connectivity, true);
+        await this.setUnavailable();
+        this.error('Failed to get device state, device unreachable', e);
       });
     if (state === undefined) {
       return;
     }
-    await this.setCapabilityValue('alarm_connectivity', false);
-    this.log(JSON.stringify(state));
-    await this.setCapabilityValue('onoff', state.onoff === 1);
-    await this.setCapabilityValue('alarm_boost', state.boost.mode !== 0);
-    await this.setCapabilityValue('alarm_filter', state.filter.alarm === 1);
+
+    this.log('Device state received: ', state);
+
+    await this.setAvailable();
+    await this.setCapabilityValue(Capabilities.alarm_connectivity, false);
+    await this.setCapabilityValue(Capabilities.onoff, state.onoff === 1);
     await this.setCapabilityValue(
-      'filter_timer',
+      Capabilities.alarm_boost,
+      state.boost.mode !== 0
+    );
+    await this.setCapabilityValue(
+      Capabilities.alarm_filter,
+      state.filter.alarm === 1
+    );
+    await this.setCapabilityValue(
+      Capabilities.filter_timer,
       `${state.filter.timer.days}:${state.filter.timer.hour}:${state.filter.timer.min}`
     );
-    await this.setCapabilityValue('alarm_generic', state.alarm !== 0);
-    await this.setCapabilityValue('measure_humidity', state.humidity.current);
-    await this.setCapabilityValue('measure_RPM', state.fan.rpm);
-    // Now handle the different modes
-    await this.setCapabilityValue('speedMode', state.speed.mode.toString());
     await this.setCapabilityValue(
-      'manualSpeed',
+      Capabilities.alarm_generic,
+      state.alarm !== 0
+    );
+    await this.setCapabilityValue(
+      Capabilities.measure_humidity,
+      state.humidity.current
+    );
+    await this.setCapabilityValue(Capabilities.measure_RPM, state.fan.rpm);
+    // Now handle the different modes
+    await this.setCapabilityValue(
+      Capabilities.speedMode,
+      state.speed.mode.toString()
+    );
+    await this.setCapabilityValue(
+      Capabilities.manualSpeed,
       (state.speed.manualspeed / 255) * 100
     );
-    await this.setCapabilityValue('fan_speed', state.speed.manualspeed / 255);
     await this.setCapabilityValue(
-      'operationMode',
+      Capabilities.fan_speed,
+      state.speed.manualspeed / 255
+    );
+    await this.setCapabilityValue(
+      Capabilities.operationMode,
       state.operationmode.toString()
     );
-    await this.setCapabilityValue('timerMode', state.timers.mode.toString());
     await this.setCapabilityValue(
-      'timerMode_timer',
+      Capabilities.timerMode,
+      state.timers.mode.toString()
+    );
+    await this.setCapabilityValue(
+      Capabilities.timerMode_timer,
       `${state.timers.countdown.hour}:${state.timers.countdown.min}:${state.timers.countdown.sec}`
     );
 
-    // Update our settings based on current values in the device
-    await this.setSettings({
-      // only provide keys for the settings you want to change
+    const settingsOnDevice = {
       devicemodel: state.unittype,
       humidity_sensor: state.humidity.sensoractivation === 1,
       humidity_threshold: state.humidity.threshold,
       boost_delay: state.boost.deactivationtimer,
-    });
+    };
+    await this.setSettings(settingsOnDevice);
   }
 
   /**
    * onAdded is called when the user adds the device, called just after pairing.
    */
-  async onAdded() {
+  onAdded() {
     this.log('Vento device has been added');
   }
 
@@ -184,129 +214,111 @@ class VentoDevice extends Device {
     }
   }
 
-  async onCapabilityOnoff(value, opts) {
+  onCapabilityOnOff = async (value) => {
     if (value) {
       await this.driver.setOnoffStatus(this.deviceObject, this.devicepwd, 1);
     } else {
       await this.driver.setOnoffStatus(this.deviceObject, this.devicepwd, 0);
     }
-    // this.setCapabilityValue('onoff', value);
-  }
+  };
 
-  async onCapabilitySpeedmode(value, opts) {
+  onCapabilitySpeedMode = async (value) => {
     await this.driver.setSpeedMode(this.deviceObject, this.devicepwd, value);
-    // this.setCapabilityValue('speedMode', Number(value));
-  }
+  };
 
-  async onCapabilityManualSpeed(value, opts) {
+  onCapabilityManualSpeed = async (value) => {
     await this.driver.setManualSpeed(
       this.deviceObject,
       this.devicepwd,
       255 * (value / 100)
     );
-    // this.setCapabilityValue('operationMode', Number(value));
-  }
+  };
 
-  async onCapabilityFanSpeed(value, opts) {
+  onCapabilityFanSpeed = async (value) => {
     await this.driver.setManualSpeed(
       this.deviceObject,
       this.devicepwd,
       255 * value
     );
-  }
+  };
 
-  async onCapabilityOperationMode(value, opts) {
+  onCapabilityOperationMode = async (value) => {
     await this.driver.setOperationMode(
       this.deviceObject,
       this.devicepwd,
       value
     );
-    // this.setCapabilityValue('operationMode', Number(value));
-  }
+  };
 
-  async onCapabilityTimerMode(value, opts) {
+  onCapabilityTimerMode = async (value) => {
     await this.driver.setTimerMode(this.deviceObject, this.devicepwd, value);
-    // this.setCapabilityValue('operationMode', Number(value));
-  }
+  };
 
   async setupFlowOperationMode() {
     this.log('Create the flow for the operation mode capability');
-    // Now setup the flow cards
-    this._flowOperationMode = await this.homey.flow.getActionCard(
-      'operation_mode'
-    );
-    this._flowOperationMode.registerRunListener(async (args, state) => {
-      this.log(`attempt to change operation mode: ${args.operationMode}`);
-      await this.setCapabilityValue('operationMode', args.operationMode);
-      await this.driver.setOperationMode(
-        args.device.deviceObject,
-        args.device.devicepwd,
-        args.operationMode
-      );
-    });
+    this.homey.flow
+      .getActionCard(ActionCards.operation_mode)
+      .registerRunListener(async (args) => {
+        this.log(`attempt to change operation mode: ${args.operationMode}`);
+        await this.setCapabilityValue(
+          Capabilities.operationMode,
+          args.operationMode
+        );
+        await this.driver.setOperationMode(
+          args.device.deviceObject,
+          args.device.devicepwd,
+          args.operationMode
+        );
+      });
   }
 
   async setupFlowSpeedMode() {
     this.log('Create the flow for the speed mode capability');
-    // Now setup the flow cards
-    this._flowSpeedMode = await this.homey.flow.getActionCard('speed_mode');
-    this._flowSpeedMode.registerRunListener(async (args, state) => {
-      this.log(`attempt to change speed mode: ${args.speedMode}`);
-      await this.setCapabilityValue('speedMode', args.speedMode);
-      await this.driver.setSpeedMode(
-        args.device.deviceObject,
-        args.device.devicepwd,
-        args.speedMode
-      );
-    });
+    this.homey.flow
+      .getActionCard(ActionCards.speed_mode)
+      .registerRunListener(async (args) => {
+        this.log(`attempt to change speed mode: ${args.speedMode}`);
+        await this.setCapabilityValue(Capabilities.speedMode, args.speedMode);
+        await this.driver.setSpeedMode(
+          args.device.deviceObject,
+          args.device.devicepwd,
+          args.speedMode
+        );
+      });
   }
 
   async setupFlowManualSpeed() {
     this.log('Create the flow for the manual speed capability');
-    // Now setup the flow cards
-    this._flowManualSpeed = await this.homey.flow.getActionCard(
-      'manualSpeed_set'
-    );
-    this._flowManualSpeed.registerRunListener(async (args, state) => {
-      this.log(`attempt to change manual speed: ${args.speed}`);
-      await this.setCapabilityValue('manualSpeed', args.speed);
-      await this.setCapabilityValue('fan_speed', args.speed / 100 - 1);
-      await this.driver.setManualSpeed(
-        args.device.deviceObject,
-        args.device.devicepwd,
-        255 * (args.speed / 100)
-      );
-    });
-  }
-
-  async setupFlowFanSpeed() {
-    this.log('Create the flow for the fan speed capability');
-    // Now setup the flow cards
-    this._flowFanSpeed.registerRunListener(async (args, state) => {
-      this.log(`attempt to change fan speed: ${args.speed}`);
-      await this.setCapabilityValue('fan_speed', args.fan_speed - 1);
-      await this.setCapabilityValue('manualSpeed', args.fan_speed * 100);
-      await this.driver.setManualSpeed(
-        args.device.deviceObject,
-        args.device.devicepwd,
-        255 * (args.speed / 100)
-      );
-    });
+    this.homey.flow
+      .getActionCard(ActionCards.manualSpeed_set)
+      .registerRunListener(async (args) => {
+        this.log(`attempt to change manual speed: ${args.speed}`);
+        await this.setCapabilityValue(Capabilities.manualSpeed, args.speed);
+        await this.setCapabilityValue(
+          Capabilities.fan_speed,
+          args.speed / 100 - 1
+        );
+        await this.driver.setManualSpeed(
+          args.device.deviceObject,
+          args.device.devicepwd,
+          255 * (args.speed / 100)
+        );
+      });
   }
 
   async setupFlowTimerMode() {
     this.log('Create the flow for the timer mode capability');
-    // Now setup the flow cards
-    this._flowTimerMode = await this.homey.flow.getActionCard('timer_mode');
-    this._flowTimerMode.registerRunListener(async (args, state) => {
-      this.log(`attempt to change timer mode: ${args.timerMode}`);
-      await this.setCapabilityValue('timerMode', args.timerMode);
-      await this.driver.setTimerMode(
-        args.device.deviceObject,
-        args.device.devicepwd,
-        args.timerMode
-      );
-    });
+    this.homey.flow
+      .getActionCard(ActionCards.timer_mode)
+      .registerRunListener(async (args) => {
+        this.log(`attempt to change timer mode: ${args.timerMode}`);
+        await this.setCapabilityValue(Capabilities.timerMode, args.timerMode);
+        await this.driver.setTimerMode(
+          args.device.deviceObject,
+          args.device.devicepwd,
+          args.timerMode
+        );
+      });
   }
 }
 
