@@ -119,18 +119,24 @@ class VentoDevice extends Device {
   }
 
   async onSettings({ oldSettings, newSettings, changedKeys }) {
-    if(changedKeys.includes('devicepwd'))
-    {
-      this.devicepwd=newSettings.devicepwd;
-      this.updateDeviceState();
+    if (changedKeys.includes('devicepwd')) {
+      this.devicepwd = newSettings.devicepwd;
+      await this.updateDeviceState();
     }
-    //For the other settings we probably need to push the new value to the device
-    if(changedKeys.includes('humidity_sensor'))
-      await this.driver.setHumiditySensor(this.deviceObject,this.devicepwd, newSettings.humidity_sensor);
-    if(changedKeys.includes('humidity_threshold'))
-      await this.driver.setHumiditySensorThreshold(this.deviceObject,this.devicepwd, newSettings.humidity_threshold);
-    if(changedKeys.includes('boost_delay'))
-      await this.driver.setBoostDelay(this.deviceObject,this.devicepwd, newSettings.boost_delay);
+    if(changedKeys.includes('last_known_ip'))
+      {
+        this.setStoreValue('lastKnowIP', newSettings.last_known_ip);
+      }
+    // For the other settings we probably need to push the new value to the device
+    if (changedKeys.includes('humidity_sensor')) {
+      await this.driver.setHumiditySensor(this.deviceObject, this.devicepwd, newSettings.humidity_sensor);
+    }
+    if (changedKeys.includes('humidity_threshold')) {
+      await this.driver.setHumiditySensorThreshold(this.deviceObject, this.devicepwd, newSettings.humidity_threshold);
+    }
+    if (changedKeys.includes('boost_delay')) {
+      await this.driver.setBoostDelay(this.deviceObject, this.devicepwd, newSettings.boost_delay);
+    }
   }
 
   async onCapabilityOnoff(value, opts) {
