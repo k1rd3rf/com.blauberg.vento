@@ -24,6 +24,10 @@ async function getDevice() {
 }
 
 describe('ventoDevice', () => {
+  afterEach(() => {
+    jest.clearAllMocks();
+  });
+
   it('should be able to get status from modbus on init', async () => {
     const device = await getDevice();
     await device.onInit();
