@@ -101,6 +101,10 @@ export class Device {
     logMock('setAvailable', reason);
   }
 
+  getAvailable() {
+    return true;
+  }
+
   getMockCalls = () => ({
     setCapabilityValue: callsWithArgs(setCapabilityValueMock.mock.calls),
     hasCapability: callCount(hasCapabilityMock.mock.calls),

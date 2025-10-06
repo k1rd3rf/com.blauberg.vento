@@ -9,7 +9,7 @@ const {
   DataEntry,
 } = require('blaubergventojs');
 // eslint-disable-next-line node/no-missing-require
-const mapModbusResponse = require('../../lib/mapModbusResponse');
+const mapModbusResponse = require('../../lib/mapModbusResponse').default;
 
 class VentoDriver extends Driver {
   /**
@@ -57,14 +57,14 @@ class VentoDriver extends Driver {
     );
 
   setDeviceValue = async (device, devicepass, param, value) =>
-    this.modbusClient.send(
+    this.send(
       new Packet(device.id, devicepass, FunctionType.WRITE, [
         DataEntry.of(param, value),
       ]),
       device.ip
     );
 
-  setOnoffStatus = async (device, devicepass, value) =>
+  setOnOffStatus = async (device, devicepass, value) =>
     this.setDeviceValue(device, devicepass, Parameter.ON_OFF, value);
 
   setSpeedMode = async (device, devicepass, value) =>

@@ -124,15 +124,15 @@ class VentoDevice extends Device {
     await this.setCapabilityValue(Capabilities.onoff, state.onoff === 1);
     await this.setCapabilityValue(
       Capabilities.alarm_boost,
-      state.boost.mode !== 0
+      state.boost?.mode !== 0
     );
     await this.setCapabilityValue(
       Capabilities.alarm_filter,
-      state.filter.alarm === 1
+      state.filter?.alarm === 1
     );
     await this.setCapabilityValue(
       Capabilities.filter_timer,
-      `${state.filter.timer.days}:${state.filter.timer.hour}:${state.filter.timer.min}`
+      `${state.filter?.timer.days}:${state.filter?.timer.hour}:${state.filter?.timer.min}`
     );
     await this.setCapabilityValue(
       Capabilities.alarm_generic,
@@ -140,40 +140,40 @@ class VentoDevice extends Device {
     );
     await this.setCapabilityValue(
       Capabilities.measure_humidity,
-      state.humidity.current
+      state.humidity?.current
     );
-    await this.setCapabilityValue(Capabilities.measure_RPM, state.fan.rpm);
+    await this.setCapabilityValue(Capabilities.measure_RPM, state.fan?.rpm);
     // Now handle the different modes
     await this.setCapabilityValue(
       Capabilities.speedMode,
-      state.speed.mode.toString()
+      state.speed?.mode?.toString()
     );
     await this.setCapabilityValue(
       Capabilities.manualSpeed,
-      (state.speed.manualspeed / 255) * 100
+      (state.speed?.manualspeed / 255) * 100
     );
     await this.setCapabilityValue(
       Capabilities.fan_speed,
-      state.speed.manualspeed / 255
+      state.speed?.manualspeed / 255
     );
     await this.setCapabilityValue(
       Capabilities.operationMode,
-      state.operationmode.toString()
+      state.operationmode?.toString()
     );
     await this.setCapabilityValue(
       Capabilities.timerMode,
-      state.timers.mode.toString()
+      state.timers?.mode?.toString()
     );
     await this.setCapabilityValue(
       Capabilities.timerMode_timer,
-      `${state.timers.countdown.hour}:${state.timers.countdown.min}:${state.timers.countdown.sec}`
+      `${state.timers?.countdown?.hour}:${state.timers?.countdown?.min}:${state.timers?.countdown?.sec}`
     );
 
     const settingsOnDevice = {
       devicemodel: state.unittype,
-      humidity_sensor: state.humidity.sensoractivation === 1,
-      humidity_threshold: state.humidity.threshold,
-      boost_delay: state.boost.deactivationtimer,
+      humidity_sensor: state.humidity?.sensoractivation === 1,
+      humidity_threshold: state.humidity?.threshold,
+      boost_delay: state.boost?.deactivationtimer,
     };
     await this.setSettings(settingsOnDevice);
   }
@@ -216,9 +216,9 @@ class VentoDevice extends Device {
 
   onCapabilityOnOff = async (value) => {
     if (value) {
-      await this.driver.setOnoffStatus(this.deviceObject, this.devicepwd, 1);
+      await this.driver.setOnOffStatus(this.deviceObject, this.devicepwd, 1);
     } else {
-      await this.driver.setOnoffStatus(this.deviceObject, this.devicepwd, 0);
+      await this.driver.setOnOffStatus(this.deviceObject, this.devicepwd, 0);
     }
   };
 
