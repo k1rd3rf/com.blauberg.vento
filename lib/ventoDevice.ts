@@ -59,7 +59,9 @@ export default class VentoDevice extends Device {
   }
 
   onUninit(): Promise<void> {
-    this.homey.clearInterval(this.pollInterval);
+    if (this.pollInterval) {
+      this.homey.clearInterval(this.pollInterval);
+    }
     return super.onUninit();
   }
 
