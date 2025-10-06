@@ -2,10 +2,12 @@ import { DeviceAddress } from 'blaubergventojs';
 import Api from '../drivers/vento-expert/driver';
 import { statusResponse } from './__mockdata__/statusResponse';
 import { removeUndefinedDeep } from './testTools';
-import mapModbusResponse from './mapModbusResponse';
 
 describe('Api set functions', () => {
   let api: Api;
+  afterEach(() => {
+    jest.clearAllMocks();
+  });
 
   beforeEach(() => {
     jest.spyOn(global.console, 'error');
