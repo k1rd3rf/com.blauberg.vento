@@ -303,16 +303,16 @@ exports[`ventoDevice should be able to setup all capabilities 1`] = `
       "alarm_generic": 2,
     },
     "hasCapability": {
-      "alarm_boost": 3,
+      "alarm_boost": 2,
       "alarm_connectivity": 2,
-      "alarm_filter": 3,
-      "alarm_generic": 3,
-      "fan_speed": 5,
-      "manualSpeed": 3,
-      "onoff": 3,
-      "operationMode": 3,
-      "speedMode": 3,
-      "timerMode": 3,
+      "alarm_filter": 2,
+      "alarm_generic": 2,
+      "fan_speed": 4,
+      "manualSpeed": 2,
+      "onoff": 2,
+      "operationMode": 2,
+      "speedMode": 2,
+      "timerMode": 2,
     },
     "log": [
       [
@@ -493,36 +493,17 @@ exports[`ventoDevice should be able to setup all capabilities 1`] = `
         "log",
         "Vento driver has been initialized",
       ],
-      [
-        "log",
-        "Create the flow for the speed mode capability",
-      ],
-      [
-        "log",
-        "Create the flow for the manual speed capability",
-      ],
-      [
-        "log",
-        "Create the flow for the operation mode capability",
-      ],
-      [
-        "log",
-        "Create the flow for the timer mode capability",
-      ],
     ],
     "registerCapabilityListener": {
-      "fan_speed": 3,
-      "manualSpeed": 3,
-      "onoff": 3,
-      "operationMode": 3,
-      "speedMode": 3,
-      "timerMode": 3,
+      "fan_speed": 2,
+      "manualSpeed": 2,
+      "onoff": 2,
+      "operationMode": 2,
+      "speedMode": 2,
+      "timerMode": 2,
     },
     "registerRunListener": {
       "alarm_boost": [
-        [
-          [Function],
-        ],
         [
           [Function],
         ],
@@ -537,14 +518,8 @@ exports[`ventoDevice should be able to setup all capabilities 1`] = `
         [
           [Function],
         ],
-        [
-          [Function],
-        ],
       ],
       "alarm_generic": [
-        [
-          [Function],
-        ],
         [
           [Function],
         ],
@@ -559,14 +534,8 @@ exports[`ventoDevice should be able to setup all capabilities 1`] = `
         [
           [Function],
         ],
-        [
-          [Function],
-        ],
       ],
       "operation_mode": [
-        [
-          [Function],
-        ],
         [
           [Function],
         ],
@@ -581,14 +550,8 @@ exports[`ventoDevice should be able to setup all capabilities 1`] = `
         [
           [Function],
         ],
-        [
-          [Function],
-        ],
       ],
       "timer_mode": [
-        [
-          [Function],
-        ],
         [
           [Function],
         ],
