@@ -16,6 +16,10 @@ jest.mock('./ventoDiscovery', () =>
 );
 
 describe('ventoDevice', () => {
+  afterEach(() => {
+    jest.clearAllMocks();
+  });
+
   it('should be able to get status from modbus on init', async () => {
     const device = new VentoDevice();
     await device.onInit();
@@ -44,6 +48,7 @@ describe('ventoDevice', () => {
 
   it('should be able to setup all capabilities', async () => {
     const device = new VentoDevice();
+    await device.setupCapabilities();
 
     expect({
       calls: (device as unknown as Device).getMockCalls(),

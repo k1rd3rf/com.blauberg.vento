@@ -5,6 +5,9 @@ import { removeUndefinedDeep } from './testTools';
 
 describe('Api set functions', () => {
   let api: Api;
+  afterEach(() => {
+    jest.clearAllMocks();
+  });
 
   beforeEach(() => {
     jest.spyOn(global.console, 'error');

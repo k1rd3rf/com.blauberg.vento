@@ -285,237 +285,19 @@ exports[`ventoDevice should be able to setup all capabilities 1`] = `
       "timerMode": [Function],
       "timer_mode": [Function],
     },
-    "getCapabilityValue": {
-      "alarm_boost": 3,
-      "alarm_filter": 3,
-      "alarm_generic": 3,
-    },
+    "getCapabilityValue": {},
     "hasCapability": {
-      "alarm_boost": 4,
-      "alarm_connectivity": 3,
-      "alarm_filter": 4,
-      "alarm_generic": 4,
-      "fan_speed": 7,
-      "manualSpeed": 4,
-      "onoff": 4,
-      "operationMode": 4,
-      "speedMode": 4,
-      "timerMode": 4,
+      "alarm_boost": 1,
+      "alarm_filter": 1,
+      "alarm_generic": 1,
+      "fan_speed": 1,
+      "manualSpeed": 1,
+      "onoff": 1,
+      "operationMode": 1,
+      "speedMode": 1,
+      "timerMode": 1,
     },
     "log": [
-      [
-        "log",
-        "Locating device with id TEST1234",
-      ],
-      [
-        "log",
-        "Create the flow for the speed mode capability",
-      ],
-      [
-        "log",
-        "Create the flow for the manual speed capability",
-      ],
-      [
-        "log",
-        "Create the flow for the operation mode capability",
-      ],
-      [
-        "log",
-        "Create the flow for the timer mode capability",
-      ],
-      [
-        "log",
-        "Requesting the current device state",
-      ],
-      [
-        "log",
-        "Device state received: ",
-        {
-          "alarm": 0,
-          "boost": {
-            "deactivationtimer": 30,
-            "mode": 0,
-          },
-          "fan": {
-            "rpm": 236,
-          },
-          "filter": {
-            "alarm": 0,
-            "timer": {
-              "days": 31,
-              "hour": 20,
-              "min": 34,
-            },
-          },
-          "humidity": {
-            "activated": 0,
-            "current": 45,
-            "sensoractivation": 1,
-            "threshold": 70,
-          },
-          "onoff": 1,
-          "operationmode": 2,
-          "speed": {
-            "manualspeed": 179,
-            "mode": 1,
-          },
-          "timers": {
-            "countdown": {
-              "hour": 0,
-              "min": 0,
-              "sec": 0,
-            },
-            "mode": 0,
-          },
-          "unittype": "Vento Expert Duo A30-1 W V.2",
-        },
-      ],
-      [
-        "setAvailable",
-        undefined,
-      ],
-      [
-        "log",
-        "Locating device with id TEST1234",
-      ],
-      [
-        "log",
-        "Create the flow for the speed mode capability",
-      ],
-      [
-        "log",
-        "Create the flow for the manual speed capability",
-      ],
-      [
-        "log",
-        "Create the flow for the operation mode capability",
-      ],
-      [
-        "log",
-        "Create the flow for the timer mode capability",
-      ],
-      [
-        "log",
-        "Requesting the current device state",
-      ],
-      [
-        "log",
-        "Device state received: ",
-        {
-          "alarm": 0,
-          "boost": {
-            "deactivationtimer": 30,
-            "mode": 0,
-          },
-          "fan": {
-            "rpm": 236,
-          },
-          "filter": {
-            "alarm": 0,
-            "timer": {
-              "days": 31,
-              "hour": 20,
-              "min": 34,
-            },
-          },
-          "humidity": {
-            "activated": 0,
-            "current": 45,
-            "sensoractivation": 1,
-            "threshold": 70,
-          },
-          "onoff": 1,
-          "operationmode": 2,
-          "speed": {
-            "manualspeed": 179,
-            "mode": 1,
-          },
-          "timers": {
-            "countdown": {
-              "hour": 0,
-              "min": 0,
-              "sec": 0,
-            },
-            "mode": 0,
-          },
-          "unittype": "Vento Expert Duo A30-1 W V.2",
-        },
-      ],
-      [
-        "setAvailable",
-        undefined,
-      ],
-      [
-        "log",
-        "Locating device with id TEST1234",
-      ],
-      [
-        "log",
-        "Create the flow for the speed mode capability",
-      ],
-      [
-        "log",
-        "Create the flow for the manual speed capability",
-      ],
-      [
-        "log",
-        "Create the flow for the operation mode capability",
-      ],
-      [
-        "log",
-        "Create the flow for the timer mode capability",
-      ],
-      [
-        "log",
-        "Requesting the current device state",
-      ],
-      [
-        "log",
-        "Device state received: ",
-        {
-          "alarm": 0,
-          "boost": {
-            "deactivationtimer": 30,
-            "mode": 0,
-          },
-          "fan": {
-            "rpm": 236,
-          },
-          "filter": {
-            "alarm": 0,
-            "timer": {
-              "days": 31,
-              "hour": 20,
-              "min": 34,
-            },
-          },
-          "humidity": {
-            "activated": 0,
-            "current": 45,
-            "sensoractivation": 1,
-            "threshold": 70,
-          },
-          "onoff": 1,
-          "operationmode": 2,
-          "speed": {
-            "manualspeed": 179,
-            "mode": 1,
-          },
-          "timers": {
-            "countdown": {
-              "hour": 0,
-              "min": 0,
-              "sec": 0,
-            },
-            "mode": 0,
-          },
-          "unittype": "Vento Expert Duo A30-1 W V.2",
-        },
-      ],
-      [
-        "setAvailable",
-        undefined,
-      ],
       [
         "log",
         "Create the flow for the speed mode capability",
@@ -534,24 +316,15 @@ exports[`ventoDevice should be able to setup all capabilities 1`] = `
       ],
     ],
     "registerCapabilityListener": {
-      "fan_speed": 4,
-      "manualSpeed": 4,
-      "onoff": 4,
-      "operationMode": 4,
-      "speedMode": 4,
-      "timerMode": 4,
+      "fan_speed": 1,
+      "manualSpeed": 1,
+      "onoff": 1,
+      "operationMode": 1,
+      "speedMode": 1,
+      "timerMode": 1,
     },
     "registerRunListener": {
       "alarm_boost": [
-        [
-          [Function],
-        ],
-        [
-          [Function],
-        ],
-        [
-          [Function],
-        ],
         [
           [Function],
         ],
@@ -560,26 +333,8 @@ exports[`ventoDevice should be able to setup all capabilities 1`] = `
         [
           [Function],
         ],
-        [
-          [Function],
-        ],
-        [
-          [Function],
-        ],
-        [
-          [Function],
-        ],
       ],
       "alarm_generic": [
-        [
-          [Function],
-        ],
-        [
-          [Function],
-        ],
-        [
-          [Function],
-        ],
         [
           [Function],
         ],
@@ -588,26 +343,8 @@ exports[`ventoDevice should be able to setup all capabilities 1`] = `
         [
           [Function],
         ],
-        [
-          [Function],
-        ],
-        [
-          [Function],
-        ],
-        [
-          [Function],
-        ],
       ],
       "operation_mode": [
-        [
-          [Function],
-        ],
-        [
-          [Function],
-        ],
-        [
-          [Function],
-        ],
         [
           [Function],
         ],
@@ -616,283 +353,14 @@ exports[`ventoDevice should be able to setup all capabilities 1`] = `
         [
           [Function],
         ],
-        [
-          [Function],
-        ],
-        [
-          [Function],
-        ],
-        [
-          [Function],
-        ],
       ],
       "timer_mode": [
         [
           [Function],
         ],
-        [
-          [Function],
-        ],
-        [
-          [Function],
-        ],
-        [
-          [Function],
-        ],
       ],
     },
-    "setCapabilityValue": {
-      "alarm_boost": [
-        [
-          false,
-          {
-            "result": false,
-          },
-        ],
-        [
-          false,
-          {
-            "result": false,
-          },
-        ],
-        [
-          false,
-          {
-            "result": false,
-          },
-        ],
-      ],
-      "alarm_connectivity": [
-        [
-          false,
-          "calling unregistered capability",
-        ],
-        [
-          false,
-          "calling unregistered capability",
-        ],
-        [
-          false,
-          "calling unregistered capability",
-        ],
-      ],
-      "alarm_filter": [
-        [
-          false,
-          {
-            "result": false,
-          },
-        ],
-        [
-          false,
-          {
-            "result": false,
-          },
-        ],
-        [
-          false,
-          {
-            "result": false,
-          },
-        ],
-      ],
-      "alarm_generic": [
-        [
-          false,
-          {
-            "result": false,
-          },
-        ],
-        [
-          false,
-          {
-            "result": false,
-          },
-        ],
-        [
-          false,
-          {
-            "result": false,
-          },
-        ],
-      ],
-      "fan_speed": [
-        [
-          0.7019607843137254,
-          {
-            "result": undefined,
-          },
-        ],
-        [
-          0.7019607843137254,
-          {
-            "result": undefined,
-          },
-        ],
-        [
-          0.7019607843137254,
-          {
-            "result": undefined,
-          },
-        ],
-      ],
-      "filter_timer": [
-        [
-          "31:20:34",
-          "calling unregistered capability",
-        ],
-        [
-          "31:20:34",
-          "calling unregistered capability",
-        ],
-        [
-          "31:20:34",
-          "calling unregistered capability",
-        ],
-      ],
-      "manualSpeed": [
-        [
-          70.19607843137254,
-          {
-            "result": undefined,
-          },
-        ],
-        [
-          70.19607843137254,
-          {
-            "result": undefined,
-          },
-        ],
-        [
-          70.19607843137254,
-          {
-            "result": undefined,
-          },
-        ],
-      ],
-      "measure_RPM": [
-        [
-          236,
-          "calling unregistered capability",
-        ],
-        [
-          236,
-          "calling unregistered capability",
-        ],
-        [
-          236,
-          "calling unregistered capability",
-        ],
-      ],
-      "measure_humidity": [
-        [
-          45,
-          "calling unregistered capability",
-        ],
-        [
-          45,
-          "calling unregistered capability",
-        ],
-        [
-          45,
-          "calling unregistered capability",
-        ],
-      ],
-      "onoff": [
-        [
-          true,
-          {
-            "result": undefined,
-          },
-        ],
-        [
-          true,
-          {
-            "result": undefined,
-          },
-        ],
-        [
-          true,
-          {
-            "result": undefined,
-          },
-        ],
-      ],
-      "operationMode": [
-        [
-          "2",
-          {
-            "result": undefined,
-          },
-        ],
-        [
-          "2",
-          {
-            "result": undefined,
-          },
-        ],
-        [
-          "2",
-          {
-            "result": undefined,
-          },
-        ],
-      ],
-      "speedMode": [
-        [
-          "1",
-          {
-            "result": undefined,
-          },
-        ],
-        [
-          "1",
-          {
-            "result": undefined,
-          },
-        ],
-        [
-          "1",
-          {
-            "result": undefined,
-          },
-        ],
-      ],
-      "timerMode": [
-        [
-          "0",
-          {
-            "result": undefined,
-          },
-        ],
-        [
-          "0",
-          {
-            "result": undefined,
-          },
-        ],
-        [
-          "0",
-          {
-            "result": undefined,
-          },
-        ],
-      ],
-      "timerMode_timer": [
-        [
-          "0:0:0",
-          "calling unregistered capability",
-        ],
-        [
-          "0:0:0",
-          "calling unregistered capability",
-        ],
-        [
-          "0:0:0",
-          "calling unregistered capability",
-        ],
-      ],
-    },
+    "setCapabilityValue": {},
     "settings": {},
   },
 }
