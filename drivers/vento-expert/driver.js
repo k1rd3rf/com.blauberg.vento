@@ -57,7 +57,7 @@ class VentoDriver extends Driver {
     );
 
   setDeviceValue = async (device, devicepass, param, value) =>
-    this.modbusClient.send(
+    this.send(
       new Packet(device.id, devicepass, FunctionType.WRITE, [
         DataEntry.of(param, value),
       ]),

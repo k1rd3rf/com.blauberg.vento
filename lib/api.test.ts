@@ -29,50 +29,55 @@ describe('Api set functions', () => {
     calls: (api.modbusClient?.send as jest.Mock).mock.calls,
     response: removeUndefinedDeep(mapModbusResponse(response)),
   });
+  const device = { id: 'fanId', ip: '127.0.0.1' };
 
   it('update sends correct data', async () => {
-    const response = await api.getDeviceState({ id: 'TEST1234' });
+    const response = await api.getDeviceState(device, 'password');
     expect(getMockCalls(response)).toMatchSnapshot();
   });
   it('update gets response', async () => {
     (api.modbusClient?.send as jest.Mock).mockReturnValue(
       Promise.resolve(statusResponse)
     );
-    const response = await api.getDeviceState({ id: 'TEST1234' });
+    const response = await api.getDeviceState(device, 'password');
     expect(getMockCalls(response)).toMatchSnapshot();
   });
 
   [0, 1, 2].forEach((value) => {
     it(`setOnOffStatus sends value ${value}`, async () => {
-      const response = await api.setOnOffStatus(value);
+      const response = await api.setOnOffStatus(device, 'password', value);
       expect(getMockCalls(response)).toMatchSnapshot();
     });
     it(`setSpeedMode sends value ${value}`, async () => {
-      const response = await api.setSpeedMode(value);
+      const response = await api.setSpeedMode(device, 'password', value);
       expect(getMockCalls(response)).toMatchSnapshot();
     });
     it(`setOperationMode sends value ${value}`, async () => {
-      const response = await api.setOperationMode(value);
+      const response = await api.setOperationMode(device, 'password', value);
       expect(getMockCalls(response)).toMatchSnapshot();
     });
     it(`setTimerMode sends value ${value}`, async () => {
-      const response = await api.setTimerMode(value);
+      const response = await api.setTimerMode(device, 'password', value);
       expect(getMockCalls(response)).toMatchSnapshot();
     });
     it(`setManualSpeed sends value ${value}`, async () => {
-      const response = await api.setManualSpeed(value);
+      const response = await api.setManualSpeed(device, 'password', value);
       expect(getMockCalls(response)).toMatchSnapshot();
     });
     it(`setHumiditySensor sends value ${value}`, async () => {
-      const response = await api.setHumiditySensor(value);
+      const response = await api.setHumiditySensor(device, 'password', value);
       expect(getMockCalls(response)).toMatchSnapshot();
     });
     it(`setHumiditySensorThreshold sends value ${value}`, async () => {
-      const response = await api.setHumiditySensorThreshold(value);
+      const response = await api.setHumiditySensorThreshold(
+        device,
+        'password',
+        value
+      );
       expect(getMockCalls(response)).toMatchSnapshot();
     });
     it(`setBoostDelay sends value ${value}`, async () => {
-      const response = await api.setBoostDelay(value);
+      const response = await api.setBoostDelay(device, 'password', value);
       expect(getMockCalls(response)).toMatchSnapshot();
     });
   });

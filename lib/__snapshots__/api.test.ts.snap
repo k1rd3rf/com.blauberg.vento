@@ -8,17 +8,22 @@ exports[`Api set functions setBoostDelay sends value 0 1`] = `
         "_dataEntries": [
           {
             "parameter": 102,
-            "value": undefined,
+            "value": Uint8Array [
+              0,
+            ],
           },
         ],
-        "_deviceId": undefined,
+        "_deviceId": "fanId",
         "_functionType": 2,
-        "_password": undefined,
+        "_password": "password",
       },
-      undefined,
+      "127.0.0.1",
     ],
   ],
   "response": {
+    "boost": {
+      "deactivationtimer": 0,
+    },
     "humidity": {
       "activated": 0,
     },
@@ -35,17 +40,22 @@ exports[`Api set functions setBoostDelay sends value 1 1`] = `
         "_dataEntries": [
           {
             "parameter": 102,
-            "value": undefined,
+            "value": Uint8Array [
+              1,
+            ],
           },
         ],
-        "_deviceId": undefined,
+        "_deviceId": "fanId",
         "_functionType": 2,
-        "_password": undefined,
+        "_password": "password",
       },
-      undefined,
+      "127.0.0.1",
     ],
   ],
   "response": {
+    "boost": {
+      "deactivationtimer": 1,
+    },
     "humidity": {
       "activated": 0,
     },
@@ -62,17 +72,22 @@ exports[`Api set functions setBoostDelay sends value 2 1`] = `
         "_dataEntries": [
           {
             "parameter": 102,
-            "value": undefined,
+            "value": Uint8Array [
+              2,
+            ],
           },
         ],
-        "_deviceId": undefined,
+        "_deviceId": "fanId",
         "_functionType": 2,
-        "_password": undefined,
+        "_password": "password",
       },
-      undefined,
+      "127.0.0.1",
     ],
   ],
   "response": {
+    "boost": {
+      "deactivationtimer": 2,
+    },
     "humidity": {
       "activated": 0,
     },
@@ -89,19 +104,22 @@ exports[`Api set functions setHumiditySensor sends value 0 1`] = `
         "_dataEntries": [
           {
             "parameter": 15,
-            "value": undefined,
+            "value": Uint8Array [
+              0,
+            ],
           },
         ],
-        "_deviceId": undefined,
+        "_deviceId": "fanId",
         "_functionType": 2,
-        "_password": undefined,
+        "_password": "password",
       },
-      undefined,
+      "127.0.0.1",
     ],
   ],
   "response": {
     "humidity": {
       "activated": 0,
+      "sensoractivation": 0,
     },
     "unittype": "Vento Expert",
   },
@@ -116,19 +134,22 @@ exports[`Api set functions setHumiditySensor sends value 1 1`] = `
         "_dataEntries": [
           {
             "parameter": 15,
-            "value": undefined,
+            "value": Uint8Array [
+              1,
+            ],
           },
         ],
-        "_deviceId": undefined,
+        "_deviceId": "fanId",
         "_functionType": 2,
-        "_password": undefined,
+        "_password": "password",
       },
-      undefined,
+      "127.0.0.1",
     ],
   ],
   "response": {
     "humidity": {
       "activated": 0,
+      "sensoractivation": 1,
     },
     "unittype": "Vento Expert",
   },
@@ -143,19 +164,22 @@ exports[`Api set functions setHumiditySensor sends value 2 1`] = `
         "_dataEntries": [
           {
             "parameter": 15,
-            "value": undefined,
+            "value": Uint8Array [
+              2,
+            ],
           },
         ],
-        "_deviceId": undefined,
+        "_deviceId": "fanId",
         "_functionType": 2,
-        "_password": undefined,
+        "_password": "password",
       },
-      undefined,
+      "127.0.0.1",
     ],
   ],
   "response": {
     "humidity": {
       "activated": 0,
+      "sensoractivation": 2,
     },
     "unittype": "Vento Expert",
   },
@@ -170,19 +194,22 @@ exports[`Api set functions setHumiditySensorThreshold sends value 0 1`] = `
         "_dataEntries": [
           {
             "parameter": 25,
-            "value": undefined,
+            "value": Uint8Array [
+              0,
+            ],
           },
         ],
-        "_deviceId": undefined,
+        "_deviceId": "fanId",
         "_functionType": 2,
-        "_password": undefined,
+        "_password": "password",
       },
-      undefined,
+      "127.0.0.1",
     ],
   ],
   "response": {
     "humidity": {
       "activated": 0,
+      "threshold": 0,
     },
     "unittype": "Vento Expert",
   },
@@ -197,19 +224,22 @@ exports[`Api set functions setHumiditySensorThreshold sends value 1 1`] = `
         "_dataEntries": [
           {
             "parameter": 25,
-            "value": undefined,
+            "value": Uint8Array [
+              1,
+            ],
           },
         ],
-        "_deviceId": undefined,
+        "_deviceId": "fanId",
         "_functionType": 2,
-        "_password": undefined,
+        "_password": "password",
       },
-      undefined,
+      "127.0.0.1",
     ],
   ],
   "response": {
     "humidity": {
       "activated": 0,
+      "threshold": 1,
     },
     "unittype": "Vento Expert",
   },
@@ -224,19 +254,22 @@ exports[`Api set functions setHumiditySensorThreshold sends value 2 1`] = `
         "_dataEntries": [
           {
             "parameter": 25,
-            "value": undefined,
+            "value": Uint8Array [
+              2,
+            ],
           },
         ],
-        "_deviceId": undefined,
+        "_deviceId": "fanId",
         "_functionType": 2,
-        "_password": undefined,
+        "_password": "password",
       },
-      undefined,
+      "127.0.0.1",
     ],
   ],
   "response": {
     "humidity": {
       "activated": 0,
+      "threshold": 2,
     },
     "unittype": "Vento Expert",
   },
@@ -251,19 +284,24 @@ exports[`Api set functions setManualSpeed sends value 0 1`] = `
         "_dataEntries": [
           {
             "parameter": 68,
-            "value": undefined,
+            "value": Uint8Array [
+              0,
+            ],
           },
         ],
-        "_deviceId": undefined,
+        "_deviceId": "fanId",
         "_functionType": 2,
-        "_password": undefined,
+        "_password": "password",
       },
-      undefined,
+      "127.0.0.1",
     ],
   ],
   "response": {
     "humidity": {
       "activated": 0,
+    },
+    "speed": {
+      "manualspeed": 0,
     },
     "unittype": "Vento Expert",
   },
@@ -278,19 +316,24 @@ exports[`Api set functions setManualSpeed sends value 1 1`] = `
         "_dataEntries": [
           {
             "parameter": 68,
-            "value": undefined,
+            "value": Uint8Array [
+              1,
+            ],
           },
         ],
-        "_deviceId": undefined,
+        "_deviceId": "fanId",
         "_functionType": 2,
-        "_password": undefined,
+        "_password": "password",
       },
-      undefined,
+      "127.0.0.1",
     ],
   ],
   "response": {
     "humidity": {
       "activated": 0,
+    },
+    "speed": {
+      "manualspeed": 1,
     },
     "unittype": "Vento Expert",
   },
@@ -305,19 +348,24 @@ exports[`Api set functions setManualSpeed sends value 2 1`] = `
         "_dataEntries": [
           {
             "parameter": 68,
-            "value": undefined,
+            "value": Uint8Array [
+              2,
+            ],
           },
         ],
-        "_deviceId": undefined,
+        "_deviceId": "fanId",
         "_functionType": 2,
-        "_password": undefined,
+        "_password": "password",
       },
-      undefined,
+      "127.0.0.1",
     ],
   ],
   "response": {
     "humidity": {
       "activated": 0,
+    },
+    "speed": {
+      "manualspeed": 2,
     },
     "unittype": "Vento Expert",
   },
@@ -332,20 +380,23 @@ exports[`Api set functions setOnOffStatus sends value 0 1`] = `
         "_dataEntries": [
           {
             "parameter": 1,
-            "value": undefined,
+            "value": Uint8Array [
+              0,
+            ],
           },
         ],
-        "_deviceId": undefined,
+        "_deviceId": "fanId",
         "_functionType": 2,
-        "_password": undefined,
+        "_password": "password",
       },
-      undefined,
+      "127.0.0.1",
     ],
   ],
   "response": {
     "humidity": {
       "activated": 0,
     },
+    "onoff": 0,
     "unittype": "Vento Expert",
   },
 }
@@ -359,20 +410,23 @@ exports[`Api set functions setOnOffStatus sends value 1 1`] = `
         "_dataEntries": [
           {
             "parameter": 1,
-            "value": undefined,
+            "value": Uint8Array [
+              1,
+            ],
           },
         ],
-        "_deviceId": undefined,
+        "_deviceId": "fanId",
         "_functionType": 2,
-        "_password": undefined,
+        "_password": "password",
       },
-      undefined,
+      "127.0.0.1",
     ],
   ],
   "response": {
     "humidity": {
       "activated": 0,
     },
+    "onoff": 1,
     "unittype": "Vento Expert",
   },
 }
@@ -386,20 +440,23 @@ exports[`Api set functions setOnOffStatus sends value 2 1`] = `
         "_dataEntries": [
           {
             "parameter": 1,
-            "value": undefined,
+            "value": Uint8Array [
+              2,
+            ],
           },
         ],
-        "_deviceId": undefined,
+        "_deviceId": "fanId",
         "_functionType": 2,
-        "_password": undefined,
+        "_password": "password",
       },
-      undefined,
+      "127.0.0.1",
     ],
   ],
   "response": {
     "humidity": {
       "activated": 0,
     },
+    "onoff": 2,
     "unittype": "Vento Expert",
   },
 }
@@ -413,20 +470,23 @@ exports[`Api set functions setOperationMode sends value 0 1`] = `
         "_dataEntries": [
           {
             "parameter": 183,
-            "value": undefined,
+            "value": Uint8Array [
+              0,
+            ],
           },
         ],
-        "_deviceId": undefined,
+        "_deviceId": "fanId",
         "_functionType": 2,
-        "_password": undefined,
+        "_password": "password",
       },
-      undefined,
+      "127.0.0.1",
     ],
   ],
   "response": {
     "humidity": {
       "activated": 0,
     },
+    "operationmode": 0,
     "unittype": "Vento Expert",
   },
 }
@@ -440,20 +500,23 @@ exports[`Api set functions setOperationMode sends value 1 1`] = `
         "_dataEntries": [
           {
             "parameter": 183,
-            "value": undefined,
+            "value": Uint8Array [
+              1,
+            ],
           },
         ],
-        "_deviceId": undefined,
+        "_deviceId": "fanId",
         "_functionType": 2,
-        "_password": undefined,
+        "_password": "password",
       },
-      undefined,
+      "127.0.0.1",
     ],
   ],
   "response": {
     "humidity": {
       "activated": 0,
     },
+    "operationmode": 1,
     "unittype": "Vento Expert",
   },
 }
@@ -467,20 +530,23 @@ exports[`Api set functions setOperationMode sends value 2 1`] = `
         "_dataEntries": [
           {
             "parameter": 183,
-            "value": undefined,
+            "value": Uint8Array [
+              2,
+            ],
           },
         ],
-        "_deviceId": undefined,
+        "_deviceId": "fanId",
         "_functionType": 2,
-        "_password": undefined,
+        "_password": "password",
       },
-      undefined,
+      "127.0.0.1",
     ],
   ],
   "response": {
     "humidity": {
       "activated": 0,
     },
+    "operationmode": 2,
     "unittype": "Vento Expert",
   },
 }
@@ -494,19 +560,24 @@ exports[`Api set functions setSpeedMode sends value 0 1`] = `
         "_dataEntries": [
           {
             "parameter": 2,
-            "value": undefined,
+            "value": Uint8Array [
+              0,
+            ],
           },
         ],
-        "_deviceId": undefined,
+        "_deviceId": "fanId",
         "_functionType": 2,
-        "_password": undefined,
+        "_password": "password",
       },
-      undefined,
+      "127.0.0.1",
     ],
   ],
   "response": {
     "humidity": {
       "activated": 0,
+    },
+    "speed": {
+      "mode": 0,
     },
     "unittype": "Vento Expert",
   },
@@ -521,19 +592,24 @@ exports[`Api set functions setSpeedMode sends value 1 1`] = `
         "_dataEntries": [
           {
             "parameter": 2,
-            "value": undefined,
+            "value": Uint8Array [
+              1,
+            ],
           },
         ],
-        "_deviceId": undefined,
+        "_deviceId": "fanId",
         "_functionType": 2,
-        "_password": undefined,
+        "_password": "password",
       },
-      undefined,
+      "127.0.0.1",
     ],
   ],
   "response": {
     "humidity": {
       "activated": 0,
+    },
+    "speed": {
+      "mode": 1,
     },
     "unittype": "Vento Expert",
   },
@@ -548,19 +624,24 @@ exports[`Api set functions setSpeedMode sends value 2 1`] = `
         "_dataEntries": [
           {
             "parameter": 2,
-            "value": undefined,
+            "value": Uint8Array [
+              2,
+            ],
           },
         ],
-        "_deviceId": undefined,
+        "_deviceId": "fanId",
         "_functionType": 2,
-        "_password": undefined,
+        "_password": "password",
       },
-      undefined,
+      "127.0.0.1",
     ],
   ],
   "response": {
     "humidity": {
       "activated": 0,
+    },
+    "speed": {
+      "mode": 2,
     },
     "unittype": "Vento Expert",
   },
@@ -575,19 +656,24 @@ exports[`Api set functions setTimerMode sends value 0 1`] = `
         "_dataEntries": [
           {
             "parameter": 7,
-            "value": undefined,
+            "value": Uint8Array [
+              0,
+            ],
           },
         ],
-        "_deviceId": undefined,
+        "_deviceId": "fanId",
         "_functionType": 2,
-        "_password": undefined,
+        "_password": "password",
       },
-      undefined,
+      "127.0.0.1",
     ],
   ],
   "response": {
     "humidity": {
       "activated": 0,
+    },
+    "timers": {
+      "mode": 0,
     },
     "unittype": "Vento Expert",
   },
@@ -602,19 +688,24 @@ exports[`Api set functions setTimerMode sends value 1 1`] = `
         "_dataEntries": [
           {
             "parameter": 7,
-            "value": undefined,
+            "value": Uint8Array [
+              1,
+            ],
           },
         ],
-        "_deviceId": undefined,
+        "_deviceId": "fanId",
         "_functionType": 2,
-        "_password": undefined,
+        "_password": "password",
       },
-      undefined,
+      "127.0.0.1",
     ],
   ],
   "response": {
     "humidity": {
       "activated": 0,
+    },
+    "timers": {
+      "mode": 1,
     },
     "unittype": "Vento Expert",
   },
@@ -629,19 +720,24 @@ exports[`Api set functions setTimerMode sends value 2 1`] = `
         "_dataEntries": [
           {
             "parameter": 7,
-            "value": undefined,
+            "value": Uint8Array [
+              2,
+            ],
           },
         ],
-        "_deviceId": undefined,
+        "_deviceId": "fanId",
         "_functionType": 2,
-        "_password": undefined,
+        "_password": "password",
       },
-      undefined,
+      "127.0.0.1",
     ],
   ],
   "response": {
     "humidity": {
       "activated": 0,
+    },
+    "timers": {
+      "mode": 2,
     },
     "unittype": "Vento Expert",
   },
@@ -719,11 +815,11 @@ exports[`Api set functions update gets response 1`] = `
             "value": undefined,
           },
         ],
-        "_deviceId": "TEST1234",
+        "_deviceId": "fanId",
         "_functionType": 1,
-        "_password": undefined,
+        "_password": "password",
       },
-      undefined,
+      "127.0.0.1",
     ],
   ],
   "response": {
@@ -839,11 +935,11 @@ exports[`Api set functions update sends correct data 1`] = `
             "value": undefined,
           },
         ],
-        "_deviceId": "TEST1234",
+        "_deviceId": "fanId",
         "_functionType": 1,
-        "_password": undefined,
+        "_password": "password",
       },
-      undefined,
+      "127.0.0.1",
     ],
   ],
   "response": {
