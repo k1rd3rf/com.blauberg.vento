@@ -40,5 +40,8 @@
   },
   "1.2.9": {
     "en": "Clean up device and add enum for capabilities"
+  },
+  "1.2.10": {
+    "en": "Clean up driver.js before transform to typescript"
   }
 }
