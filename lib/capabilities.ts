@@ -24,10 +24,3 @@ export enum ActionCards {
   speed_mode = 'speed_mode',
   timer_mode = 'timer_mode',
 }
-
-export enum DeviceSettings {
-  unit_type = 'unit_type',
-  humidity_sensor = 'humidity_sensor',
-  humidity_threshold = 'humidity_threshold',
-  boost_delay = 'boost_delay',
-}

@@ -4,7 +4,7 @@ const { Device } = require('homey');
 const {
   Capabilities,
   ActionCards,
-  DeviceSettings,
+  // eslint-disable-next-line node/no-missing-require
 } = require('../../lib/capabilities');
 
 class VentoDevice extends Device {
@@ -191,21 +191,21 @@ class VentoDevice extends Device {
       await this.updateDeviceState();
     }
     // For the other settings we probably need to push the new value to the device
-    if (changedKeys.includes(DeviceSettings.humidity_sensor)) {
+    if (changedKeys.includes('humidity_sensor')) {
       await this.driver.setHumiditySensor(
         this.deviceObject,
         this.devicepwd,
         newSettings.humidity_sensor
       );
     }
-    if (changedKeys.includes(DeviceSettings.humidity_threshold)) {
+    if (changedKeys.includes('humidity_threshold')) {
       await this.driver.setHumiditySensorThreshold(
         this.deviceObject,
         this.devicepwd,
         newSettings.humidity_threshold
       );
     }
-    if (changedKeys.includes(DeviceSettings.boost_delay)) {
+    if (changedKeys.includes('boost_delay')) {
       await this.driver.setBoostDelay(
         this.deviceObject,
         this.devicepwd,
