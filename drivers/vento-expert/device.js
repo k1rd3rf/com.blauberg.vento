@@ -68,7 +68,7 @@ class VentoDevice extends Device {
   {
     this.deviceObject=this.driver.locateDeviceById(id);
     if(this.deviceObject==null){
-      this.setUnavailable("Device not discovered yet");
+      this.setUnavailable("Device not discovered yet, see if we still know it");
       this.log('Vento device could not be located');
     } else {
       this.setAvailable();
@@ -127,6 +127,10 @@ class VentoDevice extends Device {
       this.devicepwd=newSettings.devicepwd;
       this.updateDeviceState();
     }
+    if(changedKeys.includes('last_known_ip'))
+      {
+        this.setStoreValue('lastKnowIP', newSettings.last_known_ip);
+      }
     //For the other settings we probably need to push the new value to the device
     if(changedKeys.includes('humidity_sensor'))
       await this.driver.setHumiditySensor(this.deviceObject,this.devicepwd, newSettings.humidity_sensor);

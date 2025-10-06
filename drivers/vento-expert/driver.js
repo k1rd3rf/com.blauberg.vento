@@ -1,7 +1,8 @@
 'use strict';
 
 const { Driver } = require('homey');
-const { BlaubergVentoClient, Packet, FunctionType, Parameter, DataEntry } = require('blaubergventojs');
+//const { BlaubergVentoClient, Packet, FunctionType, Parameter, DataEntry } = require('blaubergventojs');
+const { BlaubergVentoClient, Packet, FunctionType, Parameter, DataEntry } = require('../../clone_modules/blaubergventojs');
 
 class VentoDriver extends Driver {
 
@@ -11,15 +12,23 @@ class VentoDriver extends Driver {
   async onInit() {
     this.deviceList=[];
     this.modbusClient=new BlaubergVentoClient();
-    this.modbusClient.timeout=1500;
+    const ipAddress = await this.homey.cloud.getLocalAddress();
+    this.log(`Homey IP Address: ${ipAddress}`);
+    this.modbusClient.broadcast_address=ipAddress.split('.').map((part, index, arr) => index === arr.length - 1 ? '255' : part).join('.');
+    this.modbusClient.timeout=3000;
     this.log('Vento driver has been initialized');
-    this.start_discover_loop();
+    setTimeout(() => {
+      this.locateDevices();
+      this.start_discover_loop();
+  }, 5000); 
+    
   }
 
   start_discover_loop() {
+    //And set the repeat interval
     this._timer = setInterval(() => {
         this.locateDevices();
-    }, 10000); 
+    }, 30000); 
   }
 
   async setDeviceValue(device,devicepass,param,value)
@@ -135,9 +144,10 @@ class VentoDriver extends Driver {
   }
 
   async locateDevices(){
+    this.log('Send the discovery device broadcast message to '+this.modbusClient.broadcast_address);
     let locatedDevices = await this.modbusClient.findDevices();
     let oldamount=this.deviceList.length;
-    this.log('Current we located '+oldamount+' devices, lets see if we found more: amount located '+locatedDevices.length);
+    this.log('Current we know '+oldamount+' devices, lets see if we found more: amount located '+locatedDevices.length);
     let homeydevices=this.getDevices(); //We want to be able to tell any non initialized devices they are ready for use
     locatedDevices.forEach(locatedDevice => {
       //Lets see if we already knew about this device
@@ -146,20 +156,38 @@ class VentoDriver extends Driver {
         this.log('Located new device with id '+locatedDevice.id+' remember it and initialize it');
         this.deviceList.push(locatedDevice); //So we remember the located device and its IP
         let homeydevice=homeydevices.find(device => device.getData().id===locatedDevice.id);
+        device.setStoreValue('lastKnowIP', locatedDevice.ip);
         if(homeydevice)
           homeydevice.discovery(locatedDevice.id);
         else
           this.log('Located device is not added to Homey yet');
-      } 
+      } else {
+        //Lets make sure we update the discovery result with the latest version
+        this.deviceList = this.deviceList.map(device => device.id === locatedDevice.id ? locatedDevice : device);
+      }
     });
     //Now lets ask all our homey enabled devices to update their state
     homeydevices.forEach(homeydevice => {
+      let deviceid = homeydevice.getData().id;
       if(homeydevice.getAvailable())
         {
-          this.log('We know this device ['+homeydevice.getData().id+'] already, lets refresh its state');
+          this.log('We know this device ['+deviceid+'] already, lets refresh its state');
           homeydevice.updateDeviceState();
         } else {
-          this.log('Not getting the state since device is not available yet')
+          let lastKnownIP = homeydevice.getStoreValue('lastKnowIP');
+          if (lastKnownIP !== null) {
+            let oldDeviceInfo = {
+              id: homeydevice.getData().id,
+              ip: lastKnownIP
+            };
+            this.deviceList.push(oldDeviceInfo);
+            this.log('Could not locate the device yet, so use stale info ('+lastKnownIP+') to try to connect');
+            homeydevice.discovery(oldDeviceInfo.id);
+          } else {
+            this.log('Device is not located yet, and we have no old data to try');
+          }
+         
+          //homeydevice.discovery(deviceid);
         }
     })
   }
@@ -167,32 +195,6 @@ class VentoDriver extends Driver {
   locateDeviceById(id){
     return this.deviceList.find(function(e) { return e.id === id })
   }
-
-  /**
-   * onPairListDevices is called when a user is adding a device
-   * and the 'list_devices' view is called.
-   * This should return an array with the data of devices that are available for pairing.
-   */
-  // async onPairListDevices() {
-  //   // Find all devices on the local network
-  //   this.log('Start discovery of Vento Expert devices on the local network');
-  //   await this.locateDevices();
-  //   console.log(JSON.stringify(this.deviceList));
-  //   this.log('Located ['+this.deviceList.length+'] Vento expert devices');
-
-  //   return this.deviceList.map((device) => {
-  //     console.log(JSON.stringify(device))
-  //     let ventodevice = {
-  //       id: device.id,
-  //       name: "Vento Expert "+device.id,
-  //       data: {
-  //         id: device.id,
-  //       }
-  //     }
-  //     this.log('located: '+JSON.stringify(ventodevice));
-  //     return ventodevice;
-  //   });
-  // }
 
   async onPair(session) {
     session.setHandler('list_devices', async (data) => {
