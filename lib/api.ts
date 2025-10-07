@@ -6,7 +6,6 @@ import {
   Parameter,
 } from 'blaubergventojs';
 import capabilityMapper, { CapabilityResponse } from './capabilityMapper';
-import { mapModbusResponse, ModbusResponse } from './mapModbusResponse';
 
 export default class Api {
   modbusClient!: BlaubergVentoClient;
