@@ -1,17 +1,8 @@
 import VentoDevice from '../drivers/vento-expert/device';
 import { Device } from './__mocks__/homey';
-import { statusResponse } from './__mockdata__/statusResponse';
 import VentoDriver from '../drivers/vento-expert/driver';
-
-jest.mock('blaubergventojs', () => ({
-  ...jest.requireActual('blaubergventojs'),
-  BlaubergVentoClient: class BlaubergVentoClient {
-    send = jest.fn().mockResolvedValue(statusResponse);
-    findDevices = jest
-      .fn()
-      .mockResolvedValue([{ id: 'TEST1234', ip: '127.0.0.3' }]);
-  },
-}));
+import { sendMock } from './__mocks__/blaubergventojs';
+import { statusResponse, offResponse } from './__mockdata__/statusResponse';
 
 async function getDevice() {
   const device = new VentoDevice();
@@ -27,9 +18,37 @@ describe('ventoDevice', () => {
   afterEach(() => {
     jest.clearAllMocks();
   });
+  beforeEach(() => {
+    sendMock.mockResolvedValue(statusResponse);
+  });
 
   it('should be able to get status from modbus on init', async () => {
     const device = await getDevice();
+    await device.onInit();
+    await device.updateDeviceState();
+
+    expect({
+      apiCalls: (device as unknown as Device).getMockCalls(),
+    }).toMatchSnapshot();
+  });
+  it('should be able to get status when device is marked as off', async () => {
+    const device = await getDevice();
+    sendMock.mockResolvedValue(offResponse);
+    await device.onInit();
+    await device.updateDeviceState();
+
+    expect({
+      apiCalls: (device as unknown as Device).getMockCalls(),
+    }).toMatchSnapshot();
+  });
+  it('should be able to handle errors', async () => {
+    const device = await getDevice();
+    jest
+      // @ts-expect-error: ok
+      .spyOn(device.driver, 'getDeviceState')
+      // @ts-expect-error: ok
+      .mockRejectedValue(new Error('test errors'));
+
     await device.onInit();
     await device.updateDeviceState();
 

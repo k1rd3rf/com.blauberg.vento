@@ -110,10 +110,11 @@ class VentoDevice extends Device {
       .getDeviceState(this.deviceObject, this.devicepwd)
       .catch(async (e) => {
         await this.setCapabilityValue(Capabilities.alarm_connectivity, true);
-        await this.setUnavailable();
-        this.error('Failed to get device state, device unreachable', e);
+        await this.setUnavailable(e.message);
       });
-    if (state === undefined) {
+
+    if (state === undefined || Object.keys(state).length === 0) {
+      this.error('Failed to get device state, device unreachable');
       return;
     }
 
