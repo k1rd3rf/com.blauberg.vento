@@ -17,7 +17,7 @@ type DeviceSettings = {
 
 export default class VentoDevice extends Device {
   id!: string;
-  api!: Api;
+  api: Api | undefined;
 
   discoveryClient!: VentoDiscovery;
 
@@ -139,15 +139,14 @@ export default class VentoDevice extends Device {
 
   async updateDeviceState() {
     this.log('Requesting the current device state');
-    const state: Partial<CapabilityResponse> = await this.api
-      .getDeviceState()
-      .catch(async (e) => {
+    const state: Partial<CapabilityResponse> =
+      (await this.api?.getDeviceState().catch(async (e) => {
         await this.setCapabilityValue(Capabilities.alarm_connectivity, true);
         await this.setUnavailable(e.message);
         return {
           [Capabilities.alarm_connectivity]: true,
         };
-      });
+      })) || {};
 
     if (this.pollInterval) {
       this.homey.clearInterval(this.pollInterval);
@@ -221,48 +220,50 @@ export default class VentoDevice extends Device {
     }
     // For the other settings we probably need to push the new value to the device
     if (changedKeys.includes('humidity_sensor')) {
-      await this.api.setHumiditySensor(newSettings.humidity_sensor ? 1 : 0);
+      await this.api?.setHumiditySensor(newSettings.humidity_sensor ? 1 : 0);
     }
     if (
       changedKeys.includes('humidity_threshold') &&
       newSettings.humidity_threshold
     ) {
-      await this.api.setHumiditySensorThreshold(newSettings.humidity_threshold);
+      await this.api?.setHumiditySensorThreshold(
+        newSettings.humidity_threshold
+      );
     }
     if (
       changedKeys.includes('boost_delay') &&
       newSettings.boost_delay !== undefined
     ) {
-      await this.api.setBoostDelay(newSettings.boost_delay);
+      await this.api?.setBoostDelay(newSettings.boost_delay);
     }
   }
 
   onCapabilityOnOff: Device.CapabilityCallback = async (value) => {
     if (value) {
-      await this.api.setOnOffStatus(1);
+      await this.api?.setOnOffStatus(1);
     } else {
-      await this.api.setOnOffStatus(0);
+      await this.api?.setOnOffStatus(0);
     }
   };
 
   onCapabilitySpeedMode: Device.CapabilityCallback = async (value) => {
-    await this.api.setSpeedMode(value);
+    await this.api?.setSpeedMode(value);
   };
 
   onCapabilityManualSpeed: Device.CapabilityCallback = async (value) => {
-    await this.api.setManualSpeed(255 * (value / 100));
+    await this.api?.setManualSpeed(255 * (value / 100));
   };
 
   onCapabilityFanSpeed: Device.CapabilityCallback = async (value) => {
-    await this.api.setManualSpeed(255 * value);
+    await this.api?.setManualSpeed(255 * value);
   };
 
   onCapabilityOperationMode: Device.CapabilityCallback = async (value) => {
-    await this.api.setOperationMode(value);
+    await this.api?.setOperationMode(value);
   };
 
   onCapabilityTimerMode: Device.CapabilityCallback = async (value) => {
-    await this.api.setTimerMode(value);
+    await this.api?.setTimerMode(value);
   };
 
   async setupFlowOperationMode() {
@@ -275,7 +276,7 @@ export default class VentoDevice extends Device {
           Capabilities.operationMode,
           args.operationMode
         );
-        await this.api.setOperationMode(args.operationMode);
+        await this.api?.setOperationMode(args.operationMode);
       });
   }
 
@@ -286,7 +287,7 @@ export default class VentoDevice extends Device {
       .registerRunListener(async (args: { speedMode: number }) => {
         this.log(`attempt to change speed mode: ${args.speedMode}`);
         await this.setCapabilityValue(Capabilities.speedMode, args.speedMode);
-        await this.api.setSpeedMode(args.speedMode);
+        await this.api?.setSpeedMode(args.speedMode);
       });
   }
 
@@ -301,7 +302,7 @@ export default class VentoDevice extends Device {
           Capabilities.fan_speed,
           args.speed / 100 - 1
         );
-        await this.api.setManualSpeed(255 * (args.speed / 100));
+        await this.api?.setManualSpeed(255 * (args.speed / 100));
       });
   }
 
@@ -312,7 +313,7 @@ export default class VentoDevice extends Device {
       .registerRunListener(async (args: { timerMode: number }) => {
         this.log(`attempt to change timer mode: ${args.timerMode}`);
         await this.setCapabilityValue(Capabilities.timerMode, args.timerMode);
-        await this.api.setTimerMode(args.timerMode);
+        await this.api?.setTimerMode(args.timerMode);
       });
   }
 

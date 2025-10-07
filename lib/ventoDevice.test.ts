@@ -56,7 +56,7 @@ describe('ventoDevice', () => {
     await device.onInit();
 
     expect({
-      modbusCalls: (device.api.modbusClient.send as jest.Mock).mock.calls,
+      modbusCalls: (device.api?.modbusClient.send as jest.Mock).mock.calls,
     }).toMatchSnapshot();
   });
 
@@ -64,7 +64,7 @@ describe('ventoDevice', () => {
     const device = new VentoDevice();
     await device.onInit();
 
-    const { deviceId, devicePass, deviceIp } = device.api;
+    const { deviceId, devicePass, deviceIp } = device.api || {};
     expect({ devicePass, deviceIp, deviceId }).toMatchSnapshot();
   });
 
