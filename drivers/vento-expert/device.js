@@ -112,7 +112,7 @@ class VentoDevice extends Device {
 
     // Update stored IP if it changed (device might have gotten new DHCP address)
     const currentStoredIP = this.getStoreValue('lastKnownIP');
-    if (this.deviceObject && this.deviceObject.ip && currentStoredIP !== this.deviceObject.ip) {
+    if (this.deviceObject?.ip && currentStoredIP !== this.deviceObject.ip) {
       this.log(`Device IP changed from ${currentStoredIP} to ${this.deviceObject.ip}`);
       await this.setStoreValue('lastKnownIP', this.deviceObject.ip);
       await this.setSettings({ last_known_ip: this.deviceObject.ip });
@@ -128,42 +128,42 @@ class VentoDevice extends Device {
     // Update capabilities
     await this.setCapabilityValue('onoff', (state.onoff === 1));
 
-    const newBoost = (state.boost.mode !== 0);
+    const newBoost = (state.boost?.mode !== 0);
     await this.setCapabilityValue('alarm_boost', newBoost);
     if (oldBoost !== null && oldBoost !== newBoost) {
       await this.triggerBoostAlarm(newBoost);
     }
 
-    const newFilter = (state.filter.alarm === 1);
+    const newFilter = (state.filter?.alarm === 1);
     await this.setCapabilityValue('alarm_filter', newFilter);
     if (oldFilter !== null && oldFilter !== newFilter) {
       await this.triggerFilterAlarm(newFilter);
     }
 
-    await this.setCapabilityValue('filter_timer', `${state.filter.timer.days}:${state.filter.timer.hour}:${state.filter.timer.min}`);
+    await this.setCapabilityValue('filter_timer', `${state.filter?.timer?.days}:${state.filter?.timer?.hour}:${state.filter?.timer?.min}`);
 
     const newGeneric = (state.alarm !== 0);
     await this.setCapabilityValue('alarm_generic', newGeneric);
     if (oldGeneric !== null && oldGeneric !== newGeneric) {
       await this.triggerGenericAlarm(newGeneric);
     }
-    await this.setCapabilityValue('measure_humidity', state.humidity.current);
-    await this.setCapabilityValue('measure_RPM', state.fan.rpm);
+    await this.setCapabilityValue('measure_humidity', state.humidity?.current);
+    await this.setCapabilityValue('measure_RPM', state.fan?.rpm);
     // Now handle the different modes
-    await this.setCapabilityValue('speedMode', state.speed.mode.toString());
-    await this.setCapabilityValue('manualSpeed', (state.speed.manualspeed / 255) * 100);
-    await this.setCapabilityValue('fan_speed', (state.speed.manualspeed / 255));
-    await this.setCapabilityValue('operationMode', state.operationmode.toString());
-    await this.setCapabilityValue('timerMode', state.timers.mode.toString());
+    await this.setCapabilityValue('speedMode', state.speed?.mode?.toString());
+    await this.setCapabilityValue('manualSpeed', (state.speed?.manualspeed / 255) * 100);
+    await this.setCapabilityValue('fan_speed', (state.speed?.manualspeed / 255));
+    await this.setCapabilityValue('operationMode', state.operationmode?.toString());
+    await this.setCapabilityValue('timerMode', state.timers?.mode?.toString());
     await this.setCapabilityValue('timerMode_timer', `${state.timers.countdown.hour}:${state.timers.countdown.min}:${state.timers.countdown.sec}`);
 
     // Update our settings based on current values in the device
     await this.setSettings({
       // only provide keys for the settings you want to change
       devicemodel: state.unittype,
-      humidity_sensor: (state.humidity.sensoractivation === 1),
-      humidity_threshold: state.humidity.threshold,
-      boost_delay: state.boost.deactivationtimer,
+      humidity_sensor: (state.humidity?.sensoractivation === 1),
+      humidity_threshold: state.humidity?.threshold,
+      boost_delay: state.boost?.deactivationtimer,
     });
   }
 
