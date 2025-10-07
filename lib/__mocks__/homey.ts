@@ -30,6 +30,11 @@ class FlowCard {
       [this.capability]: capabilityValue[this.capability],
     });
   };
+
+  trigger = (...args: object[]) => {
+    logMock('triggered', this.capability, args);
+    return Promise.resolve(true);
+  };
 }
 
 // eslint-disable-next-line import/prefer-default-export
@@ -38,7 +43,8 @@ export class Device {
     flow: {
       getActionCard: (capability: string) => new FlowCard(capability, this),
       getConditionCard: (capability: string) => new FlowCard(capability, this),
-      getTriggerCard: (capability: string) => new FlowCard(capability, this),
+      getDeviceTriggerCard: (capability: string) =>
+        new FlowCard(capability, this),
     },
     setInterval: jest.fn(),
   };
@@ -46,6 +52,8 @@ export class Device {
   settings: Record<string, unknown> = {
     devicepwd: 'password',
   };
+
+  store: Record<string, unknown> = {};
 
   log = (...args: unknown[]) => logMock('log', ...args);
   error = (...args: unknown[]) => logMock('error', ...args);
@@ -76,6 +84,14 @@ export class Device {
   async hasCapability(capabilityId: string) {
     hasCapabilityMock(capabilityId);
     return !!capabilities[capabilityId];
+  }
+
+  async setStoreValue(key: string, value: unknown) {
+    this.store[key] = value;
+  }
+
+  async getStoreValue(key: string) {
+    return this.store[key];
   }
 
   async registerCapabilityListener(

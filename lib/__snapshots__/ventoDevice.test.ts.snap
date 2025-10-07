@@ -98,86 +98,86 @@ exports[`ventoDevice should be able to get status from modbus on init 1`] = `
         "log",
         "Response from device TEST1234 at 127.0.0.2:",
         {
-          "alarm": 0,
+          "alarm": undefined,
           "boost": {
-            "deactivationtimer": 30,
-            "mode": 0,
+            "deactivationtimer": undefined,
+            "mode": undefined,
           },
           "fan": {
-            "rpm": 236,
+            "rpm": undefined,
           },
           "filter": {
-            "alarm": 0,
+            "alarm": undefined,
             "timer": {
-              "days": 31,
-              "hour": 20,
-              "min": 34,
+              "days": undefined,
+              "hour": undefined,
+              "min": undefined,
             },
           },
           "humidity": {
             "activated": 0,
-            "current": 45,
-            "sensoractivation": 1,
-            "threshold": 70,
+            "current": undefined,
+            "sensoractivation": undefined,
+            "threshold": undefined,
           },
-          "onoff": 1,
-          "operationmode": 2,
+          "onoff": undefined,
+          "operationmode": undefined,
           "speed": {
-            "manualspeed": 179,
-            "mode": 1,
+            "manualspeed": undefined,
+            "mode": undefined,
           },
           "timers": {
             "countdown": {
-              "hour": 0,
-              "min": 0,
-              "sec": 0,
+              "hour": undefined,
+              "min": undefined,
+              "sec": undefined,
             },
-            "mode": 0,
+            "mode": undefined,
           },
-          "unittype": "Vento Expert Duo A30-1 W V.2",
+          "unittype": "Vento Expert",
         },
       ],
       [
         "log",
         "Device state received: ",
         {
-          "alarm": 0,
+          "alarm": undefined,
           "boost": {
-            "deactivationtimer": 30,
-            "mode": 0,
+            "deactivationtimer": undefined,
+            "mode": undefined,
           },
           "fan": {
-            "rpm": 236,
+            "rpm": undefined,
           },
           "filter": {
-            "alarm": 0,
+            "alarm": undefined,
             "timer": {
-              "days": 31,
-              "hour": 20,
-              "min": 34,
+              "days": undefined,
+              "hour": undefined,
+              "min": undefined,
             },
           },
           "humidity": {
             "activated": 0,
-            "current": 45,
-            "sensoractivation": 1,
-            "threshold": 70,
+            "current": undefined,
+            "sensoractivation": undefined,
+            "threshold": undefined,
           },
-          "onoff": 1,
-          "operationmode": 2,
+          "onoff": undefined,
+          "operationmode": undefined,
           "speed": {
-            "manualspeed": 179,
-            "mode": 1,
+            "manualspeed": undefined,
+            "mode": undefined,
           },
           "timers": {
             "countdown": {
-              "hour": 0,
-              "min": 0,
-              "sec": 0,
+              "hour": undefined,
+              "min": undefined,
+              "sec": undefined,
             },
-            "mode": 0,
+            "mode": undefined,
           },
-          "unittype": "Vento Expert Duo A30-1 W V.2",
+          "unittype": "Vento Expert",
         },
       ],
       [
@@ -197,43 +197,43 @@ exports[`ventoDevice should be able to get status from modbus on init 1`] = `
         "log",
         "Response from device TEST1234 at 127.0.0.2:",
         {
-          "alarm": 0,
+          "alarm": undefined,
           "boost": {
-            "deactivationtimer": 30,
-            "mode": 0,
+            "deactivationtimer": undefined,
+            "mode": undefined,
           },
           "fan": {
-            "rpm": 236,
+            "rpm": undefined,
           },
           "filter": {
-            "alarm": 0,
+            "alarm": undefined,
             "timer": {
-              "days": 31,
-              "hour": 20,
-              "min": 34,
+              "days": undefined,
+              "hour": undefined,
+              "min": undefined,
             },
           },
           "humidity": {
             "activated": 0,
-            "current": 45,
-            "sensoractivation": 1,
-            "threshold": 70,
+            "current": undefined,
+            "sensoractivation": undefined,
+            "threshold": undefined,
           },
           "onoff": 1,
-          "operationmode": 2,
+          "operationmode": undefined,
           "speed": {
-            "manualspeed": 179,
-            "mode": 1,
+            "manualspeed": undefined,
+            "mode": undefined,
           },
           "timers": {
             "countdown": {
-              "hour": 0,
-              "min": 0,
-              "sec": 0,
+              "hour": undefined,
+              "min": undefined,
+              "sec": undefined,
             },
-            "mode": 0,
+            "mode": undefined,
           },
-          "unittype": "Vento Expert Duo A30-1 W V.2",
+          "unittype": "Vento Expert",
         },
       ],
       [
@@ -249,43 +249,43 @@ exports[`ventoDevice should be able to get status from modbus on init 1`] = `
         "log",
         "Response from device TEST1234 at 127.0.0.2:",
         {
-          "alarm": 0,
+          "alarm": undefined,
           "boost": {
-            "deactivationtimer": 30,
-            "mode": 0,
+            "deactivationtimer": undefined,
+            "mode": undefined,
           },
           "fan": {
-            "rpm": 236,
+            "rpm": undefined,
           },
           "filter": {
-            "alarm": 0,
+            "alarm": undefined,
             "timer": {
-              "days": 31,
-              "hour": 20,
-              "min": 34,
+              "days": undefined,
+              "hour": undefined,
+              "min": undefined,
             },
           },
           "humidity": {
             "activated": 0,
-            "current": 45,
-            "sensoractivation": 1,
-            "threshold": 70,
+            "current": undefined,
+            "sensoractivation": undefined,
+            "threshold": undefined,
           },
-          "onoff": 1,
-          "operationmode": 2,
+          "onoff": undefined,
+          "operationmode": undefined,
           "speed": {
-            "manualspeed": 179,
-            "mode": 1,
+            "manualspeed": undefined,
+            "mode": 0,
           },
           "timers": {
             "countdown": {
-              "hour": 0,
-              "min": 0,
-              "sec": 0,
+              "hour": undefined,
+              "min": undefined,
+              "sec": undefined,
             },
-            "mode": 0,
+            "mode": undefined,
           },
-          "unittype": "Vento Expert Duo A30-1 W V.2",
+          "unittype": "Vento Expert",
         },
       ],
       [
@@ -301,43 +301,43 @@ exports[`ventoDevice should be able to get status from modbus on init 1`] = `
         "log",
         "Response from device TEST1234 at 127.0.0.2:",
         {
-          "alarm": 0,
+          "alarm": undefined,
           "boost": {
-            "deactivationtimer": 30,
-            "mode": 0,
+            "deactivationtimer": undefined,
+            "mode": undefined,
           },
           "fan": {
-            "rpm": 236,
+            "rpm": undefined,
           },
           "filter": {
-            "alarm": 0,
+            "alarm": undefined,
             "timer": {
-              "days": 31,
-              "hour": 20,
-              "min": 34,
+              "days": undefined,
+              "hour": undefined,
+              "min": undefined,
             },
           },
           "humidity": {
             "activated": 0,
-            "current": 45,
-            "sensoractivation": 1,
-            "threshold": 70,
+            "current": undefined,
+            "sensoractivation": undefined,
+            "threshold": undefined,
           },
-          "onoff": 1,
-          "operationmode": 2,
+          "onoff": undefined,
+          "operationmode": undefined,
           "speed": {
-            "manualspeed": 179,
-            "mode": 1,
+            "manualspeed": 0,
+            "mode": undefined,
           },
           "timers": {
             "countdown": {
-              "hour": 0,
-              "min": 0,
-              "sec": 0,
+              "hour": undefined,
+              "min": undefined,
+              "sec": undefined,
             },
-            "mode": 0,
+            "mode": undefined,
           },
-          "unittype": "Vento Expert Duo A30-1 W V.2",
+          "unittype": "Vento Expert",
         },
       ],
       [
@@ -353,43 +353,43 @@ exports[`ventoDevice should be able to get status from modbus on init 1`] = `
         "log",
         "Response from device TEST1234 at 127.0.0.2:",
         {
-          "alarm": 0,
+          "alarm": undefined,
           "boost": {
-            "deactivationtimer": 30,
-            "mode": 0,
+            "deactivationtimer": undefined,
+            "mode": undefined,
           },
           "fan": {
-            "rpm": 236,
+            "rpm": undefined,
           },
           "filter": {
-            "alarm": 0,
+            "alarm": undefined,
             "timer": {
-              "days": 31,
-              "hour": 20,
-              "min": 34,
+              "days": undefined,
+              "hour": undefined,
+              "min": undefined,
             },
           },
           "humidity": {
             "activated": 0,
-            "current": 45,
-            "sensoractivation": 1,
-            "threshold": 70,
+            "current": undefined,
+            "sensoractivation": undefined,
+            "threshold": undefined,
           },
-          "onoff": 1,
-          "operationmode": 2,
+          "onoff": undefined,
+          "operationmode": undefined,
           "speed": {
-            "manualspeed": 179,
-            "mode": 1,
+            "manualspeed": 0,
+            "mode": undefined,
           },
           "timers": {
             "countdown": {
-              "hour": 0,
-              "min": 0,
-              "sec": 0,
+              "hour": undefined,
+              "min": undefined,
+              "sec": undefined,
             },
-            "mode": 0,
+            "mode": undefined,
           },
-          "unittype": "Vento Expert Duo A30-1 W V.2",
+          "unittype": "Vento Expert",
         },
       ],
       [
@@ -405,43 +405,43 @@ exports[`ventoDevice should be able to get status from modbus on init 1`] = `
         "log",
         "Response from device TEST1234 at 127.0.0.2:",
         {
-          "alarm": 0,
+          "alarm": undefined,
           "boost": {
-            "deactivationtimer": 30,
-            "mode": 0,
+            "deactivationtimer": undefined,
+            "mode": undefined,
           },
           "fan": {
-            "rpm": 236,
+            "rpm": undefined,
           },
           "filter": {
-            "alarm": 0,
+            "alarm": undefined,
             "timer": {
-              "days": 31,
-              "hour": 20,
-              "min": 34,
+              "days": undefined,
+              "hour": undefined,
+              "min": undefined,
             },
           },
           "humidity": {
             "activated": 0,
-            "current": 45,
-            "sensoractivation": 1,
-            "threshold": 70,
+            "current": undefined,
+            "sensoractivation": undefined,
+            "threshold": undefined,
           },
-          "onoff": 1,
-          "operationmode": 2,
+          "onoff": undefined,
+          "operationmode": 0,
           "speed": {
-            "manualspeed": 179,
-            "mode": 1,
+            "manualspeed": undefined,
+            "mode": undefined,
           },
           "timers": {
             "countdown": {
-              "hour": 0,
-              "min": 0,
-              "sec": 0,
+              "hour": undefined,
+              "min": undefined,
+              "sec": undefined,
             },
-            "mode": 0,
+            "mode": undefined,
           },
-          "unittype": "Vento Expert Duo A30-1 W V.2",
+          "unittype": "Vento Expert",
         },
       ],
       [
@@ -457,43 +457,43 @@ exports[`ventoDevice should be able to get status from modbus on init 1`] = `
         "log",
         "Response from device TEST1234 at 127.0.0.2:",
         {
-          "alarm": 0,
+          "alarm": undefined,
           "boost": {
-            "deactivationtimer": 30,
-            "mode": 0,
+            "deactivationtimer": undefined,
+            "mode": undefined,
           },
           "fan": {
-            "rpm": 236,
+            "rpm": undefined,
           },
           "filter": {
-            "alarm": 0,
+            "alarm": undefined,
             "timer": {
-              "days": 31,
-              "hour": 20,
-              "min": 34,
+              "days": undefined,
+              "hour": undefined,
+              "min": undefined,
             },
           },
           "humidity": {
             "activated": 0,
-            "current": 45,
-            "sensoractivation": 1,
-            "threshold": 70,
+            "current": undefined,
+            "sensoractivation": undefined,
+            "threshold": undefined,
           },
-          "onoff": 1,
-          "operationmode": 2,
+          "onoff": undefined,
+          "operationmode": undefined,
           "speed": {
-            "manualspeed": 179,
-            "mode": 1,
+            "manualspeed": undefined,
+            "mode": undefined,
           },
           "timers": {
             "countdown": {
-              "hour": 0,
-              "min": 0,
-              "sec": 0,
+              "hour": undefined,
+              "min": undefined,
+              "sec": undefined,
             },
             "mode": 0,
           },
-          "unittype": "Vento Expert Duo A30-1 W V.2",
+          "unittype": "Vento Expert",
         },
       ],
     ],
@@ -545,9 +545,9 @@ exports[`ventoDevice should be able to get status from modbus on init 1`] = `
     "setCapabilityValue": {
       "alarm_boost": [
         [
-          false,
+          true,
           {
-            "result": false,
+            "result": true,
           },
         ],
       ],
@@ -567,15 +567,15 @@ exports[`ventoDevice should be able to get status from modbus on init 1`] = `
       ],
       "alarm_generic": [
         [
-          false,
+          true,
           {
-            "result": false,
+            "result": true,
           },
         ],
       ],
       "fan_speed": [
         [
-          0.7019607843137254,
+          NaN,
           {
             "result": undefined,
           },
@@ -583,13 +583,13 @@ exports[`ventoDevice should be able to get status from modbus on init 1`] = `
       ],
       "filter_timer": [
         [
-          "31:20:34",
+          "undefined:undefined:undefined",
           "calling unregistered capability",
         ],
       ],
       "manualSpeed": [
         [
-          70.19607843137254,
+          NaN,
           {
             "result": undefined,
           },
@@ -597,19 +597,19 @@ exports[`ventoDevice should be able to get status from modbus on init 1`] = `
       ],
       "measure_RPM": [
         [
-          236,
+          undefined,
           "calling unregistered capability",
         ],
       ],
       "measure_humidity": [
         [
-          45,
+          undefined,
           "calling unregistered capability",
         ],
       ],
       "onoff": [
         [
-          true,
+          false,
           {
             "result": undefined,
           },
@@ -617,7 +617,7 @@ exports[`ventoDevice should be able to get status from modbus on init 1`] = `
       ],
       "operationMode": [
         [
-          "2",
+          undefined,
           {
             "result": undefined,
           },
@@ -625,7 +625,7 @@ exports[`ventoDevice should be able to get status from modbus on init 1`] = `
       ],
       "speedMode": [
         [
-          "1",
+          undefined,
           {
             "result": undefined,
           },
@@ -633,7 +633,7 @@ exports[`ventoDevice should be able to get status from modbus on init 1`] = `
       ],
       "timerMode": [
         [
-          "0",
+          undefined,
           {
             "result": undefined,
           },
@@ -641,17 +641,17 @@ exports[`ventoDevice should be able to get status from modbus on init 1`] = `
       ],
       "timerMode_timer": [
         [
-          "0:0:0",
+          "undefined:undefined:undefined",
           "calling unregistered capability",
         ],
       ],
     },
     "settings": {
-      "boost_delay": 30,
-      "devicemodel": "Vento Expert Duo A30-1 W V.2",
+      "boost_delay": undefined,
+      "devicemodel": "Vento Expert",
       "devicepwd": "password",
-      "humidity_sensor": true,
-      "humidity_threshold": 70,
+      "humidity_sensor": false,
+      "humidity_threshold": undefined,
     },
   },
 }
@@ -755,86 +755,86 @@ exports[`ventoDevice should be able to get status when device is marked as off 1
         "log",
         "Response from device TEST1234 at 127.0.0.2:",
         {
-          "alarm": 0,
+          "alarm": undefined,
           "boost": {
-            "deactivationtimer": 30,
-            "mode": 0,
+            "deactivationtimer": undefined,
+            "mode": undefined,
           },
           "fan": {
-            "rpm": 236,
+            "rpm": undefined,
           },
           "filter": {
-            "alarm": 0,
+            "alarm": undefined,
             "timer": {
-              "days": 31,
-              "hour": 20,
-              "min": 34,
+              "days": undefined,
+              "hour": undefined,
+              "min": undefined,
             },
           },
           "humidity": {
             "activated": 0,
-            "current": 45,
-            "sensoractivation": 1,
-            "threshold": 70,
+            "current": undefined,
+            "sensoractivation": undefined,
+            "threshold": undefined,
           },
-          "onoff": 0,
-          "operationmode": 2,
+          "onoff": undefined,
+          "operationmode": undefined,
           "speed": {
-            "manualspeed": 179,
-            "mode": 1,
+            "manualspeed": undefined,
+            "mode": undefined,
           },
           "timers": {
             "countdown": {
-              "hour": 0,
-              "min": 0,
-              "sec": 0,
+              "hour": undefined,
+              "min": undefined,
+              "sec": undefined,
             },
-            "mode": 0,
+            "mode": undefined,
           },
-          "unittype": "Vento Expert Duo A30-1 W V.2",
+          "unittype": "Vento Expert",
         },
       ],
       [
         "log",
         "Device state received: ",
         {
-          "alarm": 0,
+          "alarm": undefined,
           "boost": {
-            "deactivationtimer": 30,
-            "mode": 0,
+            "deactivationtimer": undefined,
+            "mode": undefined,
           },
           "fan": {
-            "rpm": 236,
+            "rpm": undefined,
           },
           "filter": {
-            "alarm": 0,
+            "alarm": undefined,
             "timer": {
-              "days": 31,
-              "hour": 20,
-              "min": 34,
+              "days": undefined,
+              "hour": undefined,
+              "min": undefined,
             },
           },
           "humidity": {
             "activated": 0,
-            "current": 45,
-            "sensoractivation": 1,
-            "threshold": 70,
+            "current": undefined,
+            "sensoractivation": undefined,
+            "threshold": undefined,
           },
-          "onoff": 0,
-          "operationmode": 2,
+          "onoff": undefined,
+          "operationmode": undefined,
           "speed": {
-            "manualspeed": 179,
-            "mode": 1,
+            "manualspeed": undefined,
+            "mode": undefined,
           },
           "timers": {
             "countdown": {
-              "hour": 0,
-              "min": 0,
-              "sec": 0,
+              "hour": undefined,
+              "min": undefined,
+              "sec": undefined,
             },
-            "mode": 0,
+            "mode": undefined,
           },
-          "unittype": "Vento Expert Duo A30-1 W V.2",
+          "unittype": "Vento Expert",
         },
       ],
       [
@@ -854,43 +854,43 @@ exports[`ventoDevice should be able to get status when device is marked as off 1
         "log",
         "Response from device TEST1234 at 127.0.0.2:",
         {
-          "alarm": 0,
+          "alarm": undefined,
           "boost": {
-            "deactivationtimer": 30,
-            "mode": 0,
+            "deactivationtimer": undefined,
+            "mode": undefined,
           },
           "fan": {
-            "rpm": 236,
+            "rpm": undefined,
           },
           "filter": {
-            "alarm": 0,
+            "alarm": undefined,
             "timer": {
-              "days": 31,
-              "hour": 20,
-              "min": 34,
+              "days": undefined,
+              "hour": undefined,
+              "min": undefined,
             },
           },
           "humidity": {
             "activated": 0,
-            "current": 45,
-            "sensoractivation": 1,
-            "threshold": 70,
+            "current": undefined,
+            "sensoractivation": undefined,
+            "threshold": undefined,
           },
-          "onoff": 0,
-          "operationmode": 2,
+          "onoff": 1,
+          "operationmode": undefined,
           "speed": {
-            "manualspeed": 179,
-            "mode": 1,
+            "manualspeed": undefined,
+            "mode": undefined,
           },
           "timers": {
             "countdown": {
-              "hour": 0,
-              "min": 0,
-              "sec": 0,
+              "hour": undefined,
+              "min": undefined,
+              "sec": undefined,
             },
-            "mode": 0,
+            "mode": undefined,
           },
-          "unittype": "Vento Expert Duo A30-1 W V.2",
+          "unittype": "Vento Expert",
         },
       ],
       [
@@ -906,43 +906,43 @@ exports[`ventoDevice should be able to get status when device is marked as off 1
         "log",
         "Response from device TEST1234 at 127.0.0.2:",
         {
-          "alarm": 0,
+          "alarm": undefined,
           "boost": {
-            "deactivationtimer": 30,
-            "mode": 0,
+            "deactivationtimer": undefined,
+            "mode": undefined,
           },
           "fan": {
-            "rpm": 236,
+            "rpm": undefined,
           },
           "filter": {
-            "alarm": 0,
+            "alarm": undefined,
             "timer": {
-              "days": 31,
-              "hour": 20,
-              "min": 34,
+              "days": undefined,
+              "hour": undefined,
+              "min": undefined,
             },
           },
           "humidity": {
             "activated": 0,
-            "current": 45,
-            "sensoractivation": 1,
-            "threshold": 70,
+            "current": undefined,
+            "sensoractivation": undefined,
+            "threshold": undefined,
           },
-          "onoff": 0,
-          "operationmode": 2,
+          "onoff": undefined,
+          "operationmode": undefined,
           "speed": {
-            "manualspeed": 179,
-            "mode": 1,
+            "manualspeed": undefined,
+            "mode": 0,
           },
           "timers": {
             "countdown": {
-              "hour": 0,
-              "min": 0,
-              "sec": 0,
+              "hour": undefined,
+              "min": undefined,
+              "sec": undefined,
             },
-            "mode": 0,
+            "mode": undefined,
           },
-          "unittype": "Vento Expert Duo A30-1 W V.2",
+          "unittype": "Vento Expert",
         },
       ],
       [
@@ -958,43 +958,43 @@ exports[`ventoDevice should be able to get status when device is marked as off 1
         "log",
         "Response from device TEST1234 at 127.0.0.2:",
         {
-          "alarm": 0,
+          "alarm": undefined,
           "boost": {
-            "deactivationtimer": 30,
-            "mode": 0,
+            "deactivationtimer": undefined,
+            "mode": undefined,
           },
           "fan": {
-            "rpm": 236,
+            "rpm": undefined,
           },
           "filter": {
-            "alarm": 0,
+            "alarm": undefined,
             "timer": {
-              "days": 31,
-              "hour": 20,
-              "min": 34,
+              "days": undefined,
+              "hour": undefined,
+              "min": undefined,
             },
           },
           "humidity": {
             "activated": 0,
-            "current": 45,
-            "sensoractivation": 1,
-            "threshold": 70,
+            "current": undefined,
+            "sensoractivation": undefined,
+            "threshold": undefined,
           },
-          "onoff": 0,
-          "operationmode": 2,
+          "onoff": undefined,
+          "operationmode": undefined,
           "speed": {
-            "manualspeed": 179,
-            "mode": 1,
+            "manualspeed": 0,
+            "mode": undefined,
           },
           "timers": {
             "countdown": {
-              "hour": 0,
-              "min": 0,
-              "sec": 0,
+              "hour": undefined,
+              "min": undefined,
+              "sec": undefined,
             },
-            "mode": 0,
+            "mode": undefined,
           },
-          "unittype": "Vento Expert Duo A30-1 W V.2",
+          "unittype": "Vento Expert",
         },
       ],
       [
@@ -1010,43 +1010,43 @@ exports[`ventoDevice should be able to get status when device is marked as off 1
         "log",
         "Response from device TEST1234 at 127.0.0.2:",
         {
-          "alarm": 0,
+          "alarm": undefined,
           "boost": {
-            "deactivationtimer": 30,
-            "mode": 0,
+            "deactivationtimer": undefined,
+            "mode": undefined,
           },
           "fan": {
-            "rpm": 236,
+            "rpm": undefined,
           },
           "filter": {
-            "alarm": 0,
+            "alarm": undefined,
             "timer": {
-              "days": 31,
-              "hour": 20,
-              "min": 34,
+              "days": undefined,
+              "hour": undefined,
+              "min": undefined,
             },
           },
           "humidity": {
             "activated": 0,
-            "current": 45,
-            "sensoractivation": 1,
-            "threshold": 70,
+            "current": undefined,
+            "sensoractivation": undefined,
+            "threshold": undefined,
           },
-          "onoff": 0,
-          "operationmode": 2,
+          "onoff": undefined,
+          "operationmode": undefined,
           "speed": {
-            "manualspeed": 179,
-            "mode": 1,
+            "manualspeed": 0,
+            "mode": undefined,
           },
           "timers": {
             "countdown": {
-              "hour": 0,
-              "min": 0,
-              "sec": 0,
+              "hour": undefined,
+              "min": undefined,
+              "sec": undefined,
             },
-            "mode": 0,
+            "mode": undefined,
           },
-          "unittype": "Vento Expert Duo A30-1 W V.2",
+          "unittype": "Vento Expert",
         },
       ],
       [
@@ -1062,43 +1062,43 @@ exports[`ventoDevice should be able to get status when device is marked as off 1
         "log",
         "Response from device TEST1234 at 127.0.0.2:",
         {
-          "alarm": 0,
+          "alarm": undefined,
           "boost": {
-            "deactivationtimer": 30,
-            "mode": 0,
+            "deactivationtimer": undefined,
+            "mode": undefined,
           },
           "fan": {
-            "rpm": 236,
+            "rpm": undefined,
           },
           "filter": {
-            "alarm": 0,
+            "alarm": undefined,
             "timer": {
-              "days": 31,
-              "hour": 20,
-              "min": 34,
+              "days": undefined,
+              "hour": undefined,
+              "min": undefined,
             },
           },
           "humidity": {
             "activated": 0,
-            "current": 45,
-            "sensoractivation": 1,
-            "threshold": 70,
+            "current": undefined,
+            "sensoractivation": undefined,
+            "threshold": undefined,
           },
-          "onoff": 0,
-          "operationmode": 2,
+          "onoff": undefined,
+          "operationmode": 0,
           "speed": {
-            "manualspeed": 179,
-            "mode": 1,
+            "manualspeed": undefined,
+            "mode": undefined,
           },
           "timers": {
             "countdown": {
-              "hour": 0,
-              "min": 0,
-              "sec": 0,
+              "hour": undefined,
+              "min": undefined,
+              "sec": undefined,
             },
-            "mode": 0,
+            "mode": undefined,
           },
-          "unittype": "Vento Expert Duo A30-1 W V.2",
+          "unittype": "Vento Expert",
         },
       ],
       [
@@ -1114,43 +1114,43 @@ exports[`ventoDevice should be able to get status when device is marked as off 1
         "log",
         "Response from device TEST1234 at 127.0.0.2:",
         {
-          "alarm": 0,
+          "alarm": undefined,
           "boost": {
-            "deactivationtimer": 30,
-            "mode": 0,
+            "deactivationtimer": undefined,
+            "mode": undefined,
           },
           "fan": {
-            "rpm": 236,
+            "rpm": undefined,
           },
           "filter": {
-            "alarm": 0,
+            "alarm": undefined,
             "timer": {
-              "days": 31,
-              "hour": 20,
-              "min": 34,
+              "days": undefined,
+              "hour": undefined,
+              "min": undefined,
             },
           },
           "humidity": {
             "activated": 0,
-            "current": 45,
-            "sensoractivation": 1,
-            "threshold": 70,
+            "current": undefined,
+            "sensoractivation": undefined,
+            "threshold": undefined,
           },
-          "onoff": 0,
-          "operationmode": 2,
+          "onoff": undefined,
+          "operationmode": undefined,
           "speed": {
-            "manualspeed": 179,
-            "mode": 1,
+            "manualspeed": undefined,
+            "mode": undefined,
           },
           "timers": {
             "countdown": {
-              "hour": 0,
-              "min": 0,
-              "sec": 0,
+              "hour": undefined,
+              "min": undefined,
+              "sec": undefined,
             },
             "mode": 0,
           },
-          "unittype": "Vento Expert Duo A30-1 W V.2",
+          "unittype": "Vento Expert",
         },
       ],
     ],
@@ -1202,9 +1202,9 @@ exports[`ventoDevice should be able to get status when device is marked as off 1
     "setCapabilityValue": {
       "alarm_boost": [
         [
-          false,
+          true,
           {
-            "result": false,
+            "result": true,
           },
         ],
       ],
@@ -1224,15 +1224,15 @@ exports[`ventoDevice should be able to get status when device is marked as off 1
       ],
       "alarm_generic": [
         [
-          false,
+          true,
           {
-            "result": false,
+            "result": true,
           },
         ],
       ],
       "fan_speed": [
         [
-          0.7019607843137254,
+          NaN,
           {
             "result": undefined,
           },
@@ -1240,13 +1240,13 @@ exports[`ventoDevice should be able to get status when device is marked as off 1
       ],
       "filter_timer": [
         [
-          "31:20:34",
+          "undefined:undefined:undefined",
           "calling unregistered capability",
         ],
       ],
       "manualSpeed": [
         [
-          70.19607843137254,
+          NaN,
           {
             "result": undefined,
           },
@@ -1254,13 +1254,13 @@ exports[`ventoDevice should be able to get status when device is marked as off 1
       ],
       "measure_RPM": [
         [
-          236,
+          undefined,
           "calling unregistered capability",
         ],
       ],
       "measure_humidity": [
         [
-          45,
+          undefined,
           "calling unregistered capability",
         ],
       ],
@@ -1274,7 +1274,7 @@ exports[`ventoDevice should be able to get status when device is marked as off 1
       ],
       "operationMode": [
         [
-          "2",
+          undefined,
           {
             "result": undefined,
           },
@@ -1282,7 +1282,7 @@ exports[`ventoDevice should be able to get status when device is marked as off 1
       ],
       "speedMode": [
         [
-          "1",
+          undefined,
           {
             "result": undefined,
           },
@@ -1290,7 +1290,7 @@ exports[`ventoDevice should be able to get status when device is marked as off 1
       ],
       "timerMode": [
         [
-          "0",
+          undefined,
           {
             "result": undefined,
           },
@@ -1298,17 +1298,17 @@ exports[`ventoDevice should be able to get status when device is marked as off 1
       ],
       "timerMode_timer": [
         [
-          "0:0:0",
+          "undefined:undefined:undefined",
           "calling unregistered capability",
         ],
       ],
     },
     "settings": {
-      "boost_delay": 30,
-      "devicemodel": "Vento Expert Duo A30-1 W V.2",
+      "boost_delay": undefined,
+      "devicemodel": "Vento Expert",
       "devicepwd": "password",
-      "humidity_sensor": true,
-      "humidity_threshold": 70,
+      "humidity_sensor": false,
+      "humidity_threshold": undefined,
     },
   },
 }
@@ -1484,266 +1484,6 @@ exports[`ventoDevice should be able to setup all capabilities 1`] = `
     "log": [
       [
         "log",
-        "Sending WRITEREAD to device TEST1234 at 127.0.0.2:",
-        "{
-  "SPEED": {
-    "0": 0
-  }
-}",
-      ],
-      [
-        "log",
-        "Response from device TEST1234 at 127.0.0.2:",
-        {
-          "alarm": 0,
-          "boost": {
-            "deactivationtimer": 30,
-            "mode": 0,
-          },
-          "fan": {
-            "rpm": 236,
-          },
-          "filter": {
-            "alarm": 0,
-            "timer": {
-              "days": 31,
-              "hour": 20,
-              "min": 34,
-            },
-          },
-          "humidity": {
-            "activated": 0,
-            "current": 45,
-            "sensoractivation": 1,
-            "threshold": 70,
-          },
-          "onoff": 1,
-          "operationmode": 2,
-          "speed": {
-            "manualspeed": 179,
-            "mode": 1,
-          },
-          "timers": {
-            "countdown": {
-              "hour": 0,
-              "min": 0,
-              "sec": 0,
-            },
-            "mode": 0,
-          },
-          "unittype": "Vento Expert Duo A30-1 W V.2",
-        },
-      ],
-      [
-        "log",
-        "Sending WRITEREAD to device TEST1234 at 127.0.0.2:",
-        "{
-  "MANUAL_SPEED": {
-    "0": 0
-  }
-}",
-      ],
-      [
-        "log",
-        "Response from device TEST1234 at 127.0.0.2:",
-        {
-          "alarm": 0,
-          "boost": {
-            "deactivationtimer": 30,
-            "mode": 0,
-          },
-          "fan": {
-            "rpm": 236,
-          },
-          "filter": {
-            "alarm": 0,
-            "timer": {
-              "days": 31,
-              "hour": 20,
-              "min": 34,
-            },
-          },
-          "humidity": {
-            "activated": 0,
-            "current": 45,
-            "sensoractivation": 1,
-            "threshold": 70,
-          },
-          "onoff": 1,
-          "operationmode": 2,
-          "speed": {
-            "manualspeed": 179,
-            "mode": 1,
-          },
-          "timers": {
-            "countdown": {
-              "hour": 0,
-              "min": 0,
-              "sec": 0,
-            },
-            "mode": 0,
-          },
-          "unittype": "Vento Expert Duo A30-1 W V.2",
-        },
-      ],
-      [
-        "log",
-        "Sending WRITEREAD to device TEST1234 at 127.0.0.2:",
-        "{
-  "MANUAL_SPEED": {
-    "0": 0
-  }
-}",
-      ],
-      [
-        "log",
-        "Response from device TEST1234 at 127.0.0.2:",
-        {
-          "alarm": 0,
-          "boost": {
-            "deactivationtimer": 30,
-            "mode": 0,
-          },
-          "fan": {
-            "rpm": 236,
-          },
-          "filter": {
-            "alarm": 0,
-            "timer": {
-              "days": 31,
-              "hour": 20,
-              "min": 34,
-            },
-          },
-          "humidity": {
-            "activated": 0,
-            "current": 45,
-            "sensoractivation": 1,
-            "threshold": 70,
-          },
-          "onoff": 1,
-          "operationmode": 2,
-          "speed": {
-            "manualspeed": 179,
-            "mode": 1,
-          },
-          "timers": {
-            "countdown": {
-              "hour": 0,
-              "min": 0,
-              "sec": 0,
-            },
-            "mode": 0,
-          },
-          "unittype": "Vento Expert Duo A30-1 W V.2",
-        },
-      ],
-      [
-        "log",
-        "Sending WRITEREAD to device TEST1234 at 127.0.0.2:",
-        "{
-  "VENTILATION_MODE": {
-    "0": 0
-  }
-}",
-      ],
-      [
-        "log",
-        "Response from device TEST1234 at 127.0.0.2:",
-        {
-          "alarm": 0,
-          "boost": {
-            "deactivationtimer": 30,
-            "mode": 0,
-          },
-          "fan": {
-            "rpm": 236,
-          },
-          "filter": {
-            "alarm": 0,
-            "timer": {
-              "days": 31,
-              "hour": 20,
-              "min": 34,
-            },
-          },
-          "humidity": {
-            "activated": 0,
-            "current": 45,
-            "sensoractivation": 1,
-            "threshold": 70,
-          },
-          "onoff": 1,
-          "operationmode": 2,
-          "speed": {
-            "manualspeed": 179,
-            "mode": 1,
-          },
-          "timers": {
-            "countdown": {
-              "hour": 0,
-              "min": 0,
-              "sec": 0,
-            },
-            "mode": 0,
-          },
-          "unittype": "Vento Expert Duo A30-1 W V.2",
-        },
-      ],
-      [
-        "log",
-        "Sending WRITEREAD to device TEST1234 at 127.0.0.2:",
-        "{
-  "TIMER_MODE": {
-    "0": 0
-  }
-}",
-      ],
-      [
-        "log",
-        "Response from device TEST1234 at 127.0.0.2:",
-        {
-          "alarm": 0,
-          "boost": {
-            "deactivationtimer": 30,
-            "mode": 0,
-          },
-          "fan": {
-            "rpm": 236,
-          },
-          "filter": {
-            "alarm": 0,
-            "timer": {
-              "days": 31,
-              "hour": 20,
-              "min": 34,
-            },
-          },
-          "humidity": {
-            "activated": 0,
-            "current": 45,
-            "sensoractivation": 1,
-            "threshold": 70,
-          },
-          "onoff": 1,
-          "operationmode": 2,
-          "speed": {
-            "manualspeed": 179,
-            "mode": 1,
-          },
-          "timers": {
-            "countdown": {
-              "hour": 0,
-              "min": 0,
-              "sec": 0,
-            },
-            "mode": 0,
-          },
-          "unittype": "Vento Expert Duo A30-1 W V.2",
-        },
-      ],
-      [
-        "log",
         "Vento driver has been initialized",
       ],
       [
@@ -1808,66 +1548,7 @@ exports[`ventoDevice should be able to setup all capabilities 1`] = `
         ],
       ],
     },
-    "setCapabilityValue": {
-      "fan_speed": [
-        [
-          0.7019607843137254,
-          {
-            "result": undefined,
-          },
-        ],
-      ],
-      "manualSpeed": [
-        [
-          70.19607843137254,
-          {
-            "result": undefined,
-          },
-        ],
-      ],
-      "measure_RPM": [
-        [
-          236,
-          "calling unregistered capability",
-        ],
-      ],
-      "measure_humidity": [
-        [
-          45,
-          "calling unregistered capability",
-        ],
-      ],
-      "operationMode": [
-        [
-          "2",
-          {
-            "result": undefined,
-          },
-        ],
-      ],
-      "speedMode": [
-        [
-          "1",
-          {
-            "result": undefined,
-          },
-        ],
-      ],
-      "timerMode": [
-        [
-          "0",
-          {
-            "result": undefined,
-          },
-        ],
-      ],
-      "timerMode_timer": [
-        [
-          "0:0:0",
-          "calling unregistered capability",
-        ],
-      ],
-    },
+    "setCapabilityValue": {},
     "settings": {
       "devicepwd": "password",
     },
