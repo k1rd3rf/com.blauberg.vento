@@ -12,11 +12,13 @@ type DeviceSettings = {
   humidity_threshold?: number;
   // eslint-disable-next-line camelcase
   boost_delay?: number;
+  // eslint-disable-next-line camelcase
+  last_known_ip?: string;
 };
 
 export default class VentoDevice extends Device {
   id!: string;
-  api!: Api;
+  api: Api | undefined;
 
   discoveryClient!: VentoDiscovery;
 
@@ -32,7 +34,7 @@ export default class VentoDevice extends Device {
 
     this.discoveryClient = new VentoDiscovery();
 
-    await this.initApi(this.getSetting('devicepwd'));
+    await this.initApi({ password: this.getSetting('devicepwd') });
 
     await this.updateCapabilities();
     await this.setupCapabilities();
@@ -45,16 +47,46 @@ export default class VentoDevice extends Device {
     await this.updateDeviceState();
   }
 
-  async initApi(password: string) {
+  async initApi({
+    password = this.getSetting('devicepwd'),
+    settingsIp,
+  }: {
+    password?: string;
+    settingsIp?: string;
+  }) {
     const deviceIp = await this.discoveryClient
       .findById(this.id)
       .then((d) => d?.ip);
 
-    if (deviceIp == null) {
+    const lastKnownIP = this.getStoreValue('lastKnownIP');
+
+    const ips: string[] = [deviceIp, settingsIp, lastKnownIP];
+
+    const validIps = await Promise.all(
+      ips.map(async (ip) => {
+        if (ip) {
+          try {
+            const api = new Api(this.id, password, ip);
+            const state = await api.getDeviceState();
+            const hasValues =
+              state !== undefined && Object.keys(state).length > 0;
+            return hasValues ? ip : '';
+          } catch (e) {
+            return '';
+          }
+        }
+        return '';
+      })
+    );
+
+    const ip = validIps.find((i) => i !== '');
+
+    if (ip) {
+      this.api = new Api(this.id, password, ip);
+      await this.setStoreValue('lastKnownIP', ip);
+    } else {
       this.log('Device IP could not be found, setting device to unavailable');
       await this.setUnavailable('Device not discovered yet');
-    } else {
-      this.api = new Api(this.id, password, deviceIp);
     }
   }
 
@@ -140,17 +172,30 @@ export default class VentoDevice extends Device {
 
   async updateDeviceState() {
     this.log('Requesting the current device state');
-    const state = await this.api.getDeviceState().catch(async (e) => {
-      await this.setCapabilityValue(Capabilities.alarm_connectivity, true);
-      await this.setUnavailable(e.message);
-    });
+    const state =
+      (await this.api?.getDeviceState().catch(async (e) => {
+        await this.setCapabilityValue(Capabilities.alarm_connectivity, true);
+        await this.setUnavailable(e.message);
+      })) || {};
+
     if (state === undefined || Object.keys(state).length === 0) {
-      this.error('Failed to get device state, device unreachable');
+      this.error('Failed to get device state, device unreachable', {
+        deviceIp: this.api?.deviceIp,
+        deviceId: this.api?.deviceId,
+      });
       return;
     }
 
     this.log('Device state received: ', state);
 
+    const currentStoredIP = this.getStoreValue('lastKnownIP');
+    if (currentStoredIP !== this.api?.deviceIp) {
+      this.log(
+        `Device IP changed from ${currentStoredIP} to ${this.api?.deviceIp}`
+      );
+      await this.setStoreValue('lastKnownIP', this.api?.deviceIp);
+      await this.setSettings({ last_known_ip: this.api?.deviceIp });
+    }
     await this.setCapabilityValue(Capabilities.alarm_connectivity, false);
     await this.setAvailable();
 
@@ -236,53 +281,59 @@ export default class VentoDevice extends Device {
     changedKeys: (keyof DeviceSettings)[];
   }) {
     if (changedKeys.includes('devicepwd')) {
-      await this.initApi(newSettings.devicepwd);
+      await this.initApi({ password: newSettings.devicepwd });
+      await this.updateDeviceState();
+    }
+    if (changedKeys.includes('last_known_ip')) {
+      await this.initApi({ settingsIp: newSettings.last_known_ip });
       await this.updateDeviceState();
     }
     // For the other settings we probably need to push the new value to the device
     if (changedKeys.includes('humidity_sensor')) {
-      await this.api.setHumiditySensor(newSettings.humidity_sensor ? 1 : 0);
+      await this.api?.setHumiditySensor(newSettings.humidity_sensor ? 1 : 0);
     }
     if (
       changedKeys.includes('humidity_threshold') &&
       newSettings.humidity_threshold
     ) {
-      await this.api.setHumiditySensorThreshold(newSettings.humidity_threshold);
+      await this.api?.setHumiditySensorThreshold(
+        newSettings.humidity_threshold
+      );
     }
     if (
       changedKeys.includes('boost_delay') &&
       newSettings.boost_delay !== undefined
     ) {
-      await this.api.setBoostDelay(newSettings.boost_delay);
+      await this.api?.setBoostDelay(newSettings.boost_delay);
     }
   }
 
   onCapabilityOnOff: Device.CapabilityCallback = async (value) => {
     if (value) {
-      await this.api.setOnOffStatus(1);
+      await this.api?.setOnOffStatus(1);
     } else {
-      await this.api.setOnOffStatus(0);
+      await this.api?.setOnOffStatus(0);
     }
   };
 
   onCapabilitySpeedMode: Device.CapabilityCallback = async (value) => {
-    await this.api.setSpeedMode(value);
+    await this.api?.setSpeedMode(value);
   };
 
   onCapabilityManualSpeed: Device.CapabilityCallback = async (value) => {
-    await this.api.setManualSpeed(255 * (value / 100));
+    await this.api?.setManualSpeed(255 * (value / 100));
   };
 
   onCapabilityFanSpeed: Device.CapabilityCallback = async (value) => {
-    await this.api.setManualSpeed(255 * value);
+    await this.api?.setManualSpeed(255 * value);
   };
 
   onCapabilityOperationMode: Device.CapabilityCallback = async (value) => {
-    await this.api.setOperationMode(value);
+    await this.api?.setOperationMode(value);
   };
 
   onCapabilityTimerMode: Device.CapabilityCallback = async (value) => {
-    await this.api.setTimerMode(value);
+    await this.api?.setTimerMode(value);
   };
 
   async setupFlowOperationMode() {
@@ -295,7 +346,7 @@ export default class VentoDevice extends Device {
           Capabilities.operationMode,
           args.operationMode
         );
-        await this.api.setOperationMode(args.operationMode);
+        await this.api?.setOperationMode(args.operationMode);
       });
   }
 
@@ -306,7 +357,7 @@ export default class VentoDevice extends Device {
       .registerRunListener(async (args: { speedMode: number }) => {
         this.log(`attempt to change speed mode: ${args.speedMode}`);
         await this.setCapabilityValue(Capabilities.speedMode, args.speedMode);
-        await this.api.setSpeedMode(args.speedMode);
+        await this.api?.setSpeedMode(args.speedMode);
       });
   }
 
@@ -321,7 +372,7 @@ export default class VentoDevice extends Device {
           Capabilities.fan_speed,
           args.speed / 100 - 1
         );
-        await this.api.setManualSpeed(255 * (args.speed / 100));
+        await this.api?.setManualSpeed(255 * (args.speed / 100));
       });
   }
 
@@ -332,7 +383,7 @@ export default class VentoDevice extends Device {
       .registerRunListener(async (args: { timerMode: number }) => {
         this.log(`attempt to change timer mode: ${args.timerMode}`);
         await this.setCapabilityValue(Capabilities.timerMode, args.timerMode);
-        await this.api.setTimerMode(args.timerMode);
+        await this.api?.setTimerMode(args.timerMode);
       });
   }
 
