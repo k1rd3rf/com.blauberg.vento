@@ -43,7 +43,9 @@ export class Device {
     setInterval: jest.fn(),
   };
 
-  settings: Record<string, unknown> = {};
+  settings: Record<string, unknown> = {
+    devicepwd: 'password',
+  };
 
   log = (...args: unknown[]) => logMock('log', ...args);
   error = (...args: unknown[]) => logMock('error', ...args);
