@@ -1,5 +1,3 @@
-import { statusResponse } from '../__mockdata__/statusResponse';
-
 export * from 'blaubergventojs';
 
 export const sendMock = jest.fn((packet, ip) =>
