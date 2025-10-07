@@ -1,17 +1,19 @@
 import { Response, Parameter } from 'blaubergventojs';
-import { Capabilities, DeviceSettings } from './capabilities';
+import { Capabilities, DeviceSettingFields } from './capabilities';
 import { parametersToValues } from './mapModbusResponse';
 
-type MappableCapabilities = Capabilities | DeviceSettings;
+type MappableCapabilities = Capabilities | DeviceSettingFields;
 
-type CapabilityTypes = keyof typeof Capabilities | keyof typeof DeviceSettings;
+export type CapabilityType =
+  | keyof typeof Capabilities
+  | keyof typeof DeviceSettingFields;
 type PossibleValues = number | string | boolean | undefined;
 type ResponseToCapabilityFunctions = Record<
-  CapabilityTypes,
+  CapabilityType,
   (values: number[] | undefined) => PossibleValues
 >;
 
-const paramsForCapability: Record<CapabilityTypes, keyof typeof Parameter> = {
+const paramsForCapability: Record<CapabilityType, keyof typeof Parameter> = {
   alarm_boost: 'BOOT_MODE',
   alarm_filter: 'FILTER_ALARM',
   filter_timer: 'FILTER_TIMER',
@@ -75,18 +77,21 @@ export type CapabilityResponse = Record<MappableCapabilities, PossibleValues>;
 const capabilitiesMapper = (result: Response): CapabilityResponse => {
   const values = parametersToValues(result);
   // @ts-expect-error: not typed yet
-  return [...Object.keys(Capabilities), ...Object.keys(DeviceSettings)]
-    .map((capability: CapabilityTypes) => {
-      const mapFunction = capabilityToParameterMap[capability];
-      if (mapFunction) {
-        const hasValue = values[paramsForCapability[capability]];
-        if (hasValue !== undefined && hasValue.length > 0) {
-          return { [capability]: mapFunction(hasValue) };
+  return (
+    [...Object.keys(Capabilities), ...Object.keys(DeviceSettingFields)]
+      // @ts-expect-error: TS doesn't understand the type here
+      .map((capability: CapabilityType) => {
+        const mapFunction = capabilityToParameterMap[capability];
+        if (mapFunction) {
+          const hasValue = values[paramsForCapability[capability]];
+          if (hasValue !== undefined && hasValue.length > 0) {
+            return { [capability]: mapFunction(hasValue) };
+          }
         }
-      }
-      return {};
-    })
-    .reduce((a, b) => ({ ...a, ...b }), {});
+        return {};
+      })
+      .reduce((a, b) => ({ ...a, ...b }), {})
+  );
 };
 
 export default capabilitiesMapper;

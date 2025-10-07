@@ -64,43 +64,23 @@ exports[`ventoDevice should be able to get status from modbus on init 1`] = `
         "log",
         "Device state received: ",
         {
-          "alarm": 0,
-          "boost": {
-            "deactivationtimer": 30,
-            "mode": 0,
-          },
-          "fan": {
-            "rpm": 236,
-          },
-          "filter": {
-            "alarm": 0,
-            "timer": {
-              "days": 31,
-              "hour": 20,
-              "min": 34,
-            },
-          },
-          "humidity": {
-            "activated": 0,
-            "current": 45,
-            "sensoractivation": 1,
-            "threshold": 70,
-          },
-          "onoff": 1,
-          "operationmode": 2,
-          "speed": {
-            "manualspeed": 179,
-            "mode": 1,
-          },
-          "timers": {
-            "countdown": {
-              "hour": 0,
-              "min": 0,
-              "sec": 0,
-            },
-            "mode": 0,
-          },
-          "unittype": "Vento Expert Duo A30-1 W V.2",
+          "alarm_boost": false,
+          "alarm_filter": false,
+          "alarm_generic": false,
+          "boost_delay": 30,
+          "fan_speed": 0.7019607843137254,
+          "filter_timer": "31:20:34",
+          "humidity_sensor": true,
+          "humidity_threshold": 70,
+          "manualSpeed": 70.19607843137254,
+          "measure_RPM": 236,
+          "measure_humidity": 45,
+          "onoff": true,
+          "operationMode": "2",
+          "speedMode": "1",
+          "timerMode": "0",
+          "timerMode_timer": "00:00:00",
+          "unit_type": "Vento Expert Duo A30-1 W V.2",
         },
       ],
       [
@@ -221,22 +201,6 @@ exports[`ventoDevice should be able to get status from modbus on init 1`] = `
                       E {
                         "_dataEntries": [
                           {
-                            "parameter": 2,
-                            "value": Uint8Array [
-                              0,
-                            ],
-                          },
-                        ],
-                        "_deviceId": "TEST1234",
-                        "_functionType": 2,
-                        "_password": "password",
-                      },
-                      "127.0.0.2",
-                    ],
-                    [
-                      E {
-                        "_dataEntries": [
-                          {
                             "parameter": 68,
                             "value": Uint8Array [
                               0,
@@ -270,6 +234,22 @@ exports[`ventoDevice should be able to get status from modbus on init 1`] = `
                         "_dataEntries": [
                           {
                             "parameter": 183,
+                            "value": Uint8Array [
+                              0,
+                            ],
+                          },
+                        ],
+                        "_deviceId": "TEST1234",
+                        "_functionType": 2,
+                        "_password": "password",
+                      },
+                      "127.0.0.2",
+                    ],
+                    [
+                      E {
+                        "_dataEntries": [
+                          {
+                            "parameter": 2,
                             "value": Uint8Array [
                               0,
                             ],
@@ -504,22 +484,6 @@ exports[`ventoDevice should be able to get status from modbus on init 1`] = `
                       E {
                         "_dataEntries": [
                           {
-                            "parameter": 2,
-                            "value": Uint8Array [
-                              0,
-                            ],
-                          },
-                        ],
-                        "_deviceId": "TEST1234",
-                        "_functionType": 2,
-                        "_password": "password",
-                      },
-                      "127.0.0.2",
-                    ],
-                    [
-                      E {
-                        "_dataEntries": [
-                          {
                             "parameter": 68,
                             "value": Uint8Array [
                               0,
@@ -553,6 +517,22 @@ exports[`ventoDevice should be able to get status from modbus on init 1`] = `
                         "_dataEntries": [
                           {
                             "parameter": 183,
+                            "value": Uint8Array [
+                              0,
+                            ],
+                          },
+                        ],
+                        "_deviceId": "TEST1234",
+                        "_functionType": 2,
+                        "_password": "password",
+                      },
+                      "127.0.0.2",
+                    ],
+                    [
+                      E {
+                        "_dataEntries": [
+                          {
+                            "parameter": 2,
                             "value": Uint8Array [
                               0,
                             ],
@@ -787,22 +767,6 @@ exports[`ventoDevice should be able to get status from modbus on init 1`] = `
                       E {
                         "_dataEntries": [
                           {
-                            "parameter": 2,
-                            "value": Uint8Array [
-                              0,
-                            ],
-                          },
-                        ],
-                        "_deviceId": "TEST1234",
-                        "_functionType": 2,
-                        "_password": "password",
-                      },
-                      "127.0.0.2",
-                    ],
-                    [
-                      E {
-                        "_dataEntries": [
-                          {
                             "parameter": 68,
                             "value": Uint8Array [
                               0,
@@ -836,6 +800,22 @@ exports[`ventoDevice should be able to get status from modbus on init 1`] = `
                         "_dataEntries": [
                           {
                             "parameter": 183,
+                            "value": Uint8Array [
+                              0,
+                            ],
+                          },
+                        ],
+                        "_deviceId": "TEST1234",
+                        "_functionType": 2,
+                        "_password": "password",
+                      },
+                      "127.0.0.2",
+                    ],
+                    [
+                      E {
+                        "_dataEntries": [
+                          {
+                            "parameter": 2,
                             "value": Uint8Array [
                               0,
                             ],
@@ -1011,12 +991,6 @@ exports[`ventoDevice should be able to get status from modbus on init 1`] = `
           },
         ],
       ],
-      "alarm_connectivity": [
-        [
-          false,
-          "calling unregistered capability",
-        ],
-      ],
       "alarm_filter": [
         [
           false,
@@ -1101,7 +1075,7 @@ exports[`ventoDevice should be able to get status from modbus on init 1`] = `
       ],
       "timerMode_timer": [
         [
-          "0:0:0",
+          "00:00:00",
           "calling unregistered capability",
         ],
       ],
@@ -1181,43 +1155,23 @@ exports[`ventoDevice should be able to get status when device is marked as off 1
         "log",
         "Device state received: ",
         {
-          "alarm": 0,
-          "boost": {
-            "deactivationtimer": 30,
-            "mode": 0,
-          },
-          "fan": {
-            "rpm": 236,
-          },
-          "filter": {
-            "alarm": 0,
-            "timer": {
-              "days": 31,
-              "hour": 20,
-              "min": 34,
-            },
-          },
-          "humidity": {
-            "activated": 0,
-            "current": 45,
-            "sensoractivation": 1,
-            "threshold": 70,
-          },
-          "onoff": 0,
-          "operationmode": 2,
-          "speed": {
-            "manualspeed": 179,
-            "mode": 1,
-          },
-          "timers": {
-            "countdown": {
-              "hour": 0,
-              "min": 0,
-              "sec": 0,
-            },
-            "mode": 0,
-          },
-          "unittype": "Vento Expert Duo A30-1 W V.2",
+          "alarm_boost": false,
+          "alarm_filter": false,
+          "alarm_generic": false,
+          "boost_delay": 30,
+          "fan_speed": 0.7019607843137254,
+          "filter_timer": "31:20:34",
+          "humidity_sensor": true,
+          "humidity_threshold": 70,
+          "manualSpeed": 70.19607843137254,
+          "measure_RPM": 236,
+          "measure_humidity": 45,
+          "onoff": false,
+          "operationMode": "2",
+          "speedMode": "1",
+          "timerMode": "0",
+          "timerMode_timer": "00:00:00",
+          "unit_type": "Vento Expert Duo A30-1 W V.2",
         },
       ],
       [
@@ -1277,12 +1231,6 @@ exports[`ventoDevice should be able to get status when device is marked as off 1
           {
             "result": false,
           },
-        ],
-      ],
-      "alarm_connectivity": [
-        [
-          false,
-          "calling unregistered capability",
         ],
       ],
       "alarm_filter": [
@@ -1369,7 +1317,7 @@ exports[`ventoDevice should be able to get status when device is marked as off 1
       ],
       "timerMode_timer": [
         [
-          "0:0:0",
+          "00:00:00",
           "calling unregistered capability",
         ],
       ],
@@ -1403,7 +1351,11 @@ exports[`ventoDevice should be able to handle errors 1`] = `
       "timerMode": [Function],
       "timer_mode": [Function],
     },
-    "getCapabilityValue": {},
+    "getCapabilityValue": {
+      "alarm_boost": 1,
+      "alarm_filter": 1,
+      "alarm_generic": 1,
+    },
     "hasCapability": {
       "alarm_boost": 1,
       "alarm_connectivity": 1,
@@ -1446,8 +1398,504 @@ exports[`ventoDevice should be able to handle errors 1`] = `
         "test error",
       ],
       [
-        "error",
-        "Failed to get device state, device unreachable",
+        "log",
+        "Device state received: ",
+        {
+          "alarm_connectivity": true,
+        },
+      ],
+      [
+        "setAvailable",
+        undefined,
+      ],
+      [
+        "log",
+        "Triggering alarm_boost_false",
+      ],
+      [
+        "triggered",
+        "alarm_boost_false",
+        [
+          VentoDevice {
+            "api": Api {
+              "deviceId": "TEST1234",
+              "deviceIp": "127.0.0.2",
+              "devicePass": "password",
+              "error": [Function],
+              "getDeviceState": [Function],
+              "log": [Function],
+              "modbusClient": BlaubergVentoClient {
+                "findDevices": [MockFunction],
+                "send": [MockFunction] {
+                  "calls": [
+                    [
+                      E {
+                        "_dataEntries": [
+                          {
+                            "parameter": 1,
+                            "value": undefined,
+                          },
+                          {
+                            "parameter": 2,
+                            "value": undefined,
+                          },
+                          {
+                            "parameter": 68,
+                            "value": undefined,
+                          },
+                          {
+                            "parameter": 6,
+                            "value": undefined,
+                          },
+                          {
+                            "parameter": 102,
+                            "value": undefined,
+                          },
+                          {
+                            "parameter": 183,
+                            "value": undefined,
+                          },
+                          {
+                            "parameter": 136,
+                            "value": undefined,
+                          },
+                          {
+                            "parameter": 100,
+                            "value": undefined,
+                          },
+                          {
+                            "parameter": 37,
+                            "value": undefined,
+                          },
+                          {
+                            "parameter": 15,
+                            "value": undefined,
+                          },
+                          {
+                            "parameter": 25,
+                            "value": undefined,
+                          },
+                          {
+                            "parameter": 185,
+                            "value": undefined,
+                          },
+                          {
+                            "parameter": 74,
+                            "value": undefined,
+                          },
+                          {
+                            "parameter": 7,
+                            "value": undefined,
+                          },
+                          {
+                            "parameter": 131,
+                            "value": undefined,
+                          },
+                          {
+                            "parameter": 11,
+                            "value": undefined,
+                          },
+                        ],
+                        "_deviceId": "TEST1234",
+                        "_functionType": 1,
+                        "_password": "password",
+                      },
+                      "127.0.0.2",
+                    ],
+                  ],
+                  "results": [
+                    {
+                      "type": "return",
+                      "value": Promise {},
+                    },
+                  ],
+                },
+                "timeout": 1500,
+              },
+              "send": [Function],
+              "setBoostDelay": [Function],
+              "setDeviceValue": [Function],
+              "setHumiditySensor": [Function],
+              "setHumiditySensorThreshold": [Function],
+              "setManualSpeed": [Function],
+              "setOnOffStatus": [Function],
+              "setOperationMode": [Function],
+              "setSpeedMode": [Function],
+              "setTimerMode": [Function],
+            },
+            "discoveryClient": {
+              "findById": [Function],
+            },
+            "error": [Function],
+            "getMockCalls": [Function],
+            "homey": {
+              "flow": {
+                "getActionCard": [Function],
+                "getConditionCard": [Function],
+                "getDeviceTriggerCard": [Function],
+              },
+              "setInterval": [MockFunction] {
+                "calls": [
+                  [
+                    [Function],
+                    15000,
+                  ],
+                ],
+                "results": [
+                  {
+                    "type": "return",
+                    "value": undefined,
+                  },
+                ],
+              },
+            },
+            "id": "TEST1234",
+            "log": [Function],
+            "onCapabilityFanSpeed": [Function],
+            "onCapabilityManualSpeed": [Function],
+            "onCapabilityOnOff": [Function],
+            "onCapabilityOperationMode": [Function],
+            "onCapabilitySpeedMode": [Function],
+            "onCapabilityTimerMode": [Function],
+            "pollInterval": undefined,
+            "settings": {
+              "boost_delay": undefined,
+              "devicemodel": undefined,
+              "devicepwd": "password",
+              "humidity_sensor": undefined,
+              "humidity_threshold": undefined,
+            },
+            "store": {},
+          },
+          {},
+          {},
+        ],
+      ],
+      [
+        "log",
+        "Triggering alarm_filter_false",
+      ],
+      [
+        "triggered",
+        "alarm_filter_false",
+        [
+          VentoDevice {
+            "api": Api {
+              "deviceId": "TEST1234",
+              "deviceIp": "127.0.0.2",
+              "devicePass": "password",
+              "error": [Function],
+              "getDeviceState": [Function],
+              "log": [Function],
+              "modbusClient": BlaubergVentoClient {
+                "findDevices": [MockFunction],
+                "send": [MockFunction] {
+                  "calls": [
+                    [
+                      E {
+                        "_dataEntries": [
+                          {
+                            "parameter": 1,
+                            "value": undefined,
+                          },
+                          {
+                            "parameter": 2,
+                            "value": undefined,
+                          },
+                          {
+                            "parameter": 68,
+                            "value": undefined,
+                          },
+                          {
+                            "parameter": 6,
+                            "value": undefined,
+                          },
+                          {
+                            "parameter": 102,
+                            "value": undefined,
+                          },
+                          {
+                            "parameter": 183,
+                            "value": undefined,
+                          },
+                          {
+                            "parameter": 136,
+                            "value": undefined,
+                          },
+                          {
+                            "parameter": 100,
+                            "value": undefined,
+                          },
+                          {
+                            "parameter": 37,
+                            "value": undefined,
+                          },
+                          {
+                            "parameter": 15,
+                            "value": undefined,
+                          },
+                          {
+                            "parameter": 25,
+                            "value": undefined,
+                          },
+                          {
+                            "parameter": 185,
+                            "value": undefined,
+                          },
+                          {
+                            "parameter": 74,
+                            "value": undefined,
+                          },
+                          {
+                            "parameter": 7,
+                            "value": undefined,
+                          },
+                          {
+                            "parameter": 131,
+                            "value": undefined,
+                          },
+                          {
+                            "parameter": 11,
+                            "value": undefined,
+                          },
+                        ],
+                        "_deviceId": "TEST1234",
+                        "_functionType": 1,
+                        "_password": "password",
+                      },
+                      "127.0.0.2",
+                    ],
+                  ],
+                  "results": [
+                    {
+                      "type": "return",
+                      "value": Promise {},
+                    },
+                  ],
+                },
+                "timeout": 1500,
+              },
+              "send": [Function],
+              "setBoostDelay": [Function],
+              "setDeviceValue": [Function],
+              "setHumiditySensor": [Function],
+              "setHumiditySensorThreshold": [Function],
+              "setManualSpeed": [Function],
+              "setOnOffStatus": [Function],
+              "setOperationMode": [Function],
+              "setSpeedMode": [Function],
+              "setTimerMode": [Function],
+            },
+            "discoveryClient": {
+              "findById": [Function],
+            },
+            "error": [Function],
+            "getMockCalls": [Function],
+            "homey": {
+              "flow": {
+                "getActionCard": [Function],
+                "getConditionCard": [Function],
+                "getDeviceTriggerCard": [Function],
+              },
+              "setInterval": [MockFunction] {
+                "calls": [
+                  [
+                    [Function],
+                    15000,
+                  ],
+                ],
+                "results": [
+                  {
+                    "type": "return",
+                    "value": undefined,
+                  },
+                ],
+              },
+            },
+            "id": "TEST1234",
+            "log": [Function],
+            "onCapabilityFanSpeed": [Function],
+            "onCapabilityManualSpeed": [Function],
+            "onCapabilityOnOff": [Function],
+            "onCapabilityOperationMode": [Function],
+            "onCapabilitySpeedMode": [Function],
+            "onCapabilityTimerMode": [Function],
+            "pollInterval": undefined,
+            "settings": {
+              "boost_delay": undefined,
+              "devicemodel": undefined,
+              "devicepwd": "password",
+              "humidity_sensor": undefined,
+              "humidity_threshold": undefined,
+            },
+            "store": {},
+          },
+          {},
+          {},
+        ],
+      ],
+      [
+        "log",
+        "Triggering alarm_generic_false",
+      ],
+      [
+        "triggered",
+        "alarm_generic_false",
+        [
+          VentoDevice {
+            "api": Api {
+              "deviceId": "TEST1234",
+              "deviceIp": "127.0.0.2",
+              "devicePass": "password",
+              "error": [Function],
+              "getDeviceState": [Function],
+              "log": [Function],
+              "modbusClient": BlaubergVentoClient {
+                "findDevices": [MockFunction],
+                "send": [MockFunction] {
+                  "calls": [
+                    [
+                      E {
+                        "_dataEntries": [
+                          {
+                            "parameter": 1,
+                            "value": undefined,
+                          },
+                          {
+                            "parameter": 2,
+                            "value": undefined,
+                          },
+                          {
+                            "parameter": 68,
+                            "value": undefined,
+                          },
+                          {
+                            "parameter": 6,
+                            "value": undefined,
+                          },
+                          {
+                            "parameter": 102,
+                            "value": undefined,
+                          },
+                          {
+                            "parameter": 183,
+                            "value": undefined,
+                          },
+                          {
+                            "parameter": 136,
+                            "value": undefined,
+                          },
+                          {
+                            "parameter": 100,
+                            "value": undefined,
+                          },
+                          {
+                            "parameter": 37,
+                            "value": undefined,
+                          },
+                          {
+                            "parameter": 15,
+                            "value": undefined,
+                          },
+                          {
+                            "parameter": 25,
+                            "value": undefined,
+                          },
+                          {
+                            "parameter": 185,
+                            "value": undefined,
+                          },
+                          {
+                            "parameter": 74,
+                            "value": undefined,
+                          },
+                          {
+                            "parameter": 7,
+                            "value": undefined,
+                          },
+                          {
+                            "parameter": 131,
+                            "value": undefined,
+                          },
+                          {
+                            "parameter": 11,
+                            "value": undefined,
+                          },
+                        ],
+                        "_deviceId": "TEST1234",
+                        "_functionType": 1,
+                        "_password": "password",
+                      },
+                      "127.0.0.2",
+                    ],
+                  ],
+                  "results": [
+                    {
+                      "type": "return",
+                      "value": Promise {},
+                    },
+                  ],
+                },
+                "timeout": 1500,
+              },
+              "send": [Function],
+              "setBoostDelay": [Function],
+              "setDeviceValue": [Function],
+              "setHumiditySensor": [Function],
+              "setHumiditySensorThreshold": [Function],
+              "setManualSpeed": [Function],
+              "setOnOffStatus": [Function],
+              "setOperationMode": [Function],
+              "setSpeedMode": [Function],
+              "setTimerMode": [Function],
+            },
+            "discoveryClient": {
+              "findById": [Function],
+            },
+            "error": [Function],
+            "getMockCalls": [Function],
+            "homey": {
+              "flow": {
+                "getActionCard": [Function],
+                "getConditionCard": [Function],
+                "getDeviceTriggerCard": [Function],
+              },
+              "setInterval": [MockFunction] {
+                "calls": [
+                  [
+                    [Function],
+                    15000,
+                  ],
+                ],
+                "results": [
+                  {
+                    "type": "return",
+                    "value": undefined,
+                  },
+                ],
+              },
+            },
+            "id": "TEST1234",
+            "log": [Function],
+            "onCapabilityFanSpeed": [Function],
+            "onCapabilityManualSpeed": [Function],
+            "onCapabilityOnOff": [Function],
+            "onCapabilityOperationMode": [Function],
+            "onCapabilitySpeedMode": [Function],
+            "onCapabilityTimerMode": [Function],
+            "pollInterval": undefined,
+            "settings": {
+              "boost_delay": undefined,
+              "devicemodel": undefined,
+              "devicepwd": "password",
+              "humidity_sensor": undefined,
+              "humidity_threshold": undefined,
+            },
+            "store": {},
+          },
+          {},
+          {},
+        ],
       ],
     ],
     "registerCapabilityListener": {
@@ -1501,10 +1949,18 @@ exports[`ventoDevice should be able to handle errors 1`] = `
           true,
           "calling unregistered capability",
         ],
+        [
+          true,
+          "calling unregistered capability",
+        ],
       ],
     },
     "settings": {
+      "boost_delay": undefined,
+      "devicemodel": undefined,
       "devicepwd": "password",
+      "humidity_sensor": undefined,
+      "humidity_threshold": undefined,
     },
   },
 }
@@ -1708,22 +2164,6 @@ exports[`ventoDevice should get and set values trough the api and modbus 1`] = `
       E {
         "_dataEntries": [
           {
-            "parameter": 2,
-            "value": Uint8Array [
-              0,
-            ],
-          },
-        ],
-        "_deviceId": "TEST1234",
-        "_functionType": 2,
-        "_password": "password",
-      },
-      "127.0.0.2",
-    ],
-    [
-      E {
-        "_dataEntries": [
-          {
             "parameter": 68,
             "value": Uint8Array [
               0,
@@ -1757,6 +2197,22 @@ exports[`ventoDevice should get and set values trough the api and modbus 1`] = `
         "_dataEntries": [
           {
             "parameter": 183,
+            "value": Uint8Array [
+              0,
+            ],
+          },
+        ],
+        "_deviceId": "TEST1234",
+        "_functionType": 2,
+        "_password": "password",
+      },
+      "127.0.0.2",
+    ],
+    [
+      E {
+        "_dataEntries": [
+          {
+            "parameter": 2,
             "value": Uint8Array [
               0,
             ],

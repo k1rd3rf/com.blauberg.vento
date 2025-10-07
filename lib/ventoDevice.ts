@@ -2,7 +2,7 @@ import { Device } from 'homey';
 import Api from './api';
 import VentoDiscovery from './ventoDiscovery';
 import { Capabilities, ActionCards } from './capabilities';
-import { CapabilityResponse } from './capabilityMapper';
+import { CapabilityResponse, CapabilityType } from './capabilityMapper';
 
 type DeviceSettings = {
   devicemodel?: string;
@@ -164,27 +164,25 @@ export default class VentoDevice extends Device {
 
     const newBoost = state.alarm_boost;
     const oldBoost = this.getCapabilityValue(Capabilities.alarm_boost);
-    await this.setCapabilityValue(Capabilities.alarm_boost, newBoost);
     if (oldBoost !== null && oldBoost !== newBoost) {
-      await this.triggerBoostAlarm(newBoost);
+      await this.triggerBoostAlarm(newBoost as boolean);
     }
 
     const oldFilter = this.getCapabilityValue(Capabilities.alarm_filter);
     const newFilter = state.alarm_filter;
-    await this.setCapabilityValue(Capabilities.alarm_filter, newFilter);
     if (oldFilter !== null && oldFilter !== newFilter) {
-      await this.triggerFilterAlarm(newFilter);
+      await this.triggerFilterAlarm(newFilter as boolean);
     }
 
     const oldGeneric = this.getCapabilityValue(Capabilities.alarm_generic);
     const newGeneric = state.alarm_generic;
-    await this.setCapabilityValue(Capabilities.alarm_generic, newGeneric);
     if (oldGeneric !== null && oldGeneric !== newGeneric) {
-      await this.triggerGenericAlarm(newGeneric);
+      await this.triggerGenericAlarm(newGeneric as boolean);
     }
 
     await Promise.all(
-      Object.keys(Capabilities).map(async (cap) => {
+      // @ts-expect-error: string is a CapabilityType
+      Object.keys(Capabilities).map(async (cap: CapabilityType) => {
         const stateElement = state[cap];
         if (stateElement !== undefined) {
           return this.setCapabilityValue(cap, stateElement);
