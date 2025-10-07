@@ -594,12 +594,11 @@ exports[`ventoDevice should be able to handle errors 1`] = `
       ],
       [
         "setUnavailable was called",
-        undefined,
+        "test errors",
       ],
       [
         "error",
         "Failed to get device state, device unreachable",
-        [Error: test errors],
       ],
     ],
     "registerCapabilityListener": {
