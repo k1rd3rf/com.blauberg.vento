@@ -559,7 +559,7 @@ exports[`Api set functions setSpeedMode sends value 0 1`] = `
       E {
         "_dataEntries": [
           {
-            "parameter": 1,
+            "parameter": 2,
             "value": Uint8Array [
               0,
             ],
@@ -576,7 +576,9 @@ exports[`Api set functions setSpeedMode sends value 0 1`] = `
     "humidity": {
       "activated": 0,
     },
-    "onoff": 0,
+    "speed": {
+      "mode": 0,
+    },
     "unittype": "Vento Expert",
   },
 }
