@@ -151,24 +151,34 @@ export default class VentoDevice extends Device {
 
     this.log('Device state received: ', state);
 
-    await this.setAvailable();
     await this.setCapabilityValue(Capabilities.alarm_connectivity, false);
+    await this.setAvailable();
+
+    const newBoost = state.boost?.mode !== 0;
+    const oldBoost = this.getCapabilityValue(Capabilities.alarm_boost);
+    await this.setCapabilityValue(Capabilities.alarm_boost, newBoost);
+    if (oldBoost !== null && oldBoost !== newBoost) {
+      await this.triggerBoostAlarm(newBoost);
+    }
+
+    const oldFilter = this.getCapabilityValue(Capabilities.alarm_filter);
+    const newFilter = state.filter?.alarm === 1;
+    await this.setCapabilityValue(Capabilities.alarm_filter, newFilter);
+    if (oldFilter !== null && oldFilter !== newFilter) {
+      await this.triggerFilterAlarm(newFilter);
+    }
+
+    const oldGeneric = this.getCapabilityValue(Capabilities.alarm_generic);
+    const newGeneric = state.alarm !== 0;
+    await this.setCapabilityValue(Capabilities.alarm_generic, newGeneric);
+    if (oldGeneric !== null && oldGeneric !== newGeneric) {
+      await this.triggerGenericAlarm(newGeneric);
+    }
+
     await this.setCapabilityValue(Capabilities.onoff, state.onoff === 1);
-    await this.setCapabilityValue(
-      Capabilities.alarm_boost,
-      state.boost?.mode !== 0
-    );
-    await this.setCapabilityValue(
-      Capabilities.alarm_filter,
-      state.filter?.alarm === 1
-    );
     await this.setCapabilityValue(
       Capabilities.filter_timer,
       `${state.filter?.timer.days}:${state.filter?.timer.hour}:${state.filter?.timer.min}`
-    );
-    await this.setCapabilityValue(
-      Capabilities.alarm_generic,
-      state.alarm !== 0
     );
     await this.setCapabilityValue(
       Capabilities.measure_humidity,
@@ -324,5 +334,29 @@ export default class VentoDevice extends Device {
         await this.setCapabilityValue(Capabilities.timerMode, args.timerMode);
         await this.api.setTimerMode(args.timerMode);
       });
+  }
+
+  async triggerBoostAlarm(isOn: boolean) {
+    const triggerCard = isOn ? 'alarm_boost_true' : 'alarm_boost_false';
+    this.log(`Triggering ${triggerCard}`);
+    await this.homey.flow
+      .getDeviceTriggerCard(triggerCard)
+      .trigger(this, {}, {});
+  }
+
+  async triggerFilterAlarm(isOn: boolean) {
+    const triggerCard = isOn ? 'alarm_filter_true' : 'alarm_filter_false';
+    this.log(`Triggering ${triggerCard}`);
+    await this.homey.flow
+      .getDeviceTriggerCard(triggerCard)
+      .trigger(this, {}, {});
+  }
+
+  async triggerGenericAlarm(isOn: boolean) {
+    const triggerCard = isOn ? 'alarm_generic_true' : 'alarm_generic_false';
+    this.log(`Triggering ${triggerCard}`);
+    await this.homey.flow
+      .getDeviceTriggerCard(triggerCard)
+      .trigger(this, {}, {});
   }
 }

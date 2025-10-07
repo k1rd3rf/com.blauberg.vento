@@ -1,4 +1,4 @@
-import mapModbusResponse from './mapModbusResponse';
+import { mapModbusResponse } from './mapModbusResponse';
 import { statusResponse, offResponse } from './__mockdata__/statusResponse';
 
 describe('mapToModbusResponse', () => {
