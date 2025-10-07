@@ -18,7 +18,7 @@ class VentoDriver extends Driver {
     this.modbusClient = new BlaubergVentoClient();
     this.modbusClient.timeout = 1500;
     this.log('Vento driver has been initialized');
-    this.homey.setTimeout(async () => {
+    this.homey.setInterval(async () => {
       await this.locateDevices();
       this.start_discover_loop();
     }, 5000);

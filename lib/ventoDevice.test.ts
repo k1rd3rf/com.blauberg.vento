@@ -9,6 +9,10 @@ async function getDevice() {
   device.driver = new VentoDriver();
   await device.driver.onInit();
   // @ts-expect-error: mock
+  (device.driver?.modbusClient?.send as jest.Mock).mockResolvedValue(
+    statusResponse
+  );
+  // @ts-expect-error: mock
   device.driver.deviceList = [{ id: 'TEST1234', ip: '127.0.0.2' }];
   device.driver.getDevices = () => [device];
   return device;
@@ -17,9 +21,6 @@ async function getDevice() {
 describe('ventoDevice', () => {
   afterEach(() => {
     jest.clearAllMocks();
-  });
-  beforeEach(() => {
-    sendMock.mockResolvedValue(statusResponse);
   });
 
   it('should be able to get status from modbus on init', async () => {
@@ -33,7 +34,10 @@ describe('ventoDevice', () => {
   });
   it('should be able to get status when device is marked as off', async () => {
     const device = await getDevice();
-    sendMock.mockResolvedValue(offResponse);
+    // @ts-expect-error: mock
+    (device.driver?.modbusClient?.send as jest.Mock).mockResolvedValue(
+      offResponse
+    );
     await device.onInit();
     await device.updateDeviceState();
 

@@ -78,19 +78,19 @@ exports[`ventoDevice should be able to get status from modbus on init 1`] = `
       ],
       [
         "log",
-        "{"speed":{},"boost":{},"filter":{"timer":{}},"humidity":{"activated":0},"unittype":"Vento Expert","fan":{},"timers":{"countdown":{}}}",
+        "{"onoff":1,"speed":{"mode":1,"manualspeed":179},"boost":{"mode":0,"deactivationtimer":30},"operationmode":2,"filter":{"alarm":0,"timer":{"min":34,"hour":20,"days":31}},"humidity":{"current":45,"sensoractivation":1,"threshold":70,"activated":0},"unittype":"Vento Expert Duo A30-1 W V.2","fan":{"rpm":236},"timers":{"mode":0,"countdown":{"sec":0,"min":0,"hour":0}},"alarm":0}",
       ],
       [
         "log",
-        "{"packet":{"_deviceId":"TEST1234","_password":"password","_functionType":2,"_dataEntries":[{"parameter":1,"value":{"0":1}}]},"ip":"127.0.0.2"}",
+        "{"packet":{"_deviceId":"devId","_password":"1234","_functionType":6,"dataEntries":[{"parameter":1,"value":{"0":1}},{"parameter":2,"value":{"0":1}},{"parameter":68,"value":{"0":179}},{"parameter":6,"value":{"0":0}},{"parameter":102,"value":{"0":30}},{"parameter":183,"value":{"0":2}},{"parameter":136,"value":{"0":0}},{"parameter":100,"value":{"0":34,"1":20,"2":31,"3":0}},{"parameter":37,"value":{"0":45}},{"parameter":15,"value":{"0":1}},{"parameter":25,"value":{"0":70}},{"parameter":185,"value":{"0":4,"1":0}},{"parameter":74,"value":{"0":236,"1":4}},{"parameter":7,"value":{"0":0}},{"parameter":131,"value":{"0":0}},{"parameter":11,"value":{"0":0,"1":0,"2":0}}],"_dataEntries":[{"parameter":1,"value":{"0":1}},{"parameter":2,"value":{"0":1}},{"parameter":68,"value":{"0":179}},{"parameter":6,"value":{"0":0}},{"parameter":102,"value":{"0":30}},{"parameter":183,"value":{"0":2}},{"parameter":136,"value":{"0":0}},{"parameter":100,"value":{"0":34,"1":20,"2":31,"3":0}},{"parameter":37,"value":{"0":45}},{"parameter":15,"value":{"0":1}},{"parameter":25,"value":{"0":70}},{"parameter":185,"value":{"0":4,"1":0}},{"parameter":74,"value":{"0":236,"1":4}},{"parameter":7,"value":{"0":0}},{"parameter":131,"value":{"0":0}},{"parameter":11,"value":{"0":0,"1":0,"2":0}}]},"ip":"127.0.0.1"}",
       ],
       [
         "log",
-        "Triggering alarm_boost_true",
+        "Triggering alarm_boost_false",
       ],
       [
         "triggered",
-        "alarm_boost_true",
+        "alarm_boost_false",
         [
           VentoDevice {
             "_flowManualSpeed": FlowCard {
@@ -132,7 +132,20 @@ exports[`ventoDevice should be able to get status from modbus on init 1`] = `
               "error": [Function],
               "getDevices": [Function],
               "homey": {
-                "setInterval": [MockFunction],
+                "setInterval": [MockFunction] {
+                  "calls": [
+                    [
+                      [Function],
+                      5000,
+                    ],
+                  ],
+                  "results": [
+                    {
+                      "type": "return",
+                      "value": undefined,
+                    },
+                  ],
+                },
               },
               "log": [Function],
               "modbusClient": BlaubergVentoClient {
@@ -356,11 +369,11 @@ exports[`ventoDevice should be able to get status from modbus on init 1`] = `
             },
             "log": [Function],
             "settings": {
-              "boost_delay": undefined,
-              "devicemodel": "Vento Expert",
+              "boost_delay": 30,
+              "devicemodel": "Vento Expert Duo A30-1 W V.2",
               "devicepwd": "password",
-              "humidity_sensor": false,
-              "humidity_threshold": undefined,
+              "humidity_sensor": true,
+              "humidity_threshold": 70,
               "last_known_ip": "127.0.0.2",
             },
             "store": {
@@ -419,7 +432,20 @@ exports[`ventoDevice should be able to get status from modbus on init 1`] = `
               "error": [Function],
               "getDevices": [Function],
               "homey": {
-                "setInterval": [MockFunction],
+                "setInterval": [MockFunction] {
+                  "calls": [
+                    [
+                      [Function],
+                      5000,
+                    ],
+                  ],
+                  "results": [
+                    {
+                      "type": "return",
+                      "value": undefined,
+                    },
+                  ],
+                },
               },
               "log": [Function],
               "modbusClient": BlaubergVentoClient {
@@ -643,11 +669,11 @@ exports[`ventoDevice should be able to get status from modbus on init 1`] = `
             },
             "log": [Function],
             "settings": {
-              "boost_delay": undefined,
-              "devicemodel": "Vento Expert",
+              "boost_delay": 30,
+              "devicemodel": "Vento Expert Duo A30-1 W V.2",
               "devicepwd": "password",
-              "humidity_sensor": false,
-              "humidity_threshold": undefined,
+              "humidity_sensor": true,
+              "humidity_threshold": 70,
               "last_known_ip": "127.0.0.2",
             },
             "store": {
@@ -660,11 +686,11 @@ exports[`ventoDevice should be able to get status from modbus on init 1`] = `
       ],
       [
         "log",
-        "Triggering alarm_generic_true",
+        "Triggering alarm_generic_false",
       ],
       [
         "triggered",
-        "alarm_generic_true",
+        "alarm_generic_false",
         [
           VentoDevice {
             "_flowManualSpeed": FlowCard {
@@ -706,7 +732,20 @@ exports[`ventoDevice should be able to get status from modbus on init 1`] = `
               "error": [Function],
               "getDevices": [Function],
               "homey": {
-                "setInterval": [MockFunction],
+                "setInterval": [MockFunction] {
+                  "calls": [
+                    [
+                      [Function],
+                      5000,
+                    ],
+                  ],
+                  "results": [
+                    {
+                      "type": "return",
+                      "value": undefined,
+                    },
+                  ],
+                },
               },
               "log": [Function],
               "modbusClient": BlaubergVentoClient {
@@ -930,11 +969,11 @@ exports[`ventoDevice should be able to get status from modbus on init 1`] = `
             },
             "log": [Function],
             "settings": {
-              "boost_delay": undefined,
-              "devicemodel": "Vento Expert",
+              "boost_delay": 30,
+              "devicemodel": "Vento Expert Duo A30-1 W V.2",
               "devicepwd": "password",
-              "humidity_sensor": false,
-              "humidity_threshold": undefined,
+              "humidity_sensor": true,
+              "humidity_threshold": 70,
               "last_known_ip": "127.0.0.2",
             },
             "store": {
@@ -947,23 +986,23 @@ exports[`ventoDevice should be able to get status from modbus on init 1`] = `
       ],
       [
         "log",
-        "{"packet":{"_deviceId":"TEST1234","_password":"password","_functionType":2,"_dataEntries":[{"parameter":2,"value":{"0":0}}]},"ip":"127.0.0.2"}",
+        "{"packet":{"_deviceId":"devId","_password":"1234","_functionType":6,"dataEntries":[{"parameter":1,"value":{"0":1}},{"parameter":2,"value":{"0":1}},{"parameter":68,"value":{"0":179}},{"parameter":6,"value":{"0":0}},{"parameter":102,"value":{"0":30}},{"parameter":183,"value":{"0":2}},{"parameter":136,"value":{"0":0}},{"parameter":100,"value":{"0":34,"1":20,"2":31,"3":0}},{"parameter":37,"value":{"0":45}},{"parameter":15,"value":{"0":1}},{"parameter":25,"value":{"0":70}},{"parameter":185,"value":{"0":4,"1":0}},{"parameter":74,"value":{"0":236,"1":4}},{"parameter":7,"value":{"0":0}},{"parameter":131,"value":{"0":0}},{"parameter":11,"value":{"0":0,"1":0,"2":0}}],"_dataEntries":[{"parameter":1,"value":{"0":1}},{"parameter":2,"value":{"0":1}},{"parameter":68,"value":{"0":179}},{"parameter":6,"value":{"0":0}},{"parameter":102,"value":{"0":30}},{"parameter":183,"value":{"0":2}},{"parameter":136,"value":{"0":0}},{"parameter":100,"value":{"0":34,"1":20,"2":31,"3":0}},{"parameter":37,"value":{"0":45}},{"parameter":15,"value":{"0":1}},{"parameter":25,"value":{"0":70}},{"parameter":185,"value":{"0":4,"1":0}},{"parameter":74,"value":{"0":236,"1":4}},{"parameter":7,"value":{"0":0}},{"parameter":131,"value":{"0":0}},{"parameter":11,"value":{"0":0,"1":0,"2":0}}]},"ip":"127.0.0.1"}",
       ],
       [
         "log",
-        "{"packet":{"_deviceId":"TEST1234","_password":"password","_functionType":2,"_dataEntries":[{"parameter":68,"value":{"0":0}}]},"ip":"127.0.0.2"}",
+        "{"packet":{"_deviceId":"devId","_password":"1234","_functionType":6,"dataEntries":[{"parameter":1,"value":{"0":1}},{"parameter":2,"value":{"0":1}},{"parameter":68,"value":{"0":179}},{"parameter":6,"value":{"0":0}},{"parameter":102,"value":{"0":30}},{"parameter":183,"value":{"0":2}},{"parameter":136,"value":{"0":0}},{"parameter":100,"value":{"0":34,"1":20,"2":31,"3":0}},{"parameter":37,"value":{"0":45}},{"parameter":15,"value":{"0":1}},{"parameter":25,"value":{"0":70}},{"parameter":185,"value":{"0":4,"1":0}},{"parameter":74,"value":{"0":236,"1":4}},{"parameter":7,"value":{"0":0}},{"parameter":131,"value":{"0":0}},{"parameter":11,"value":{"0":0,"1":0,"2":0}}],"_dataEntries":[{"parameter":1,"value":{"0":1}},{"parameter":2,"value":{"0":1}},{"parameter":68,"value":{"0":179}},{"parameter":6,"value":{"0":0}},{"parameter":102,"value":{"0":30}},{"parameter":183,"value":{"0":2}},{"parameter":136,"value":{"0":0}},{"parameter":100,"value":{"0":34,"1":20,"2":31,"3":0}},{"parameter":37,"value":{"0":45}},{"parameter":15,"value":{"0":1}},{"parameter":25,"value":{"0":70}},{"parameter":185,"value":{"0":4,"1":0}},{"parameter":74,"value":{"0":236,"1":4}},{"parameter":7,"value":{"0":0}},{"parameter":131,"value":{"0":0}},{"parameter":11,"value":{"0":0,"1":0,"2":0}}]},"ip":"127.0.0.1"}",
       ],
       [
         "log",
-        "{"packet":{"_deviceId":"TEST1234","_password":"password","_functionType":2,"_dataEntries":[{"parameter":68,"value":{"0":0}}]},"ip":"127.0.0.2"}",
+        "{"packet":{"_deviceId":"devId","_password":"1234","_functionType":6,"dataEntries":[{"parameter":1,"value":{"0":1}},{"parameter":2,"value":{"0":1}},{"parameter":68,"value":{"0":179}},{"parameter":6,"value":{"0":0}},{"parameter":102,"value":{"0":30}},{"parameter":183,"value":{"0":2}},{"parameter":136,"value":{"0":0}},{"parameter":100,"value":{"0":34,"1":20,"2":31,"3":0}},{"parameter":37,"value":{"0":45}},{"parameter":15,"value":{"0":1}},{"parameter":25,"value":{"0":70}},{"parameter":185,"value":{"0":4,"1":0}},{"parameter":74,"value":{"0":236,"1":4}},{"parameter":7,"value":{"0":0}},{"parameter":131,"value":{"0":0}},{"parameter":11,"value":{"0":0,"1":0,"2":0}}],"_dataEntries":[{"parameter":1,"value":{"0":1}},{"parameter":2,"value":{"0":1}},{"parameter":68,"value":{"0":179}},{"parameter":6,"value":{"0":0}},{"parameter":102,"value":{"0":30}},{"parameter":183,"value":{"0":2}},{"parameter":136,"value":{"0":0}},{"parameter":100,"value":{"0":34,"1":20,"2":31,"3":0}},{"parameter":37,"value":{"0":45}},{"parameter":15,"value":{"0":1}},{"parameter":25,"value":{"0":70}},{"parameter":185,"value":{"0":4,"1":0}},{"parameter":74,"value":{"0":236,"1":4}},{"parameter":7,"value":{"0":0}},{"parameter":131,"value":{"0":0}},{"parameter":11,"value":{"0":0,"1":0,"2":0}}]},"ip":"127.0.0.1"}",
       ],
       [
         "log",
-        "{"packet":{"_deviceId":"TEST1234","_password":"password","_functionType":2,"_dataEntries":[{"parameter":183,"value":{"0":0}}]},"ip":"127.0.0.2"}",
+        "{"packet":{"_deviceId":"devId","_password":"1234","_functionType":6,"dataEntries":[{"parameter":1,"value":{"0":1}},{"parameter":2,"value":{"0":1}},{"parameter":68,"value":{"0":179}},{"parameter":6,"value":{"0":0}},{"parameter":102,"value":{"0":30}},{"parameter":183,"value":{"0":2}},{"parameter":136,"value":{"0":0}},{"parameter":100,"value":{"0":34,"1":20,"2":31,"3":0}},{"parameter":37,"value":{"0":45}},{"parameter":15,"value":{"0":1}},{"parameter":25,"value":{"0":70}},{"parameter":185,"value":{"0":4,"1":0}},{"parameter":74,"value":{"0":236,"1":4}},{"parameter":7,"value":{"0":0}},{"parameter":131,"value":{"0":0}},{"parameter":11,"value":{"0":0,"1":0,"2":0}}],"_dataEntries":[{"parameter":1,"value":{"0":1}},{"parameter":2,"value":{"0":1}},{"parameter":68,"value":{"0":179}},{"parameter":6,"value":{"0":0}},{"parameter":102,"value":{"0":30}},{"parameter":183,"value":{"0":2}},{"parameter":136,"value":{"0":0}},{"parameter":100,"value":{"0":34,"1":20,"2":31,"3":0}},{"parameter":37,"value":{"0":45}},{"parameter":15,"value":{"0":1}},{"parameter":25,"value":{"0":70}},{"parameter":185,"value":{"0":4,"1":0}},{"parameter":74,"value":{"0":236,"1":4}},{"parameter":7,"value":{"0":0}},{"parameter":131,"value":{"0":0}},{"parameter":11,"value":{"0":0,"1":0,"2":0}}]},"ip":"127.0.0.1"}",
       ],
       [
         "log",
-        "{"packet":{"_deviceId":"TEST1234","_password":"password","_functionType":2,"_dataEntries":[{"parameter":7,"value":{"0":0}}]},"ip":"127.0.0.2"}",
+        "{"packet":{"_deviceId":"devId","_password":"1234","_functionType":6,"dataEntries":[{"parameter":1,"value":{"0":1}},{"parameter":2,"value":{"0":1}},{"parameter":68,"value":{"0":179}},{"parameter":6,"value":{"0":0}},{"parameter":102,"value":{"0":30}},{"parameter":183,"value":{"0":2}},{"parameter":136,"value":{"0":0}},{"parameter":100,"value":{"0":34,"1":20,"2":31,"3":0}},{"parameter":37,"value":{"0":45}},{"parameter":15,"value":{"0":1}},{"parameter":25,"value":{"0":70}},{"parameter":185,"value":{"0":4,"1":0}},{"parameter":74,"value":{"0":236,"1":4}},{"parameter":7,"value":{"0":0}},{"parameter":131,"value":{"0":0}},{"parameter":11,"value":{"0":0,"1":0,"2":0}}],"_dataEntries":[{"parameter":1,"value":{"0":1}},{"parameter":2,"value":{"0":1}},{"parameter":68,"value":{"0":179}},{"parameter":6,"value":{"0":0}},{"parameter":102,"value":{"0":30}},{"parameter":183,"value":{"0":2}},{"parameter":136,"value":{"0":0}},{"parameter":100,"value":{"0":34,"1":20,"2":31,"3":0}},{"parameter":37,"value":{"0":45}},{"parameter":15,"value":{"0":1}},{"parameter":25,"value":{"0":70}},{"parameter":185,"value":{"0":4,"1":0}},{"parameter":74,"value":{"0":236,"1":4}},{"parameter":7,"value":{"0":0}},{"parameter":131,"value":{"0":0}},{"parameter":11,"value":{"0":0,"1":0,"2":0}}]},"ip":"127.0.0.1"}",
       ],
     ],
     "registerCapabilityListener": {
@@ -1014,9 +1053,9 @@ exports[`ventoDevice should be able to get status from modbus on init 1`] = `
     "setCapabilityValue": {
       "alarm_boost": [
         [
-          true,
+          false,
           {
-            "result": true,
+            "result": false,
           },
         ],
       ],
@@ -1036,15 +1075,15 @@ exports[`ventoDevice should be able to get status from modbus on init 1`] = `
       ],
       "alarm_generic": [
         [
-          true,
+          false,
           {
-            "result": true,
+            "result": false,
           },
         ],
       ],
       "fan_speed": [
         [
-          NaN,
+          0.7019607843137254,
           {
             "result": undefined,
           },
@@ -1052,13 +1091,13 @@ exports[`ventoDevice should be able to get status from modbus on init 1`] = `
       ],
       "filter_timer": [
         [
-          "undefined:undefined:undefined",
+          "31:20:34",
           "calling unregistered capability",
         ],
       ],
       "manualSpeed": [
         [
-          NaN,
+          70.19607843137254,
           {
             "result": undefined,
           },
@@ -1066,19 +1105,19 @@ exports[`ventoDevice should be able to get status from modbus on init 1`] = `
       ],
       "measure_RPM": [
         [
-          undefined,
+          236,
           "calling unregistered capability",
         ],
       ],
       "measure_humidity": [
         [
-          undefined,
+          45,
           "calling unregistered capability",
         ],
       ],
       "onoff": [
         [
-          false,
+          true,
           {
             "result": undefined,
           },
@@ -1086,7 +1125,7 @@ exports[`ventoDevice should be able to get status from modbus on init 1`] = `
       ],
       "operationMode": [
         [
-          undefined,
+          "2",
           {
             "result": undefined,
           },
@@ -1094,7 +1133,7 @@ exports[`ventoDevice should be able to get status from modbus on init 1`] = `
       ],
       "speedMode": [
         [
-          undefined,
+          "1",
           {
             "result": undefined,
           },
@@ -1102,7 +1141,7 @@ exports[`ventoDevice should be able to get status from modbus on init 1`] = `
       ],
       "timerMode": [
         [
-          undefined,
+          "0",
           {
             "result": undefined,
           },
@@ -1110,17 +1149,17 @@ exports[`ventoDevice should be able to get status from modbus on init 1`] = `
       ],
       "timerMode_timer": [
         [
-          "undefined:undefined:undefined",
+          "0:0:0",
           "calling unregistered capability",
         ],
       ],
     },
     "settings": {
-      "boost_delay": undefined,
-      "devicemodel": "Vento Expert",
+      "boost_delay": 30,
+      "devicemodel": "Vento Expert Duo A30-1 W V.2",
       "devicepwd": "password",
-      "humidity_sensor": false,
-      "humidity_threshold": undefined,
+      "humidity_sensor": true,
+      "humidity_threshold": 70,
       "last_known_ip": "127.0.0.2",
     },
   },
@@ -1205,31 +1244,31 @@ exports[`ventoDevice should be able to get status when device is marked as off 1
       ],
       [
         "log",
-        "{"speed":{},"boost":{},"filter":{"timer":{}},"humidity":{"activated":0},"unittype":"Vento Expert","fan":{},"timers":{"countdown":{}}}",
+        "{"onoff":0,"speed":{"mode":1,"manualspeed":179},"boost":{"mode":0,"deactivationtimer":30},"operationmode":2,"filter":{"alarm":0,"timer":{"min":34,"hour":20,"days":31}},"humidity":{"current":45,"sensoractivation":1,"threshold":70,"activated":0},"unittype":"Vento Expert Duo A30-1 W V.2","fan":{"rpm":236},"timers":{"mode":0,"countdown":{"sec":0,"min":0,"hour":0}},"alarm":0}",
       ],
       [
         "log",
-        "{"packet":{"_deviceId":"TEST1234","_password":"password","_functionType":2,"_dataEntries":[{"parameter":1,"value":{"0":1}}]},"ip":"127.0.0.2"}",
+        "{"packet":{"_deviceId":"devId","_password":"1234","_functionType":6,"dataEntries":[{"parameter":1,"value":{"0":0}},{"parameter":2,"value":{"0":1}},{"parameter":68,"value":{"0":179}},{"parameter":6,"value":{"0":0}},{"parameter":102,"value":{"0":30}},{"parameter":183,"value":{"0":2}},{"parameter":136,"value":{"0":0}},{"parameter":100,"value":{"0":34,"1":20,"2":31,"3":0}},{"parameter":37,"value":{"0":45}},{"parameter":15,"value":{"0":1}},{"parameter":25,"value":{"0":70}},{"parameter":185,"value":{"0":4,"1":0}},{"parameter":74,"value":{"0":236,"1":4}},{"parameter":7,"value":{"0":0}},{"parameter":131,"value":{"0":0}},{"parameter":11,"value":{"0":0,"1":0,"2":0}}],"_dataEntries":[{"parameter":1,"value":{"0":0}},{"parameter":2,"value":{"0":1}},{"parameter":68,"value":{"0":179}},{"parameter":6,"value":{"0":0}},{"parameter":102,"value":{"0":30}},{"parameter":183,"value":{"0":2}},{"parameter":136,"value":{"0":0}},{"parameter":100,"value":{"0":34,"1":20,"2":31,"3":0}},{"parameter":37,"value":{"0":45}},{"parameter":15,"value":{"0":1}},{"parameter":25,"value":{"0":70}},{"parameter":185,"value":{"0":4,"1":0}},{"parameter":74,"value":{"0":236,"1":4}},{"parameter":7,"value":{"0":0}},{"parameter":131,"value":{"0":0}},{"parameter":11,"value":{"0":0,"1":0,"2":0}}]},"ip":"127.0.0.1"}",
       ],
       [
         "log",
-        "{"packet":{"_deviceId":"TEST1234","_password":"password","_functionType":2,"_dataEntries":[{"parameter":2,"value":{"0":0}}]},"ip":"127.0.0.2"}",
+        "{"packet":{"_deviceId":"devId","_password":"1234","_functionType":6,"dataEntries":[{"parameter":1,"value":{"0":0}},{"parameter":2,"value":{"0":1}},{"parameter":68,"value":{"0":179}},{"parameter":6,"value":{"0":0}},{"parameter":102,"value":{"0":30}},{"parameter":183,"value":{"0":2}},{"parameter":136,"value":{"0":0}},{"parameter":100,"value":{"0":34,"1":20,"2":31,"3":0}},{"parameter":37,"value":{"0":45}},{"parameter":15,"value":{"0":1}},{"parameter":25,"value":{"0":70}},{"parameter":185,"value":{"0":4,"1":0}},{"parameter":74,"value":{"0":236,"1":4}},{"parameter":7,"value":{"0":0}},{"parameter":131,"value":{"0":0}},{"parameter":11,"value":{"0":0,"1":0,"2":0}}],"_dataEntries":[{"parameter":1,"value":{"0":0}},{"parameter":2,"value":{"0":1}},{"parameter":68,"value":{"0":179}},{"parameter":6,"value":{"0":0}},{"parameter":102,"value":{"0":30}},{"parameter":183,"value":{"0":2}},{"parameter":136,"value":{"0":0}},{"parameter":100,"value":{"0":34,"1":20,"2":31,"3":0}},{"parameter":37,"value":{"0":45}},{"parameter":15,"value":{"0":1}},{"parameter":25,"value":{"0":70}},{"parameter":185,"value":{"0":4,"1":0}},{"parameter":74,"value":{"0":236,"1":4}},{"parameter":7,"value":{"0":0}},{"parameter":131,"value":{"0":0}},{"parameter":11,"value":{"0":0,"1":0,"2":0}}]},"ip":"127.0.0.1"}",
       ],
       [
         "log",
-        "{"packet":{"_deviceId":"TEST1234","_password":"password","_functionType":2,"_dataEntries":[{"parameter":68,"value":{"0":0}}]},"ip":"127.0.0.2"}",
+        "{"packet":{"_deviceId":"devId","_password":"1234","_functionType":6,"dataEntries":[{"parameter":1,"value":{"0":0}},{"parameter":2,"value":{"0":1}},{"parameter":68,"value":{"0":179}},{"parameter":6,"value":{"0":0}},{"parameter":102,"value":{"0":30}},{"parameter":183,"value":{"0":2}},{"parameter":136,"value":{"0":0}},{"parameter":100,"value":{"0":34,"1":20,"2":31,"3":0}},{"parameter":37,"value":{"0":45}},{"parameter":15,"value":{"0":1}},{"parameter":25,"value":{"0":70}},{"parameter":185,"value":{"0":4,"1":0}},{"parameter":74,"value":{"0":236,"1":4}},{"parameter":7,"value":{"0":0}},{"parameter":131,"value":{"0":0}},{"parameter":11,"value":{"0":0,"1":0,"2":0}}],"_dataEntries":[{"parameter":1,"value":{"0":0}},{"parameter":2,"value":{"0":1}},{"parameter":68,"value":{"0":179}},{"parameter":6,"value":{"0":0}},{"parameter":102,"value":{"0":30}},{"parameter":183,"value":{"0":2}},{"parameter":136,"value":{"0":0}},{"parameter":100,"value":{"0":34,"1":20,"2":31,"3":0}},{"parameter":37,"value":{"0":45}},{"parameter":15,"value":{"0":1}},{"parameter":25,"value":{"0":70}},{"parameter":185,"value":{"0":4,"1":0}},{"parameter":74,"value":{"0":236,"1":4}},{"parameter":7,"value":{"0":0}},{"parameter":131,"value":{"0":0}},{"parameter":11,"value":{"0":0,"1":0,"2":0}}]},"ip":"127.0.0.1"}",
       ],
       [
         "log",
-        "{"packet":{"_deviceId":"TEST1234","_password":"password","_functionType":2,"_dataEntries":[{"parameter":68,"value":{"0":0}}]},"ip":"127.0.0.2"}",
+        "{"packet":{"_deviceId":"devId","_password":"1234","_functionType":6,"dataEntries":[{"parameter":1,"value":{"0":0}},{"parameter":2,"value":{"0":1}},{"parameter":68,"value":{"0":179}},{"parameter":6,"value":{"0":0}},{"parameter":102,"value":{"0":30}},{"parameter":183,"value":{"0":2}},{"parameter":136,"value":{"0":0}},{"parameter":100,"value":{"0":34,"1":20,"2":31,"3":0}},{"parameter":37,"value":{"0":45}},{"parameter":15,"value":{"0":1}},{"parameter":25,"value":{"0":70}},{"parameter":185,"value":{"0":4,"1":0}},{"parameter":74,"value":{"0":236,"1":4}},{"parameter":7,"value":{"0":0}},{"parameter":131,"value":{"0":0}},{"parameter":11,"value":{"0":0,"1":0,"2":0}}],"_dataEntries":[{"parameter":1,"value":{"0":0}},{"parameter":2,"value":{"0":1}},{"parameter":68,"value":{"0":179}},{"parameter":6,"value":{"0":0}},{"parameter":102,"value":{"0":30}},{"parameter":183,"value":{"0":2}},{"parameter":136,"value":{"0":0}},{"parameter":100,"value":{"0":34,"1":20,"2":31,"3":0}},{"parameter":37,"value":{"0":45}},{"parameter":15,"value":{"0":1}},{"parameter":25,"value":{"0":70}},{"parameter":185,"value":{"0":4,"1":0}},{"parameter":74,"value":{"0":236,"1":4}},{"parameter":7,"value":{"0":0}},{"parameter":131,"value":{"0":0}},{"parameter":11,"value":{"0":0,"1":0,"2":0}}]},"ip":"127.0.0.1"}",
       ],
       [
         "log",
-        "{"packet":{"_deviceId":"TEST1234","_password":"password","_functionType":2,"_dataEntries":[{"parameter":183,"value":{"0":0}}]},"ip":"127.0.0.2"}",
+        "{"packet":{"_deviceId":"devId","_password":"1234","_functionType":6,"dataEntries":[{"parameter":1,"value":{"0":0}},{"parameter":2,"value":{"0":1}},{"parameter":68,"value":{"0":179}},{"parameter":6,"value":{"0":0}},{"parameter":102,"value":{"0":30}},{"parameter":183,"value":{"0":2}},{"parameter":136,"value":{"0":0}},{"parameter":100,"value":{"0":34,"1":20,"2":31,"3":0}},{"parameter":37,"value":{"0":45}},{"parameter":15,"value":{"0":1}},{"parameter":25,"value":{"0":70}},{"parameter":185,"value":{"0":4,"1":0}},{"parameter":74,"value":{"0":236,"1":4}},{"parameter":7,"value":{"0":0}},{"parameter":131,"value":{"0":0}},{"parameter":11,"value":{"0":0,"1":0,"2":0}}],"_dataEntries":[{"parameter":1,"value":{"0":0}},{"parameter":2,"value":{"0":1}},{"parameter":68,"value":{"0":179}},{"parameter":6,"value":{"0":0}},{"parameter":102,"value":{"0":30}},{"parameter":183,"value":{"0":2}},{"parameter":136,"value":{"0":0}},{"parameter":100,"value":{"0":34,"1":20,"2":31,"3":0}},{"parameter":37,"value":{"0":45}},{"parameter":15,"value":{"0":1}},{"parameter":25,"value":{"0":70}},{"parameter":185,"value":{"0":4,"1":0}},{"parameter":74,"value":{"0":236,"1":4}},{"parameter":7,"value":{"0":0}},{"parameter":131,"value":{"0":0}},{"parameter":11,"value":{"0":0,"1":0,"2":0}}]},"ip":"127.0.0.1"}",
       ],
       [
         "log",
-        "{"packet":{"_deviceId":"TEST1234","_password":"password","_functionType":2,"_dataEntries":[{"parameter":7,"value":{"0":0}}]},"ip":"127.0.0.2"}",
+        "{"packet":{"_deviceId":"devId","_password":"1234","_functionType":6,"dataEntries":[{"parameter":1,"value":{"0":0}},{"parameter":2,"value":{"0":1}},{"parameter":68,"value":{"0":179}},{"parameter":6,"value":{"0":0}},{"parameter":102,"value":{"0":30}},{"parameter":183,"value":{"0":2}},{"parameter":136,"value":{"0":0}},{"parameter":100,"value":{"0":34,"1":20,"2":31,"3":0}},{"parameter":37,"value":{"0":45}},{"parameter":15,"value":{"0":1}},{"parameter":25,"value":{"0":70}},{"parameter":185,"value":{"0":4,"1":0}},{"parameter":74,"value":{"0":236,"1":4}},{"parameter":7,"value":{"0":0}},{"parameter":131,"value":{"0":0}},{"parameter":11,"value":{"0":0,"1":0,"2":0}}],"_dataEntries":[{"parameter":1,"value":{"0":0}},{"parameter":2,"value":{"0":1}},{"parameter":68,"value":{"0":179}},{"parameter":6,"value":{"0":0}},{"parameter":102,"value":{"0":30}},{"parameter":183,"value":{"0":2}},{"parameter":136,"value":{"0":0}},{"parameter":100,"value":{"0":34,"1":20,"2":31,"3":0}},{"parameter":37,"value":{"0":45}},{"parameter":15,"value":{"0":1}},{"parameter":25,"value":{"0":70}},{"parameter":185,"value":{"0":4,"1":0}},{"parameter":74,"value":{"0":236,"1":4}},{"parameter":7,"value":{"0":0}},{"parameter":131,"value":{"0":0}},{"parameter":11,"value":{"0":0,"1":0,"2":0}}]},"ip":"127.0.0.1"}",
       ],
     ],
     "registerCapabilityListener": {
@@ -1280,9 +1319,9 @@ exports[`ventoDevice should be able to get status when device is marked as off 1
     "setCapabilityValue": {
       "alarm_boost": [
         [
-          true,
+          false,
           {
-            "result": true,
+            "result": false,
           },
         ],
       ],
@@ -1302,15 +1341,15 @@ exports[`ventoDevice should be able to get status when device is marked as off 1
       ],
       "alarm_generic": [
         [
-          true,
+          false,
           {
-            "result": true,
+            "result": false,
           },
         ],
       ],
       "fan_speed": [
         [
-          NaN,
+          0.7019607843137254,
           {
             "result": undefined,
           },
@@ -1318,13 +1357,13 @@ exports[`ventoDevice should be able to get status when device is marked as off 1
       ],
       "filter_timer": [
         [
-          "undefined:undefined:undefined",
+          "31:20:34",
           "calling unregistered capability",
         ],
       ],
       "manualSpeed": [
         [
-          NaN,
+          70.19607843137254,
           {
             "result": undefined,
           },
@@ -1332,13 +1371,13 @@ exports[`ventoDevice should be able to get status when device is marked as off 1
       ],
       "measure_RPM": [
         [
-          undefined,
+          236,
           "calling unregistered capability",
         ],
       ],
       "measure_humidity": [
         [
-          undefined,
+          45,
           "calling unregistered capability",
         ],
       ],
@@ -1352,7 +1391,7 @@ exports[`ventoDevice should be able to get status when device is marked as off 1
       ],
       "operationMode": [
         [
-          undefined,
+          "2",
           {
             "result": undefined,
           },
@@ -1360,7 +1399,7 @@ exports[`ventoDevice should be able to get status when device is marked as off 1
       ],
       "speedMode": [
         [
-          undefined,
+          "1",
           {
             "result": undefined,
           },
@@ -1368,7 +1407,7 @@ exports[`ventoDevice should be able to get status when device is marked as off 1
       ],
       "timerMode": [
         [
-          undefined,
+          "0",
           {
             "result": undefined,
           },
@@ -1376,17 +1415,17 @@ exports[`ventoDevice should be able to get status when device is marked as off 1
       ],
       "timerMode_timer": [
         [
-          "undefined:undefined:undefined",
+          "0:0:0",
           "calling unregistered capability",
         ],
       ],
     },
     "settings": {
-      "boost_delay": undefined,
-      "devicemodel": "Vento Expert",
+      "boost_delay": 30,
+      "devicemodel": "Vento Expert Duo A30-1 W V.2",
       "devicepwd": "password",
-      "humidity_sensor": false,
-      "humidity_threshold": undefined,
+      "humidity_sensor": true,
+      "humidity_threshold": 70,
       "last_known_ip": "127.0.0.2",
     },
   },
@@ -1556,23 +1595,23 @@ exports[`ventoDevice should be able to setup all capabilities 1`] = `
     "log": [
       [
         "log",
-        "{"packet":{"_deviceId":"TEST1234","_password":"password","_functionType":2,"_dataEntries":[{"parameter":2,"value":{"0":0}}]},"ip":"127.0.0.2"}",
+        "{"packet":{"_deviceId":"devId","_password":"1234","_functionType":6,"dataEntries":[{"parameter":1,"value":{"0":1}},{"parameter":2,"value":{"0":1}},{"parameter":68,"value":{"0":179}},{"parameter":6,"value":{"0":0}},{"parameter":102,"value":{"0":30}},{"parameter":183,"value":{"0":2}},{"parameter":136,"value":{"0":0}},{"parameter":100,"value":{"0":34,"1":20,"2":31,"3":0}},{"parameter":37,"value":{"0":45}},{"parameter":15,"value":{"0":1}},{"parameter":25,"value":{"0":70}},{"parameter":185,"value":{"0":4,"1":0}},{"parameter":74,"value":{"0":236,"1":4}},{"parameter":7,"value":{"0":0}},{"parameter":131,"value":{"0":0}},{"parameter":11,"value":{"0":0,"1":0,"2":0}}],"_dataEntries":[{"parameter":1,"value":{"0":1}},{"parameter":2,"value":{"0":1}},{"parameter":68,"value":{"0":179}},{"parameter":6,"value":{"0":0}},{"parameter":102,"value":{"0":30}},{"parameter":183,"value":{"0":2}},{"parameter":136,"value":{"0":0}},{"parameter":100,"value":{"0":34,"1":20,"2":31,"3":0}},{"parameter":37,"value":{"0":45}},{"parameter":15,"value":{"0":1}},{"parameter":25,"value":{"0":70}},{"parameter":185,"value":{"0":4,"1":0}},{"parameter":74,"value":{"0":236,"1":4}},{"parameter":7,"value":{"0":0}},{"parameter":131,"value":{"0":0}},{"parameter":11,"value":{"0":0,"1":0,"2":0}}]},"ip":"127.0.0.1"}",
       ],
       [
         "log",
-        "{"packet":{"_deviceId":"TEST1234","_password":"password","_functionType":2,"_dataEntries":[{"parameter":68,"value":{"0":0}}]},"ip":"127.0.0.2"}",
+        "{"packet":{"_deviceId":"devId","_password":"1234","_functionType":6,"dataEntries":[{"parameter":1,"value":{"0":1}},{"parameter":2,"value":{"0":1}},{"parameter":68,"value":{"0":179}},{"parameter":6,"value":{"0":0}},{"parameter":102,"value":{"0":30}},{"parameter":183,"value":{"0":2}},{"parameter":136,"value":{"0":0}},{"parameter":100,"value":{"0":34,"1":20,"2":31,"3":0}},{"parameter":37,"value":{"0":45}},{"parameter":15,"value":{"0":1}},{"parameter":25,"value":{"0":70}},{"parameter":185,"value":{"0":4,"1":0}},{"parameter":74,"value":{"0":236,"1":4}},{"parameter":7,"value":{"0":0}},{"parameter":131,"value":{"0":0}},{"parameter":11,"value":{"0":0,"1":0,"2":0}}],"_dataEntries":[{"parameter":1,"value":{"0":1}},{"parameter":2,"value":{"0":1}},{"parameter":68,"value":{"0":179}},{"parameter":6,"value":{"0":0}},{"parameter":102,"value":{"0":30}},{"parameter":183,"value":{"0":2}},{"parameter":136,"value":{"0":0}},{"parameter":100,"value":{"0":34,"1":20,"2":31,"3":0}},{"parameter":37,"value":{"0":45}},{"parameter":15,"value":{"0":1}},{"parameter":25,"value":{"0":70}},{"parameter":185,"value":{"0":4,"1":0}},{"parameter":74,"value":{"0":236,"1":4}},{"parameter":7,"value":{"0":0}},{"parameter":131,"value":{"0":0}},{"parameter":11,"value":{"0":0,"1":0,"2":0}}]},"ip":"127.0.0.1"}",
       ],
       [
         "log",
-        "{"packet":{"_deviceId":"TEST1234","_password":"password","_functionType":2,"_dataEntries":[{"parameter":68,"value":{"0":0}}]},"ip":"127.0.0.2"}",
+        "{"packet":{"_deviceId":"devId","_password":"1234","_functionType":6,"dataEntries":[{"parameter":1,"value":{"0":1}},{"parameter":2,"value":{"0":1}},{"parameter":68,"value":{"0":179}},{"parameter":6,"value":{"0":0}},{"parameter":102,"value":{"0":30}},{"parameter":183,"value":{"0":2}},{"parameter":136,"value":{"0":0}},{"parameter":100,"value":{"0":34,"1":20,"2":31,"3":0}},{"parameter":37,"value":{"0":45}},{"parameter":15,"value":{"0":1}},{"parameter":25,"value":{"0":70}},{"parameter":185,"value":{"0":4,"1":0}},{"parameter":74,"value":{"0":236,"1":4}},{"parameter":7,"value":{"0":0}},{"parameter":131,"value":{"0":0}},{"parameter":11,"value":{"0":0,"1":0,"2":0}}],"_dataEntries":[{"parameter":1,"value":{"0":1}},{"parameter":2,"value":{"0":1}},{"parameter":68,"value":{"0":179}},{"parameter":6,"value":{"0":0}},{"parameter":102,"value":{"0":30}},{"parameter":183,"value":{"0":2}},{"parameter":136,"value":{"0":0}},{"parameter":100,"value":{"0":34,"1":20,"2":31,"3":0}},{"parameter":37,"value":{"0":45}},{"parameter":15,"value":{"0":1}},{"parameter":25,"value":{"0":70}},{"parameter":185,"value":{"0":4,"1":0}},{"parameter":74,"value":{"0":236,"1":4}},{"parameter":7,"value":{"0":0}},{"parameter":131,"value":{"0":0}},{"parameter":11,"value":{"0":0,"1":0,"2":0}}]},"ip":"127.0.0.1"}",
       ],
       [
         "log",
-        "{"packet":{"_deviceId":"TEST1234","_password":"password","_functionType":2,"_dataEntries":[{"parameter":183,"value":{"0":0}}]},"ip":"127.0.0.2"}",
+        "{"packet":{"_deviceId":"devId","_password":"1234","_functionType":6,"dataEntries":[{"parameter":1,"value":{"0":1}},{"parameter":2,"value":{"0":1}},{"parameter":68,"value":{"0":179}},{"parameter":6,"value":{"0":0}},{"parameter":102,"value":{"0":30}},{"parameter":183,"value":{"0":2}},{"parameter":136,"value":{"0":0}},{"parameter":100,"value":{"0":34,"1":20,"2":31,"3":0}},{"parameter":37,"value":{"0":45}},{"parameter":15,"value":{"0":1}},{"parameter":25,"value":{"0":70}},{"parameter":185,"value":{"0":4,"1":0}},{"parameter":74,"value":{"0":236,"1":4}},{"parameter":7,"value":{"0":0}},{"parameter":131,"value":{"0":0}},{"parameter":11,"value":{"0":0,"1":0,"2":0}}],"_dataEntries":[{"parameter":1,"value":{"0":1}},{"parameter":2,"value":{"0":1}},{"parameter":68,"value":{"0":179}},{"parameter":6,"value":{"0":0}},{"parameter":102,"value":{"0":30}},{"parameter":183,"value":{"0":2}},{"parameter":136,"value":{"0":0}},{"parameter":100,"value":{"0":34,"1":20,"2":31,"3":0}},{"parameter":37,"value":{"0":45}},{"parameter":15,"value":{"0":1}},{"parameter":25,"value":{"0":70}},{"parameter":185,"value":{"0":4,"1":0}},{"parameter":74,"value":{"0":236,"1":4}},{"parameter":7,"value":{"0":0}},{"parameter":131,"value":{"0":0}},{"parameter":11,"value":{"0":0,"1":0,"2":0}}]},"ip":"127.0.0.1"}",
       ],
       [
         "log",
-        "{"packet":{"_deviceId":"TEST1234","_password":"password","_functionType":2,"_dataEntries":[{"parameter":7,"value":{"0":0}}]},"ip":"127.0.0.2"}",
+        "{"packet":{"_deviceId":"devId","_password":"1234","_functionType":6,"dataEntries":[{"parameter":1,"value":{"0":1}},{"parameter":2,"value":{"0":1}},{"parameter":68,"value":{"0":179}},{"parameter":6,"value":{"0":0}},{"parameter":102,"value":{"0":30}},{"parameter":183,"value":{"0":2}},{"parameter":136,"value":{"0":0}},{"parameter":100,"value":{"0":34,"1":20,"2":31,"3":0}},{"parameter":37,"value":{"0":45}},{"parameter":15,"value":{"0":1}},{"parameter":25,"value":{"0":70}},{"parameter":185,"value":{"0":4,"1":0}},{"parameter":74,"value":{"0":236,"1":4}},{"parameter":7,"value":{"0":0}},{"parameter":131,"value":{"0":0}},{"parameter":11,"value":{"0":0,"1":0,"2":0}}],"_dataEntries":[{"parameter":1,"value":{"0":1}},{"parameter":2,"value":{"0":1}},{"parameter":68,"value":{"0":179}},{"parameter":6,"value":{"0":0}},{"parameter":102,"value":{"0":30}},{"parameter":183,"value":{"0":2}},{"parameter":136,"value":{"0":0}},{"parameter":100,"value":{"0":34,"1":20,"2":31,"3":0}},{"parameter":37,"value":{"0":45}},{"parameter":15,"value":{"0":1}},{"parameter":25,"value":{"0":70}},{"parameter":185,"value":{"0":4,"1":0}},{"parameter":74,"value":{"0":236,"1":4}},{"parameter":7,"value":{"0":0}},{"parameter":131,"value":{"0":0}},{"parameter":11,"value":{"0":0,"1":0,"2":0}}]},"ip":"127.0.0.1"}",
       ],
       [
         "log",
@@ -1643,7 +1682,7 @@ exports[`ventoDevice should be able to setup all capabilities 1`] = `
     "setCapabilityValue": {
       "fan_speed": [
         [
-          NaN,
+          0.7019607843137254,
           {
             "result": undefined,
           },
@@ -1651,7 +1690,7 @@ exports[`ventoDevice should be able to setup all capabilities 1`] = `
       ],
       "manualSpeed": [
         [
-          NaN,
+          70.19607843137254,
           {
             "result": undefined,
           },
@@ -1659,7 +1698,7 @@ exports[`ventoDevice should be able to setup all capabilities 1`] = `
       ],
       "operationMode": [
         [
-          undefined,
+          "2",
           {
             "result": undefined,
           },
@@ -1667,7 +1706,7 @@ exports[`ventoDevice should be able to setup all capabilities 1`] = `
       ],
       "speedMode": [
         [
-          undefined,
+          "1",
           {
             "result": undefined,
           },
@@ -1675,7 +1714,7 @@ exports[`ventoDevice should be able to setup all capabilities 1`] = `
       ],
       "timerMode": [
         [
-          undefined,
+          "0",
           {
             "result": undefined,
           },
@@ -1683,7 +1722,7 @@ exports[`ventoDevice should be able to setup all capabilities 1`] = `
       ],
       "timerMode_timer": [
         [
-          "undefined:undefined:undefined",
+          "0:0:0",
           "calling unregistered capability",
         ],
       ],
