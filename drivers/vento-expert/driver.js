@@ -90,6 +90,11 @@ class VentoDriver extends Driver {
       device.ip
     );
 
+  /**
+   * Use FunctionType.WRITEREAD instead of FunctionType.WRITE to ensure the device
+   * returns the updated value after writing. This is required by the protocol/device
+   * to confirm the value was set correctly.
+   */
   setDeviceValue = async (device, devicepass, param, value) =>
     this.send(
       new Packet(device.id, devicepass, FunctionType.WRITEREAD, [
