@@ -95,12 +95,43 @@ class VentoDevice extends Device {
   async discovery(id) {
     this.deviceObject = this.driver.locateDeviceById(id);
     if (this.deviceObject == null) {
+      // Try to use last known IP if discovery failed
+      const lastKnownIP = this.getStoreValue('lastKnownIP');
+      if (lastKnownIP && lastKnownIP !== '0.0.0.0') {
+        this.log(
+          `Discovery failed, attempting to use last known IP: ${lastKnownIP}`
+        );
+        this.deviceObject = {
+          id,
+          ip: lastKnownIP,
+        };
+        // Test if device responds at this IP
+        try {
+          this.devicepwd = await this.getSetting('devicepwd');
+          const state = await this.driver.getDeviceState(
+            this.deviceObject,
+            this.devicepwd
+          );
+          if (state) {
+            await this.setAvailable();
+            this.log(
+              `Vento device reconnected using last known IP: [${lastKnownIP}]`
+            );
+            return;
+          }
+        } catch (error) {
+          this.log(`Failed to connect using last known IP: ${error.message}`);
+        }
+      }
       await this.setUnavailable('Device not discovered yet');
       this.log('Vento device could not be located');
     } else {
       await this.setAvailable();
       this.log(`Vento device has been initialized: [${this.deviceObject.ip}]`);
       this.devicepwd = await this.getSetting('devicepwd');
+      // Store IP address for future fallback
+      await this.setStoreValue('lastKnownIP', this.deviceObject.ip);
+      await this.setSettings({ last_known_ip: this.deviceObject.ip });
     }
   }
 
@@ -120,24 +151,42 @@ class VentoDevice extends Device {
 
     this.log('Device state received: ', state);
 
-    await this.setAvailable();
+    const currentStoredIP = this.getStoreValue('lastKnownIP');
+    if (this.deviceObject?.ip && currentStoredIP !== this.deviceObject.ip) {
+      this.log(
+        `Device IP changed from ${currentStoredIP} to ${this.deviceObject.ip}`
+      );
+      await this.setStoreValue('lastKnownIP', this.deviceObject.ip);
+      await this.setSettings({ last_known_ip: this.deviceObject.ip });
+    }
     await this.setCapabilityValue(Capabilities.alarm_connectivity, false);
+    await this.setAvailable();
+
+    const newBoost = state.boost?.mode !== 0;
+    const oldBoost = this.getCapabilityValue(Capabilities.alarm_boost);
+    await this.setCapabilityValue(Capabilities.alarm_boost, newBoost);
+    if (oldBoost !== null && oldBoost !== newBoost) {
+      await this.triggerBoostAlarm(newBoost);
+    }
+
+    const oldFilter = this.getCapabilityValue(Capabilities.alarm_filter);
+    const newFilter = state.filter?.alarm === 1;
+    await this.setCapabilityValue(Capabilities.alarm_filter, newFilter);
+    if (oldFilter !== null && oldFilter !== newFilter) {
+      await this.triggerFilterAlarm(newFilter);
+    }
+
+    const oldGeneric = this.getCapabilityValue(Capabilities.alarm_generic);
+    const newGeneric = state.alarm !== 0;
+    await this.setCapabilityValue(Capabilities.alarm_generic, newGeneric);
+    if (oldGeneric !== null && oldGeneric !== newGeneric) {
+      await this.triggerGenericAlarm(newGeneric);
+    }
+
     await this.setCapabilityValue(Capabilities.onoff, state.onoff === 1);
-    await this.setCapabilityValue(
-      Capabilities.alarm_boost,
-      state.boost?.mode !== 0
-    );
-    await this.setCapabilityValue(
-      Capabilities.alarm_filter,
-      state.filter?.alarm === 1
-    );
     await this.setCapabilityValue(
       Capabilities.filter_timer,
       `${state.filter?.timer.days}:${state.filter?.timer.hour}:${state.filter?.timer.min}`
-    );
-    await this.setCapabilityValue(
-      Capabilities.alarm_generic,
-      state.alarm !== 0
     );
     await this.setCapabilityValue(
       Capabilities.measure_humidity,
@@ -190,6 +239,9 @@ class VentoDevice extends Device {
     if (changedKeys.includes('devicepwd')) {
       this.devicepwd = newSettings.devicepwd;
       await this.updateDeviceState();
+    }
+    if (changedKeys.includes('last_known_ip')) {
+      await this.setStoreValue('lastKnowIP', newSettings.last_known_ip);
     }
     // For the other settings we probably need to push the new value to the device
     if (changedKeys.includes('humidity_sensor')) {
@@ -320,6 +372,30 @@ class VentoDevice extends Device {
           args.timerMode
         );
       });
+  }
+
+  async triggerBoostAlarm(isOn) {
+    const triggerCard = isOn ? 'alarm_boost_true' : 'alarm_boost_false';
+    this.log(`Triggering ${triggerCard}`);
+    await this.homey.flow
+      .getDeviceTriggerCard(triggerCard)
+      .trigger(this, {}, {});
+  }
+
+  async triggerFilterAlarm(isOn) {
+    const triggerCard = isOn ? 'alarm_filter_true' : 'alarm_filter_false';
+    this.log(`Triggering ${triggerCard}`);
+    await this.homey.flow
+      .getDeviceTriggerCard(triggerCard)
+      .trigger(this, {}, {});
+  }
+
+  async triggerGenericAlarm(isOn) {
+    const triggerCard = isOn ? 'alarm_generic_true' : 'alarm_generic_false';
+    this.log(`Triggering ${triggerCard}`);
+    await this.homey.flow
+      .getDeviceTriggerCard(triggerCard)
+      .trigger(this, {}, {});
   }
 }
 
