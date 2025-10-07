@@ -40,7 +40,7 @@ export const parametersToValues = (
   }, {});
 };
 
-export default (result: Response): ModbusResponse => {
+export const mapModbusResponse = (result: Response): ModbusResponse => {
   if (result != null) {
     const values = parametersToValues(result);
 
