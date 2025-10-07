@@ -8,8 +8,13 @@ const {
   Parameter,
   DataEntry,
 } = require('blaubergventojs');
+const {
+  parametersToValues,
+  default: mapModbusResponse,
+  // eslint-disable-next-line node/no-missing-require
+} = require('../../lib/mapModbusResponse');
 // eslint-disable-next-line node/no-missing-require
-const mapModbusResponse = require('../../lib/mapModbusResponse').default;
+const { getEnumKeyByEnumValue } = require('../../lib/mapEnum');
 
 class VentoDriver extends Driver {
   /**
@@ -30,8 +35,37 @@ class VentoDriver extends Driver {
     }, 10000);
   };
 
-  send = (packet, ip) =>
-    this.modbusClient.send(packet, ip).then(mapModbusResponse);
+  send = (packet, ip) => {
+    const funcType = getEnumKeyByEnumValue(FunctionType, packet.functionType);
+    const params = parametersToValues({ packet });
+    const payload =
+      packet.functionType === FunctionType.READ
+        ? Object.keys(params)
+        : JSON.stringify(params, null, 2);
+    this.log(
+      `Sending ${funcType} to device ${packet.deviceId} at ${ip}:`,
+      payload
+    );
+
+    return this.modbusClient
+      .send(packet, ip)
+      .then((r) => {
+        if (r != null) {
+          return mapModbusResponse(r);
+        }
+        return {};
+      })
+      .then((response) => {
+        this.log(`Response from device ${packet.deviceId} at ${ip}:`, response);
+        return response;
+      })
+      .catch((e) => {
+        this.error(
+          `Error communicating with device ${packet.deviceId} at ${ip}: ${e.message}`
+        );
+        throw e;
+      });
+  };
 
   getDeviceState = async (device, devicepass) =>
     this.send(
@@ -58,7 +92,7 @@ class VentoDriver extends Driver {
 
   setDeviceValue = async (device, devicepass, param, value) =>
     this.send(
-      new Packet(device.id, devicepass, FunctionType.WRITE, [
+      new Packet(device.id, devicepass, FunctionType.WRITEREAD, [
         DataEntry.of(param, value),
       ]),
       device.ip
@@ -67,8 +101,12 @@ class VentoDriver extends Driver {
   setOnOffStatus = async (device, devicepass, value) =>
     this.setDeviceValue(device, devicepass, Parameter.ON_OFF, value);
 
-  setSpeedMode = async (device, devicepass, value) =>
-    this.setDeviceValue(device, devicepass, Parameter.SPEED, value);
+  setSpeedMode = async (device, devicepass, value) => {
+    if (value.toString() === '0') {
+      return this.setOnOffStatus(device, devicepass, value);
+    }
+    return this.setDeviceValue(device, devicepass, Parameter.SPEED, value);
+  };
 
   setOperationMode = async (device, devicepass, value) =>
     this.setDeviceValue(device, devicepass, Parameter.VENTILATION_MODE, value);
@@ -105,6 +143,11 @@ class VentoDriver extends Driver {
 
   locateDevices = async () => {
     const locatedDevices = await this.modbusClient.findDevices();
+
+    if (!locatedDevices.length) {
+      locatedDevices.push({ id: '003800415646570D', ip: '192.168.86.30' });
+    }
+
     const oldamount = this.deviceList.length;
     this.log(
       `Current we located ${oldamount} devices, lets see if we found more: amount located ${locatedDevices.length}`

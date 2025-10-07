@@ -1,6 +1,6 @@
 'use strict';
 
-import { Response, Parameter } from 'blaubergventojs';
+import { Response, Parameter, FunctionType } from 'blaubergventojs';
 import { getEnumKeyByEnumValue } from './mapEnum';
 
 export type ModbusResponse = {
@@ -30,10 +30,13 @@ export type ModbusResponse = {
 export const parametersToValues = (
   result: Response
 ): Record<keyof typeof Parameter | string, number[] | undefined> => {
-  return result.packet.dataEntries.reduce((acc, { parameter, value }) => {
+  const { packet } = result;
+  const isRead = packet.functionType === FunctionType.READ;
+  const defaultValue = isRead ? '' : undefined;
+  return packet.dataEntries.reduce((acc, { parameter, value }) => {
     // @ts-expect-error: old declared enum
     const key = getEnumKeyByEnumValue(Parameter, parameter) || parameter;
-    return key ? { ...acc, [key]: value } : acc;
+    return key ? { ...acc, [key]: value ?? defaultValue } : acc;
   }, {});
 };
 
@@ -98,5 +101,7 @@ export default (result: Response): ModbusResponse => {
       alarm: values.READ_ALARM?.[0],
     };
   }
-  throw new Error('device not responding, is your device password correct?');
+  throw new Error(
+    `device not responding, is your device password correct? ${result}`
+  );
 };

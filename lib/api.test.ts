@@ -1,7 +1,7 @@
-import { DeviceAddress } from 'blaubergventojs';
 import Api from '../drivers/vento-expert/driver';
 import { statusResponse } from './__mockdata__/statusResponse';
 import { removeUndefinedDeep } from './testTools';
+import { sendMock } from './__mocks__/blaubergventojs';
 
 describe('Api set functions', () => {
   let api: Api;
@@ -9,26 +9,24 @@ describe('Api set functions', () => {
     jest.clearAllMocks();
   });
 
-  beforeEach(() => {
+  beforeEach(async () => {
     jest.spyOn(global.console, 'error');
     api = new Api();
-    api.modbusClient = {
-      timeout: 0,
-      findDevices(): Promise<DeviceAddress[]> {
-        return Promise.resolve([]);
-      },
-      // @ts-expect-error: mock
-      send: jest.fn((packet, ip) => Promise.resolve({ packet, ip })),
-    };
+    await api.onInit();
   });
 
   afterEach(() => {
     jest.clearAllMocks();
   });
+  beforeEach(() => {
+    sendMock.mockImplementation((packet, ip) =>
+      Promise.resolve({ packet, ip })
+    );
+  });
 
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const getMockCalls = (response: any) => ({
-    calls: (api.modbusClient?.send as jest.Mock).mock.calls,
+    calls: sendMock.mock.calls,
     response: removeUndefinedDeep(response),
   });
   const device = { id: 'fanId', ip: '127.0.0.1' };
@@ -38,9 +36,7 @@ describe('Api set functions', () => {
     expect(getMockCalls(response)).toMatchSnapshot();
   });
   it('update gets response', async () => {
-    (api.modbusClient?.send as jest.Mock).mockReturnValue(
-      Promise.resolve(statusResponse)
-    );
+    sendMock.mockResolvedValue(statusResponse);
     const response = await api.getDeviceState(device, 'password');
     expect(getMockCalls(response)).toMatchSnapshot();
   });
