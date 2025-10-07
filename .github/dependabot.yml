@@ -20,9 +20,6 @@ updates:
         patterns:
           - '*jest*'
           - '@testing-library/*'
-      babel:
-        patterns:
-          - '*babel*'
 
   - package-ecosystem: 'github-actions'
     directory: '/'
