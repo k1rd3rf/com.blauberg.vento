@@ -101,12 +101,8 @@ class VentoDriver extends Driver {
   setOnOffStatus = async (device, devicepass, value) =>
     this.setDeviceValue(device, devicepass, Parameter.ON_OFF, value);
 
-  setSpeedMode = async (device, devicepass, value) => {
-    if (value.toString() === '0') {
-      return this.setOnOffStatus(device, devicepass, value);
-    }
-    return this.setDeviceValue(device, devicepass, Parameter.SPEED, value);
-  };
+  setSpeedMode = async (device, devicepass, value) =>
+    this.setDeviceValue(device, devicepass, Parameter.SPEED, value);
 
   setOperationMode = async (device, devicepass, value) =>
     this.setDeviceValue(device, devicepass, Parameter.VENTILATION_MODE, value);
