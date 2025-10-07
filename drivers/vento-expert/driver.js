@@ -144,10 +144,6 @@ class VentoDriver extends Driver {
   locateDevices = async () => {
     const locatedDevices = await this.modbusClient.findDevices();
 
-    if (!locatedDevices.length) {
-      locatedDevices.push({ id: '003800415646570D', ip: '192.168.86.30' });
-    }
-
     const oldamount = this.deviceList.length;
     this.log(
       `Current we located ${oldamount} devices, lets see if we found more: amount located ${locatedDevices.length}`
