@@ -10,7 +10,7 @@ const {
 } = require('blaubergventojs');
 const {
   parametersToValues,
-  default: mapModbusResponse,
+  mapModbusResponse,
   // eslint-disable-next-line node/no-missing-require
 } = require('../../lib/mapModbusResponse');
 // eslint-disable-next-line node/no-missing-require
