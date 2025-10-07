@@ -11,6 +11,11 @@
     "alarm_connectivity",
     "measure_RPM"
   ],
+  "energy": {
+    "batteries": [
+      "INTERNAL"
+    ]
+  },
   "platforms": [
     "local"
   ],

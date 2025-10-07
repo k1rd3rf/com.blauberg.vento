@@ -18,8 +18,9 @@ Smart Wi-Fi Series:
 
 COMPATIBLE BRANDS
 -----------------
-This app also works with other brands that use the same OEM platform/white label source, including:
+This app might also work with other brands that use the same OEM platform/white label source, including:
 - Flexit ventilation devices
+- EcoVent, Oxxify, TwinFresh, Duka
 - Other rebranded Blauberg devices using the same MODBUS protocol
 
 During pairing, the app automatically detects your device type and assigns the correct driver with the appropriate parameter mappings.
