@@ -13,6 +13,8 @@ type DeviceSettings = {
   humidity_threshold?: number;
   // eslint-disable-next-line camelcase
   boost_delay?: number;
+  // eslint-disable-next-line camelcase
+  last_known_ip?: string;
 };
 
 export default class VentoDevice extends Device {
@@ -33,7 +35,7 @@ export default class VentoDevice extends Device {
 
     this.discoveryClient = new VentoDiscovery();
 
-    await this.initApi(this.getSetting('devicepwd'));
+    await this.initApi({ password: this.getSetting('devicepwd') });
 
     await this.updateCapabilities();
     await this.setupCapabilities();
@@ -46,16 +48,46 @@ export default class VentoDevice extends Device {
     await this.updateDeviceState();
   }
 
-  async initApi(password: string) {
+  async initApi({
+    password = this.getSetting('devicepwd'),
+    settingsIp,
+  }: {
+    password?: string;
+    settingsIp?: string;
+  }) {
     const deviceIp = await this.discoveryClient
       .findById(this.id)
       .then((d) => d?.ip);
 
-    if (deviceIp == null) {
+    const lastKnownIP = this.getStoreValue('lastKnownIP');
+
+    const ips: string[] = [deviceIp, settingsIp, lastKnownIP];
+
+    const validIps = await Promise.all(
+      ips.map(async (ip) => {
+        if (ip) {
+          try {
+            const api = new Api(this.id, password, ip);
+            const state = await api.getDeviceState();
+            const hasValues =
+              state !== undefined && Object.keys(state).length > 0;
+            return hasValues ? ip : '';
+          } catch (e) {
+            return '';
+          }
+        }
+        return '';
+      })
+    );
+
+    const ip = validIps.find((i) => i !== '');
+
+    if (ip) {
+      this.api = new Api(this.id, password, ip);
+      await this.setStoreValue('lastKnownIP', ip);
+    } else {
       this.log('Device IP could not be found, setting device to unavailable');
       await this.setUnavailable('Device not discovered yet');
-    } else {
-      this.api = new Api(this.id, password, deviceIp);
     }
   }
 
@@ -148,16 +180,24 @@ export default class VentoDevice extends Device {
         };
       })) || {};
 
-    if (this.pollInterval) {
-      this.homey.clearInterval(this.pollInterval);
-    }
-
     if (state === undefined || Object.keys(state).length === 0) {
-      this.error('Failed to get device state, device unreachable');
+      this.error('Failed to get device state, device unreachable', {
+        deviceIp: this.api?.deviceIp,
+        deviceId: this.api?.deviceId,
+      });
       return;
     }
 
     this.log('Device state received: ', state);
+
+    const currentStoredIP = this.getStoreValue('lastKnownIP');
+    if (currentStoredIP !== this.api?.deviceIp) {
+      this.log(
+        `Device IP changed from ${currentStoredIP} to ${this.api?.deviceIp}`
+      );
+      await this.setStoreValue('lastKnownIP', this.api?.deviceIp);
+      await this.setSettings({ last_known_ip: this.api?.deviceIp });
+    }
 
     await this.setAvailable();
 
@@ -215,7 +255,11 @@ export default class VentoDevice extends Device {
     changedKeys: (keyof DeviceSettings)[];
   }) {
     if (changedKeys.includes('devicepwd')) {
-      await this.initApi(newSettings.devicepwd);
+      await this.initApi({ password: newSettings.devicepwd });
+      await this.updateDeviceState();
+    }
+    if (changedKeys.includes('last_known_ip')) {
+      await this.initApi({ settingsIp: newSettings.last_known_ip });
       await this.updateDeviceState();
     }
     // For the other settings we probably need to push the new value to the device
