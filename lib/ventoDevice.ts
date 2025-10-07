@@ -143,20 +143,48 @@ export default class VentoDevice extends Device {
       .getDeviceState()
       .catch(async (e) => {
         await this.setCapabilityValue(Capabilities.alarm_connectivity, true);
-        await this.setUnavailable();
-        this.error('Failed to get device state, device unreachable', e);
+        await this.setUnavailable(e.message);
         return {
           [Capabilities.alarm_connectivity]: true,
         };
       });
 
+    if (this.pollInterval) {
+      this.homey.clearInterval(this.pollInterval);
+    }
+
+    if (state === undefined || Object.keys(state).length === 0) {
+      this.error('Failed to get device state, device unreachable');
+      return;
+    }
+
     this.log('Device state received: ', state);
 
     await this.setAvailable();
 
+    const newBoost = state.alarm_boost;
+    const oldBoost = this.getCapabilityValue(Capabilities.alarm_boost);
+    await this.setCapabilityValue(Capabilities.alarm_boost, newBoost);
+    if (oldBoost !== null && oldBoost !== newBoost) {
+      await this.triggerBoostAlarm(newBoost);
+    }
+
+    const oldFilter = this.getCapabilityValue(Capabilities.alarm_filter);
+    const newFilter = state.alarm_filter;
+    await this.setCapabilityValue(Capabilities.alarm_filter, newFilter);
+    if (oldFilter !== null && oldFilter !== newFilter) {
+      await this.triggerFilterAlarm(newFilter);
+    }
+
+    const oldGeneric = this.getCapabilityValue(Capabilities.alarm_generic);
+    const newGeneric = state.alarm_generic;
+    await this.setCapabilityValue(Capabilities.alarm_generic, newGeneric);
+    if (oldGeneric !== null && oldGeneric !== newGeneric) {
+      await this.triggerGenericAlarm(newGeneric);
+    }
+
     await Promise.all(
       Object.keys(Capabilities).map(async (cap) => {
-        // @ts-expect-error: dynamic key
         const stateElement = state[cap];
         if (stateElement !== undefined) {
           return this.setCapabilityValue(cap, stateElement);
@@ -203,7 +231,10 @@ export default class VentoDevice extends Device {
     ) {
       await this.api.setHumiditySensorThreshold(newSettings.humidity_threshold);
     }
-    if (changedKeys.includes('boost_delay') && newSettings.boost_delay) {
+    if (
+      changedKeys.includes('boost_delay') &&
+      newSettings.boost_delay !== undefined
+    ) {
       await this.api.setBoostDelay(newSettings.boost_delay);
     }
   }
@@ -285,5 +316,29 @@ export default class VentoDevice extends Device {
         await this.setCapabilityValue(Capabilities.timerMode, args.timerMode);
         await this.api.setTimerMode(args.timerMode);
       });
+  }
+
+  async triggerBoostAlarm(isOn: boolean) {
+    const triggerCard = isOn ? 'alarm_boost_true' : 'alarm_boost_false';
+    this.log(`Triggering ${triggerCard}`);
+    await this.homey.flow
+      .getDeviceTriggerCard(triggerCard)
+      .trigger(this, {}, {});
+  }
+
+  async triggerFilterAlarm(isOn: boolean) {
+    const triggerCard = isOn ? 'alarm_filter_true' : 'alarm_filter_false';
+    this.log(`Triggering ${triggerCard}`);
+    await this.homey.flow
+      .getDeviceTriggerCard(triggerCard)
+      .trigger(this, {}, {});
+  }
+
+  async triggerGenericAlarm(isOn: boolean) {
+    const triggerCard = isOn ? 'alarm_generic_true' : 'alarm_generic_false';
+    this.log(`Triggering ${triggerCard}`);
+    await this.homey.flow
+      .getDeviceTriggerCard(triggerCard)
+      .trigger(this, {}, {});
   }
 }

@@ -1,7 +1,7 @@
 {
   "settings": {
     "title": "Device password",
-    "description": "In the Blauberg Home app you can set a device password to protect the device from local tempering. Make sure you ave done that (settings on each of your Vento devices) and provide the device password here.",
+    "description": "In the Blauberg Home app you can set a device password to protect the device from local tampering. Make sure you have done that (settings on each of your Vento devices) and provide the device password here.",
     "field": {
       "devicepwd": {
         "label": "Password"

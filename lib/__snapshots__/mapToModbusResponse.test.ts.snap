@@ -41,3 +41,45 @@ exports[`mapToModbusResponse maps packet to Modbus response 1`] = `
   "unittype": "Vento Expert Duo A30-1 W V.2",
 }
 `;
+
+exports[`mapToModbusResponse maps packet to Modbus response when device is off 1`] = `
+{
+  "alarm": 0,
+  "boost": {
+    "deactivationtimer": 30,
+    "mode": 0,
+  },
+  "fan": {
+    "rpm": 236,
+  },
+  "filter": {
+    "alarm": 0,
+    "timer": {
+      "days": 31,
+      "hour": 20,
+      "min": 34,
+    },
+  },
+  "humidity": {
+    "activated": 0,
+    "current": 45,
+    "sensoractivation": 1,
+    "threshold": 70,
+  },
+  "onoff": 0,
+  "operationmode": 2,
+  "speed": {
+    "manualspeed": 179,
+    "mode": 1,
+  },
+  "timers": {
+    "countdown": {
+      "hour": 0,
+      "min": 0,
+      "sec": 0,
+    },
+    "mode": 0,
+  },
+  "unittype": "Vento Expert Duo A30-1 W V.2",
+}
+`;

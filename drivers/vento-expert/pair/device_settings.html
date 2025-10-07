@@ -22,10 +22,9 @@
   var saveElement = document.getElementById('saveconfig');
   var ventodevice;
   saveElement.addEventListener('click', function (e) {
-    let device_settings = {
+    ventodevice.settings = {
       devicepwd: pwdElement.value,
     };
-    ventodevice.settings = device_settings;
     var devices = new Array(ventodevice);
     Homey.setViewStoreValue('add_devices', 'devices', devices, function (err, result) {
       if (result) {
@@ -33,8 +32,6 @@
         Homey.emit('add_devices', devices, function (err, result) {
           if (result)
             console.log(result);
-          //else
-          //Homey.alert(err);
         });
       } else {
         Homey.alert(err);

@@ -1,4 +1,3 @@
-import { DeviceAddress } from 'blaubergventojs';
 import Api from './api';
 import { statusResponse } from './__mockdata__/statusResponse';
 import { removeUndefinedDeep } from './testTools';
@@ -6,26 +5,26 @@ import { CapabilityResponse } from './capabilityMapper';
 
 describe('Api set functions', () => {
   let api: Api;
+  afterEach(() => {
+    jest.clearAllMocks();
+  });
 
   beforeEach(() => {
     jest.spyOn(global.console, 'error');
     api = new Api('fanId', 'password', '127.0.0.1');
-    api.modbusClient = {
-      timeout: 0,
-      findDevices(): Promise<DeviceAddress[]> {
-        return Promise.resolve([]);
-      },
-      // @ts-expect-error: mock
-      send: jest.fn((packet, ip) => Promise.resolve({ packet, ip })),
-    };
   });
 
   afterEach(() => {
     jest.clearAllMocks();
   });
+  beforeEach(() => {
+    (api.modbusClient?.send as jest.Mock).mockImplementation((packet, ip) =>
+      Promise.resolve({ packet, ip })
+    );
+  });
 
   const getMockCalls = (response: Partial<CapabilityResponse>) => ({
-    calls: (api.modbusClient.send as jest.Mock).mock.calls,
+    calls: (api.modbusClient?.send as jest.Mock).mock.calls,
     response: removeUndefinedDeep(response),
   });
 
