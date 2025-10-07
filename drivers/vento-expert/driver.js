@@ -2,11 +2,14 @@
 
 const { Driver } = require('homey');
 const {
-  BlaubergVentoClient, Packet, FunctionType, Parameter, DataEntry,
+  BlaubergVentoClient,
+  Packet,
+  FunctionType,
+  Parameter,
+  DataEntry,
 } = require('blaubergventojs');
 
 class VentoDriver extends Driver {
-
   /**
    * onInit is called when the driver is initialized.
    */
@@ -15,11 +18,10 @@ class VentoDriver extends Driver {
     this.modbusClient = new BlaubergVentoClient();
     this.modbusClient.timeout = 1500;
     this.log('Vento driver has been initialized');
-    setTimeout(() => {
-      this.locateDevices();
+    this.homey.setTimeout(async () => {
+      await this.locateDevices();
       this.start_discover_loop();
-  }, 5000); 
-    
+    }, 5000);
   }
 
   // eslint-disable-next-line camelcase
@@ -48,7 +50,12 @@ class VentoDriver extends Driver {
   }
 
   async setOperationMode(device, devicepass, value) {
-    return this.setDeviceValue(device, devicepass, Parameter.VENTILATION_MODE, value);
+    return this.setDeviceValue(
+      device,
+      devicepass,
+      Parameter.VENTILATION_MODE,
+      value
+    );
   }
 
   async setTimerMode(device, devicepass, value) {
@@ -56,19 +63,39 @@ class VentoDriver extends Driver {
   }
 
   async setManualSpeed(device, devicepass, value) {
-    return this.setDeviceValue(device, devicepass, Parameter.MANUAL_SPEED, value);
+    return this.setDeviceValue(
+      device,
+      devicepass,
+      Parameter.MANUAL_SPEED,
+      value
+    );
   }
 
   async setHumiditySensor(device, devicepass, value) {
-    return this.setDeviceValue(device, devicepass, Parameter.HUMIDITY_SENSOR_ACTIVATION, value);
+    return this.setDeviceValue(
+      device,
+      devicepass,
+      Parameter.HUMIDITY_SENSOR_ACTIVATION,
+      value
+    );
   }
 
   async setHumiditySensorThreshold(device, devicepass, value) {
-    return this.setDeviceValue(device, devicepass, Parameter.HUMIDITY_THRESHOLD, value);
+    return this.setDeviceValue(
+      device,
+      devicepass,
+      Parameter.HUMIDITY_THRESHOLD,
+      value
+    );
   }
 
   async setBoostDelay(device, devicepass, value) {
-    return this.setDeviceValue(device, devicepass, Parameter.BOOST_MODE_DEACTIVATION_DELAY, value);
+    return this.setDeviceValue(
+      device,
+      devicepass,
+      Parameter.BOOST_MODE_DEACTIVATION_DELAY,
+      value
+    );
   }
 
   async getDeviceState(device, devicepass) {
@@ -96,10 +123,19 @@ class VentoDriver extends Driver {
       if (result != null) {
         let unittypelabel = 'Vento Expert';
         switch (result.packet._dataEntries[11]?.value?.['0']) {
-          case 1: unittypelabel = 'Vento Expert A50-1 W V.2 | Vento Expert A85-1 W V.2 | Vento Expert A100-1 W V.2'; break;
-          case 4: unittypelabel = 'Vento Expert Duo A30-1 W V.2'; break;
-          case 5: unittypelabel = 'Vento Expert A30 W V.2'; break;
-          default: unittypelabel = 'Vento Expert'; break;
+          case 1:
+            unittypelabel =
+              'Vento Expert A50-1 W V.2 | Vento Expert A85-1 W V.2 | Vento Expert A100-1 W V.2';
+            break;
+          case 4:
+            unittypelabel = 'Vento Expert Duo A30-1 W V.2';
+            break;
+          case 5:
+            unittypelabel = 'Vento Expert A30 W V.2';
+            break;
+          default:
+            unittypelabel = 'Vento Expert';
+            break;
         }
         return {
           onoff: result.packet._dataEntries[0].value?.['0'],
@@ -141,22 +177,32 @@ class VentoDriver extends Driver {
           alarm: result.packet._dataEntries[14].value?.['0'],
         };
       }
-      throw new Error('device not responding, is your device password correct?');
+      throw new Error(
+        'device not responding, is your device password correct?'
+      );
     });
   }
 
   async locateDevices() {
     const locatedDevices = await this.modbusClient.findDevices();
     const oldamount = this.deviceList.length;
-    this.log(`Current we located ${oldamount} devices, lets see if we found more: amount located ${locatedDevices.length}`);
+    this.log(
+      `Current we located ${oldamount} devices, lets see if we found more: amount located ${locatedDevices.length}`
+    );
     const homeydevices = this.getDevices(); // We want to be able to tell any non initialized devices they are ready for use
     locatedDevices.forEach((locatedDevice) => {
       // Lets see if we already knew about this device
-      const knowndevice = this.deviceList.find((device) => device.id === locatedDevice.id);
+      const knowndevice = this.deviceList.find(
+        (device) => device.id === locatedDevice.id
+      );
       if (!knowndevice) {
-        this.log(`Located new device with id ${locatedDevice.id} remember it and initialize it`);
+        this.log(
+          `Located new device with id ${locatedDevice.id} remember it and initialize it`
+        );
         this.deviceList.push(locatedDevice); // So we remember the located device and its IP
-        const homeydevice = homeydevices.find((device) => device.getData().id === locatedDevice.id);
+        const homeydevice = homeydevices.find(
+          (device) => device.getData().id === locatedDevice.id
+        );
         if (homeydevice) {
           homeydevice.discovery(locatedDevice.id);
         } else this.log('Located device is not added to Homey yet');
@@ -165,7 +211,11 @@ class VentoDriver extends Driver {
     // Now lets ask all our homey enabled devices to update their state
     homeydevices.forEach((homeydevice) => {
       if (homeydevice.getAvailable()) {
-        this.log(`We know this device [${homeydevice.getData().id}] already, lets refresh its state`);
+        this.log(
+          `We know this device [${
+            homeydevice.getData().id
+          }] already, lets refresh its state`
+        );
         homeydevice.updateDeviceState();
       } else {
         this.log('Not getting the state since device is not available yet');
@@ -182,20 +232,25 @@ class VentoDriver extends Driver {
   async getDeviceType(device, devicepass) {
     // Query parameter 0x00B9 (UNIT_TYPE) to determine device type
     const packet = new Packet(device.id, devicepass, FunctionType.READ, [
-      DataEntry.of(0x00B9), // UNIT_TYPE parameter
+      DataEntry.of(0x00b9), // UNIT_TYPE parameter
     ]);
 
-    return this.modbusClient.send(packet, device.ip).then((result) => {
-      if (result != null) {
-        const unitType = (result.packet._dataEntries[0].value?.['1'] << 8) | result.packet._dataEntries[0].value?.['0'];
-        this.log(`Device ${device.id} reports unit type: ${unitType}`);
-        return unitType;
-      }
-      throw new Error('Unable to determine device type');
-    }).catch((error) => {
-      this.log(`Error getting device type: ${error.message}`);
-      return null;
-    });
+    return this.modbusClient
+      .send(packet, device.ip)
+      .then((result) => {
+        if (result != null) {
+          const unitType =
+            (result.packet._dataEntries[0].value?.['1'] << 8) |
+            result.packet._dataEntries[0].value?.['0'];
+          this.log(`Device ${device.id} reports unit type: ${unitType}`);
+          return unitType;
+        }
+        throw new Error('Unable to determine device type');
+      })
+      .catch((error) => {
+        this.log(`Error getting device type: ${error.message}`);
+        return null;
+      });
   }
 
   isVentoExpertDevice(unitType) {
@@ -207,7 +262,7 @@ class VentoDriver extends Driver {
   }
 
   async onPair(session) {
-    let devicePassword = '1111'; // Default password
+    const devicePassword = '1111'; // Default password
 
     session.setHandler('list_devices', async (data) => {
       this.log('Provide user list of discovered Vento fans to choose from.');
@@ -224,11 +279,15 @@ class VentoDriver extends Driver {
           this.log(`Device ${device.id} is a Vento Expert (type ${unitType})`);
           ventoExpertDevices.push(device);
         } else {
-          this.log(`Device ${device.id} is not a Vento Expert (type ${unitType}), skipping`);
+          this.log(
+            `Device ${device.id} is not a Vento Expert (type ${unitType}), skipping`
+          );
         }
       }
 
-      this.log(`Filtered to [${ventoExpertDevices.length}] Vento Expert devices`);
+      this.log(
+        `Filtered to [${ventoExpertDevices.length}] Vento Expert devices`
+      );
 
       // Return the mapped list of Vento Expert devices only
       return ventoExpertDevices.map((device) => {
@@ -252,7 +311,6 @@ class VentoDriver extends Driver {
       } else this.log('no Vento fan added');
     });
   }
-
 }
 
 module.exports = VentoDriver;
