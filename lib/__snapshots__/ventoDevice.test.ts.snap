@@ -68,43 +68,43 @@ exports[`ventoDevice should be able to get status from modbus on init 1`] = `
         "log",
         "Device state received: ",
         {
-          "alarm": 0,
+          "alarm": undefined,
           "boost": {
-            "deactivationtimer": 30,
-            "mode": 0,
+            "deactivationtimer": undefined,
+            "mode": undefined,
           },
           "fan": {
-            "rpm": 236,
+            "rpm": undefined,
           },
           "filter": {
-            "alarm": 0,
+            "alarm": undefined,
             "timer": {
-              "days": 31,
-              "hour": 20,
-              "min": 34,
+              "days": undefined,
+              "hour": undefined,
+              "min": undefined,
             },
           },
           "humidity": {
             "activated": 0,
-            "current": 45,
-            "sensoractivation": 1,
-            "threshold": 70,
+            "current": undefined,
+            "sensoractivation": undefined,
+            "threshold": undefined,
           },
-          "onoff": 1,
-          "operationmode": 2,
+          "onoff": undefined,
+          "operationmode": undefined,
           "speed": {
-            "manualspeed": 179,
-            "mode": 1,
+            "manualspeed": undefined,
+            "mode": undefined,
           },
           "timers": {
             "countdown": {
-              "hour": 0,
-              "min": 0,
-              "sec": 0,
+              "hour": undefined,
+              "min": undefined,
+              "sec": undefined,
             },
-            "mode": 0,
+            "mode": undefined,
           },
-          "unittype": "Vento Expert Duo A30-1 W V.2",
+          "unittype": "Vento Expert",
         },
       ],
       [
@@ -117,11 +117,11 @@ exports[`ventoDevice should be able to get status from modbus on init 1`] = `
       ],
       [
         "log",
-        "Triggering alarm_boost_false",
+        "Triggering alarm_boost_true",
       ],
       [
         "triggered",
-        "alarm_boost_false",
+        "alarm_boost_true",
         [
           VentoDevice {
             "api": Api {
@@ -132,7 +132,6 @@ exports[`ventoDevice should be able to get status from modbus on init 1`] = `
               "getDeviceState": [Function],
               "log": [Function],
               "modbusClient": BlaubergVentoClient {
-                "findById": [Function],
                 "findDevices": [MockFunction],
                 "send": [MockFunction] {
                   "calls": [
@@ -433,7 +432,6 @@ exports[`ventoDevice should be able to get status from modbus on init 1`] = `
               "findById": [Function],
               "findDevices": [Function],
               "modbusClient": BlaubergVentoClient {
-                "findById": [Function],
                 "findDevices": [MockFunction] {
                   "calls": [
                     [],
@@ -763,11 +761,11 @@ exports[`ventoDevice should be able to get status from modbus on init 1`] = `
             "onCapabilityTimerMode": [Function],
             "pollInterval": undefined,
             "settings": {
-              "boost_delay": 30,
-              "devicemodel": "Vento Expert Duo A30-1 W V.2",
+              "boost_delay": undefined,
+              "devicemodel": "Vento Expert",
               "devicepwd": "password",
-              "humidity_sensor": true,
-              "humidity_threshold": 70,
+              "humidity_sensor": false,
+              "humidity_threshold": undefined,
               "last_known_ip": "127.0.0.3",
             },
             "store": {
@@ -795,7 +793,6 @@ exports[`ventoDevice should be able to get status from modbus on init 1`] = `
               "getDeviceState": [Function],
               "log": [Function],
               "modbusClient": BlaubergVentoClient {
-                "findById": [Function],
                 "findDevices": [MockFunction],
                 "send": [MockFunction] {
                   "calls": [
@@ -1096,7 +1093,6 @@ exports[`ventoDevice should be able to get status from modbus on init 1`] = `
               "findById": [Function],
               "findDevices": [Function],
               "modbusClient": BlaubergVentoClient {
-                "findById": [Function],
                 "findDevices": [MockFunction] {
                   "calls": [
                     [],
@@ -1426,11 +1422,11 @@ exports[`ventoDevice should be able to get status from modbus on init 1`] = `
             "onCapabilityTimerMode": [Function],
             "pollInterval": undefined,
             "settings": {
-              "boost_delay": 30,
-              "devicemodel": "Vento Expert Duo A30-1 W V.2",
+              "boost_delay": undefined,
+              "devicemodel": "Vento Expert",
               "devicepwd": "password",
-              "humidity_sensor": true,
-              "humidity_threshold": 70,
+              "humidity_sensor": false,
+              "humidity_threshold": undefined,
               "last_known_ip": "127.0.0.3",
             },
             "store": {
@@ -1443,11 +1439,11 @@ exports[`ventoDevice should be able to get status from modbus on init 1`] = `
       ],
       [
         "log",
-        "Triggering alarm_generic_false",
+        "Triggering alarm_generic_true",
       ],
       [
         "triggered",
-        "alarm_generic_false",
+        "alarm_generic_true",
         [
           VentoDevice {
             "api": Api {
@@ -1458,7 +1454,6 @@ exports[`ventoDevice should be able to get status from modbus on init 1`] = `
               "getDeviceState": [Function],
               "log": [Function],
               "modbusClient": BlaubergVentoClient {
-                "findById": [Function],
                 "findDevices": [MockFunction],
                 "send": [MockFunction] {
                   "calls": [
@@ -1759,7 +1754,6 @@ exports[`ventoDevice should be able to get status from modbus on init 1`] = `
               "findById": [Function],
               "findDevices": [Function],
               "modbusClient": BlaubergVentoClient {
-                "findById": [Function],
                 "findDevices": [MockFunction] {
                   "calls": [
                     [],
@@ -2089,11 +2083,11 @@ exports[`ventoDevice should be able to get status from modbus on init 1`] = `
             "onCapabilityTimerMode": [Function],
             "pollInterval": undefined,
             "settings": {
-              "boost_delay": 30,
-              "devicemodel": "Vento Expert Duo A30-1 W V.2",
+              "boost_delay": undefined,
+              "devicemodel": "Vento Expert",
               "devicepwd": "password",
-              "humidity_sensor": true,
-              "humidity_threshold": 70,
+              "humidity_sensor": false,
+              "humidity_threshold": undefined,
               "last_known_ip": "127.0.0.3",
             },
             "store": {
@@ -2153,9 +2147,9 @@ exports[`ventoDevice should be able to get status from modbus on init 1`] = `
     "setCapabilityValue": {
       "alarm_boost": [
         [
-          false,
+          true,
           {
-            "result": false,
+            "result": true,
           },
         ],
       ],
@@ -2175,15 +2169,15 @@ exports[`ventoDevice should be able to get status from modbus on init 1`] = `
       ],
       "alarm_generic": [
         [
-          false,
+          true,
           {
-            "result": false,
+            "result": true,
           },
         ],
       ],
       "fan_speed": [
         [
-          0.7019607843137254,
+          -0.00392156862745098,
           {
             "result": undefined,
           },
@@ -2191,13 +2185,13 @@ exports[`ventoDevice should be able to get status from modbus on init 1`] = `
       ],
       "filter_timer": [
         [
-          "31:20:34",
+          "undefined:undefined:undefined",
           "calling unregistered capability",
         ],
       ],
       "manualSpeed": [
         [
-          70.19607843137254,
+          -0.39215686274509803,
           {
             "result": undefined,
           },
@@ -2205,19 +2199,19 @@ exports[`ventoDevice should be able to get status from modbus on init 1`] = `
       ],
       "measure_RPM": [
         [
-          236,
+          undefined,
           "calling unregistered capability",
         ],
       ],
       "measure_humidity": [
         [
-          45,
+          undefined,
           "calling unregistered capability",
         ],
       ],
       "onoff": [
         [
-          true,
+          false,
           {
             "result": undefined,
           },
@@ -2225,7 +2219,7 @@ exports[`ventoDevice should be able to get status from modbus on init 1`] = `
       ],
       "operationMode": [
         [
-          "2",
+          undefined,
           {
             "result": undefined,
           },
@@ -2233,7 +2227,7 @@ exports[`ventoDevice should be able to get status from modbus on init 1`] = `
       ],
       "speedMode": [
         [
-          "1",
+          undefined,
           {
             "result": undefined,
           },
@@ -2241,7 +2235,7 @@ exports[`ventoDevice should be able to get status from modbus on init 1`] = `
       ],
       "timerMode": [
         [
-          "0",
+          undefined,
           {
             "result": undefined,
           },
@@ -2249,17 +2243,17 @@ exports[`ventoDevice should be able to get status from modbus on init 1`] = `
       ],
       "timerMode_timer": [
         [
-          "0:0:0",
+          "undefined:undefined:undefined",
           "calling unregistered capability",
         ],
       ],
     },
     "settings": {
-      "boost_delay": 30,
-      "devicemodel": "Vento Expert Duo A30-1 W V.2",
+      "boost_delay": undefined,
+      "devicemodel": "Vento Expert",
       "devicepwd": "password",
-      "humidity_sensor": true,
-      "humidity_threshold": 70,
+      "humidity_sensor": false,
+      "humidity_threshold": undefined,
       "last_known_ip": "127.0.0.3",
     },
   },
@@ -2284,11 +2278,7 @@ exports[`ventoDevice should be able to get status when device is marked as off 1
       "timerMode": [Function],
       "timer_mode": [Function],
     },
-    "getCapabilityValue": {
-      "alarm_boost": 2,
-      "alarm_filter": 2,
-      "alarm_generic": 2,
-    },
+    "getCapabilityValue": {},
     "hasCapability": {
       "alarm_boost": 1,
       "alarm_connectivity": 1,
@@ -2307,8 +2297,22 @@ exports[`ventoDevice should be able to get status when device is marked as off 1
         "Locating device with id TEST1234",
       ],
       [
+        "error",
+        "Could not connect to device at IP 127.0.0.3",
+        [TypeError: Cannot read properties of undefined (reading 'then')],
+      ],
+      [
+        "error",
+        "Could not connect to device at IP [object Promise]",
+        [TypeError: Cannot read properties of undefined (reading 'then')],
+      ],
+      [
         "log",
-        "Found device at IP 127.0.0.3",
+        "Device IP could not be found, setting device to unavailable",
+      ],
+      [
+        "setUnavailable was called",
+        "Device not discovered yet",
       ],
       [
         "log",
@@ -2331,55 +2335,12 @@ exports[`ventoDevice should be able to get status when device is marked as off 1
         "Requesting the current device state",
       ],
       [
-        "log",
-        "Device state received: ",
+        "error",
+        "Failed to get device state, device unreachable",
         {
-          "alarm": 0,
-          "boost": {
-            "deactivationtimer": 30,
-            "mode": 0,
-          },
-          "fan": {
-            "rpm": 236,
-          },
-          "filter": {
-            "alarm": 0,
-            "timer": {
-              "days": 31,
-              "hour": 20,
-              "min": 34,
-            },
-          },
-          "humidity": {
-            "activated": 0,
-            "current": 45,
-            "sensoractivation": 1,
-            "threshold": 70,
-          },
-          "onoff": 0,
-          "operationmode": 2,
-          "speed": {
-            "manualspeed": 179,
-            "mode": 1,
-          },
-          "timers": {
-            "countdown": {
-              "hour": 0,
-              "min": 0,
-              "sec": 0,
-            },
-            "mode": 0,
-          },
-          "unittype": "Vento Expert Duo A30-1 W V.2",
+          "deviceId": undefined,
+          "deviceIp": undefined,
         },
-      ],
-      [
-        "log",
-        "Device IP changed from [object Promise] to 127.0.0.3",
-      ],
-      [
-        "setAvailable",
-        undefined,
       ],
     ],
     "registerCapabilityListener": {
@@ -2427,117 +2388,9 @@ exports[`ventoDevice should be able to get status when device is marked as off 1
         ],
       ],
     },
-    "setCapabilityValue": {
-      "alarm_boost": [
-        [
-          false,
-          {
-            "result": false,
-          },
-        ],
-      ],
-      "alarm_connectivity": [
-        [
-          false,
-          "calling unregistered capability",
-        ],
-      ],
-      "alarm_filter": [
-        [
-          false,
-          {
-            "result": false,
-          },
-        ],
-      ],
-      "alarm_generic": [
-        [
-          false,
-          {
-            "result": false,
-          },
-        ],
-      ],
-      "fan_speed": [
-        [
-          0.7019607843137254,
-          {
-            "result": undefined,
-          },
-        ],
-      ],
-      "filter_timer": [
-        [
-          "31:20:34",
-          "calling unregistered capability",
-        ],
-      ],
-      "manualSpeed": [
-        [
-          70.19607843137254,
-          {
-            "result": undefined,
-          },
-        ],
-      ],
-      "measure_RPM": [
-        [
-          236,
-          "calling unregistered capability",
-        ],
-      ],
-      "measure_humidity": [
-        [
-          45,
-          "calling unregistered capability",
-        ],
-      ],
-      "onoff": [
-        [
-          false,
-          {
-            "result": undefined,
-          },
-        ],
-      ],
-      "operationMode": [
-        [
-          "2",
-          {
-            "result": undefined,
-          },
-        ],
-      ],
-      "speedMode": [
-        [
-          "1",
-          {
-            "result": undefined,
-          },
-        ],
-      ],
-      "timerMode": [
-        [
-          "0",
-          {
-            "result": undefined,
-          },
-        ],
-      ],
-      "timerMode_timer": [
-        [
-          "0:0:0",
-          "calling unregistered capability",
-        ],
-      ],
-    },
+    "setCapabilityValue": {},
     "settings": {
-      "boost_delay": 30,
-      "devicemodel": "Vento Expert Duo A30-1 W V.2",
       "devicepwd": "password",
-      "humidity_sensor": true,
-      "humidity_threshold": 70,
-      "last_known_ip": "127.0.0.3",
     },
   },
 }
@@ -2582,12 +2435,12 @@ exports[`ventoDevice should be able to handle errors 1`] = `
       [
         "error",
         "Could not connect to device at IP 127.0.0.3",
-        [Error: test error],
+        [TypeError: Cannot read properties of undefined (reading 'then')],
       ],
       [
         "error",
         "Could not connect to device at IP [object Promise]",
-        [Error: test error],
+        [TypeError: Cannot read properties of undefined (reading 'then')],
       ],
       [
         "log",
@@ -2783,259 +2636,14 @@ exports[`ventoDevice should be able to setup all capabilities 1`] = `
 
 exports[`ventoDevice should get and set values trough the api and modbus 1`] = `
 {
-  "modbusCalls": [
-    [
-      E {
-        "_dataEntries": [
-          {
-            "parameter": 1,
-            "value": undefined,
-          },
-          {
-            "parameter": 2,
-            "value": undefined,
-          },
-          {
-            "parameter": 68,
-            "value": undefined,
-          },
-          {
-            "parameter": 6,
-            "value": undefined,
-          },
-          {
-            "parameter": 102,
-            "value": undefined,
-          },
-          {
-            "parameter": 183,
-            "value": undefined,
-          },
-          {
-            "parameter": 136,
-            "value": undefined,
-          },
-          {
-            "parameter": 100,
-            "value": undefined,
-          },
-          {
-            "parameter": 37,
-            "value": undefined,
-          },
-          {
-            "parameter": 15,
-            "value": undefined,
-          },
-          {
-            "parameter": 25,
-            "value": undefined,
-          },
-          {
-            "parameter": 185,
-            "value": undefined,
-          },
-          {
-            "parameter": 74,
-            "value": undefined,
-          },
-          {
-            "parameter": 7,
-            "value": undefined,
-          },
-          {
-            "parameter": 131,
-            "value": undefined,
-          },
-          {
-            "parameter": 11,
-            "value": undefined,
-          },
-        ],
-        "_deviceId": "TEST1234",
-        "_functionType": 1,
-        "_password": "password",
-      },
-      "127.0.0.3",
-    ],
-    [
-      E {
-        "_dataEntries": [
-          {
-            "parameter": 1,
-            "value": undefined,
-          },
-          {
-            "parameter": 2,
-            "value": undefined,
-          },
-          {
-            "parameter": 68,
-            "value": undefined,
-          },
-          {
-            "parameter": 6,
-            "value": undefined,
-          },
-          {
-            "parameter": 102,
-            "value": undefined,
-          },
-          {
-            "parameter": 183,
-            "value": undefined,
-          },
-          {
-            "parameter": 136,
-            "value": undefined,
-          },
-          {
-            "parameter": 100,
-            "value": undefined,
-          },
-          {
-            "parameter": 37,
-            "value": undefined,
-          },
-          {
-            "parameter": 15,
-            "value": undefined,
-          },
-          {
-            "parameter": 25,
-            "value": undefined,
-          },
-          {
-            "parameter": 185,
-            "value": undefined,
-          },
-          {
-            "parameter": 74,
-            "value": undefined,
-          },
-          {
-            "parameter": 7,
-            "value": undefined,
-          },
-          {
-            "parameter": 131,
-            "value": undefined,
-          },
-          {
-            "parameter": 11,
-            "value": undefined,
-          },
-        ],
-        "_deviceId": "TEST1234",
-        "_functionType": 1,
-        "_password": "password",
-      },
-      "127.0.0.3",
-    ],
-    [
-      E {
-        "_dataEntries": [
-          {
-            "parameter": 1,
-            "value": Uint8Array [
-              1,
-            ],
-          },
-        ],
-        "_deviceId": "TEST1234",
-        "_functionType": 2,
-        "_password": "password",
-      },
-      "127.0.0.3",
-    ],
-    [
-      E {
-        "_dataEntries": [
-          {
-            "parameter": 2,
-            "value": Uint8Array [
-              0,
-            ],
-          },
-        ],
-        "_deviceId": "TEST1234",
-        "_functionType": 2,
-        "_password": "password",
-      },
-      "127.0.0.3",
-    ],
-    [
-      E {
-        "_dataEntries": [
-          {
-            "parameter": 68,
-            "value": Uint8Array [
-              0,
-            ],
-          },
-        ],
-        "_deviceId": "TEST1234",
-        "_functionType": 2,
-        "_password": "password",
-      },
-      "127.0.0.3",
-    ],
-    [
-      E {
-        "_dataEntries": [
-          {
-            "parameter": 68,
-            "value": Uint8Array [
-              0,
-            ],
-          },
-        ],
-        "_deviceId": "TEST1234",
-        "_functionType": 2,
-        "_password": "password",
-      },
-      "127.0.0.3",
-    ],
-    [
-      E {
-        "_dataEntries": [
-          {
-            "parameter": 183,
-            "value": Uint8Array [
-              0,
-            ],
-          },
-        ],
-        "_deviceId": "TEST1234",
-        "_functionType": 2,
-        "_password": "password",
-      },
-      "127.0.0.3",
-    ],
-    [
-      E {
-        "_dataEntries": [
-          {
-            "parameter": 7,
-            "value": Uint8Array [
-              0,
-            ],
-          },
-        ],
-        "_deviceId": "TEST1234",
-        "_functionType": 2,
-        "_password": "password",
-      },
-      "127.0.0.3",
-    ],
-  ],
+  "modbusCalls": [],
 }
 `;
 
 exports[`ventoDevice should init the api 1`] = `
 {
-  "deviceId": "TEST1234",
-  "deviceIp": "127.0.0.3",
-  "devicePass": "password",
+  "deviceId": undefined,
+  "deviceIp": undefined,
+  "devicePass": undefined,
 }
 `;
