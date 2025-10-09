@@ -86,11 +86,11 @@ export class Device {
     return !!capabilities[capabilityId];
   }
 
-  async setStoreValue(key: string, value: unknown) {
+  setStoreValue(key: string, value: unknown) {
     this.store[key] = value;
   }
 
-  async getStoreValue(key: string) {
+  getStoreValue(key: string) {
     return this.store[key];
   }
 
@@ -134,6 +134,7 @@ export class Device {
     log: logMock.mock.calls,
     settings: this.settings,
     capabilities,
+    store: this.store,
   });
 }
 
