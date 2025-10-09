@@ -30,12 +30,8 @@ export default class VentoDevice extends Device {
   async onInit() {
     const { id } = this.getData();
     this.id = id;
-    this.log(`Locating device with id ${id}`);
 
-    this.discoveryClient = new VentoDiscovery();
-
-    await this.initApi({ password: this.getSetting('devicepwd') });
-
+    await this.discovery(id);
     await this.updateCapabilities();
     await this.setupCapabilities();
 
@@ -45,49 +41,6 @@ export default class VentoDevice extends Device {
     );
 
     await this.updateDeviceState();
-  }
-
-  async initApi({
-    password = this.getSetting('devicepwd'),
-    settingsIp,
-  }: {
-    password?: string;
-    settingsIp?: string;
-  }) {
-    const deviceIp = await this.discoveryClient
-      .findById(this.id)
-      .then((d) => d?.ip);
-
-    const lastKnownIP = this.getStoreValue('lastKnownIP');
-
-    const ips: string[] = [deviceIp, settingsIp, lastKnownIP];
-
-    const validIps = await Promise.all(
-      ips.map(async (ip) => {
-        if (ip) {
-          try {
-            const api = new Api(this.id, password, ip);
-            const state = await api.getDeviceState();
-            const hasValues =
-              state !== undefined && Object.keys(state).length > 0;
-            return hasValues ? ip : '';
-          } catch (e) {
-            return '';
-          }
-        }
-        return '';
-      })
-    );
-
-    const ip = validIps.find((i) => i !== '');
-
-    if (ip) {
-      this.api = new Api(this.id, password, ip);
-      await this.setStoreValue('lastKnownIP', ip);
-    } else {
-      this.log('Device IP could not be found, setting device to unavailable');
-      await this.setUnavailable('Device not discovered yet');
-    }
   }
 
   onUninit(): Promise<void> {
@@ -167,6 +120,56 @@ export default class VentoDevice extends Device {
         this.onCapabilityTimerMode.bind(this)
       );
       await this.setupFlowTimerMode();
+    }
+  }
+
+  private async discovery(id: string) {
+    this.log(`Locating device with id ${id}`);
+
+    this.discoveryClient = new VentoDiscovery();
+
+    await this.initApi({ password: this.getSetting('devicepwd') });
+  }
+
+  async initApi({
+    password = this.getSetting('devicepwd'),
+    settingsIp,
+  }: {
+    password?: string;
+    settingsIp?: string;
+  }) {
+    const deviceIp = await this.discoveryClient
+      .findById(this.id)
+      .then((d) => d?.ip);
+
+    const lastKnownIP = this.getStoreValue('lastKnownIP');
+
+    const ips: string[] = [deviceIp, settingsIp, lastKnownIP].filter(
+      (i) => !!i
+    );
+
+    let api: Api | undefined;
+    for (const checkIp of ips) {
+      try {
+        const testApi = new Api(this.id, password, checkIp);
+        const state = await testApi.getDeviceState();
+        const hasValues = Object.keys(state).length > 0;
+        if (hasValues) {
+          this.log(`Found device at IP ${checkIp}`);
+          api = testApi;
+          break;
+        }
+      } catch (e) {
+        this.error(`Could not connect to device at IP ${checkIp}`, e);
+      }
+    }
+
+    if (api) {
+      this.api = api;
+      await this.setStoreValue('lastKnownIP', api.deviceIp);
+    } else {
+      this.log('Device IP could not be found, setting device to unavailable');
+      await this.setUnavailable('Device not discovered yet');
     }
   }
 

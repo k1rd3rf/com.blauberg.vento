@@ -10,4 +10,6 @@ export class BlaubergVentoClient {
   findDevices = jest
     .fn()
     .mockResolvedValue([{ id: 'TEST1234', ip: '127.0.0.3' }]);
+
+  findById = (id: string) => Promise.resolve({ id, ip: '127.0.0.2' });
 }
