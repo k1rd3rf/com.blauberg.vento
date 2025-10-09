@@ -18,13 +18,13 @@ describe('Api set functions', () => {
     jest.clearAllMocks();
   });
   beforeEach(() => {
-    (api.modbusClient?.send as jest.Mock).mockImplementation((packet, ip) =>
+    (api.modbusClient.send as jest.Mock).mockImplementation((packet, ip) =>
       Promise.resolve({ packet, ip })
     );
   });
 
   const getMockCalls = (response: Partial<CapabilityResponse>) => ({
-    calls: (api.modbusClient?.send as jest.Mock).mock.calls,
+    calls: (api.modbusClient.send as jest.Mock).mock.calls,
     response: removeUndefinedDeep(response),
   });
 
@@ -33,9 +33,7 @@ describe('Api set functions', () => {
     expect(getMockCalls(response)).toMatchSnapshot();
   });
   it('update gets response', async () => {
-    (api.modbusClient.send as jest.Mock).mockReturnValue(
-      Promise.resolve(statusResponse)
-    );
+    (api.modbusClient.send as jest.Mock).mockResolvedValue(statusResponse);
     const response = await api.getDeviceState();
     expect(getMockCalls(response)).toMatchSnapshot();
   });

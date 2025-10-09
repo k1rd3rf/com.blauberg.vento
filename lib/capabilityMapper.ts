@@ -8,9 +8,12 @@ export type CapabilityType =
   | keyof typeof Capabilities
   | keyof typeof DeviceSettingFields;
 type PossibleValues = number | string | boolean | undefined;
+type DataEntityValueToValue =
+  | ((values: number[] | undefined) => PossibleValues)
+  | undefined;
 type ResponseToCapabilityFunctions = Record<
   CapabilityType,
-  (values: number[] | undefined) => PossibleValues
+  DataEntityValueToValue
 >;
 
 const paramsForCapability: Record<CapabilityType, keyof typeof Parameter> = {

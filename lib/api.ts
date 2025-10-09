@@ -41,7 +41,7 @@ export default class Api {
       if (r != null) {
         return capabilityMapper(r);
       }
-      return { alarm_connectivity: true };
+      return {};
     });
 
   public getDeviceState: () => Promise<Partial<CapabilityResponse>> =

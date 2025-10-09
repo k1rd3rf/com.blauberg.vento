@@ -3,23 +3,14 @@ import { Device } from './__mocks__/homey';
 import { statusResponse, offResponse } from './__mockdata__/statusResponse';
 import { sendMock } from './__mocks__/blaubergventojs';
 
-jest.mock('./ventoDiscovery', () =>
-  jest.fn().mockImplementation(() => ({
-    findById: (id: string) => Promise.resolve({ id, ip: '127.0.0.2' }),
-  }))
-);
-
-function mockModbus(response: () => Promise<unknown>) {
-  sendMock.mockImplementation(response as jest.Mock);
-}
-
 describe('ventoDevice', () => {
   afterEach(() => {
+    jest.resetAllMocks();
     jest.clearAllMocks();
   });
 
   beforeEach(() => {
-    mockModbus(() => Promise.resolve(statusResponse));
+    sendMock.mockResolvedValue(statusResponse);
   });
 
   it('should be able to get status from modbus on init', async () => {
@@ -31,7 +22,7 @@ describe('ventoDevice', () => {
     }).toMatchSnapshot();
   });
   it('should be able to get status when device is marked as off', async () => {
-    mockModbus(() => Promise.resolve(offResponse));
+    sendMock.mockResolvedValue(offResponse);
     const device = new VentoDevice();
     await device.onInit();
 
@@ -40,14 +31,13 @@ describe('ventoDevice', () => {
     }).toMatchSnapshot();
   });
   it('should be able to handle errors', async () => {
-    mockModbus(async () => {
-      throw new Error('test error');
-    });
+    sendMock.mockRejectedValue(new Error('test error'));
     const device = new VentoDevice();
-    await device.onInit().catch((err) => {});
+    const error = await device.onInit().catch((e) => e);
 
     expect({
       apiCalls: (device as unknown as Device).getMockCalls(),
+      error,
     }).toMatchSnapshot();
   });
 
@@ -56,7 +46,7 @@ describe('ventoDevice', () => {
     await device.onInit();
 
     expect({
-      modbusCalls: (device.api?.modbusClient.send as jest.Mock).mock.calls,
+      modbusCalls: (sendMock as jest.Mock).mock.calls,
     }).toMatchSnapshot();
   });
 
