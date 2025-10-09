@@ -18,2490 +18,6 @@ exports[`ventoDevice should be able to get status from modbus on init 1`] = `
       "timerMode": [Function],
       "timer_mode": [Function],
     },
-    "getCapabilityValue": {
-      "alarm_boost": 2,
-      "alarm_filter": 2,
-      "alarm_generic": 2,
-    },
-    "hasCapability": {
-      "alarm_boost": 1,
-      "alarm_connectivity": 1,
-      "alarm_filter": 1,
-      "alarm_generic": 1,
-      "fan_speed": 2,
-      "manualSpeed": 1,
-      "onoff": 1,
-      "operationMode": 1,
-      "speedMode": 1,
-      "timerMode": 1,
-    },
-    "log": [
-      [
-        "log",
-        "Locating device with id TEST1234",
-      ],
-      [
-        "log",
-        "Found device at IP 127.0.0.3",
-      ],
-      [
-        "log",
-        "Create the flow for the speed mode capability",
-      ],
-      [
-        "log",
-        "Create the flow for the manual speed capability",
-      ],
-      [
-        "log",
-        "Create the flow for the operation mode capability",
-      ],
-      [
-        "log",
-        "Create the flow for the timer mode capability",
-      ],
-      [
-        "log",
-        "Requesting the current device state",
-      ],
-      [
-        "log",
-        "Device state received: ",
-        {
-          "alarm_boost": false,
-          "alarm_filter": false,
-          "alarm_generic": false,
-          "boost_delay": 30,
-          "fan_speed": 0.7019607843137254,
-          "filter_timer": "31:20:34",
-          "humidity_sensor": true,
-          "humidity_threshold": 70,
-          "manualSpeed": 70.19607843137254,
-          "measure_RPM": 236,
-          "measure_humidity": 45,
-          "onoff": true,
-          "operationMode": "2",
-          "speedMode": "1",
-          "timerMode": "0",
-          "timerMode_timer": "00:00:00",
-          "unit_type": "Vento Expert Duo A30-1 W V.2",
-        },
-      ],
-      [
-        "setAvailable",
-        undefined,
-      ],
-      [
-        "log",
-        "Triggering alarm_boost_false",
-      ],
-      [
-        "triggered",
-        "alarm_boost_false",
-        [
-          VentoDevice {
-            "api": Api {
-              "deviceId": "TEST1234",
-              "deviceIp": "127.0.0.3",
-              "devicePass": "password",
-              "error": [Function],
-              "getDeviceState": [Function],
-              "log": [Function],
-              "modbusClient": BlaubergVentoClient {
-                "findById": [Function],
-                "findDevices": [MockFunction],
-                "send": [MockFunction] {
-                  "calls": [
-                    [
-                      E {
-                        "_dataEntries": [
-                          {
-                            "parameter": 1,
-                            "value": undefined,
-                          },
-                          {
-                            "parameter": 2,
-                            "value": undefined,
-                          },
-                          {
-                            "parameter": 68,
-                            "value": undefined,
-                          },
-                          {
-                            "parameter": 6,
-                            "value": undefined,
-                          },
-                          {
-                            "parameter": 102,
-                            "value": undefined,
-                          },
-                          {
-                            "parameter": 183,
-                            "value": undefined,
-                          },
-                          {
-                            "parameter": 136,
-                            "value": undefined,
-                          },
-                          {
-                            "parameter": 100,
-                            "value": undefined,
-                          },
-                          {
-                            "parameter": 37,
-                            "value": undefined,
-                          },
-                          {
-                            "parameter": 15,
-                            "value": undefined,
-                          },
-                          {
-                            "parameter": 25,
-                            "value": undefined,
-                          },
-                          {
-                            "parameter": 185,
-                            "value": undefined,
-                          },
-                          {
-                            "parameter": 74,
-                            "value": undefined,
-                          },
-                          {
-                            "parameter": 7,
-                            "value": undefined,
-                          },
-                          {
-                            "parameter": 131,
-                            "value": undefined,
-                          },
-                          {
-                            "parameter": 11,
-                            "value": undefined,
-                          },
-                        ],
-                        "_deviceId": "TEST1234",
-                        "_functionType": 1,
-                        "_password": "password",
-                      },
-                      "127.0.0.3",
-                    ],
-                    [
-                      E {
-                        "_dataEntries": [
-                          {
-                            "parameter": 1,
-                            "value": undefined,
-                          },
-                          {
-                            "parameter": 2,
-                            "value": undefined,
-                          },
-                          {
-                            "parameter": 68,
-                            "value": undefined,
-                          },
-                          {
-                            "parameter": 6,
-                            "value": undefined,
-                          },
-                          {
-                            "parameter": 102,
-                            "value": undefined,
-                          },
-                          {
-                            "parameter": 183,
-                            "value": undefined,
-                          },
-                          {
-                            "parameter": 136,
-                            "value": undefined,
-                          },
-                          {
-                            "parameter": 100,
-                            "value": undefined,
-                          },
-                          {
-                            "parameter": 37,
-                            "value": undefined,
-                          },
-                          {
-                            "parameter": 15,
-                            "value": undefined,
-                          },
-                          {
-                            "parameter": 25,
-                            "value": undefined,
-                          },
-                          {
-                            "parameter": 185,
-                            "value": undefined,
-                          },
-                          {
-                            "parameter": 74,
-                            "value": undefined,
-                          },
-                          {
-                            "parameter": 7,
-                            "value": undefined,
-                          },
-                          {
-                            "parameter": 131,
-                            "value": undefined,
-                          },
-                          {
-                            "parameter": 11,
-                            "value": undefined,
-                          },
-                        ],
-                        "_deviceId": "TEST1234",
-                        "_functionType": 1,
-                        "_password": "password",
-                      },
-                      "127.0.0.3",
-                    ],
-                    [
-                      E {
-                        "_dataEntries": [
-                          {
-                            "parameter": 1,
-                            "value": Uint8Array [
-                              1,
-                            ],
-                          },
-                        ],
-                        "_deviceId": "TEST1234",
-                        "_functionType": 2,
-                        "_password": "password",
-                      },
-                      "127.0.0.3",
-                    ],
-                    [
-                      E {
-                        "_dataEntries": [
-                          {
-                            "parameter": 68,
-                            "value": Uint8Array [
-                              0,
-                            ],
-                          },
-                        ],
-                        "_deviceId": "TEST1234",
-                        "_functionType": 2,
-                        "_password": "password",
-                      },
-                      "127.0.0.3",
-                    ],
-                    [
-                      E {
-                        "_dataEntries": [
-                          {
-                            "parameter": 68,
-                            "value": Uint8Array [
-                              0,
-                            ],
-                          },
-                        ],
-                        "_deviceId": "TEST1234",
-                        "_functionType": 2,
-                        "_password": "password",
-                      },
-                      "127.0.0.3",
-                    ],
-                    [
-                      E {
-                        "_dataEntries": [
-                          {
-                            "parameter": 183,
-                            "value": Uint8Array [
-                              0,
-                            ],
-                          },
-                        ],
-                        "_deviceId": "TEST1234",
-                        "_functionType": 2,
-                        "_password": "password",
-                      },
-                      "127.0.0.3",
-                    ],
-                    [
-                      E {
-                        "_dataEntries": [
-                          {
-                            "parameter": 2,
-                            "value": Uint8Array [
-                              0,
-                            ],
-                          },
-                        ],
-                        "_deviceId": "TEST1234",
-                        "_functionType": 2,
-                        "_password": "password",
-                      },
-                      "127.0.0.3",
-                    ],
-                    [
-                      E {
-                        "_dataEntries": [
-                          {
-                            "parameter": 7,
-                            "value": Uint8Array [
-                              0,
-                            ],
-                          },
-                        ],
-                        "_deviceId": "TEST1234",
-                        "_functionType": 2,
-                        "_password": "password",
-                      },
-                      "127.0.0.3",
-                    ],
-                  ],
-                  "results": [
-                    {
-                      "type": "return",
-                      "value": Promise {},
-                    },
-                    {
-                      "type": "return",
-                      "value": Promise {},
-                    },
-                    {
-                      "type": "return",
-                      "value": Promise {},
-                    },
-                    {
-                      "type": "return",
-                      "value": Promise {},
-                    },
-                    {
-                      "type": "return",
-                      "value": Promise {},
-                    },
-                    {
-                      "type": "return",
-                      "value": Promise {},
-                    },
-                    {
-                      "type": "return",
-                      "value": Promise {},
-                    },
-                    {
-                      "type": "return",
-                      "value": Promise {},
-                    },
-                  ],
-                },
-                "timeout": 1500,
-              },
-              "send": [Function],
-              "setBoostDelay": [Function],
-              "setDeviceValue": [Function],
-              "setHumiditySensor": [Function],
-              "setHumiditySensorThreshold": [Function],
-              "setManualSpeed": [Function],
-              "setOnOffStatus": [Function],
-              "setOperationMode": [Function],
-              "setSpeedMode": [Function],
-              "setTimerMode": [Function],
-            },
-            "discoveryClient": VentoDiscovery {
-              "findById": [Function],
-              "findDevices": [Function],
-              "modbusClient": BlaubergVentoClient {
-                "findById": [Function],
-                "findDevices": [MockFunction] {
-                  "calls": [
-                    [],
-                  ],
-                  "results": [
-                    {
-                      "type": "return",
-                      "value": Promise {},
-                    },
-                  ],
-                },
-                "send": [MockFunction] {
-                  "calls": [
-                    [
-                      E {
-                        "_dataEntries": [
-                          {
-                            "parameter": 1,
-                            "value": undefined,
-                          },
-                          {
-                            "parameter": 2,
-                            "value": undefined,
-                          },
-                          {
-                            "parameter": 68,
-                            "value": undefined,
-                          },
-                          {
-                            "parameter": 6,
-                            "value": undefined,
-                          },
-                          {
-                            "parameter": 102,
-                            "value": undefined,
-                          },
-                          {
-                            "parameter": 183,
-                            "value": undefined,
-                          },
-                          {
-                            "parameter": 136,
-                            "value": undefined,
-                          },
-                          {
-                            "parameter": 100,
-                            "value": undefined,
-                          },
-                          {
-                            "parameter": 37,
-                            "value": undefined,
-                          },
-                          {
-                            "parameter": 15,
-                            "value": undefined,
-                          },
-                          {
-                            "parameter": 25,
-                            "value": undefined,
-                          },
-                          {
-                            "parameter": 185,
-                            "value": undefined,
-                          },
-                          {
-                            "parameter": 74,
-                            "value": undefined,
-                          },
-                          {
-                            "parameter": 7,
-                            "value": undefined,
-                          },
-                          {
-                            "parameter": 131,
-                            "value": undefined,
-                          },
-                          {
-                            "parameter": 11,
-                            "value": undefined,
-                          },
-                        ],
-                        "_deviceId": "TEST1234",
-                        "_functionType": 1,
-                        "_password": "password",
-                      },
-                      "127.0.0.3",
-                    ],
-                    [
-                      E {
-                        "_dataEntries": [
-                          {
-                            "parameter": 1,
-                            "value": undefined,
-                          },
-                          {
-                            "parameter": 2,
-                            "value": undefined,
-                          },
-                          {
-                            "parameter": 68,
-                            "value": undefined,
-                          },
-                          {
-                            "parameter": 6,
-                            "value": undefined,
-                          },
-                          {
-                            "parameter": 102,
-                            "value": undefined,
-                          },
-                          {
-                            "parameter": 183,
-                            "value": undefined,
-                          },
-                          {
-                            "parameter": 136,
-                            "value": undefined,
-                          },
-                          {
-                            "parameter": 100,
-                            "value": undefined,
-                          },
-                          {
-                            "parameter": 37,
-                            "value": undefined,
-                          },
-                          {
-                            "parameter": 15,
-                            "value": undefined,
-                          },
-                          {
-                            "parameter": 25,
-                            "value": undefined,
-                          },
-                          {
-                            "parameter": 185,
-                            "value": undefined,
-                          },
-                          {
-                            "parameter": 74,
-                            "value": undefined,
-                          },
-                          {
-                            "parameter": 7,
-                            "value": undefined,
-                          },
-                          {
-                            "parameter": 131,
-                            "value": undefined,
-                          },
-                          {
-                            "parameter": 11,
-                            "value": undefined,
-                          },
-                        ],
-                        "_deviceId": "TEST1234",
-                        "_functionType": 1,
-                        "_password": "password",
-                      },
-                      "127.0.0.3",
-                    ],
-                    [
-                      E {
-                        "_dataEntries": [
-                          {
-                            "parameter": 1,
-                            "value": Uint8Array [
-                              1,
-                            ],
-                          },
-                        ],
-                        "_deviceId": "TEST1234",
-                        "_functionType": 2,
-                        "_password": "password",
-                      },
-                      "127.0.0.3",
-                    ],
-                    [
-                      E {
-                        "_dataEntries": [
-                          {
-                            "parameter": 68,
-                            "value": Uint8Array [
-                              0,
-                            ],
-                          },
-                        ],
-                        "_deviceId": "TEST1234",
-                        "_functionType": 2,
-                        "_password": "password",
-                      },
-                      "127.0.0.3",
-                    ],
-                    [
-                      E {
-                        "_dataEntries": [
-                          {
-                            "parameter": 68,
-                            "value": Uint8Array [
-                              0,
-                            ],
-                          },
-                        ],
-                        "_deviceId": "TEST1234",
-                        "_functionType": 2,
-                        "_password": "password",
-                      },
-                      "127.0.0.3",
-                    ],
-                    [
-                      E {
-                        "_dataEntries": [
-                          {
-                            "parameter": 183,
-                            "value": Uint8Array [
-                              0,
-                            ],
-                          },
-                        ],
-                        "_deviceId": "TEST1234",
-                        "_functionType": 2,
-                        "_password": "password",
-                      },
-                      "127.0.0.3",
-                    ],
-                    [
-                      E {
-                        "_dataEntries": [
-                          {
-                            "parameter": 2,
-                            "value": Uint8Array [
-                              0,
-                            ],
-                          },
-                        ],
-                        "_deviceId": "TEST1234",
-                        "_functionType": 2,
-                        "_password": "password",
-                      },
-                      "127.0.0.3",
-                    ],
-                    [
-                      E {
-                        "_dataEntries": [
-                          {
-                            "parameter": 7,
-                            "value": Uint8Array [
-                              0,
-                            ],
-                          },
-                        ],
-                        "_deviceId": "TEST1234",
-                        "_functionType": 2,
-                        "_password": "password",
-                      },
-                      "127.0.0.3",
-                    ],
-                  ],
-                  "results": [
-                    {
-                      "type": "return",
-                      "value": Promise {},
-                    },
-                    {
-                      "type": "return",
-                      "value": Promise {},
-                    },
-                    {
-                      "type": "return",
-                      "value": Promise {},
-                    },
-                    {
-                      "type": "return",
-                      "value": Promise {},
-                    },
-                    {
-                      "type": "return",
-                      "value": Promise {},
-                    },
-                    {
-                      "type": "return",
-                      "value": Promise {},
-                    },
-                    {
-                      "type": "return",
-                      "value": Promise {},
-                    },
-                    {
-                      "type": "return",
-                      "value": Promise {},
-                    },
-                  ],
-                },
-                "timeout": 1500,
-              },
-            },
-            "error": [Function],
-            "getMockCalls": [Function],
-            "homey": {
-              "flow": {
-                "getActionCard": [Function],
-                "getConditionCard": [Function],
-                "getDeviceTriggerCard": [Function],
-              },
-              "setInterval": [MockFunction] {
-                "calls": [
-                  [
-                    [Function],
-                    15000,
-                  ],
-                ],
-                "results": [
-                  {
-                    "type": "return",
-                    "value": undefined,
-                  },
-                ],
-              },
-            },
-            "id": "TEST1234",
-            "log": [Function],
-            "onCapabilityFanSpeed": [Function],
-            "onCapabilityManualSpeed": [Function],
-            "onCapabilityOnOff": [Function],
-            "onCapabilityOperationMode": [Function],
-            "onCapabilitySpeedMode": [Function],
-            "onCapabilityTimerMode": [Function],
-            "pollInterval": undefined,
-            "settings": {
-              "boost_delay": 30,
-              "devicemodel": "Vento Expert Duo A30-1 W V.2",
-              "devicepwd": "password",
-              "humidity_sensor": true,
-              "humidity_threshold": 70,
-            },
-            "store": {
-              "lastKnownIP": "127.0.0.3",
-            },
-          },
-          {},
-          {},
-        ],
-      ],
-      [
-        "log",
-        "Triggering alarm_filter_false",
-      ],
-      [
-        "triggered",
-        "alarm_filter_false",
-        [
-          VentoDevice {
-            "api": Api {
-              "deviceId": "TEST1234",
-              "deviceIp": "127.0.0.3",
-              "devicePass": "password",
-              "error": [Function],
-              "getDeviceState": [Function],
-              "log": [Function],
-              "modbusClient": BlaubergVentoClient {
-                "findById": [Function],
-                "findDevices": [MockFunction],
-                "send": [MockFunction] {
-                  "calls": [
-                    [
-                      E {
-                        "_dataEntries": [
-                          {
-                            "parameter": 1,
-                            "value": undefined,
-                          },
-                          {
-                            "parameter": 2,
-                            "value": undefined,
-                          },
-                          {
-                            "parameter": 68,
-                            "value": undefined,
-                          },
-                          {
-                            "parameter": 6,
-                            "value": undefined,
-                          },
-                          {
-                            "parameter": 102,
-                            "value": undefined,
-                          },
-                          {
-                            "parameter": 183,
-                            "value": undefined,
-                          },
-                          {
-                            "parameter": 136,
-                            "value": undefined,
-                          },
-                          {
-                            "parameter": 100,
-                            "value": undefined,
-                          },
-                          {
-                            "parameter": 37,
-                            "value": undefined,
-                          },
-                          {
-                            "parameter": 15,
-                            "value": undefined,
-                          },
-                          {
-                            "parameter": 25,
-                            "value": undefined,
-                          },
-                          {
-                            "parameter": 185,
-                            "value": undefined,
-                          },
-                          {
-                            "parameter": 74,
-                            "value": undefined,
-                          },
-                          {
-                            "parameter": 7,
-                            "value": undefined,
-                          },
-                          {
-                            "parameter": 131,
-                            "value": undefined,
-                          },
-                          {
-                            "parameter": 11,
-                            "value": undefined,
-                          },
-                        ],
-                        "_deviceId": "TEST1234",
-                        "_functionType": 1,
-                        "_password": "password",
-                      },
-                      "127.0.0.3",
-                    ],
-                    [
-                      E {
-                        "_dataEntries": [
-                          {
-                            "parameter": 1,
-                            "value": undefined,
-                          },
-                          {
-                            "parameter": 2,
-                            "value": undefined,
-                          },
-                          {
-                            "parameter": 68,
-                            "value": undefined,
-                          },
-                          {
-                            "parameter": 6,
-                            "value": undefined,
-                          },
-                          {
-                            "parameter": 102,
-                            "value": undefined,
-                          },
-                          {
-                            "parameter": 183,
-                            "value": undefined,
-                          },
-                          {
-                            "parameter": 136,
-                            "value": undefined,
-                          },
-                          {
-                            "parameter": 100,
-                            "value": undefined,
-                          },
-                          {
-                            "parameter": 37,
-                            "value": undefined,
-                          },
-                          {
-                            "parameter": 15,
-                            "value": undefined,
-                          },
-                          {
-                            "parameter": 25,
-                            "value": undefined,
-                          },
-                          {
-                            "parameter": 185,
-                            "value": undefined,
-                          },
-                          {
-                            "parameter": 74,
-                            "value": undefined,
-                          },
-                          {
-                            "parameter": 7,
-                            "value": undefined,
-                          },
-                          {
-                            "parameter": 131,
-                            "value": undefined,
-                          },
-                          {
-                            "parameter": 11,
-                            "value": undefined,
-                          },
-                        ],
-                        "_deviceId": "TEST1234",
-                        "_functionType": 1,
-                        "_password": "password",
-                      },
-                      "127.0.0.3",
-                    ],
-                    [
-                      E {
-                        "_dataEntries": [
-                          {
-                            "parameter": 1,
-                            "value": Uint8Array [
-                              1,
-                            ],
-                          },
-                        ],
-                        "_deviceId": "TEST1234",
-                        "_functionType": 2,
-                        "_password": "password",
-                      },
-                      "127.0.0.3",
-                    ],
-                    [
-                      E {
-                        "_dataEntries": [
-                          {
-                            "parameter": 68,
-                            "value": Uint8Array [
-                              0,
-                            ],
-                          },
-                        ],
-                        "_deviceId": "TEST1234",
-                        "_functionType": 2,
-                        "_password": "password",
-                      },
-                      "127.0.0.3",
-                    ],
-                    [
-                      E {
-                        "_dataEntries": [
-                          {
-                            "parameter": 68,
-                            "value": Uint8Array [
-                              0,
-                            ],
-                          },
-                        ],
-                        "_deviceId": "TEST1234",
-                        "_functionType": 2,
-                        "_password": "password",
-                      },
-                      "127.0.0.3",
-                    ],
-                    [
-                      E {
-                        "_dataEntries": [
-                          {
-                            "parameter": 183,
-                            "value": Uint8Array [
-                              0,
-                            ],
-                          },
-                        ],
-                        "_deviceId": "TEST1234",
-                        "_functionType": 2,
-                        "_password": "password",
-                      },
-                      "127.0.0.3",
-                    ],
-                    [
-                      E {
-                        "_dataEntries": [
-                          {
-                            "parameter": 2,
-                            "value": Uint8Array [
-                              0,
-                            ],
-                          },
-                        ],
-                        "_deviceId": "TEST1234",
-                        "_functionType": 2,
-                        "_password": "password",
-                      },
-                      "127.0.0.3",
-                    ],
-                    [
-                      E {
-                        "_dataEntries": [
-                          {
-                            "parameter": 7,
-                            "value": Uint8Array [
-                              0,
-                            ],
-                          },
-                        ],
-                        "_deviceId": "TEST1234",
-                        "_functionType": 2,
-                        "_password": "password",
-                      },
-                      "127.0.0.3",
-                    ],
-                  ],
-                  "results": [
-                    {
-                      "type": "return",
-                      "value": Promise {},
-                    },
-                    {
-                      "type": "return",
-                      "value": Promise {},
-                    },
-                    {
-                      "type": "return",
-                      "value": Promise {},
-                    },
-                    {
-                      "type": "return",
-                      "value": Promise {},
-                    },
-                    {
-                      "type": "return",
-                      "value": Promise {},
-                    },
-                    {
-                      "type": "return",
-                      "value": Promise {},
-                    },
-                    {
-                      "type": "return",
-                      "value": Promise {},
-                    },
-                    {
-                      "type": "return",
-                      "value": Promise {},
-                    },
-                  ],
-                },
-                "timeout": 1500,
-              },
-              "send": [Function],
-              "setBoostDelay": [Function],
-              "setDeviceValue": [Function],
-              "setHumiditySensor": [Function],
-              "setHumiditySensorThreshold": [Function],
-              "setManualSpeed": [Function],
-              "setOnOffStatus": [Function],
-              "setOperationMode": [Function],
-              "setSpeedMode": [Function],
-              "setTimerMode": [Function],
-            },
-            "discoveryClient": VentoDiscovery {
-              "findById": [Function],
-              "findDevices": [Function],
-              "modbusClient": BlaubergVentoClient {
-                "findById": [Function],
-                "findDevices": [MockFunction] {
-                  "calls": [
-                    [],
-                  ],
-                  "results": [
-                    {
-                      "type": "return",
-                      "value": Promise {},
-                    },
-                  ],
-                },
-                "send": [MockFunction] {
-                  "calls": [
-                    [
-                      E {
-                        "_dataEntries": [
-                          {
-                            "parameter": 1,
-                            "value": undefined,
-                          },
-                          {
-                            "parameter": 2,
-                            "value": undefined,
-                          },
-                          {
-                            "parameter": 68,
-                            "value": undefined,
-                          },
-                          {
-                            "parameter": 6,
-                            "value": undefined,
-                          },
-                          {
-                            "parameter": 102,
-                            "value": undefined,
-                          },
-                          {
-                            "parameter": 183,
-                            "value": undefined,
-                          },
-                          {
-                            "parameter": 136,
-                            "value": undefined,
-                          },
-                          {
-                            "parameter": 100,
-                            "value": undefined,
-                          },
-                          {
-                            "parameter": 37,
-                            "value": undefined,
-                          },
-                          {
-                            "parameter": 15,
-                            "value": undefined,
-                          },
-                          {
-                            "parameter": 25,
-                            "value": undefined,
-                          },
-                          {
-                            "parameter": 185,
-                            "value": undefined,
-                          },
-                          {
-                            "parameter": 74,
-                            "value": undefined,
-                          },
-                          {
-                            "parameter": 7,
-                            "value": undefined,
-                          },
-                          {
-                            "parameter": 131,
-                            "value": undefined,
-                          },
-                          {
-                            "parameter": 11,
-                            "value": undefined,
-                          },
-                        ],
-                        "_deviceId": "TEST1234",
-                        "_functionType": 1,
-                        "_password": "password",
-                      },
-                      "127.0.0.3",
-                    ],
-                    [
-                      E {
-                        "_dataEntries": [
-                          {
-                            "parameter": 1,
-                            "value": undefined,
-                          },
-                          {
-                            "parameter": 2,
-                            "value": undefined,
-                          },
-                          {
-                            "parameter": 68,
-                            "value": undefined,
-                          },
-                          {
-                            "parameter": 6,
-                            "value": undefined,
-                          },
-                          {
-                            "parameter": 102,
-                            "value": undefined,
-                          },
-                          {
-                            "parameter": 183,
-                            "value": undefined,
-                          },
-                          {
-                            "parameter": 136,
-                            "value": undefined,
-                          },
-                          {
-                            "parameter": 100,
-                            "value": undefined,
-                          },
-                          {
-                            "parameter": 37,
-                            "value": undefined,
-                          },
-                          {
-                            "parameter": 15,
-                            "value": undefined,
-                          },
-                          {
-                            "parameter": 25,
-                            "value": undefined,
-                          },
-                          {
-                            "parameter": 185,
-                            "value": undefined,
-                          },
-                          {
-                            "parameter": 74,
-                            "value": undefined,
-                          },
-                          {
-                            "parameter": 7,
-                            "value": undefined,
-                          },
-                          {
-                            "parameter": 131,
-                            "value": undefined,
-                          },
-                          {
-                            "parameter": 11,
-                            "value": undefined,
-                          },
-                        ],
-                        "_deviceId": "TEST1234",
-                        "_functionType": 1,
-                        "_password": "password",
-                      },
-                      "127.0.0.3",
-                    ],
-                    [
-                      E {
-                        "_dataEntries": [
-                          {
-                            "parameter": 1,
-                            "value": Uint8Array [
-                              1,
-                            ],
-                          },
-                        ],
-                        "_deviceId": "TEST1234",
-                        "_functionType": 2,
-                        "_password": "password",
-                      },
-                      "127.0.0.3",
-                    ],
-                    [
-                      E {
-                        "_dataEntries": [
-                          {
-                            "parameter": 68,
-                            "value": Uint8Array [
-                              0,
-                            ],
-                          },
-                        ],
-                        "_deviceId": "TEST1234",
-                        "_functionType": 2,
-                        "_password": "password",
-                      },
-                      "127.0.0.3",
-                    ],
-                    [
-                      E {
-                        "_dataEntries": [
-                          {
-                            "parameter": 68,
-                            "value": Uint8Array [
-                              0,
-                            ],
-                          },
-                        ],
-                        "_deviceId": "TEST1234",
-                        "_functionType": 2,
-                        "_password": "password",
-                      },
-                      "127.0.0.3",
-                    ],
-                    [
-                      E {
-                        "_dataEntries": [
-                          {
-                            "parameter": 183,
-                            "value": Uint8Array [
-                              0,
-                            ],
-                          },
-                        ],
-                        "_deviceId": "TEST1234",
-                        "_functionType": 2,
-                        "_password": "password",
-                      },
-                      "127.0.0.3",
-                    ],
-                    [
-                      E {
-                        "_dataEntries": [
-                          {
-                            "parameter": 2,
-                            "value": Uint8Array [
-                              0,
-                            ],
-                          },
-                        ],
-                        "_deviceId": "TEST1234",
-                        "_functionType": 2,
-                        "_password": "password",
-                      },
-                      "127.0.0.3",
-                    ],
-                    [
-                      E {
-                        "_dataEntries": [
-                          {
-                            "parameter": 7,
-                            "value": Uint8Array [
-                              0,
-                            ],
-                          },
-                        ],
-                        "_deviceId": "TEST1234",
-                        "_functionType": 2,
-                        "_password": "password",
-                      },
-                      "127.0.0.3",
-                    ],
-                  ],
-                  "results": [
-                    {
-                      "type": "return",
-                      "value": Promise {},
-                    },
-                    {
-                      "type": "return",
-                      "value": Promise {},
-                    },
-                    {
-                      "type": "return",
-                      "value": Promise {},
-                    },
-                    {
-                      "type": "return",
-                      "value": Promise {},
-                    },
-                    {
-                      "type": "return",
-                      "value": Promise {},
-                    },
-                    {
-                      "type": "return",
-                      "value": Promise {},
-                    },
-                    {
-                      "type": "return",
-                      "value": Promise {},
-                    },
-                    {
-                      "type": "return",
-                      "value": Promise {},
-                    },
-                  ],
-                },
-                "timeout": 1500,
-              },
-            },
-            "error": [Function],
-            "getMockCalls": [Function],
-            "homey": {
-              "flow": {
-                "getActionCard": [Function],
-                "getConditionCard": [Function],
-                "getDeviceTriggerCard": [Function],
-              },
-              "setInterval": [MockFunction] {
-                "calls": [
-                  [
-                    [Function],
-                    15000,
-                  ],
-                ],
-                "results": [
-                  {
-                    "type": "return",
-                    "value": undefined,
-                  },
-                ],
-              },
-            },
-            "id": "TEST1234",
-            "log": [Function],
-            "onCapabilityFanSpeed": [Function],
-            "onCapabilityManualSpeed": [Function],
-            "onCapabilityOnOff": [Function],
-            "onCapabilityOperationMode": [Function],
-            "onCapabilitySpeedMode": [Function],
-            "onCapabilityTimerMode": [Function],
-            "pollInterval": undefined,
-            "settings": {
-              "boost_delay": 30,
-              "devicemodel": "Vento Expert Duo A30-1 W V.2",
-              "devicepwd": "password",
-              "humidity_sensor": true,
-              "humidity_threshold": 70,
-            },
-            "store": {
-              "lastKnownIP": "127.0.0.3",
-            },
-          },
-          {},
-          {},
-        ],
-      ],
-      [
-        "log",
-        "Triggering alarm_generic_false",
-      ],
-      [
-        "triggered",
-        "alarm_generic_false",
-        [
-          VentoDevice {
-            "api": Api {
-              "deviceId": "TEST1234",
-              "deviceIp": "127.0.0.3",
-              "devicePass": "password",
-              "error": [Function],
-              "getDeviceState": [Function],
-              "log": [Function],
-              "modbusClient": BlaubergVentoClient {
-                "findById": [Function],
-                "findDevices": [MockFunction],
-                "send": [MockFunction] {
-                  "calls": [
-                    [
-                      E {
-                        "_dataEntries": [
-                          {
-                            "parameter": 1,
-                            "value": undefined,
-                          },
-                          {
-                            "parameter": 2,
-                            "value": undefined,
-                          },
-                          {
-                            "parameter": 68,
-                            "value": undefined,
-                          },
-                          {
-                            "parameter": 6,
-                            "value": undefined,
-                          },
-                          {
-                            "parameter": 102,
-                            "value": undefined,
-                          },
-                          {
-                            "parameter": 183,
-                            "value": undefined,
-                          },
-                          {
-                            "parameter": 136,
-                            "value": undefined,
-                          },
-                          {
-                            "parameter": 100,
-                            "value": undefined,
-                          },
-                          {
-                            "parameter": 37,
-                            "value": undefined,
-                          },
-                          {
-                            "parameter": 15,
-                            "value": undefined,
-                          },
-                          {
-                            "parameter": 25,
-                            "value": undefined,
-                          },
-                          {
-                            "parameter": 185,
-                            "value": undefined,
-                          },
-                          {
-                            "parameter": 74,
-                            "value": undefined,
-                          },
-                          {
-                            "parameter": 7,
-                            "value": undefined,
-                          },
-                          {
-                            "parameter": 131,
-                            "value": undefined,
-                          },
-                          {
-                            "parameter": 11,
-                            "value": undefined,
-                          },
-                        ],
-                        "_deviceId": "TEST1234",
-                        "_functionType": 1,
-                        "_password": "password",
-                      },
-                      "127.0.0.3",
-                    ],
-                    [
-                      E {
-                        "_dataEntries": [
-                          {
-                            "parameter": 1,
-                            "value": undefined,
-                          },
-                          {
-                            "parameter": 2,
-                            "value": undefined,
-                          },
-                          {
-                            "parameter": 68,
-                            "value": undefined,
-                          },
-                          {
-                            "parameter": 6,
-                            "value": undefined,
-                          },
-                          {
-                            "parameter": 102,
-                            "value": undefined,
-                          },
-                          {
-                            "parameter": 183,
-                            "value": undefined,
-                          },
-                          {
-                            "parameter": 136,
-                            "value": undefined,
-                          },
-                          {
-                            "parameter": 100,
-                            "value": undefined,
-                          },
-                          {
-                            "parameter": 37,
-                            "value": undefined,
-                          },
-                          {
-                            "parameter": 15,
-                            "value": undefined,
-                          },
-                          {
-                            "parameter": 25,
-                            "value": undefined,
-                          },
-                          {
-                            "parameter": 185,
-                            "value": undefined,
-                          },
-                          {
-                            "parameter": 74,
-                            "value": undefined,
-                          },
-                          {
-                            "parameter": 7,
-                            "value": undefined,
-                          },
-                          {
-                            "parameter": 131,
-                            "value": undefined,
-                          },
-                          {
-                            "parameter": 11,
-                            "value": undefined,
-                          },
-                        ],
-                        "_deviceId": "TEST1234",
-                        "_functionType": 1,
-                        "_password": "password",
-                      },
-                      "127.0.0.3",
-                    ],
-                    [
-                      E {
-                        "_dataEntries": [
-                          {
-                            "parameter": 1,
-                            "value": Uint8Array [
-                              1,
-                            ],
-                          },
-                        ],
-                        "_deviceId": "TEST1234",
-                        "_functionType": 2,
-                        "_password": "password",
-                      },
-                      "127.0.0.3",
-                    ],
-                    [
-                      E {
-                        "_dataEntries": [
-                          {
-                            "parameter": 68,
-                            "value": Uint8Array [
-                              0,
-                            ],
-                          },
-                        ],
-                        "_deviceId": "TEST1234",
-                        "_functionType": 2,
-                        "_password": "password",
-                      },
-                      "127.0.0.3",
-                    ],
-                    [
-                      E {
-                        "_dataEntries": [
-                          {
-                            "parameter": 68,
-                            "value": Uint8Array [
-                              0,
-                            ],
-                          },
-                        ],
-                        "_deviceId": "TEST1234",
-                        "_functionType": 2,
-                        "_password": "password",
-                      },
-                      "127.0.0.3",
-                    ],
-                    [
-                      E {
-                        "_dataEntries": [
-                          {
-                            "parameter": 183,
-                            "value": Uint8Array [
-                              0,
-                            ],
-                          },
-                        ],
-                        "_deviceId": "TEST1234",
-                        "_functionType": 2,
-                        "_password": "password",
-                      },
-                      "127.0.0.3",
-                    ],
-                    [
-                      E {
-                        "_dataEntries": [
-                          {
-                            "parameter": 2,
-                            "value": Uint8Array [
-                              0,
-                            ],
-                          },
-                        ],
-                        "_deviceId": "TEST1234",
-                        "_functionType": 2,
-                        "_password": "password",
-                      },
-                      "127.0.0.3",
-                    ],
-                    [
-                      E {
-                        "_dataEntries": [
-                          {
-                            "parameter": 7,
-                            "value": Uint8Array [
-                              0,
-                            ],
-                          },
-                        ],
-                        "_deviceId": "TEST1234",
-                        "_functionType": 2,
-                        "_password": "password",
-                      },
-                      "127.0.0.3",
-                    ],
-                  ],
-                  "results": [
-                    {
-                      "type": "return",
-                      "value": Promise {},
-                    },
-                    {
-                      "type": "return",
-                      "value": Promise {},
-                    },
-                    {
-                      "type": "return",
-                      "value": Promise {},
-                    },
-                    {
-                      "type": "return",
-                      "value": Promise {},
-                    },
-                    {
-                      "type": "return",
-                      "value": Promise {},
-                    },
-                    {
-                      "type": "return",
-                      "value": Promise {},
-                    },
-                    {
-                      "type": "return",
-                      "value": Promise {},
-                    },
-                    {
-                      "type": "return",
-                      "value": Promise {},
-                    },
-                  ],
-                },
-                "timeout": 1500,
-              },
-              "send": [Function],
-              "setBoostDelay": [Function],
-              "setDeviceValue": [Function],
-              "setHumiditySensor": [Function],
-              "setHumiditySensorThreshold": [Function],
-              "setManualSpeed": [Function],
-              "setOnOffStatus": [Function],
-              "setOperationMode": [Function],
-              "setSpeedMode": [Function],
-              "setTimerMode": [Function],
-            },
-            "discoveryClient": VentoDiscovery {
-              "findById": [Function],
-              "findDevices": [Function],
-              "modbusClient": BlaubergVentoClient {
-                "findById": [Function],
-                "findDevices": [MockFunction] {
-                  "calls": [
-                    [],
-                  ],
-                  "results": [
-                    {
-                      "type": "return",
-                      "value": Promise {},
-                    },
-                  ],
-                },
-                "send": [MockFunction] {
-                  "calls": [
-                    [
-                      E {
-                        "_dataEntries": [
-                          {
-                            "parameter": 1,
-                            "value": undefined,
-                          },
-                          {
-                            "parameter": 2,
-                            "value": undefined,
-                          },
-                          {
-                            "parameter": 68,
-                            "value": undefined,
-                          },
-                          {
-                            "parameter": 6,
-                            "value": undefined,
-                          },
-                          {
-                            "parameter": 102,
-                            "value": undefined,
-                          },
-                          {
-                            "parameter": 183,
-                            "value": undefined,
-                          },
-                          {
-                            "parameter": 136,
-                            "value": undefined,
-                          },
-                          {
-                            "parameter": 100,
-                            "value": undefined,
-                          },
-                          {
-                            "parameter": 37,
-                            "value": undefined,
-                          },
-                          {
-                            "parameter": 15,
-                            "value": undefined,
-                          },
-                          {
-                            "parameter": 25,
-                            "value": undefined,
-                          },
-                          {
-                            "parameter": 185,
-                            "value": undefined,
-                          },
-                          {
-                            "parameter": 74,
-                            "value": undefined,
-                          },
-                          {
-                            "parameter": 7,
-                            "value": undefined,
-                          },
-                          {
-                            "parameter": 131,
-                            "value": undefined,
-                          },
-                          {
-                            "parameter": 11,
-                            "value": undefined,
-                          },
-                        ],
-                        "_deviceId": "TEST1234",
-                        "_functionType": 1,
-                        "_password": "password",
-                      },
-                      "127.0.0.3",
-                    ],
-                    [
-                      E {
-                        "_dataEntries": [
-                          {
-                            "parameter": 1,
-                            "value": undefined,
-                          },
-                          {
-                            "parameter": 2,
-                            "value": undefined,
-                          },
-                          {
-                            "parameter": 68,
-                            "value": undefined,
-                          },
-                          {
-                            "parameter": 6,
-                            "value": undefined,
-                          },
-                          {
-                            "parameter": 102,
-                            "value": undefined,
-                          },
-                          {
-                            "parameter": 183,
-                            "value": undefined,
-                          },
-                          {
-                            "parameter": 136,
-                            "value": undefined,
-                          },
-                          {
-                            "parameter": 100,
-                            "value": undefined,
-                          },
-                          {
-                            "parameter": 37,
-                            "value": undefined,
-                          },
-                          {
-                            "parameter": 15,
-                            "value": undefined,
-                          },
-                          {
-                            "parameter": 25,
-                            "value": undefined,
-                          },
-                          {
-                            "parameter": 185,
-                            "value": undefined,
-                          },
-                          {
-                            "parameter": 74,
-                            "value": undefined,
-                          },
-                          {
-                            "parameter": 7,
-                            "value": undefined,
-                          },
-                          {
-                            "parameter": 131,
-                            "value": undefined,
-                          },
-                          {
-                            "parameter": 11,
-                            "value": undefined,
-                          },
-                        ],
-                        "_deviceId": "TEST1234",
-                        "_functionType": 1,
-                        "_password": "password",
-                      },
-                      "127.0.0.3",
-                    ],
-                    [
-                      E {
-                        "_dataEntries": [
-                          {
-                            "parameter": 1,
-                            "value": Uint8Array [
-                              1,
-                            ],
-                          },
-                        ],
-                        "_deviceId": "TEST1234",
-                        "_functionType": 2,
-                        "_password": "password",
-                      },
-                      "127.0.0.3",
-                    ],
-                    [
-                      E {
-                        "_dataEntries": [
-                          {
-                            "parameter": 68,
-                            "value": Uint8Array [
-                              0,
-                            ],
-                          },
-                        ],
-                        "_deviceId": "TEST1234",
-                        "_functionType": 2,
-                        "_password": "password",
-                      },
-                      "127.0.0.3",
-                    ],
-                    [
-                      E {
-                        "_dataEntries": [
-                          {
-                            "parameter": 68,
-                            "value": Uint8Array [
-                              0,
-                            ],
-                          },
-                        ],
-                        "_deviceId": "TEST1234",
-                        "_functionType": 2,
-                        "_password": "password",
-                      },
-                      "127.0.0.3",
-                    ],
-                    [
-                      E {
-                        "_dataEntries": [
-                          {
-                            "parameter": 183,
-                            "value": Uint8Array [
-                              0,
-                            ],
-                          },
-                        ],
-                        "_deviceId": "TEST1234",
-                        "_functionType": 2,
-                        "_password": "password",
-                      },
-                      "127.0.0.3",
-                    ],
-                    [
-                      E {
-                        "_dataEntries": [
-                          {
-                            "parameter": 2,
-                            "value": Uint8Array [
-                              0,
-                            ],
-                          },
-                        ],
-                        "_deviceId": "TEST1234",
-                        "_functionType": 2,
-                        "_password": "password",
-                      },
-                      "127.0.0.3",
-                    ],
-                    [
-                      E {
-                        "_dataEntries": [
-                          {
-                            "parameter": 7,
-                            "value": Uint8Array [
-                              0,
-                            ],
-                          },
-                        ],
-                        "_deviceId": "TEST1234",
-                        "_functionType": 2,
-                        "_password": "password",
-                      },
-                      "127.0.0.3",
-                    ],
-                  ],
-                  "results": [
-                    {
-                      "type": "return",
-                      "value": Promise {},
-                    },
-                    {
-                      "type": "return",
-                      "value": Promise {},
-                    },
-                    {
-                      "type": "return",
-                      "value": Promise {},
-                    },
-                    {
-                      "type": "return",
-                      "value": Promise {},
-                    },
-                    {
-                      "type": "return",
-                      "value": Promise {},
-                    },
-                    {
-                      "type": "return",
-                      "value": Promise {},
-                    },
-                    {
-                      "type": "return",
-                      "value": Promise {},
-                    },
-                    {
-                      "type": "return",
-                      "value": Promise {},
-                    },
-                  ],
-                },
-                "timeout": 1500,
-              },
-            },
-            "error": [Function],
-            "getMockCalls": [Function],
-            "homey": {
-              "flow": {
-                "getActionCard": [Function],
-                "getConditionCard": [Function],
-                "getDeviceTriggerCard": [Function],
-              },
-              "setInterval": [MockFunction] {
-                "calls": [
-                  [
-                    [Function],
-                    15000,
-                  ],
-                ],
-                "results": [
-                  {
-                    "type": "return",
-                    "value": undefined,
-                  },
-                ],
-              },
-            },
-            "id": "TEST1234",
-            "log": [Function],
-            "onCapabilityFanSpeed": [Function],
-            "onCapabilityManualSpeed": [Function],
-            "onCapabilityOnOff": [Function],
-            "onCapabilityOperationMode": [Function],
-            "onCapabilitySpeedMode": [Function],
-            "onCapabilityTimerMode": [Function],
-            "pollInterval": undefined,
-            "settings": {
-              "boost_delay": 30,
-              "devicemodel": "Vento Expert Duo A30-1 W V.2",
-              "devicepwd": "password",
-              "humidity_sensor": true,
-              "humidity_threshold": 70,
-            },
-            "store": {
-              "lastKnownIP": "127.0.0.3",
-            },
-          },
-          {},
-          {},
-        ],
-      ],
-    ],
-    "registerCapabilityListener": {
-      "fan_speed": 1,
-      "manualSpeed": 1,
-      "onoff": 1,
-      "operationMode": 1,
-      "speedMode": 1,
-      "timerMode": 1,
-    },
-    "registerRunListener": {
-      "alarm_boost": [
-        [
-          [Function],
-        ],
-      ],
-      "alarm_filter": [
-        [
-          [Function],
-        ],
-      ],
-      "alarm_generic": [
-        [
-          [Function],
-        ],
-      ],
-      "manualSpeed_set": [
-        [
-          [Function],
-        ],
-      ],
-      "operation_mode": [
-        [
-          [Function],
-        ],
-      ],
-      "speed_mode": [
-        [
-          [Function],
-        ],
-      ],
-      "timer_mode": [
-        [
-          [Function],
-        ],
-      ],
-    },
-    "setCapabilityValue": {
-      "alarm_boost": [
-        [
-          false,
-          {
-            "result": false,
-          },
-        ],
-      ],
-      "alarm_filter": [
-        [
-          false,
-          {
-            "result": false,
-          },
-        ],
-      ],
-      "alarm_generic": [
-        [
-          false,
-          {
-            "result": false,
-          },
-        ],
-      ],
-      "fan_speed": [
-        [
-          0.7019607843137254,
-          {
-            "result": undefined,
-          },
-        ],
-      ],
-      "filter_timer": [
-        [
-          "31:20:34",
-          "calling unregistered capability",
-        ],
-      ],
-      "manualSpeed": [
-        [
-          70.19607843137254,
-          {
-            "result": undefined,
-          },
-        ],
-      ],
-      "measure_RPM": [
-        [
-          236,
-          "calling unregistered capability",
-        ],
-      ],
-      "measure_humidity": [
-        [
-          45,
-          "calling unregistered capability",
-        ],
-      ],
-      "onoff": [
-        [
-          true,
-          {
-            "result": undefined,
-          },
-        ],
-      ],
-      "operationMode": [
-        [
-          "2",
-          {
-            "result": undefined,
-          },
-        ],
-      ],
-      "speedMode": [
-        [
-          "1",
-          {
-            "result": undefined,
-          },
-        ],
-      ],
-      "timerMode": [
-        [
-          "0",
-          {
-            "result": undefined,
-          },
-        ],
-      ],
-      "timerMode_timer": [
-        [
-          "00:00:00",
-          "calling unregistered capability",
-        ],
-      ],
-    },
-    "settings": {
-      "boost_delay": 30,
-      "devicemodel": "Vento Expert Duo A30-1 W V.2",
-      "devicepwd": "password",
-      "humidity_sensor": true,
-      "humidity_threshold": 70,
-    },
-    "store": {
-      "lastKnownIP": "127.0.0.3",
-    },
-  },
-}
-`;
-
-exports[`ventoDevice should be able to get status when device is marked as off 1`] = `
-{
-  "apiCalls": {
-    "capabilities": {
-      "alarm_boost": [Function],
-      "alarm_filter": [Function],
-      "alarm_generic": [Function],
-      "fan_speed": [Function],
-      "manualSpeed": [Function],
-      "manualSpeed_set": [Function],
-      "onoff": [Function],
-      "operationMode": [Function],
-      "operation_mode": [Function],
-      "speedMode": [Function],
-      "speed_mode": [Function],
-      "timerMode": [Function],
-      "timer_mode": [Function],
-    },
-    "getCapabilityValue": {
-      "alarm_boost": 2,
-      "alarm_filter": 2,
-      "alarm_generic": 2,
-    },
-    "hasCapability": {
-      "alarm_boost": 1,
-      "alarm_connectivity": 1,
-      "alarm_filter": 1,
-      "alarm_generic": 1,
-      "fan_speed": 2,
-      "manualSpeed": 1,
-      "onoff": 1,
-      "operationMode": 1,
-      "speedMode": 1,
-      "timerMode": 1,
-    },
-    "log": [
-      [
-        "log",
-        "Locating device with id TEST1234",
-      ],
-      [
-        "log",
-        "Found device at IP 127.0.0.3",
-      ],
-      [
-        "log",
-        "Create the flow for the speed mode capability",
-      ],
-      [
-        "log",
-        "Create the flow for the manual speed capability",
-      ],
-      [
-        "log",
-        "Create the flow for the operation mode capability",
-      ],
-      [
-        "log",
-        "Create the flow for the timer mode capability",
-      ],
-      [
-        "log",
-        "Requesting the current device state",
-      ],
-      [
-        "log",
-        "Device state received: ",
-        {
-          "alarm_boost": false,
-          "alarm_filter": false,
-          "alarm_generic": false,
-          "boost_delay": 30,
-          "fan_speed": 0.7019607843137254,
-          "filter_timer": "31:20:34",
-          "humidity_sensor": true,
-          "humidity_threshold": 70,
-          "manualSpeed": 70.19607843137254,
-          "measure_RPM": 236,
-          "measure_humidity": 45,
-          "onoff": false,
-          "operationMode": "2",
-          "speedMode": "1",
-          "timerMode": "0",
-          "timerMode_timer": "00:00:00",
-          "unit_type": "Vento Expert Duo A30-1 W V.2",
-        },
-      ],
-      [
-        "setAvailable",
-        undefined,
-      ],
-    ],
-    "registerCapabilityListener": {
-      "fan_speed": 1,
-      "manualSpeed": 1,
-      "onoff": 1,
-      "operationMode": 1,
-      "speedMode": 1,
-      "timerMode": 1,
-    },
-    "registerRunListener": {
-      "alarm_boost": [
-        [
-          [Function],
-        ],
-      ],
-      "alarm_filter": [
-        [
-          [Function],
-        ],
-      ],
-      "alarm_generic": [
-        [
-          [Function],
-        ],
-      ],
-      "manualSpeed_set": [
-        [
-          [Function],
-        ],
-      ],
-      "operation_mode": [
-        [
-          [Function],
-        ],
-      ],
-      "speed_mode": [
-        [
-          [Function],
-        ],
-      ],
-      "timer_mode": [
-        [
-          [Function],
-        ],
-      ],
-    },
-    "setCapabilityValue": {
-      "alarm_boost": [
-        [
-          false,
-          {
-            "result": false,
-          },
-        ],
-      ],
-      "alarm_filter": [
-        [
-          false,
-          {
-            "result": false,
-          },
-        ],
-      ],
-      "alarm_generic": [
-        [
-          false,
-          {
-            "result": false,
-          },
-        ],
-      ],
-      "fan_speed": [
-        [
-          0.7019607843137254,
-          {
-            "result": undefined,
-          },
-        ],
-      ],
-      "filter_timer": [
-        [
-          "31:20:34",
-          "calling unregistered capability",
-        ],
-      ],
-      "manualSpeed": [
-        [
-          70.19607843137254,
-          {
-            "result": undefined,
-          },
-        ],
-      ],
-      "measure_RPM": [
-        [
-          236,
-          "calling unregistered capability",
-        ],
-      ],
-      "measure_humidity": [
-        [
-          45,
-          "calling unregistered capability",
-        ],
-      ],
-      "onoff": [
-        [
-          false,
-          {
-            "result": undefined,
-          },
-        ],
-      ],
-      "operationMode": [
-        [
-          "2",
-          {
-            "result": undefined,
-          },
-        ],
-      ],
-      "speedMode": [
-        [
-          "1",
-          {
-            "result": undefined,
-          },
-        ],
-      ],
-      "timerMode": [
-        [
-          "0",
-          {
-            "result": undefined,
-          },
-        ],
-      ],
-      "timerMode_timer": [
-        [
-          "00:00:00",
-          "calling unregistered capability",
-        ],
-      ],
-    },
-    "settings": {
-      "boost_delay": 30,
-      "devicemodel": "Vento Expert Duo A30-1 W V.2",
-      "devicepwd": "password",
-      "humidity_sensor": true,
-      "humidity_threshold": 70,
-    },
-    "store": {
-      "lastKnownIP": "127.0.0.3",
-    },
-  },
-}
-`;
-
-exports[`ventoDevice should be able to handle errors 1`] = `
-{
-  "apiCalls": {
-    "capabilities": {
-      "alarm_boost": [Function],
-      "alarm_filter": [Function],
-      "alarm_generic": [Function],
-      "fan_speed": [Function],
-      "manualSpeed": [Function],
-      "manualSpeed_set": [Function],
-      "onoff": [Function],
-      "operationMode": [Function],
-      "operation_mode": [Function],
-      "speedMode": [Function],
-      "speed_mode": [Function],
-      "timerMode": [Function],
-      "timer_mode": [Function],
-    },
     "getCapabilityValue": {},
     "hasCapability": {
       "alarm_boost": 1,
@@ -2519,11 +35,6 @@ exports[`ventoDevice should be able to handle errors 1`] = `
       [
         "log",
         "Locating device with id TEST1234",
-      ],
-      [
-        "error",
-        "Could not connect to device at IP 127.0.0.3",
-        [Error: test error],
       ],
       [
         "log",
@@ -2611,7 +122,278 @@ exports[`ventoDevice should be able to handle errors 1`] = `
     "settings": {
       "devicepwd": "password",
     },
-    "store": {},
+  },
+}
+`;
+
+exports[`ventoDevice should be able to get status when device is marked as off 1`] = `
+{
+  "apiCalls": {
+    "capabilities": {
+      "alarm_boost": [Function],
+      "alarm_filter": [Function],
+      "alarm_generic": [Function],
+      "fan_speed": [Function],
+      "manualSpeed": [Function],
+      "manualSpeed_set": [Function],
+      "onoff": [Function],
+      "operationMode": [Function],
+      "operation_mode": [Function],
+      "speedMode": [Function],
+      "speed_mode": [Function],
+      "timerMode": [Function],
+      "timer_mode": [Function],
+    },
+    "getCapabilityValue": {},
+    "hasCapability": {
+      "alarm_boost": 1,
+      "alarm_connectivity": 1,
+      "alarm_filter": 1,
+      "alarm_generic": 1,
+      "fan_speed": 2,
+      "manualSpeed": 1,
+      "onoff": 1,
+      "operationMode": 1,
+      "speedMode": 1,
+      "timerMode": 1,
+    },
+    "log": [
+      [
+        "log",
+        "Locating device with id TEST1234",
+      ],
+      [
+        "error",
+        "Could not connect to device at IP 127.0.0.3",
+        [TypeError: Cannot read properties of undefined (reading 'then')],
+      ],
+      [
+        "error",
+        "Could not connect to device at IP [object Promise]",
+        [TypeError: Cannot read properties of undefined (reading 'then')],
+      ],
+      [
+        "log",
+        "Device IP could not be found, setting device to unavailable",
+      ],
+      [
+        "setUnavailable was called",
+        "Device not discovered yet",
+      ],
+      [
+        "log",
+        "Create the flow for the speed mode capability",
+      ],
+      [
+        "log",
+        "Create the flow for the manual speed capability",
+      ],
+      [
+        "log",
+        "Create the flow for the operation mode capability",
+      ],
+      [
+        "log",
+        "Create the flow for the timer mode capability",
+      ],
+      [
+        "log",
+        "Requesting the current device state",
+      ],
+      [
+        "error",
+        "Failed to get device state, device unreachable",
+        {
+          "deviceId": undefined,
+          "deviceIp": undefined,
+        },
+      ],
+    ],
+    "registerCapabilityListener": {
+      "fan_speed": 1,
+      "manualSpeed": 1,
+      "onoff": 1,
+      "operationMode": 1,
+      "speedMode": 1,
+      "timerMode": 1,
+    },
+    "registerRunListener": {
+      "alarm_boost": [
+        [
+          [Function],
+        ],
+      ],
+      "alarm_filter": [
+        [
+          [Function],
+        ],
+      ],
+      "alarm_generic": [
+        [
+          [Function],
+        ],
+      ],
+      "manualSpeed_set": [
+        [
+          [Function],
+        ],
+      ],
+      "operation_mode": [
+        [
+          [Function],
+        ],
+      ],
+      "speed_mode": [
+        [
+          [Function],
+        ],
+      ],
+      "timer_mode": [
+        [
+          [Function],
+        ],
+      ],
+    },
+    "setCapabilityValue": {},
+    "settings": {
+      "devicepwd": "password",
+    },
+  },
+}
+`;
+
+exports[`ventoDevice should be able to handle errors 1`] = `
+{
+  "apiCalls": {
+    "capabilities": {
+      "alarm_boost": [Function],
+      "alarm_filter": [Function],
+      "alarm_generic": [Function],
+      "fan_speed": [Function],
+      "manualSpeed": [Function],
+      "manualSpeed_set": [Function],
+      "onoff": [Function],
+      "operationMode": [Function],
+      "operation_mode": [Function],
+      "speedMode": [Function],
+      "speed_mode": [Function],
+      "timerMode": [Function],
+      "timer_mode": [Function],
+    },
+    "getCapabilityValue": {},
+    "hasCapability": {
+      "alarm_boost": 1,
+      "alarm_connectivity": 1,
+      "alarm_filter": 1,
+      "alarm_generic": 1,
+      "fan_speed": 2,
+      "manualSpeed": 1,
+      "onoff": 1,
+      "operationMode": 1,
+      "speedMode": 1,
+      "timerMode": 1,
+    },
+    "log": [
+      [
+        "log",
+        "Locating device with id TEST1234",
+      ],
+      [
+        "error",
+        "Could not connect to device at IP 127.0.0.3",
+        [TypeError: Cannot read properties of undefined (reading 'then')],
+      ],
+      [
+        "error",
+        "Could not connect to device at IP [object Promise]",
+        [TypeError: Cannot read properties of undefined (reading 'then')],
+      ],
+      [
+        "log",
+        "Device IP could not be found, setting device to unavailable",
+      ],
+      [
+        "setUnavailable was called",
+        "Device not discovered yet",
+      ],
+      [
+        "log",
+        "Create the flow for the speed mode capability",
+      ],
+      [
+        "log",
+        "Create the flow for the manual speed capability",
+      ],
+      [
+        "log",
+        "Create the flow for the operation mode capability",
+      ],
+      [
+        "log",
+        "Create the flow for the timer mode capability",
+      ],
+      [
+        "log",
+        "Requesting the current device state",
+      ],
+      [
+        "error",
+        "Failed to get device state, device unreachable",
+        {
+          "deviceId": undefined,
+          "deviceIp": undefined,
+        },
+      ],
+    ],
+    "registerCapabilityListener": {
+      "fan_speed": 1,
+      "manualSpeed": 1,
+      "onoff": 1,
+      "operationMode": 1,
+      "speedMode": 1,
+      "timerMode": 1,
+    },
+    "registerRunListener": {
+      "alarm_boost": [
+        [
+          [Function],
+        ],
+      ],
+      "alarm_filter": [
+        [
+          [Function],
+        ],
+      ],
+      "alarm_generic": [
+        [
+          [Function],
+        ],
+      ],
+      "manualSpeed_set": [
+        [
+          [Function],
+        ],
+      ],
+      "operation_mode": [
+        [
+          [Function],
+        ],
+      ],
+      "speed_mode": [
+        [
+          [Function],
+        ],
+      ],
+      "timer_mode": [
+        [
+          [Function],
+        ],
+      ],
+    },
+    "setCapabilityValue": {},
+    "settings": {
+      "devicepwd": "password",
+    },
   },
   "error": undefined,
 }
@@ -2714,266 +496,20 @@ exports[`ventoDevice should be able to setup all capabilities 1`] = `
     "settings": {
       "devicepwd": "password",
     },
-    "store": {},
   },
 }
 `;
 
 exports[`ventoDevice should get and set values trough the api and modbus 1`] = `
 {
-  "modbusCalls": [
-    [
-      E {
-        "_dataEntries": [
-          {
-            "parameter": 1,
-            "value": undefined,
-          },
-          {
-            "parameter": 2,
-            "value": undefined,
-          },
-          {
-            "parameter": 68,
-            "value": undefined,
-          },
-          {
-            "parameter": 6,
-            "value": undefined,
-          },
-          {
-            "parameter": 102,
-            "value": undefined,
-          },
-          {
-            "parameter": 183,
-            "value": undefined,
-          },
-          {
-            "parameter": 136,
-            "value": undefined,
-          },
-          {
-            "parameter": 100,
-            "value": undefined,
-          },
-          {
-            "parameter": 37,
-            "value": undefined,
-          },
-          {
-            "parameter": 15,
-            "value": undefined,
-          },
-          {
-            "parameter": 25,
-            "value": undefined,
-          },
-          {
-            "parameter": 185,
-            "value": undefined,
-          },
-          {
-            "parameter": 74,
-            "value": undefined,
-          },
-          {
-            "parameter": 7,
-            "value": undefined,
-          },
-          {
-            "parameter": 131,
-            "value": undefined,
-          },
-          {
-            "parameter": 11,
-            "value": undefined,
-          },
-        ],
-        "_deviceId": "TEST1234",
-        "_functionType": 1,
-        "_password": "password",
-      },
-      "127.0.0.3",
-    ],
-    [
-      E {
-        "_dataEntries": [
-          {
-            "parameter": 1,
-            "value": undefined,
-          },
-          {
-            "parameter": 2,
-            "value": undefined,
-          },
-          {
-            "parameter": 68,
-            "value": undefined,
-          },
-          {
-            "parameter": 6,
-            "value": undefined,
-          },
-          {
-            "parameter": 102,
-            "value": undefined,
-          },
-          {
-            "parameter": 183,
-            "value": undefined,
-          },
-          {
-            "parameter": 136,
-            "value": undefined,
-          },
-          {
-            "parameter": 100,
-            "value": undefined,
-          },
-          {
-            "parameter": 37,
-            "value": undefined,
-          },
-          {
-            "parameter": 15,
-            "value": undefined,
-          },
-          {
-            "parameter": 25,
-            "value": undefined,
-          },
-          {
-            "parameter": 185,
-            "value": undefined,
-          },
-          {
-            "parameter": 74,
-            "value": undefined,
-          },
-          {
-            "parameter": 7,
-            "value": undefined,
-          },
-          {
-            "parameter": 131,
-            "value": undefined,
-          },
-          {
-            "parameter": 11,
-            "value": undefined,
-          },
-        ],
-        "_deviceId": "TEST1234",
-        "_functionType": 1,
-        "_password": "password",
-      },
-      "127.0.0.3",
-    ],
-    [
-      E {
-        "_dataEntries": [
-          {
-            "parameter": 1,
-            "value": Uint8Array [
-              1,
-            ],
-          },
-        ],
-        "_deviceId": "TEST1234",
-        "_functionType": 2,
-        "_password": "password",
-      },
-      "127.0.0.3",
-    ],
-    [
-      E {
-        "_dataEntries": [
-          {
-            "parameter": 68,
-            "value": Uint8Array [
-              0,
-            ],
-          },
-        ],
-        "_deviceId": "TEST1234",
-        "_functionType": 2,
-        "_password": "password",
-      },
-      "127.0.0.3",
-    ],
-    [
-      E {
-        "_dataEntries": [
-          {
-            "parameter": 68,
-            "value": Uint8Array [
-              0,
-            ],
-          },
-        ],
-        "_deviceId": "TEST1234",
-        "_functionType": 2,
-        "_password": "password",
-      },
-      "127.0.0.3",
-    ],
-    [
-      E {
-        "_dataEntries": [
-          {
-            "parameter": 183,
-            "value": Uint8Array [
-              0,
-            ],
-          },
-        ],
-        "_deviceId": "TEST1234",
-        "_functionType": 2,
-        "_password": "password",
-      },
-      "127.0.0.3",
-    ],
-    [
-      E {
-        "_dataEntries": [
-          {
-            "parameter": 2,
-            "value": Uint8Array [
-              0,
-            ],
-          },
-        ],
-        "_deviceId": "TEST1234",
-        "_functionType": 2,
-        "_password": "password",
-      },
-      "127.0.0.3",
-    ],
-    [
-      E {
-        "_dataEntries": [
-          {
-            "parameter": 7,
-            "value": Uint8Array [
-              0,
-            ],
-          },
-        ],
-        "_deviceId": "TEST1234",
-        "_functionType": 2,
-        "_password": "password",
-      },
-      "127.0.0.3",
-    ],
-  ],
+  "modbusCalls": [],
 }
 `;
 
 exports[`ventoDevice should init the api 1`] = `
 {
-  "deviceId": "TEST1234",
-  "deviceIp": "127.0.0.3",
-  "devicePass": "password",
+  "deviceId": undefined,
+  "deviceIp": undefined,
+  "devicePass": undefined,
 }
 `;

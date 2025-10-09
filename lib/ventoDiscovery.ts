@@ -8,7 +8,14 @@ export default class VentoDiscovery {
     this.modbusClient.timeout = 1500;
   }
 
-  public findDevices = async () => this.modbusClient.findDevices();
+  public findDevices = async () => {
+    const devices = await this.modbusClient.findDevices();
+    if (!devices.length) {
+      // devices.push({ id: '003800415646570D', ip: '192.168.86.32' });
+    }
+    // console.log(`Discovered ${devices.length} Vento devices`, devices);
+    return devices;
+  };
 
   public findById = async (id: string) =>
     this.findDevices().then((devices) =>
