@@ -1,6 +1,7 @@
 import Api from './api';
 import { statusResponse } from './__mockdata__/statusResponse';
 import { removeUndefinedDeep } from './testTools';
+import { CapabilityResponse } from './capabilityMapper';
 
 describe('Api set functions', () => {
   let api: Api;
@@ -22,8 +23,7 @@ describe('Api set functions', () => {
     );
   });
 
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  const getMockCalls = (response: any) => ({
+  const getMockCalls = (response: Partial<CapabilityResponse>) => ({
     calls: (api.modbusClient.send as jest.Mock).mock.calls,
     response: removeUndefinedDeep(response),
   });

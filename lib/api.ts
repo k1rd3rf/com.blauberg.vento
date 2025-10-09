@@ -5,7 +5,7 @@ import {
   DataEntry,
   Parameter,
 } from 'blaubergventojs';
-import { mapModbusResponse, ModbusResponse } from './mapModbusResponse';
+import capabilityMapper, { CapabilityResponse } from './capabilityMapper';
 
 export default class Api {
   modbusClient!: BlaubergVentoClient;
@@ -33,36 +33,40 @@ export default class Api {
     console.error(`[API - ${this.deviceId}]`, ...args);
   };
 
-  send = async (packet: Packet, ip: string): Promise<Partial<ModbusResponse>> =>
+  send = async (
+    packet: Packet,
+    ip: string
+  ): Promise<Partial<CapabilityResponse>> =>
     this.modbusClient.send(packet, ip).then((r) => {
       if (r != null) {
-        return mapModbusResponse(r);
+        return capabilityMapper(r);
       }
       return {};
     });
 
-  public getDeviceState = async () =>
-    this.send(
-      new Packet(this.deviceId, this.devicePass, FunctionType.READ, [
-        DataEntry.of(Parameter.ON_OFF),
-        DataEntry.of(Parameter.SPEED),
-        DataEntry.of(Parameter.MANUAL_SPEED),
-        DataEntry.of(Parameter.BOOT_MODE),
-        DataEntry.of(Parameter.BOOST_MODE_DEACTIVATION_DELAY),
-        DataEntry.of(Parameter.VENTILATION_MODE),
-        DataEntry.of(Parameter.FILTER_ALARM),
-        DataEntry.of(Parameter.FILTER_TIMER),
-        DataEntry.of(Parameter.CURRENT_HUMIDITY),
-        DataEntry.of(Parameter.HUMIDITY_SENSOR_ACTIVATION),
-        DataEntry.of(Parameter.HUMIDITY_THRESHOLD),
-        DataEntry.of(Parameter.UNIT_TYPE),
-        DataEntry.of(Parameter.FAN1RPM),
-        DataEntry.of(Parameter.TIMER_MODE),
-        DataEntry.of(Parameter.READ_ALARM),
-        DataEntry.of(11 as Parameter), // Active timer countdown
-      ]),
-      this.deviceIp
-    );
+  public getDeviceState: () => Promise<Partial<CapabilityResponse>> =
+    async () =>
+      this.send(
+        new Packet(this.deviceId, this.devicePass, FunctionType.READ, [
+          DataEntry.of(Parameter.ON_OFF),
+          DataEntry.of(Parameter.SPEED),
+          DataEntry.of(Parameter.MANUAL_SPEED),
+          DataEntry.of(Parameter.BOOT_MODE),
+          DataEntry.of(Parameter.BOOST_MODE_DEACTIVATION_DELAY),
+          DataEntry.of(Parameter.VENTILATION_MODE),
+          DataEntry.of(Parameter.FILTER_ALARM),
+          DataEntry.of(Parameter.FILTER_TIMER),
+          DataEntry.of(Parameter.CURRENT_HUMIDITY),
+          DataEntry.of(Parameter.HUMIDITY_SENSOR_ACTIVATION),
+          DataEntry.of(Parameter.HUMIDITY_THRESHOLD),
+          DataEntry.of(Parameter.UNIT_TYPE),
+          DataEntry.of(Parameter.FAN1RPM),
+          DataEntry.of(Parameter.TIMER_MODE),
+          DataEntry.of(Parameter.READ_ALARM),
+          DataEntry.of(11 as Parameter), // Active timer countdown
+        ]),
+        this.deviceIp
+      );
 
   private readonly setDeviceValue = async (param: Parameter, value: number) =>
     this.send(

@@ -21,13 +21,7 @@ exports[`Api set functions setBoostDelay sends value 0 1`] = `
     ],
   ],
   "response": {
-    "boost": {
-      "deactivationtimer": 0,
-    },
-    "humidity": {
-      "activated": 0,
-    },
-    "unittype": "Vento Expert",
+    "boost_delay": 0,
   },
 }
 `;
@@ -53,13 +47,7 @@ exports[`Api set functions setBoostDelay sends value 1 1`] = `
     ],
   ],
   "response": {
-    "boost": {
-      "deactivationtimer": 1,
-    },
-    "humidity": {
-      "activated": 0,
-    },
-    "unittype": "Vento Expert",
+    "boost_delay": 1,
   },
 }
 `;
@@ -85,13 +73,7 @@ exports[`Api set functions setBoostDelay sends value 2 1`] = `
     ],
   ],
   "response": {
-    "boost": {
-      "deactivationtimer": 2,
-    },
-    "humidity": {
-      "activated": 0,
-    },
-    "unittype": "Vento Expert",
+    "boost_delay": 2,
   },
 }
 `;
@@ -117,11 +99,7 @@ exports[`Api set functions setHumiditySensor sends value 0 1`] = `
     ],
   ],
   "response": {
-    "humidity": {
-      "activated": 0,
-      "sensoractivation": 0,
-    },
-    "unittype": "Vento Expert",
+    "humidity_sensor": false,
   },
 }
 `;
@@ -147,11 +125,7 @@ exports[`Api set functions setHumiditySensor sends value 1 1`] = `
     ],
   ],
   "response": {
-    "humidity": {
-      "activated": 0,
-      "sensoractivation": 1,
-    },
-    "unittype": "Vento Expert",
+    "humidity_sensor": true,
   },
 }
 `;
@@ -177,11 +151,7 @@ exports[`Api set functions setHumiditySensor sends value 2 1`] = `
     ],
   ],
   "response": {
-    "humidity": {
-      "activated": 0,
-      "sensoractivation": 2,
-    },
-    "unittype": "Vento Expert",
+    "humidity_sensor": false,
   },
 }
 `;
@@ -207,11 +177,7 @@ exports[`Api set functions setHumiditySensorThreshold sends value 0 1`] = `
     ],
   ],
   "response": {
-    "humidity": {
-      "activated": 0,
-      "threshold": 0,
-    },
-    "unittype": "Vento Expert",
+    "humidity_threshold": 0,
   },
 }
 `;
@@ -237,11 +203,7 @@ exports[`Api set functions setHumiditySensorThreshold sends value 1 1`] = `
     ],
   ],
   "response": {
-    "humidity": {
-      "activated": 0,
-      "threshold": 1,
-    },
-    "unittype": "Vento Expert",
+    "humidity_threshold": 1,
   },
 }
 `;
@@ -267,11 +229,7 @@ exports[`Api set functions setHumiditySensorThreshold sends value 2 1`] = `
     ],
   ],
   "response": {
-    "humidity": {
-      "activated": 0,
-      "threshold": 2,
-    },
-    "unittype": "Vento Expert",
+    "humidity_threshold": 2,
   },
 }
 `;
@@ -297,13 +255,8 @@ exports[`Api set functions setManualSpeed sends value 0 1`] = `
     ],
   ],
   "response": {
-    "humidity": {
-      "activated": 0,
-    },
-    "speed": {
-      "manualspeed": 0,
-    },
-    "unittype": "Vento Expert",
+    "fan_speed": 0,
+    "manualSpeed": 0,
   },
 }
 `;
@@ -329,13 +282,8 @@ exports[`Api set functions setManualSpeed sends value 1 1`] = `
     ],
   ],
   "response": {
-    "humidity": {
-      "activated": 0,
-    },
-    "speed": {
-      "manualspeed": 1,
-    },
-    "unittype": "Vento Expert",
+    "fan_speed": 0.00392156862745098,
+    "manualSpeed": 0.39215686274509803,
   },
 }
 `;
@@ -361,13 +309,8 @@ exports[`Api set functions setManualSpeed sends value 2 1`] = `
     ],
   ],
   "response": {
-    "humidity": {
-      "activated": 0,
-    },
-    "speed": {
-      "manualspeed": 2,
-    },
-    "unittype": "Vento Expert",
+    "fan_speed": 0.00784313725490196,
+    "manualSpeed": 0.7843137254901961,
   },
 }
 `;
@@ -393,11 +336,7 @@ exports[`Api set functions setOnOffStatus sends value 0 1`] = `
     ],
   ],
   "response": {
-    "humidity": {
-      "activated": 0,
-    },
-    "onoff": 0,
-    "unittype": "Vento Expert",
+    "onoff": false,
   },
 }
 `;
@@ -423,11 +362,7 @@ exports[`Api set functions setOnOffStatus sends value 1 1`] = `
     ],
   ],
   "response": {
-    "humidity": {
-      "activated": 0,
-    },
-    "onoff": 1,
-    "unittype": "Vento Expert",
+    "onoff": true,
   },
 }
 `;
@@ -453,11 +388,7 @@ exports[`Api set functions setOnOffStatus sends value 2 1`] = `
     ],
   ],
   "response": {
-    "humidity": {
-      "activated": 0,
-    },
-    "onoff": 2,
-    "unittype": "Vento Expert",
+    "onoff": false,
   },
 }
 `;
@@ -483,11 +414,7 @@ exports[`Api set functions setOperationMode sends value 0 1`] = `
     ],
   ],
   "response": {
-    "humidity": {
-      "activated": 0,
-    },
-    "operationmode": 0,
-    "unittype": "Vento Expert",
+    "operationMode": "0",
   },
 }
 `;
@@ -513,11 +440,7 @@ exports[`Api set functions setOperationMode sends value 1 1`] = `
     ],
   ],
   "response": {
-    "humidity": {
-      "activated": 0,
-    },
-    "operationmode": 1,
-    "unittype": "Vento Expert",
+    "operationMode": "1",
   },
 }
 `;
@@ -543,11 +466,7 @@ exports[`Api set functions setOperationMode sends value 2 1`] = `
     ],
   ],
   "response": {
-    "humidity": {
-      "activated": 0,
-    },
-    "operationmode": 2,
-    "unittype": "Vento Expert",
+    "operationMode": "2",
   },
 }
 `;
@@ -573,13 +492,7 @@ exports[`Api set functions setSpeedMode sends value 0 1`] = `
     ],
   ],
   "response": {
-    "humidity": {
-      "activated": 0,
-    },
-    "speed": {
-      "mode": 0,
-    },
-    "unittype": "Vento Expert",
+    "speedMode": "0",
   },
 }
 `;
@@ -605,13 +518,7 @@ exports[`Api set functions setSpeedMode sends value 1 1`] = `
     ],
   ],
   "response": {
-    "humidity": {
-      "activated": 0,
-    },
-    "speed": {
-      "mode": 1,
-    },
-    "unittype": "Vento Expert",
+    "speedMode": "1",
   },
 }
 `;
@@ -637,13 +544,7 @@ exports[`Api set functions setSpeedMode sends value 2 1`] = `
     ],
   ],
   "response": {
-    "humidity": {
-      "activated": 0,
-    },
-    "speed": {
-      "mode": 2,
-    },
-    "unittype": "Vento Expert",
+    "speedMode": "2",
   },
 }
 `;
@@ -669,13 +570,7 @@ exports[`Api set functions setTimerMode sends value 0 1`] = `
     ],
   ],
   "response": {
-    "humidity": {
-      "activated": 0,
-    },
-    "timers": {
-      "mode": 0,
-    },
-    "unittype": "Vento Expert",
+    "timerMode": "0",
   },
 }
 `;
@@ -701,13 +596,7 @@ exports[`Api set functions setTimerMode sends value 1 1`] = `
     ],
   ],
   "response": {
-    "humidity": {
-      "activated": 0,
-    },
-    "timers": {
-      "mode": 1,
-    },
-    "unittype": "Vento Expert",
+    "timerMode": "1",
   },
 }
 `;
@@ -733,13 +622,7 @@ exports[`Api set functions setTimerMode sends value 2 1`] = `
     ],
   ],
   "response": {
-    "humidity": {
-      "activated": 0,
-    },
-    "timers": {
-      "mode": 2,
-    },
-    "unittype": "Vento Expert",
+    "timerMode": "2",
   },
 }
 `;
@@ -823,43 +706,23 @@ exports[`Api set functions update gets response 1`] = `
     ],
   ],
   "response": {
-    "alarm": 0,
-    "boost": {
-      "deactivationtimer": 30,
-      "mode": 0,
-    },
-    "fan": {
-      "rpm": 236,
-    },
-    "filter": {
-      "alarm": 0,
-      "timer": {
-        "days": 31,
-        "hour": 20,
-        "min": 34,
-      },
-    },
-    "humidity": {
-      "activated": 0,
-      "current": 45,
-      "sensoractivation": 1,
-      "threshold": 70,
-    },
-    "onoff": 1,
-    "operationmode": 2,
-    "speed": {
-      "manualspeed": 179,
-      "mode": 1,
-    },
-    "timers": {
-      "countdown": {
-        "hour": 0,
-        "min": 0,
-        "sec": 0,
-      },
-      "mode": 0,
-    },
-    "unittype": "Vento Expert Duo A30-1 W V.2",
+    "alarm_boost": false,
+    "alarm_filter": false,
+    "alarm_generic": false,
+    "boost_delay": 30,
+    "fan_speed": 0.7019607843137254,
+    "filter_timer": "31:20:34",
+    "humidity_sensor": true,
+    "humidity_threshold": 70,
+    "manualSpeed": 70.19607843137254,
+    "measure_RPM": 236,
+    "measure_humidity": 45,
+    "onoff": true,
+    "operationMode": "2",
+    "speedMode": "1",
+    "timerMode": "0",
+    "timerMode_timer": "00:00:00",
+    "unit_type": "Vento Expert Duo A30-1 W V.2",
   },
 }
 `;
@@ -942,11 +805,6 @@ exports[`Api set functions update sends correct data 1`] = `
       "127.0.0.1",
     ],
   ],
-  "response": {
-    "humidity": {
-      "activated": 0,
-    },
-    "unittype": "Vento Expert",
-  },
+  "response": {},
 }
 `;

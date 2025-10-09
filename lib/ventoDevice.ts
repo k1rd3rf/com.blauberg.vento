@@ -2,6 +2,7 @@ import { Device } from 'homey';
 import Api from './api';
 import VentoDiscovery from './ventoDiscovery';
 import { Capabilities, ActionCards } from './capabilities';
+import { CapabilityResponse, CapabilityType } from './capabilityMapper';
 
 type DeviceSettings = {
   devicemodel?: string;
@@ -175,13 +176,13 @@ export default class VentoDevice extends Device {
 
   async updateDeviceState() {
     this.log('Requesting the current device state');
-    const state =
+    const state: Partial<CapabilityResponse> =
       (await this.api?.getDeviceState().catch(async (e) => {
         await this.setCapabilityValue(Capabilities.alarm_connectivity, true);
         await this.setUnavailable(e.message);
       })) || {};
 
-    if (state === undefined || Object.keys(state).length === 0) {
+    if (Object.keys(state).length === 0) {
       this.error('Failed to get device state, device unreachable', {
         deviceIp: this.api?.deviceIp,
         deviceId: this.api?.deviceId,
@@ -199,71 +200,43 @@ export default class VentoDevice extends Device {
       await this.setStoreValue('lastKnownIP', this.api?.deviceIp);
       await this.setSettings({ last_known_ip: this.api?.deviceIp });
     }
-    await this.setCapabilityValue(Capabilities.alarm_connectivity, false);
+
     await this.setAvailable();
 
-    const newBoost = state.boost?.mode !== 0;
+    const newBoost = state.alarm_boost;
     const oldBoost = this.getCapabilityValue(Capabilities.alarm_boost);
-    await this.setCapabilityValue(Capabilities.alarm_boost, newBoost);
     if (oldBoost !== null && oldBoost !== newBoost) {
-      await this.triggerBoostAlarm(newBoost);
+      await this.triggerBoostAlarm(newBoost as boolean);
     }
 
     const oldFilter = this.getCapabilityValue(Capabilities.alarm_filter);
-    const newFilter = state.filter?.alarm === 1;
-    await this.setCapabilityValue(Capabilities.alarm_filter, newFilter);
+    const newFilter = state.alarm_filter;
     if (oldFilter !== null && oldFilter !== newFilter) {
-      await this.triggerFilterAlarm(newFilter);
+      await this.triggerFilterAlarm(newFilter as boolean);
     }
 
     const oldGeneric = this.getCapabilityValue(Capabilities.alarm_generic);
-    const newGeneric = state.alarm !== 0;
-    await this.setCapabilityValue(Capabilities.alarm_generic, newGeneric);
+    const newGeneric = state.alarm_generic;
     if (oldGeneric !== null && oldGeneric !== newGeneric) {
-      await this.triggerGenericAlarm(newGeneric);
+      await this.triggerGenericAlarm(newGeneric as boolean);
     }
 
-    await this.setCapabilityValue(Capabilities.onoff, state.onoff === 1);
-    await this.setCapabilityValue(
-      Capabilities.filter_timer,
-      `${state.filter?.timer.days}:${state.filter?.timer.hour}:${state.filter?.timer.min}`
-    );
-    await this.setCapabilityValue(
-      Capabilities.measure_humidity,
-      state.humidity?.current
-    );
-    await this.setCapabilityValue(Capabilities.measure_RPM, state.fan?.rpm);
-    // Now handle the different modes
-    await this.setCapabilityValue(
-      Capabilities.speedMode,
-      state.speed?.mode?.toString()
-    );
-    await this.setCapabilityValue(
-      Capabilities.manualSpeed,
-      ((state.speed?.manualspeed ?? -1) / 255) * 100
-    );
-    await this.setCapabilityValue(
-      Capabilities.fan_speed,
-      (state.speed?.manualspeed ?? -1) / 255
-    );
-    await this.setCapabilityValue(
-      Capabilities.operationMode,
-      state.operationmode?.toString()
-    );
-    await this.setCapabilityValue(
-      Capabilities.timerMode,
-      state.timers?.mode?.toString()
-    );
-    await this.setCapabilityValue(
-      Capabilities.timerMode_timer,
-      `${state.timers?.countdown?.hour}:${state.timers?.countdown?.min}:${state.timers?.countdown?.sec}`
+    await Promise.all(
+      // @ts-expect-error: string is a CapabilityType
+      Object.keys(Capabilities).map(async (cap: CapabilityType) => {
+        const stateElement = state[cap];
+        if (stateElement !== undefined) {
+          return this.setCapabilityValue(cap, stateElement);
+        }
+        return undefined;
+      })
     );
 
     const settingsOnDevice: Partial<DeviceSettings> = {
-      devicemodel: state.unittype,
-      humidity_sensor: state.humidity?.sensoractivation === 1,
-      humidity_threshold: state.humidity?.threshold,
-      boost_delay: state.boost?.deactivationtimer,
+      devicemodel: state.unit_type as string,
+      humidity_sensor: state.humidity_sensor as boolean,
+      humidity_threshold: state.humidity_threshold as number,
+      boost_delay: state.boost_delay as number,
     };
     await this.setSettings(settingsOnDevice);
   }
