@@ -116,32 +116,6 @@
         ]
       },
       {
-        "id": "alarm_filter_false",
-        "title": {
-          "en": "The Filter alarm turned off"
-        },
-        "args": [
-          {
-            "type": "device",
-            "name": "device",
-            "filter": "driver_id=vento-expert"
-          }
-        ]
-      },
-      {
-        "id": "alarm_filter_true",
-        "title": {
-          "en": "The Filter alarm truned on"
-        },
-        "args": [
-          {
-            "type": "device",
-            "name": "device",
-            "filter": "driver_id=vento-expert"
-          }
-        ]
-      },
-      {
         "id": "alarm_boost_false",
         "title": {
           "en": "The Boost mode turned off"
@@ -157,7 +131,7 @@
       {
         "id": "alarm_boost_true",
         "title": {
-          "en": "The boost mode truned on"
+          "en": "The boost mode turned on"
         },
         "args": [
           {
@@ -168,20 +142,22 @@
         ]
       },
       {
-        "id": "alarm_generic_true",
+        "id": "alarm_filter_false",
         "title": {
-          "en": "The generic alarm turned on",
-          "nl": "Het algemene alarm gaat aan",
-          "de": "Der allgemeine Alarm ist angegangen",
-          "fr": "L'alarme générique s'est activée",
-          "it": "L'allarme generico è stato attivato",
-          "sv": "Det generiska larmet är aktiverat",
-          "no": "Den generelle alarmen er aktivert",
-          "es": "La alarma general se ha activado",
-          "da": "Den generiske alarm blev aktiveret",
-          "ru": "Общий сигнал включен",
-          "pl": "Alarm ogólny włączony",
-          "ko": "일반 알람 켜짐"
+          "en": "The Filter alarm turned off"
+        },
+        "args": [
+          {
+            "type": "device",
+            "name": "device",
+            "filter": "driver_id=vento-expert"
+          }
+        ]
+      },
+      {
+        "id": "alarm_filter_true",
+        "title": {
+          "en": "The Filter alarm turned on"
         },
         "args": [
           {
@@ -194,18 +170,42 @@
       {
         "id": "alarm_generic_false",
         "title": {
-          "en": "The generic alarm turned off",
-          "nl": "Het algemene alarm ging uit",
+          "da": "Den generiske alarm blev deaktiveret",
           "de": "Der allgemeine Alarm ist ausgegangen",
+          "en": "The generic alarm turned off",
+          "es": "La alarma general se ha desactivado",
           "fr": "L'alarme générique s'est désactivée",
           "it": "L'allarme generico è stato disattivato",
-          "sv": "Det generiska larmet är inaktiverat",
+          "ko": "일반 알람 꺼짐",
+          "nl": "Het algemene alarm ging uit",
           "no": "Den generelle alarmen er deaktivert",
-          "es": "La alarma general se ha desactivado",
-          "da": "Den generiske alarm blev deaktiveret",
-          "ru": "Общий сигнал выключен",
           "pl": "Alarm ogólny wyłączony",
-          "ko": "일반 알람 꺼짐"
+          "ru": "Общий сигнал выключен",
+          "sv": "Det generiska larmet är inaktiverat"
+        },
+        "args": [
+          {
+            "type": "device",
+            "name": "device",
+            "filter": "driver_id=vento-expert"
+          }
+        ]
+      },
+      {
+        "id": "alarm_generic_true",
+        "title": {
+          "da": "Den generiske alarm blev aktiveret",
+          "de": "Der allgemeine Alarm ist angegangen",
+          "en": "The generic alarm turned on",
+          "es": "La alarma general se ha activado",
+          "fr": "L'alarme générique s'est activée",
+          "it": "L'allarme generico è stato attivato",
+          "ko": "일반 알람 켜짐",
+          "nl": "Het algemene alarm gaat aan",
+          "no": "Den generelle alarmen er aktivert",
+          "pl": "Alarm ogólny włączony",
+          "ru": "Общий сигнал включен",
+          "sv": "Det generiska larmet är aktiverat"
         },
         "args": [
           {
@@ -223,14 +223,14 @@
         },
         "tokens": [
           {
+            "example": {
+              "en": "Speed"
+            },
             "name": "manualSpeed",
-            "type": "number",
             "title": {
               "en": "Speed"
             },
-            "example": {
-              "en": "Speed"
-            }
+            "type": "number"
           }
         ],
         "args": [
@@ -248,14 +248,14 @@
         },
         "tokens": [
           {
+            "example": {
+              "en": "Fan speed in RPM"
+            },
             "name": "manualSpeemeasure_RPM",
-            "type": "number",
             "title": {
               "en": "Fan RPM"
             },
-            "example": {
-              "en": "Fan speed in RPM"
-            }
+            "type": "number"
           }
         ],
         "args": [
@@ -290,20 +290,9 @@
         ]
       },
       {
-        "id": "alarm_generic",
+        "id": "alarm_boost",
         "title": {
-          "en": "The generic alarm is !{{on|off}}",
-          "nl": "Het algemene alarm is !{{aan|uit}}",
-          "de": "Der allgemeine Alarm ist !{{an|aus}}",
-          "fr": "L'alarme générique est !{{en marche|arrêtée}}",
-          "it": "L'allarme generico è !{{acceso|spento}}",
-          "sv": "Det generiska larmet är !{{på|av}}",
-          "no": "Den generelle alarmen er !{{på|av}}",
-          "es": "La alarma general está !{{activada|desactivada}}",
-          "da": "Den generiske alarm er !{{tændt|slukket}}",
-          "ru": "Общий сигнал !{{вкл.|выкл.}}",
-          "pl": "Alarm ogólny !{{włączony|wyłączony}}",
-          "ko": "일반 알람 !{{켬|끔}}"
+          "en": "The boost alarm is !{{on|off}}"
         },
         "args": [
           {
@@ -327,9 +316,20 @@
         ]
       },
       {
-        "id": "alarm_boost",
+        "id": "alarm_generic",
         "title": {
-          "en": "The boost alarm is !{{on|off}}"
+          "da": "Den generiske alarm er !{{tændt|slukket}}",
+          "de": "Der allgemeine Alarm ist !{{an|aus}}",
+          "en": "The generic alarm is !{{on|off}}",
+          "es": "La alarma general está !{{activada|desactivada}}",
+          "fr": "L'alarme générique est !{{en marche|arrêtée}}",
+          "it": "L'allarme generico è !{{acceso|spento}}",
+          "ko": "일반 알람 !{{켬|끔}}",
+          "nl": "Het algemene alarm is !{{aan|uit}}",
+          "no": "Den generelle alarmen er !{{på|av}}",
+          "pl": "Alarm ogólny !{{włączony|wyłączony}}",
+          "ru": "Общий сигнал !{{вкл.|выкл.}}",
+          "sv": "Det generiska larmet är !{{på|av}}"
         },
         "args": [
           {
@@ -398,52 +398,42 @@
         ]
       },
       {
+        "args": [
+          {
+            "type": "device",
+            "name": "device",
+            "filter": "driver_id=vento-expert"
+          },
+          {
+            "label": "%",
+            "labelDecimals": 0,
+            "labelMultiplier": 1,
+            "max": 100,
+            "min": 0,
+            "name": "speed",
+            "placeholder": {
+              "en": "Speed"
+            },
+            "step": 1,
+            "title": {
+              "en": "Speed"
+            },
+            "type": "range"
+          }
+        ],
         "deprecated": true,
+        "hint": {
+          "en": "Use the slider to set the manual speed mode to a certain speed"
+        },
         "id": "manualSpeed_set",
         "title": {
           "en": "Set the manual speed"
         },
         "titleFormatted": {
           "en": "Sets the manualspeed of the device to [[speed]] "
-        },
-        "hint": {
-          "en": "Use the slider to set the manual speed mode to a certain speed"
-        },
-        "args": [
-          {
-            "type": "device",
-            "name": "device",
-            "filter": "driver_id=vento-expert"
-          },
-          {
-            "type": "range",
-            "name": "speed",
-            "title": {
-              "en": "Speed"
-            },
-            "placeholder": {
-              "en": "Speed"
-            },
-            "min": 0,
-            "max": 100,
-            "step": 1,
-            "label": "%",
-            "labelMultiplier": 1,
-            "labelDecimals": 0
-          }
-        ]
+        }
       },
       {
-        "id": "timer_mode",
-        "title": {
-          "en": "Set the timer mode"
-        },
-        "titleFormatted": {
-          "en": "Sets the timer mode of the device to [[timerMode]] "
-        },
-        "hint": {
-          "en": "Sets the device to the desired timer mode"
-        },
         "args": [
           {
             "type": "device",
@@ -451,45 +441,45 @@
             "filter": "driver_id=vento-expert"
           },
           {
-            "type": "dropdown",
-            "name": "timerMode",
+            "name": "operationMode",
             "title": {
-              "en": "The desired timer mode"
+              "en": "The desired operation mode"
             },
+            "type": "dropdown",
             "values": [
               {
                 "id": "0",
                 "title": {
-                  "en": "Off"
+                  "en": "Ventilation"
                 }
               },
               {
                 "id": "1",
                 "title": {
-                  "en": "Night mode"
+                  "en": "Regeneration"
                 }
               },
               {
                 "id": "2",
                 "title": {
-                  "en": "Party mode"
+                  "en": "Supply"
                 }
               }
             ]
           }
-        ]
-      },
-      {
-        "id": "speed_mode",
+        ],
+        "hint": {
+          "en": "Sets the device to the desired operation mode"
+        },
+        "id": "operation_mode",
         "title": {
-          "en": "Set the speed mode"
+          "en": "Set the operation mode"
         },
         "titleFormatted": {
-          "en": "Sets the speed mode of the device to [[speedMode]] "
-        },
-        "hint": {
-          "en": "Sets the device to the desired speed mode"
-        },
+          "en": "Sets the operation mode of the device to [[operationMode]] "
+        }
+      },
+      {
         "args": [
           {
             "type": "device",
@@ -497,11 +487,11 @@
             "filter": "driver_id=vento-expert"
           },
           {
-            "type": "dropdown",
             "name": "speedMode",
             "title": {
               "en": "The desired speed mode"
             },
+            "type": "dropdown",
             "values": [
               {
                 "id": "0",
@@ -535,19 +525,19 @@
               }
             ]
           }
-        ]
-      },
-      {
-        "id": "operation_mode",
+        ],
+        "hint": {
+          "en": "Sets the device to the desired speed mode"
+        },
+        "id": "speed_mode",
         "title": {
-          "en": "Set the operation mode"
+          "en": "Set the speed mode"
         },
         "titleFormatted": {
-          "en": "Sets the operation mode of the device to [[operationMode]] "
-        },
-        "hint": {
-          "en": "Sets the device to the desired operation mode"
-        },
+          "en": "Sets the speed mode of the device to [[speedMode]] "
+        }
+      },
+      {
         "args": [
           {
             "type": "device",
@@ -555,33 +545,43 @@
             "filter": "driver_id=vento-expert"
           },
           {
-            "type": "dropdown",
-            "name": "operationMode",
+            "name": "timerMode",
             "title": {
-              "en": "The desired operation mode"
+              "en": "The desired timer mode"
             },
+            "type": "dropdown",
             "values": [
               {
                 "id": "0",
                 "title": {
-                  "en": "Ventilation"
+                  "en": "Off"
                 }
               },
               {
                 "id": "1",
                 "title": {
-                  "en": "Regeneration"
+                  "en": "Night mode"
                 }
               },
               {
                 "id": "2",
                 "title": {
-                  "en": "Supply"
+                  "en": "Party mode"
                 }
               }
             ]
           }
-        ]
+        ],
+        "hint": {
+          "en": "Sets the device to the desired timer mode"
+        },
+        "id": "timer_mode",
+        "title": {
+          "en": "Set the timer mode"
+        },
+        "titleFormatted": {
+          "en": "Sets the timer mode of the device to [[timerMode]] "
+        }
       }
     ]
   },

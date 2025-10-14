@@ -1,8 +1,6 @@
 {
   "class": "fan",
-  "connectivity": [
-    "lan"
-  ],
+  "connectivity": ["lan"],
   "images": {
     "small": "{{driverAssetsPath}}/images/small.png",
     "large": "{{driverAssetsPath}}/images/large.png",
@@ -27,7 +25,5 @@
       "template": "add_devices"
     }
   ],
-  "platforms": [
-    "local"
-  ]
+  "platforms": ["local"]
 }

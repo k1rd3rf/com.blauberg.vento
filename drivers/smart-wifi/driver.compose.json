@@ -9,9 +9,7 @@
     "measure_RPM"
   ],
   "energy": {
-    "batteries": [
-      "INTERNAL"
-    ]
+    "batteries": ["INTERNAL"]
   },
   "name": {
     "en": "Smart Wi-Fi"
