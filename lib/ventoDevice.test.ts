@@ -1,7 +1,6 @@
 import VentoDevice from '../drivers/vento-expert/device';
 import { Device } from './__mocks__/homey';
 import VentoDriver from '../drivers/vento-expert/driver';
-import { sendMock } from './__mocks__/blaubergventojs';
 import { statusResponse, offResponse } from './__mockdata__/statusResponse';
 
 async function getDevice() {
