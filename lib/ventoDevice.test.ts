@@ -1,61 +1,84 @@
-import VentoDevice from './ventoDevice';
+// eslint-disable-next-line max-classes-per-file
 import { Device } from './__mocks__/homey';
-import { statusResponse, offResponse } from './__mockdata__/statusResponse';
-import { sendMock } from './__mocks__/blaubergventojs';
+import { offResponse, statusResponse } from './__mockdata__/statusResponse';
+import VentoDevice from './ventoDevice';
+import { mapModbusResponse } from './mapModbusResponse';
+
+const mockGetDeviceState = jest.fn(async () =>
+  mapModbusResponse(statusResponse)
+);
+const mockSend = jest.fn();
+jest.mock(
+  './api',
+  () =>
+    class ApiMock extends jest.requireActual('./api').default {
+      send = mockSend;
+      getDeviceState = mockGetDeviceState;
+    }
+);
+
+jest.mock(
+  './ventoDiscovery',
+  () =>
+    class VentoDiscoveryMock {
+      findById = jest.fn(async (id: string) => ({ id, ip: '127.0.0.3' }));
+    }
+);
 
 describe('ventoDevice', () => {
   afterEach(() => {
-    jest.resetAllMocks();
     jest.clearAllMocks();
-  });
-
-  beforeEach(() => {
-    sendMock.mockResolvedValue(statusResponse);
+    jest.resetModules();
+    mockGetDeviceState.mockClear();
+    mockSend.mockClear();
   });
 
   it('should be able to get status from modbus on init', async () => {
+    mockGetDeviceState.mockResolvedValue(mapModbusResponse(statusResponse));
     const device = new VentoDevice();
     await device.onInit();
 
     expect({
       apiCalls: (device as unknown as Device).getMockCalls(),
+      getDeviceState: mockGetDeviceState.mock.calls,
+      send: mockSend.mock.calls,
     }).toMatchSnapshot();
   });
   it('should be able to get status when device is marked as off', async () => {
-    sendMock.mockResolvedValue(offResponse);
+    mockGetDeviceState.mockResolvedValue(mapModbusResponse(offResponse));
     const device = new VentoDevice();
     await device.onInit();
 
     expect({
       apiCalls: (device as unknown as Device).getMockCalls(),
+      getDeviceState: mockGetDeviceState.mock.calls,
+      send: mockSend.mock.calls,
     }).toMatchSnapshot();
   });
   it('should be able to handle errors', async () => {
-    sendMock.mockRejectedValue(new Error('test error'));
-    const device = new VentoDevice();
-    const error = await device.onInit().catch((e) => e);
-
-    expect({
-      apiCalls: (device as unknown as Device).getMockCalls(),
-      error,
-    }).toMatchSnapshot();
-  });
-
-  it('should get and set values trough the api and modbus', async () => {
+    mockGetDeviceState.mockRejectedValue(new Error('test error'));
     const device = new VentoDevice();
     await device.onInit();
 
     expect({
-      modbusCalls: (sendMock as jest.Mock).mock.calls,
+      apiCalls: (device as unknown as Device).getMockCalls(),
+      getDeviceState: mockGetDeviceState.mock.calls,
+      send: mockSend.mock.calls,
     }).toMatchSnapshot();
   });
 
   it('should init the api', async () => {
+    mockGetDeviceState.mockResolvedValue(mapModbusResponse(statusResponse));
     const device = new VentoDevice();
     await device.onInit();
 
     const { deviceId, devicePass, deviceIp } = device.api || {};
-    expect({ devicePass, deviceIp, deviceId }).toMatchSnapshot();
+
+    expect({
+      devicePass,
+      deviceIp,
+      deviceId,
+    }).toMatchSnapshot();
   });
 
   it('should be able to setup all capabilities', async () => {

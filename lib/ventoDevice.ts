@@ -147,7 +147,6 @@ export default class VentoDevice extends Device {
     const ips: string[] = [deviceIp, settingsIp, lastKnownIP].filter(
       (i) => !!i
     );
-
     let api: Api | undefined;
     for (const checkIp of ips) {
       try {
@@ -159,6 +158,7 @@ export default class VentoDevice extends Device {
           api = testApi;
           break;
         }
+        throw new Error(`No values received for ${checkIp}`);
       } catch (e) {
         this.error(`Could not connect to device at IP ${checkIp}`, e);
       }
