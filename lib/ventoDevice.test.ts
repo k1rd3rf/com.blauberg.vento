@@ -28,9 +28,6 @@ jest.mock(
 describe('ventoDevice', () => {
   afterEach(() => {
     jest.clearAllMocks();
-    jest.resetModules();
-    mockGetDeviceState.mockClear();
-    mockSend.mockClear();
   });
 
   it('should be able to get status from modbus on init', async () => {
@@ -82,6 +79,7 @@ describe('ventoDevice', () => {
   });
 
   it('should be able to setup all capabilities', async () => {
+    mockGetDeviceState.mockResolvedValue(mapModbusResponse(statusResponse));
     const device = new VentoDevice();
     await device.setupCapabilities();
 

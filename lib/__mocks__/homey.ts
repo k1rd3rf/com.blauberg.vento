@@ -128,8 +128,8 @@ export class Device {
     return true;
   }
 
-  getMockCalls = () => {
-    const calls = removeUndefinedDeep({
+  getMockCalls = () =>
+    removeUndefinedDeep({
       setCapabilityValue: callsWithArgs(this.setCapabilityValueMock.mock.calls),
       hasCapability: callCount(this.hasCapabilityMock.mock.calls),
       registerCapabilityListener: callCount(
@@ -145,19 +145,6 @@ export class Device {
       capabilities: this.capabilities,
       store: this.store,
     });
-    [
-      this.setCapabilityValueMock,
-      this.hasCapabilityMock,
-      this.registerCapabilityListenerMock,
-      this.registerRunListenerMock,
-      this.getCapabilityValueMock,
-      this.logMock,
-      this.triggerMock,
-    ].forEach((m) => m.mockClear());
-
-    this.settings = {};
-    return calls;
-  };
 }
 
 export class Driver {

@@ -108,6 +108,10 @@ exports[`ventoDevice should be able to get status from modbus on init 1`] = `
         },
       ],
       [
+        "log",
+        "Device IP changed from [object Promise] to 127.0.0.3",
+      ],
+      [
         "setAvailable",
         undefined,
       ],
@@ -116,12 +120,705 @@ exports[`ventoDevice should be able to get status from modbus on init 1`] = `
         "Triggering alarm_boost_false",
       ],
       [
+        "triggered",
+        "alarm_boost_false",
+        [
+          VentoDevice {
+            "api": ApiMock {
+              "deviceId": "TEST1234",
+              "deviceIp": "127.0.0.3",
+              "devicePass": "password",
+              "error": [Function],
+              "getDeviceState": [MockFunction] {
+                "calls": [
+                  [],
+                  [],
+                ],
+                "results": [
+                  {
+                    "type": "return",
+                    "value": Promise {},
+                  },
+                  {
+                    "type": "return",
+                    "value": Promise {},
+                  },
+                ],
+              },
+              "log": [Function],
+              "modbusClient": BlaubergVentoClient {
+                "findDevices": [MockFunction],
+                "send": [MockFunction],
+                "timeout": 1500,
+              },
+              "send": [MockFunction] {
+                "calls": [
+                  [
+                    E {
+                      "_dataEntries": [
+                        {
+                          "parameter": 1,
+                          "value": Uint8Array [
+                            1,
+                          ],
+                        },
+                      ],
+                      "_deviceId": "TEST1234",
+                      "_functionType": 2,
+                      "_password": "password",
+                    },
+                    "127.0.0.3",
+                  ],
+                  [
+                    E {
+                      "_dataEntries": [
+                        {
+                          "parameter": 2,
+                          "value": Uint8Array [
+                            0,
+                          ],
+                        },
+                      ],
+                      "_deviceId": "TEST1234",
+                      "_functionType": 2,
+                      "_password": "password",
+                    },
+                    "127.0.0.3",
+                  ],
+                  [
+                    E {
+                      "_dataEntries": [
+                        {
+                          "parameter": 68,
+                          "value": Uint8Array [
+                            0,
+                          ],
+                        },
+                      ],
+                      "_deviceId": "TEST1234",
+                      "_functionType": 2,
+                      "_password": "password",
+                    },
+                    "127.0.0.3",
+                  ],
+                  [
+                    E {
+                      "_dataEntries": [
+                        {
+                          "parameter": 68,
+                          "value": Uint8Array [
+                            0,
+                          ],
+                        },
+                      ],
+                      "_deviceId": "TEST1234",
+                      "_functionType": 2,
+                      "_password": "password",
+                    },
+                    "127.0.0.3",
+                  ],
+                  [
+                    E {
+                      "_dataEntries": [
+                        {
+                          "parameter": 183,
+                          "value": Uint8Array [
+                            0,
+                          ],
+                        },
+                      ],
+                      "_deviceId": "TEST1234",
+                      "_functionType": 2,
+                      "_password": "password",
+                    },
+                    "127.0.0.3",
+                  ],
+                  [
+                    E {
+                      "_dataEntries": [
+                        {
+                          "parameter": 7,
+                          "value": Uint8Array [
+                            0,
+                          ],
+                        },
+                      ],
+                      "_deviceId": "TEST1234",
+                      "_functionType": 2,
+                      "_password": "password",
+                    },
+                    "127.0.0.3",
+                  ],
+                ],
+                "results": [
+                  {
+                    "type": "return",
+                    "value": undefined,
+                  },
+                  {
+                    "type": "return",
+                    "value": undefined,
+                  },
+                  {
+                    "type": "return",
+                    "value": undefined,
+                  },
+                  {
+                    "type": "return",
+                    "value": undefined,
+                  },
+                  {
+                    "type": "return",
+                    "value": undefined,
+                  },
+                  {
+                    "type": "return",
+                    "value": undefined,
+                  },
+                ],
+              },
+              "setBoostDelay": [Function],
+              "setDeviceValue": [Function],
+              "setHumiditySensor": [Function],
+              "setHumiditySensorThreshold": [Function],
+              "setManualSpeed": [Function],
+              "setOnOffStatus": [Function],
+              "setOperationMode": [Function],
+              "setSpeedMode": [Function],
+              "setTimerMode": [Function],
+            },
+            "discoveryClient": VentoDiscoveryMock {
+              "findById": [MockFunction] {
+                "calls": [
+                  [
+                    "TEST1234",
+                  ],
+                ],
+                "results": [
+                  {
+                    "type": "return",
+                    "value": Promise {},
+                  },
+                ],
+              },
+            },
+            "error": [Function],
+            "getMockCalls": [Function],
+            "homey": {
+              "flow": {
+                "getActionCard": [Function],
+                "getConditionCard": [Function],
+                "getDeviceTriggerCard": [Function],
+              },
+              "setInterval": [MockFunction] {
+                "calls": [
+                  [
+                    [Function],
+                    15000,
+                  ],
+                ],
+                "results": [
+                  {
+                    "type": "return",
+                    "value": undefined,
+                  },
+                ],
+              },
+            },
+            "id": "TEST1234",
+            "log": [Function],
+            "onCapabilityFanSpeed": [Function],
+            "onCapabilityManualSpeed": [Function],
+            "onCapabilityOnOff": [Function],
+            "onCapabilityOperationMode": [Function],
+            "onCapabilitySpeedMode": [Function],
+            "onCapabilityTimerMode": [Function],
+            "pollInterval": undefined,
+            "settings": {
+              "boost_delay": 30,
+              "devicemodel": "Vento Expert Duo A30-1 W V.2",
+              "devicepwd": "password",
+              "humidity_sensor": true,
+              "humidity_threshold": 70,
+              "last_known_ip": "127.0.0.3",
+            },
+            "store": {
+              "lastKnownIP": "127.0.0.3",
+            },
+          },
+          {},
+          {},
+        ],
+      ],
+      [
         "log",
         "Triggering alarm_filter_false",
       ],
       [
+        "triggered",
+        "alarm_filter_false",
+        [
+          VentoDevice {
+            "api": ApiMock {
+              "deviceId": "TEST1234",
+              "deviceIp": "127.0.0.3",
+              "devicePass": "password",
+              "error": [Function],
+              "getDeviceState": [MockFunction] {
+                "calls": [
+                  [],
+                  [],
+                ],
+                "results": [
+                  {
+                    "type": "return",
+                    "value": Promise {},
+                  },
+                  {
+                    "type": "return",
+                    "value": Promise {},
+                  },
+                ],
+              },
+              "log": [Function],
+              "modbusClient": BlaubergVentoClient {
+                "findDevices": [MockFunction],
+                "send": [MockFunction],
+                "timeout": 1500,
+              },
+              "send": [MockFunction] {
+                "calls": [
+                  [
+                    E {
+                      "_dataEntries": [
+                        {
+                          "parameter": 1,
+                          "value": Uint8Array [
+                            1,
+                          ],
+                        },
+                      ],
+                      "_deviceId": "TEST1234",
+                      "_functionType": 2,
+                      "_password": "password",
+                    },
+                    "127.0.0.3",
+                  ],
+                  [
+                    E {
+                      "_dataEntries": [
+                        {
+                          "parameter": 2,
+                          "value": Uint8Array [
+                            0,
+                          ],
+                        },
+                      ],
+                      "_deviceId": "TEST1234",
+                      "_functionType": 2,
+                      "_password": "password",
+                    },
+                    "127.0.0.3",
+                  ],
+                  [
+                    E {
+                      "_dataEntries": [
+                        {
+                          "parameter": 68,
+                          "value": Uint8Array [
+                            0,
+                          ],
+                        },
+                      ],
+                      "_deviceId": "TEST1234",
+                      "_functionType": 2,
+                      "_password": "password",
+                    },
+                    "127.0.0.3",
+                  ],
+                  [
+                    E {
+                      "_dataEntries": [
+                        {
+                          "parameter": 68,
+                          "value": Uint8Array [
+                            0,
+                          ],
+                        },
+                      ],
+                      "_deviceId": "TEST1234",
+                      "_functionType": 2,
+                      "_password": "password",
+                    },
+                    "127.0.0.3",
+                  ],
+                  [
+                    E {
+                      "_dataEntries": [
+                        {
+                          "parameter": 183,
+                          "value": Uint8Array [
+                            0,
+                          ],
+                        },
+                      ],
+                      "_deviceId": "TEST1234",
+                      "_functionType": 2,
+                      "_password": "password",
+                    },
+                    "127.0.0.3",
+                  ],
+                  [
+                    E {
+                      "_dataEntries": [
+                        {
+                          "parameter": 7,
+                          "value": Uint8Array [
+                            0,
+                          ],
+                        },
+                      ],
+                      "_deviceId": "TEST1234",
+                      "_functionType": 2,
+                      "_password": "password",
+                    },
+                    "127.0.0.3",
+                  ],
+                ],
+                "results": [
+                  {
+                    "type": "return",
+                    "value": undefined,
+                  },
+                  {
+                    "type": "return",
+                    "value": undefined,
+                  },
+                  {
+                    "type": "return",
+                    "value": undefined,
+                  },
+                  {
+                    "type": "return",
+                    "value": undefined,
+                  },
+                  {
+                    "type": "return",
+                    "value": undefined,
+                  },
+                  {
+                    "type": "return",
+                    "value": undefined,
+                  },
+                ],
+              },
+              "setBoostDelay": [Function],
+              "setDeviceValue": [Function],
+              "setHumiditySensor": [Function],
+              "setHumiditySensorThreshold": [Function],
+              "setManualSpeed": [Function],
+              "setOnOffStatus": [Function],
+              "setOperationMode": [Function],
+              "setSpeedMode": [Function],
+              "setTimerMode": [Function],
+            },
+            "discoveryClient": VentoDiscoveryMock {
+              "findById": [MockFunction] {
+                "calls": [
+                  [
+                    "TEST1234",
+                  ],
+                ],
+                "results": [
+                  {
+                    "type": "return",
+                    "value": Promise {},
+                  },
+                ],
+              },
+            },
+            "error": [Function],
+            "getMockCalls": [Function],
+            "homey": {
+              "flow": {
+                "getActionCard": [Function],
+                "getConditionCard": [Function],
+                "getDeviceTriggerCard": [Function],
+              },
+              "setInterval": [MockFunction] {
+                "calls": [
+                  [
+                    [Function],
+                    15000,
+                  ],
+                ],
+                "results": [
+                  {
+                    "type": "return",
+                    "value": undefined,
+                  },
+                ],
+              },
+            },
+            "id": "TEST1234",
+            "log": [Function],
+            "onCapabilityFanSpeed": [Function],
+            "onCapabilityManualSpeed": [Function],
+            "onCapabilityOnOff": [Function],
+            "onCapabilityOperationMode": [Function],
+            "onCapabilitySpeedMode": [Function],
+            "onCapabilityTimerMode": [Function],
+            "pollInterval": undefined,
+            "settings": {
+              "boost_delay": 30,
+              "devicemodel": "Vento Expert Duo A30-1 W V.2",
+              "devicepwd": "password",
+              "humidity_sensor": true,
+              "humidity_threshold": 70,
+              "last_known_ip": "127.0.0.3",
+            },
+            "store": {
+              "lastKnownIP": "127.0.0.3",
+            },
+          },
+          {},
+          {},
+        ],
+      ],
+      [
         "log",
         "Triggering alarm_generic_false",
+      ],
+      [
+        "triggered",
+        "alarm_generic_false",
+        [
+          VentoDevice {
+            "api": ApiMock {
+              "deviceId": "TEST1234",
+              "deviceIp": "127.0.0.3",
+              "devicePass": "password",
+              "error": [Function],
+              "getDeviceState": [MockFunction] {
+                "calls": [
+                  [],
+                  [],
+                ],
+                "results": [
+                  {
+                    "type": "return",
+                    "value": Promise {},
+                  },
+                  {
+                    "type": "return",
+                    "value": Promise {},
+                  },
+                ],
+              },
+              "log": [Function],
+              "modbusClient": BlaubergVentoClient {
+                "findDevices": [MockFunction],
+                "send": [MockFunction],
+                "timeout": 1500,
+              },
+              "send": [MockFunction] {
+                "calls": [
+                  [
+                    E {
+                      "_dataEntries": [
+                        {
+                          "parameter": 1,
+                          "value": Uint8Array [
+                            1,
+                          ],
+                        },
+                      ],
+                      "_deviceId": "TEST1234",
+                      "_functionType": 2,
+                      "_password": "password",
+                    },
+                    "127.0.0.3",
+                  ],
+                  [
+                    E {
+                      "_dataEntries": [
+                        {
+                          "parameter": 2,
+                          "value": Uint8Array [
+                            0,
+                          ],
+                        },
+                      ],
+                      "_deviceId": "TEST1234",
+                      "_functionType": 2,
+                      "_password": "password",
+                    },
+                    "127.0.0.3",
+                  ],
+                  [
+                    E {
+                      "_dataEntries": [
+                        {
+                          "parameter": 68,
+                          "value": Uint8Array [
+                            0,
+                          ],
+                        },
+                      ],
+                      "_deviceId": "TEST1234",
+                      "_functionType": 2,
+                      "_password": "password",
+                    },
+                    "127.0.0.3",
+                  ],
+                  [
+                    E {
+                      "_dataEntries": [
+                        {
+                          "parameter": 68,
+                          "value": Uint8Array [
+                            0,
+                          ],
+                        },
+                      ],
+                      "_deviceId": "TEST1234",
+                      "_functionType": 2,
+                      "_password": "password",
+                    },
+                    "127.0.0.3",
+                  ],
+                  [
+                    E {
+                      "_dataEntries": [
+                        {
+                          "parameter": 183,
+                          "value": Uint8Array [
+                            0,
+                          ],
+                        },
+                      ],
+                      "_deviceId": "TEST1234",
+                      "_functionType": 2,
+                      "_password": "password",
+                    },
+                    "127.0.0.3",
+                  ],
+                  [
+                    E {
+                      "_dataEntries": [
+                        {
+                          "parameter": 7,
+                          "value": Uint8Array [
+                            0,
+                          ],
+                        },
+                      ],
+                      "_deviceId": "TEST1234",
+                      "_functionType": 2,
+                      "_password": "password",
+                    },
+                    "127.0.0.3",
+                  ],
+                ],
+                "results": [
+                  {
+                    "type": "return",
+                    "value": undefined,
+                  },
+                  {
+                    "type": "return",
+                    "value": undefined,
+                  },
+                  {
+                    "type": "return",
+                    "value": undefined,
+                  },
+                  {
+                    "type": "return",
+                    "value": undefined,
+                  },
+                  {
+                    "type": "return",
+                    "value": undefined,
+                  },
+                  {
+                    "type": "return",
+                    "value": undefined,
+                  },
+                ],
+              },
+              "setBoostDelay": [Function],
+              "setDeviceValue": [Function],
+              "setHumiditySensor": [Function],
+              "setHumiditySensorThreshold": [Function],
+              "setManualSpeed": [Function],
+              "setOnOffStatus": [Function],
+              "setOperationMode": [Function],
+              "setSpeedMode": [Function],
+              "setTimerMode": [Function],
+            },
+            "discoveryClient": VentoDiscoveryMock {
+              "findById": [MockFunction] {
+                "calls": [
+                  [
+                    "TEST1234",
+                  ],
+                ],
+                "results": [
+                  {
+                    "type": "return",
+                    "value": Promise {},
+                  },
+                ],
+              },
+            },
+            "error": [Function],
+            "getMockCalls": [Function],
+            "homey": {
+              "flow": {
+                "getActionCard": [Function],
+                "getConditionCard": [Function],
+                "getDeviceTriggerCard": [Function],
+              },
+              "setInterval": [MockFunction] {
+                "calls": [
+                  [
+                    [Function],
+                    15000,
+                  ],
+                ],
+                "results": [
+                  {
+                    "type": "return",
+                    "value": undefined,
+                  },
+                ],
+              },
+            },
+            "id": "TEST1234",
+            "log": [Function],
+            "onCapabilityFanSpeed": [Function],
+            "onCapabilityManualSpeed": [Function],
+            "onCapabilityOnOff": [Function],
+            "onCapabilityOperationMode": [Function],
+            "onCapabilitySpeedMode": [Function],
+            "onCapabilityTimerMode": [Function],
+            "pollInterval": undefined,
+            "settings": {
+              "boost_delay": 30,
+              "devicemodel": "Vento Expert Duo A30-1 W V.2",
+              "devicepwd": "password",
+              "humidity_sensor": true,
+              "humidity_threshold": 70,
+              "last_known_ip": "127.0.0.3",
+            },
+            "store": {
+              "lastKnownIP": "127.0.0.3",
+            },
+          },
+          {},
+          {},
+        ],
       ],
     ],
     "registerCapabilityListener": {
@@ -279,38 +976,7 @@ exports[`ventoDevice should be able to get status from modbus on init 1`] = `
       "devicepwd": "password",
       "humidity_sensor": true,
       "humidity_threshold": 70,
-    },
-    "store": {
-      "lastKnownIP": "127.0.0.3",
-    },
-    "trigger": {
-      "alarm_boost_false": [
-        [
-          [
-            "deviceObject",
-            {},
-            {},
-          ],
-        ],
-      ],
-      "alarm_filter_false": [
-        [
-          [
-            "deviceObject",
-            {},
-            {},
-          ],
-        ],
-      ],
-      "alarm_generic_false": [
-        [
-          [
-            "deviceObject",
-            {},
-            {},
-          ],
-        ],
-      ],
+      "last_known_ip": "127.0.0.3",
     },
   },
   "getDeviceState": [
@@ -526,20 +1192,12 @@ exports[`ventoDevice should be able to get status when device is marked as off 1
         },
       ],
       [
+        "log",
+        "Device IP changed from [object Promise] to 127.0.0.3",
+      ],
+      [
         "setAvailable",
         undefined,
-      ],
-      [
-        "log",
-        "Triggering alarm_boost_false",
-      ],
-      [
-        "log",
-        "Triggering alarm_filter_false",
-      ],
-      [
-        "log",
-        "Triggering alarm_generic_false",
       ],
     ],
     "registerCapabilityListener": {
@@ -697,38 +1355,7 @@ exports[`ventoDevice should be able to get status when device is marked as off 1
       "devicepwd": "password",
       "humidity_sensor": true,
       "humidity_threshold": 70,
-    },
-    "store": {
-      "lastKnownIP": "127.0.0.3",
-    },
-    "trigger": {
-      "alarm_boost_false": [
-        [
-          [
-            "deviceObject",
-            {},
-            {},
-          ],
-        ],
-      ],
-      "alarm_filter_false": [
-        [
-          [
-            "deviceObject",
-            {},
-            {},
-          ],
-        ],
-      ],
-      "alarm_generic_false": [
-        [
-          [
-            "deviceObject",
-            {},
-            {},
-          ],
-        ],
-      ],
+      "last_known_ip": "127.0.0.3",
     },
   },
   "getDeviceState": [
@@ -854,6 +1481,7 @@ exports[`ventoDevice should be able to handle errors 1`] = `
       "timerMode": [Function],
       "timer_mode": [Function],
     },
+    "getCapabilityValue": {},
     "hasCapability": {
       "alarm_boost": 1,
       "alarm_connectivity": 1,
@@ -874,6 +1502,11 @@ exports[`ventoDevice should be able to handle errors 1`] = `
       [
         "error",
         "Could not connect to device at IP 127.0.0.3",
+        [Error: test error],
+      ],
+      [
+        "error",
+        "Could not connect to device at IP [object Promise]",
         [Error: test error],
       ],
       [
@@ -958,11 +1591,13 @@ exports[`ventoDevice should be able to handle errors 1`] = `
         ],
       ],
     },
+    "setCapabilityValue": {},
     "settings": {
       "devicepwd": "password",
     },
   },
   "getDeviceState": [
+    [],
     [],
   ],
   "send": [],
@@ -987,6 +1622,7 @@ exports[`ventoDevice should be able to setup all capabilities 1`] = `
       "timerMode": [Function],
       "timer_mode": [Function],
     },
+    "getCapabilityValue": {},
     "hasCapability": {
       "alarm_boost": 1,
       "alarm_filter": 1,
@@ -1061,6 +1697,7 @@ exports[`ventoDevice should be able to setup all capabilities 1`] = `
         ],
       ],
     },
+    "setCapabilityValue": {},
     "settings": {
       "devicepwd": "password",
     },
