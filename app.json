@@ -587,26 +587,7 @@
   },
   "drivers": [
     {
-      "name": {
-        "en": "Smart Wi-Fi"
-      },
       "class": "fan",
-      "capabilities": [
-        "onoff",
-        "dim",
-        "alarm_boost",
-        "alarm_battery",
-        "alarm_connectivity",
-        "measure_RPM"
-      ],
-      "energy": {
-        "batteries": [
-          "INTERNAL"
-        ]
-      },
-      "platforms": [
-        "local"
-      ],
       "connectivity": [
         "lan"
       ],
@@ -634,6 +615,25 @@
           "template": "add_devices"
         }
       ],
+      "platforms": [
+        "local"
+      ],
+      "capabilities": [
+        "onoff",
+        "dim",
+        "alarm_boost",
+        "alarm_battery",
+        "alarm_connectivity",
+        "measure_RPM"
+      ],
+      "energy": {
+        "batteries": [
+          "INTERNAL"
+        ]
+      },
+      "name": {
+        "en": "Smart Wi-Fi"
+      },
       "id": "smart-wifi",
       "settings": [
         {
@@ -777,28 +777,7 @@
       ]
     },
     {
-      "name": {
-        "en": "Vento Expert"
-      },
       "class": "fan",
-      "capabilities": [
-        "alarm_boost",
-        "alarm_filter",
-        "alarm_generic",
-        "filter_timer",
-        "manualSpeed",
-        "fan_speed",
-        "measure_humidity",
-        "measure_RPM",
-        "onoff",
-        "operationMode",
-        "speedMode",
-        "timerMode",
-        "timerMode_timer"
-      ],
-      "platforms": [
-        "local"
-      ],
       "connectivity": [
         "lan"
       ],
@@ -826,9 +805,31 @@
           "template": "add_devices"
         }
       ],
+      "platforms": [
+        "local"
+      ],
+      "capabilities": [
+        "alarm_boost",
+        "alarm_filter",
+        "alarm_generic",
+        "filter_timer",
+        "manualSpeed",
+        "fan_speed",
+        "measure_humidity",
+        "measure_RPM",
+        "onoff",
+        "operationMode",
+        "speedMode",
+        "timerMode",
+        "timerMode_timer"
+      ],
+      "name": {
+        "en": "Vento Expert"
+      },
       "id": "vento-expert",
       "settings": [
         {
+          "id": "info",
           "type": "group",
           "label": {
             "en": "Device info"
@@ -856,6 +857,7 @@
           ]
         },
         {
+          "id": "humidity",
           "type": "group",
           "label": {
             "en": "Humidity sensor"
@@ -885,6 +887,7 @@
           ]
         },
         {
+          "id": "timers",
           "type": "group",
           "label": {
             "en": "Timers"
@@ -906,6 +909,7 @@
           ]
         },
         {
+          "id": "network",
           "type": "group",
           "label": {
             "en": "Network"
