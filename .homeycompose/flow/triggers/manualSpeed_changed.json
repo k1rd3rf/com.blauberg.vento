@@ -4,7 +4,10 @@
     {
       "type": "device",
       "name": "device",
-      "filter": "capabilities=manualSpeed"
+      "filter": "capabilities=manualSpeed",
+      "title": {
+        "en": "Device"
+      }
     }
   ],
   "deprecated": true,
