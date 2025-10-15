@@ -1,15 +1,5 @@
 {
-  "deprecated": true,
-  "id": "manualSpeed_set",
-  "title": {
-    "en": "Set the manual speed"
-  },
-  "titleFormatted": {
-    "en": "Sets the manualspeed of the device to [[speed]] "
-  },
-  "hint": {
-    "en": "Use the slider to set the manual speed mode to a certain speed"
-  },
+  "$filter": "capabilities=manualSpeed",
   "args": [
     {
       "type": "range",
@@ -27,5 +17,16 @@
       "labelMultiplier": 1,
       "labelDecimals": 0
     }
-  ]
+  ],
+  "deprecated": true,
+  "hint": {
+    "en": "Use the slider to set the manual speed mode to a certain speed"
+  },
+  "id": "manualSpeed_set",
+  "title": {
+    "en": "Set the manual speed"
+  },
+  "titleFormatted": {
+    "en": "Sets the manual speed of the device to [[speed]] "
+  }
 }

@@ -1,6 +1,17 @@
 {
+  "$filter": "capabilities=alarm_boost",
+  "args": [
+    {
+      "type": "device",
+      "name": "device",
+      "filter": "capabilities=alarm_boost"
+    }
+  ],
   "id": "alarm_boost_false",
   "title": {
-    "en": "The Boost mode turned off"
+    "en": "Boost mode turned off"
+  },
+  "titleFormatted": {
+    "en": "Boost mode turned off for [[device]]"
   }
 }
