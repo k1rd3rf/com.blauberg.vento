@@ -132,7 +132,8 @@ exports[`ventoDevice should be able to get status from modbus on init 1`] = `
               "error": [Function],
               "getDevices": [Function],
               "homey": {
-                "setInterval": [MockFunction] {
+                "setInterval": [MockFunction],
+                "setTimeout": [MockFunction] {
                   "calls": [
                     [
                       [Function],
@@ -432,7 +433,8 @@ exports[`ventoDevice should be able to get status from modbus on init 1`] = `
               "error": [Function],
               "getDevices": [Function],
               "homey": {
-                "setInterval": [MockFunction] {
+                "setInterval": [MockFunction],
+                "setTimeout": [MockFunction] {
                   "calls": [
                     [
                       [Function],
@@ -732,7 +734,8 @@ exports[`ventoDevice should be able to get status from modbus on init 1`] = `
               "error": [Function],
               "getDevices": [Function],
               "homey": {
-                "setInterval": [MockFunction] {
+                "setInterval": [MockFunction],
+                "setTimeout": [MockFunction] {
                   "calls": [
                     [
                       [Function],
