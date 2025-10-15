@@ -32,13 +32,6 @@
   "flow": {
     "triggers": [
       {
-        "id": "smartwifi_alarm_boost_true",
-        "title": {
-          "en": "Boost mode turned on"
-        },
-        "titleFormatted": {
-          "en": "Boost mode turned on for [[device]]"
-        },
         "args": [
           {
             "type": "device",
@@ -46,62 +39,20 @@
             "filter": "driver_id=smart-wifi"
           },
           {
-            "type": "device",
+            "filter": "driver_id=smart-wifi",
             "name": "device",
-            "filter": "driver_id=smart-wifi"
+            "type": "device"
           }
-        ]
-      },
-      {
-        "id": "smartwifi_alarm_boost_false",
-        "title": {
-          "en": "Boost mode turned off"
-        },
-        "titleFormatted": {
-          "en": "Boost mode turned off for [[device]]"
-        },
-        "args": [
-          {
-            "type": "device",
-            "name": "device",
-            "filter": "driver_id=smart-wifi"
-          },
-          {
-            "type": "device",
-            "name": "device",
-            "filter": "driver_id=smart-wifi"
-          }
-        ]
-      },
-      {
-        "id": "smartwifi_alarm_battery_true",
-        "title": {
-          "en": "Battery alarm turned on"
-        },
-        "titleFormatted": {
-          "en": "Battery alarm turned on for [[device]]"
-        },
-        "args": [
-          {
-            "type": "device",
-            "name": "device",
-            "filter": "driver_id=smart-wifi"
-          },
-          {
-            "type": "device",
-            "name": "device",
-            "filter": "driver_id=smart-wifi"
-          }
-        ]
-      },
-      {
+        ],
         "id": "smartwifi_alarm_battery_false",
         "title": {
           "en": "Battery alarm turned off"
         },
         "titleFormatted": {
           "en": "Battery alarm turned off for [[device]]"
-        },
+        }
+      },
+      {
         "args": [
           {
             "type": "device",
@@ -109,11 +60,60 @@
             "filter": "driver_id=smart-wifi"
           },
           {
+            "filter": "driver_id=smart-wifi",
+            "name": "device",
+            "type": "device"
+          }
+        ],
+        "id": "smartwifi_alarm_battery_true",
+        "title": {
+          "en": "Battery alarm turned on"
+        },
+        "titleFormatted": {
+          "en": "Battery alarm turned on for [[device]]"
+        }
+      },
+      {
+        "args": [
+          {
             "type": "device",
             "name": "device",
             "filter": "driver_id=smart-wifi"
+          },
+          {
+            "filter": "driver_id=smart-wifi",
+            "name": "device",
+            "type": "device"
           }
-        ]
+        ],
+        "id": "smartwifi_alarm_boost_false",
+        "title": {
+          "en": "Boost mode turned off"
+        },
+        "titleFormatted": {
+          "en": "Boost mode turned off for [[device]]"
+        }
+      },
+      {
+        "args": [
+          {
+            "type": "device",
+            "name": "device",
+            "filter": "driver_id=smart-wifi"
+          },
+          {
+            "filter": "driver_id=smart-wifi",
+            "name": "device",
+            "type": "device"
+          }
+        ],
+        "id": "smartwifi_alarm_boost_true",
+        "title": {
+          "en": "Boost mode turned on"
+        },
+        "titleFormatted": {
+          "en": "Boost mode turned on for [[device]]"
+        }
       },
       {
         "id": "alarm_boost_false",
@@ -269,13 +269,6 @@
     ],
     "conditions": [
       {
-        "id": "smartwifi_alarm_boost",
-        "title": {
-          "en": "Boost mode is !{{on|off}}"
-        },
-        "titleFormatted": {
-          "en": "Boost mode is !{{on|off}} for [[device]]"
-        },
         "args": [
           {
             "type": "device",
@@ -283,11 +276,18 @@
             "filter": "driver_id=smart-wifi"
           },
           {
-            "type": "device",
+            "filter": "driver_id=smart-wifi",
             "name": "device",
-            "filter": "driver_id=smart-wifi"
+            "type": "device"
           }
-        ]
+        ],
+        "id": "smartwifi_alarm_boost",
+        "title": {
+          "en": "Boost mode is !{{on|off}}"
+        },
+        "titleFormatted": {
+          "en": "Boost mode is !{{on|off}} for [[device]]"
+        }
       },
       {
         "id": "alarm_boost",
@@ -342,13 +342,34 @@
     ],
     "actions": [
       {
+        "args": [
+          {
+            "type": "device",
+            "name": "device",
+            "filter": "driver_id=smart-wifi"
+          },
+          {
+            "filter": "driver_id=smart-wifi",
+            "name": "device",
+            "type": "device"
+          },
+          {
+            "name": "boost",
+            "title": {
+              "en": "Boost"
+            },
+            "type": "checkbox"
+          }
+        ],
         "id": "smartwifi_set_boost",
         "title": {
           "en": "Set boost mode"
         },
         "titleFormatted": {
           "en": "Set [[device]] boost mode to [[boost]]"
-        },
+        }
+      },
+      {
         "args": [
           {
             "type": "device",
@@ -356,46 +377,25 @@
             "filter": "driver_id=smart-wifi"
           },
           {
-            "type": "device",
+            "filter": "driver_id=smart-wifi",
             "name": "device",
-            "filter": "driver_id=smart-wifi"
+            "type": "device"
           },
           {
-            "type": "checkbox",
-            "name": "boost",
+            "name": "silent",
             "title": {
-              "en": "Boost"
-            }
+              "en": "Silent mode"
+            },
+            "type": "checkbox"
           }
-        ]
-      },
-      {
+        ],
         "id": "smartwifi_set_silent_mode",
         "title": {
           "en": "Set silent mode"
         },
         "titleFormatted": {
           "en": "Set [[device]] silent mode to [[silent]]"
-        },
-        "args": [
-          {
-            "type": "device",
-            "name": "device",
-            "filter": "driver_id=smart-wifi"
-          },
-          {
-            "type": "device",
-            "name": "device",
-            "filter": "driver_id=smart-wifi"
-          },
-          {
-            "type": "checkbox",
-            "name": "silent",
-            "title": {
-              "en": "Silent mode"
-            }
-          }
-        ]
+        }
       },
       {
         "args": [
