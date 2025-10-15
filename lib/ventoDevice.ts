@@ -1,22 +1,53 @@
-'use strict';
+import { Device } from 'homey';
+import Api from './api';
+import VentoDiscovery from './ventoDiscovery';
+import { Capabilities, ActionCards } from './capabilities';
 
-const { Device } = require('homey');
-const {
-  Capabilities,
-  ActionCards,
-  // eslint-disable-next-line node/no-missing-require
-} = require('../../lib/capabilities');
+type DeviceSettings = {
+  devicemodel?: string;
+  devicepwd: string;
+  // eslint-disable-next-line camelcase
+  humidity_sensor: boolean;
+  // eslint-disable-next-line camelcase
+  humidity_threshold?: number;
+  // eslint-disable-next-line camelcase
+  boost_delay?: number;
+  // eslint-disable-next-line camelcase
+  last_known_ip?: string;
+};
 
-class VentoDevice extends Device {
+export default class VentoDevice extends Device {
+  id!: string;
+  api: Api | undefined;
+
+  discoveryClient!: VentoDiscovery;
+
+  private pollInterval: NodeJS.Timeout | undefined;
+
   /**
    * onInit is called when the device is initialized.
    */
   async onInit() {
     const { id } = this.getData();
-    this.log(`Locating device with id ${id}`);
+    this.id = id;
+
     await this.discovery(id);
     await this.updateCapabilities();
     await this.setupCapabilities();
+
+    this.pollInterval = this.homey.setInterval(
+      () => this.updateDeviceState(),
+      15000
+    );
+
+    await this.updateDeviceState();
+  }
+
+  onUninit(): Promise<void> {
+    if (this.pollInterval) {
+      this.homey.clearInterval(this.pollInterval);
+    }
+    return super.onUninit();
   }
 
   async updateCapabilities() {
@@ -92,72 +123,81 @@ class VentoDevice extends Device {
     }
   }
 
-  async discovery(id) {
-    this.deviceObject = this.driver.locateDeviceById(id);
-    if (this.deviceObject == null) {
-      // Try to use last known IP if discovery failed
-      const lastKnownIP = this.getStoreValue('lastKnownIP');
-      if (lastKnownIP && lastKnownIP !== '0.0.0.0') {
-        this.log(
-          `Discovery failed, attempting to use last known IP: ${lastKnownIP}`
-        );
-        this.deviceObject = {
-          id,
-          ip: lastKnownIP,
-        };
-        // Test if device responds at this IP
-        try {
-          this.devicepwd = await this.getSetting('devicepwd');
-          const state = await this.driver.getDeviceState(
-            this.deviceObject,
-            this.devicepwd
-          );
-          if (state) {
-            await this.setAvailable();
-            this.log(
-              `Vento device reconnected using last known IP: [${lastKnownIP}]`
-            );
-            return;
-          }
-        } catch (error) {
-          this.log(`Failed to connect using last known IP: ${error.message}`);
+  private async discovery(id: string) {
+    this.log(`Locating device with id ${id}`);
+
+    this.discoveryClient = new VentoDiscovery();
+
+    await this.initApi({ password: this.getSetting('devicepwd') });
+  }
+
+  async initApi({
+    password = this.getSetting('devicepwd'),
+    settingsIp,
+  }: {
+    password?: string;
+    settingsIp?: string;
+  }) {
+    const deviceIp = await this.discoveryClient
+      .findById(this.id)
+      .then((d) => d?.ip);
+
+    const lastKnownIP = this.getStoreValue('lastKnownIP');
+
+    const ips: string[] = [deviceIp, settingsIp, lastKnownIP].filter(
+      (i) => !!i
+    );
+    let api: Api | undefined;
+    for (const checkIp of ips) {
+      try {
+        const testApi = new Api(this.id, password, checkIp);
+        const state = await testApi.getDeviceState();
+        const hasValues = Object.keys(state).length > 0;
+        if (hasValues) {
+          this.log(`Found device at IP ${checkIp}`);
+          api = testApi;
+          break;
         }
+        throw new Error(`No values received for ${checkIp}`);
+      } catch (e) {
+        this.error(`Could not connect to device at IP ${checkIp}`, e);
       }
-      await this.setUnavailable('Device not discovered yet');
-      this.log('Vento device could not be located');
+    }
+
+    if (api) {
+      this.api = api;
+      await this.setStoreValue('lastKnownIP', api.deviceIp);
     } else {
-      await this.setAvailable();
-      this.log(`Vento device has been initialized: [${this.deviceObject.ip}]`);
-      this.devicepwd = await this.getSetting('devicepwd');
-      // Store IP address for future fallback
-      await this.setStoreValue('lastKnownIP', this.deviceObject.ip);
-      await this.setSettings({ last_known_ip: this.deviceObject.ip });
+      this.log('Device IP could not be found, setting device to unavailable');
+      await this.setUnavailable('Device not discovered yet');
     }
   }
 
   async updateDeviceState() {
     this.log('Requesting the current device state');
-    const state = await this.driver
-      .getDeviceState(this.deviceObject, this.devicepwd)
-      .catch(async (e) => {
+    const state =
+      (await this.api?.getDeviceState().catch(async (e) => {
         await this.setCapabilityValue(Capabilities.alarm_connectivity, true);
         await this.setUnavailable(e.message);
-      });
+      })) || {};
 
     if (state === undefined || Object.keys(state).length === 0) {
-      this.error('Failed to get device state, device unreachable');
+      this.error('Failed to get device state, device unreachable', {
+        deviceIp: this.api?.deviceIp,
+        deviceId: this.api?.deviceId,
+      });
       return;
     }
 
     this.log('Device state received: ', state);
 
     const currentStoredIP = this.getStoreValue('lastKnownIP');
-    if (this.deviceObject?.ip && currentStoredIP !== this.deviceObject.ip) {
+    if (currentStoredIP !== this.api?.deviceIp) {
       this.log(
-        `Device IP changed from ${currentStoredIP} to ${this.deviceObject.ip}`
+        `Device IP changed from ${currentStoredIP} to ${this.api?.deviceIp}`
       );
-      await this.setStoreValue('lastKnownIP', this.deviceObject.ip);
-      await this.setSettings({ last_known_ip: this.deviceObject.ip });
+      await this.setStoreValue('lastKnownIP', this.api?.deviceIp);
+      await this.setSettings({ last_known_ip: this.api?.deviceIp });
     }
     await this.setCapabilityValue(Capabilities.alarm_connectivity, false);
     await this.setAvailable();
@@ -200,11 +240,11 @@ class VentoDevice extends Device {
     );
     await this.setCapabilityValue(
       Capabilities.manualSpeed,
-      (state.speed?.manualspeed / 255) * 100
+      ((state.speed?.manualspeed ?? -1) / 255) * 100
     );
     await this.setCapabilityValue(
       Capabilities.fan_speed,
-      state.speed?.manualspeed / 255
+      (state.speed?.manualspeed ?? -1) / 255
     );
     await this.setCapabilityValue(
       Capabilities.operationMode,
@@ -219,7 +259,7 @@ class VentoDevice extends Device {
       `${state.timers?.countdown?.hour}:${state.timers?.countdown?.min}:${state.timers?.countdown?.sec}`
     );
 
-    const settingsOnDevice = {
+    const settingsOnDevice: Partial<DeviceSettings> = {
       devicemodel: state.unittype,
       humidity_sensor: state.humidity?.sensoractivation === 1,
       humidity_threshold: state.humidity?.threshold,
@@ -235,93 +275,81 @@ class VentoDevice extends Device {
     this.log('Vento device has been added');
   }
 
-  async onSettings({ oldSettings, newSettings, changedKeys }) {
+  async onSettings({
+    newSettings,
+    changedKeys,
+  }: {
+    oldSettings: DeviceSettings;
+    newSettings: DeviceSettings;
+    changedKeys: (keyof DeviceSettings)[];
+  }) {
     if (changedKeys.includes('devicepwd')) {
-      this.devicepwd = newSettings.devicepwd;
+      await this.initApi({ password: newSettings.devicepwd });
       await this.updateDeviceState();
     }
     if (changedKeys.includes('last_known_ip')) {
-      await this.setStoreValue('lastKnowIP', newSettings.last_known_ip);
+      await this.initApi({ settingsIp: newSettings.last_known_ip });
+      await this.updateDeviceState();
     }
     // For the other settings we probably need to push the new value to the device
     if (changedKeys.includes('humidity_sensor')) {
-      await this.driver.setHumiditySensor(
-        this.deviceObject,
-        this.devicepwd,
-        newSettings.humidity_sensor
-      );
+      await this.api?.setHumiditySensor(newSettings.humidity_sensor ? 1 : 0);
     }
-    if (changedKeys.includes('humidity_threshold')) {
-      await this.driver.setHumiditySensorThreshold(
-        this.deviceObject,
-        this.devicepwd,
+    if (
+      changedKeys.includes('humidity_threshold') &&
+      newSettings.humidity_threshold
+    ) {
+      await this.api?.setHumiditySensorThreshold(
         newSettings.humidity_threshold
       );
     }
-    if (changedKeys.includes('boost_delay')) {
-      await this.driver.setBoostDelay(
-        this.deviceObject,
-        this.devicepwd,
-        newSettings.boost_delay
-      );
+    if (
+      changedKeys.includes('boost_delay') &&
+      newSettings.boost_delay !== undefined
+    ) {
+      await this.api?.setBoostDelay(newSettings.boost_delay);
     }
   }
 
-  onCapabilityOnOff = async (value) => {
+  onCapabilityOnOff: Device.CapabilityCallback = async (value) => {
     if (value) {
-      await this.driver.setOnOffStatus(this.deviceObject, this.devicepwd, 1);
+      await this.api?.setOnOffStatus(1);
     } else {
-      await this.driver.setOnOffStatus(this.deviceObject, this.devicepwd, 0);
+      await this.api?.setOnOffStatus(0);
     }
   };
 
-  onCapabilitySpeedMode = async (value) => {
-    await this.driver.setSpeedMode(this.deviceObject, this.devicepwd, value);
+  onCapabilitySpeedMode: Device.CapabilityCallback = async (value) => {
+    await this.api?.setSpeedMode(value);
   };
 
-  onCapabilityManualSpeed = async (value) => {
-    await this.driver.setManualSpeed(
-      this.deviceObject,
-      this.devicepwd,
-      255 * (value / 100)
-    );
+  onCapabilityManualSpeed: Device.CapabilityCallback = async (value) => {
+    await this.api?.setManualSpeed(255 * (value / 100));
   };
 
-  onCapabilityFanSpeed = async (value) => {
-    await this.driver.setManualSpeed(
-      this.deviceObject,
-      this.devicepwd,
-      255 * value
-    );
+  onCapabilityFanSpeed: Device.CapabilityCallback = async (value) => {
+    await this.api?.setManualSpeed(255 * value);
   };
 
-  onCapabilityOperationMode = async (value) => {
-    await this.driver.setOperationMode(
-      this.deviceObject,
-      this.devicepwd,
-      value
-    );
+  onCapabilityOperationMode: Device.CapabilityCallback = async (value) => {
+    await this.api?.setOperationMode(value);
   };
 
-  onCapabilityTimerMode = async (value) => {
-    await this.driver.setTimerMode(this.deviceObject, this.devicepwd, value);
+  onCapabilityTimerMode: Device.CapabilityCallback = async (value) => {
+    await this.api?.setTimerMode(value);
   };
 
   async setupFlowOperationMode() {
     this.log('Create the flow for the operation mode capability');
     this.homey.flow
       .getActionCard(ActionCards.operation_mode)
-      .registerRunListener(async (args) => {
+      .registerRunListener(async (args: { operationMode: number }) => {
         this.log(`attempt to change operation mode: ${args.operationMode}`);
         await this.setCapabilityValue(
           Capabilities.operationMode,
           args.operationMode
         );
-        await this.driver.setOperationMode(
-          args.device.deviceObject,
-          args.device.devicepwd,
-          args.operationMode
-        );
+        await this.api?.setOperationMode(args.operationMode);
       });
   }
 
@@ -329,14 +357,10 @@ class VentoDevice extends Device {
     this.log('Create the flow for the speed mode capability');
     this.homey.flow
       .getActionCard(ActionCards.speed_mode)
-      .registerRunListener(async (args) => {
+      .registerRunListener(async (args: { speedMode: number }) => {
         this.log(`attempt to change speed mode: ${args.speedMode}`);
         await this.setCapabilityValue(Capabilities.speedMode, args.speedMode);
-        await this.driver.setSpeedMode(
-          args.device.deviceObject,
-          args.device.devicepwd,
-          args.speedMode
-        );
+        await this.api?.setSpeedMode(args.speedMode);
       });
   }
 
@@ -344,18 +368,14 @@ class VentoDevice extends Device {
     this.log('Create the flow for the manual speed capability');
     this.homey.flow
       .getActionCard(ActionCards.manualSpeed_set)
-      .registerRunListener(async (args) => {
+      .registerRunListener(async (args: { speed: number }) => {
         this.log(`attempt to change manual speed: ${args.speed}`);
         await this.setCapabilityValue(Capabilities.manualSpeed, args.speed);
         await this.setCapabilityValue(
           Capabilities.fan_speed,
           args.speed / 100 - 1
         );
-        await this.driver.setManualSpeed(
-          args.device.deviceObject,
-          args.device.devicepwd,
-          255 * (args.speed / 100)
-        );
+        await this.api?.setManualSpeed(255 * (args.speed / 100));
       });
   }
 
@@ -363,18 +383,14 @@ class VentoDevice extends Device {
     this.log('Create the flow for the timer mode capability');
     this.homey.flow
       .getActionCard(ActionCards.timer_mode)
-      .registerRunListener(async (args) => {
+      .registerRunListener(async (args: { timerMode: number }) => {
         this.log(`attempt to change timer mode: ${args.timerMode}`);
         await this.setCapabilityValue(Capabilities.timerMode, args.timerMode);
-        await this.driver.setTimerMode(
-          args.device.deviceObject,
-          args.device.devicepwd,
-          args.timerMode
-        );
+        await this.api?.setTimerMode(args.timerMode);
       });
   }
 
-  async triggerBoostAlarm(isOn) {
+  async triggerBoostAlarm(isOn: boolean) {
     const triggerCard = isOn ? 'alarm_boost_true' : 'alarm_boost_false';
     this.log(`Triggering ${triggerCard}`);
     await this.homey.flow
@@ -382,7 +398,7 @@ class VentoDevice extends Device {
       .trigger(this, {}, {});
   }
 
-  async triggerFilterAlarm(isOn) {
+  async triggerFilterAlarm(isOn: boolean) {
     const triggerCard = isOn ? 'alarm_filter_true' : 'alarm_filter_false';
     this.log(`Triggering ${triggerCard}`);
     await this.homey.flow
@@ -390,7 +406,7 @@ class VentoDevice extends Device {
       .trigger(this, {}, {});
   }
 
-  async triggerGenericAlarm(isOn) {
+  async triggerGenericAlarm(isOn: boolean) {
     const triggerCard = isOn ? 'alarm_generic_true' : 'alarm_generic_false';
     this.log(`Triggering ${triggerCard}`);
     await this.homey.flow
@@ -398,5 +414,3 @@ class VentoDevice extends Device {
       .trigger(this, {}, {});
   }
 }
-
-module.exports = VentoDevice;
