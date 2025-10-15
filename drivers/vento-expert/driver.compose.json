@@ -1,6 +1,21 @@
 {
+  "$extends": "fan",
+  "capabilities": [
+    "alarm_boost",
+    "alarm_filter",
+    "alarm_generic",
+    "filter_timer",
+    "manualSpeed",
+    "fan_speed",
+    "measure_humidity",
+    "measure_RPM",
+    "onoff",
+    "operationMode",
+    "speedMode",
+    "timerMode",
+    "timerMode_timer"
+  ],
   "name": {
     "en": "Vento Expert"
-  },
-  "$extends": "fan"
+  }
 }

@@ -1,21 +1,5 @@
 {
   "class": "fan",
-  "capabilities": [
-    "alarm_boost",
-    "alarm_filter",
-    "alarm_generic",
-    "filter_timer",
-    "manualSpeed",
-    "fan_speed",
-    "measure_humidity",
-    "measure_RPM",
-    "onoff",
-    "operationMode",
-    "speedMode",
-    "timerMode",
-    "timerMode_timer"
-  ],
-  "platforms": ["local"],
   "connectivity": ["lan"],
   "images": {
     "small": "{{driverAssetsPath}}/images/small.png",
@@ -40,5 +24,6 @@
       "id": "add_devices",
       "template": "add_devices"
     }
-  ]
+  ],
+  "platforms": ["local"]
 }
