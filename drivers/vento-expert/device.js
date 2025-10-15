@@ -135,12 +135,14 @@ class VentoDevice extends Device {
     const state = await this.driver
       .getDeviceState(this.deviceObject, this.devicepwd)
       .catch(async (error) => {
+        this.error('Unable to get device state', error);
         await this.setCapabilityValue('alarm_connectivity', true);
       });
     if (state === undefined) {
       return;
     }
-    await this.setCapabilityValue('alarm_connectivity', false);
+    if (this.getCapabilityValue('alarm_connectivity'))
+      await this.setCapabilityValue('alarm_connectivity', false);
 
     // Update stored IP if it changed (device might have gotten new DHCP address)
     const currentStoredIP = this.getStoreValue('lastKnownIP');

@@ -234,7 +234,7 @@ class SmartWiFiDevice extends Device {
     this.log('Setting up boost flow cards');
     // Register condition card
     this.homey.flow
-      .getConditionCard('smartwifi_alarm_boost')
+      .getConditionCard('alarm_boost')
       .registerRunListener((args, state) => {
         return args.device.getCapabilityValue('alarm_boost');
       });
@@ -260,9 +260,7 @@ class SmartWiFiDevice extends Device {
   }
 
   async triggerBoostAlarm(isOn) {
-    const triggerCard = isOn
-      ? 'smartwifi_alarm_boost_true'
-      : 'smartwifi_alarm_boost_false';
+    const triggerCard = isOn ? 'alarm_boost_true' : 'alarm_boost_false';
     this.log(`Triggering ${triggerCard}`);
     await this.homey.flow
       .getDeviceTriggerCard(triggerCard)
@@ -270,9 +268,7 @@ class SmartWiFiDevice extends Device {
   }
 
   async triggerBatteryAlarm(isOn) {
-    const triggerCard = isOn
-      ? 'smartwifi_alarm_battery_true'
-      : 'smartwifi_alarm_battery_false';
+    const triggerCard = isOn ? 'alarm_battery_true' : 'alarm_battery_false';
     this.log(`Triggering ${triggerCard}`);
     await this.homey.flow
       .getDeviceTriggerCard(triggerCard)

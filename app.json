@@ -34,17 +34,12 @@
       {
         "args": [
           {
-            "type": "device",
-            "name": "device",
-            "filter": "driver_id=smart-wifi"
-          },
-          {
-            "filter": "driver_id=smart-wifi",
+            "filter": "capabilities=alarm_battery",
             "name": "device",
             "type": "device"
           }
         ],
-        "id": "smartwifi_alarm_battery_false",
+        "id": "alarm_battery_false",
         "title": {
           "en": "Battery alarm turned off"
         },
@@ -55,17 +50,12 @@
       {
         "args": [
           {
-            "type": "device",
-            "name": "device",
-            "filter": "driver_id=smart-wifi"
-          },
-          {
-            "filter": "driver_id=smart-wifi",
+            "filter": "capabilities=alarm_battery",
             "name": "device",
             "type": "device"
           }
         ],
-        "id": "smartwifi_alarm_battery_true",
+        "id": "alarm_battery_true",
         "title": {
           "en": "Battery alarm turned on"
         },
@@ -78,15 +68,10 @@
           {
             "type": "device",
             "name": "device",
-            "filter": "driver_id=smart-wifi"
-          },
-          {
-            "filter": "driver_id=smart-wifi",
-            "name": "device",
-            "type": "device"
+            "filter": "capabilities=alarm_boost"
           }
         ],
-        "id": "smartwifi_alarm_boost_false",
+        "id": "alarm_boost_false",
         "title": {
           "en": "Boost mode turned off"
         },
@@ -99,15 +84,10 @@
           {
             "type": "device",
             "name": "device",
-            "filter": "driver_id=smart-wifi"
-          },
-          {
-            "filter": "driver_id=smart-wifi",
-            "name": "device",
-            "type": "device"
+            "filter": "capabilities=alarm_boost"
           }
         ],
-        "id": "smartwifi_alarm_boost_true",
+        "id": "alarm_boost_true",
         "title": {
           "en": "Boost mode turned on"
         },
@@ -116,58 +96,45 @@
         }
       },
       {
-        "id": "alarm_boost_false",
-        "title": {
-          "en": "The Boost mode turned off"
-        },
         "args": [
           {
             "type": "device",
             "name": "device",
-            "filter": "driver_id=vento-expert"
+            "filter": "capabilities=alarm_filter"
           }
-        ]
-      },
-      {
-        "id": "alarm_boost_true",
-        "title": {
-          "en": "The boost mode turned on"
-        },
-        "args": [
-          {
-            "type": "device",
-            "name": "device",
-            "filter": "driver_id=vento-expert"
-          }
-        ]
-      },
-      {
+        ],
         "id": "alarm_filter_false",
         "title": {
           "en": "The Filter alarm turned off"
         },
+        "titleFormatted": {
+          "en": "The Filter alarm turned off for [[device]]"
+        }
+      },
+      {
         "args": [
           {
             "type": "device",
             "name": "device",
-            "filter": "driver_id=vento-expert"
+            "filter": "capabilities=alarm_filter"
           }
-        ]
-      },
-      {
+        ],
         "id": "alarm_filter_true",
         "title": {
           "en": "The Filter alarm turned on"
         },
+        "titleFormatted": {
+          "en": "The Filter alarm turned on for [[device]]"
+        }
+      },
+      {
         "args": [
           {
             "type": "device",
             "name": "device",
-            "filter": "driver_id=vento-expert"
+            "filter": "capabilities=alarm_generic"
           }
-        ]
-      },
-      {
+        ],
         "id": "alarm_generic_false",
         "title": {
           "da": "Den generiske alarm blev deaktiveret",
@@ -183,15 +150,29 @@
           "ru": "Общий сигнал выключен",
           "sv": "Det generiska larmet är inaktiverat"
         },
+        "titleFormatted": {
+          "da": "Den generiske alarm blev deaktiveret for [[device]]",
+          "de": "Der allgemeine Alarm ist ausgegangen für [[device]]",
+          "en": "The generic alarm turned off for [[device]]",
+          "es": "La alarma general se ha desactivado para [[device]]",
+          "fr": "L'alarme générique s'est désactivée pour [[device]]",
+          "it": "L'allarme generico è stato disattivato per [[device]]",
+          "ko": "[[device]]에 대한 일반 알람 꺼짐",
+          "nl": "Het algemene alarm gaat uit voor [[device]]",
+          "no": "Den generelle alarmen er deaktivert for [[device]]",
+          "pl": "Alarm ogólny wyłączony dla [[device]]",
+          "ru": "Общий сигнал выключен для [[device]]",
+          "sv": "Det generiska larmet är inaktiverat för [[device]]"
+        }
+      },
+      {
         "args": [
           {
             "type": "device",
             "name": "device",
-            "filter": "driver_id=vento-expert"
+            "filter": "capabilities=alarm_generic"
           }
-        ]
-      },
-      {
+        ],
         "id": "alarm_generic_true",
         "title": {
           "da": "Den generiske alarm blev aktiveret",
@@ -207,19 +188,36 @@
           "ru": "Общий сигнал включен",
           "sv": "Det generiska larmet är aktiverat"
         },
+        "titleFormatted": {
+          "da": "Den generiske alarm blev aktiveret for [[device]]",
+          "de": "Der allgemeine Alarm ist angegangen für [[device]]",
+          "en": "The generic alarm turned on for [[device]]",
+          "es": "La alarma general se ha activado para [[device]]",
+          "fr": "L'alarme générique s'est activée pour [[device]]",
+          "it": "L'allarme generico è stato attivato per [[device]]",
+          "ko": "[[device]]에 대한 일반 알람 켜짐",
+          "nl": "Het algemene alarm gaat aan voor [[device]]",
+          "no": "Den generelle alarmen er aktivert for [[device]]",
+          "pl": "Alarm ogólny włączony dla [[device]]",
+          "ru": "Общий сигнал включен для [[device]]",
+          "sv": "Det generiska larmet är aktiverat för [[device]]"
+        }
+      },
+      {
         "args": [
           {
             "type": "device",
             "name": "device",
-            "filter": "driver_id=vento-expert"
+            "filter": "capabilities=manualSpeed"
           }
-        ]
-      },
-      {
+        ],
         "deprecated": true,
         "id": "manualSpeed_changed",
         "title": {
           "en": "The manual speed changed"
+        },
+        "titleFormatted": {
+          "en": "The manual speed changed for [[device]]"
         },
         "tokens": [
           {
@@ -232,19 +230,22 @@
             },
             "type": "number"
           }
-        ],
+        ]
+      },
+      {
         "args": [
           {
             "type": "device",
             "name": "device",
-            "filter": "driver_id=vento-expert"
+            "filter": "capabilities=manualSpeed"
           }
-        ]
-      },
-      {
+        ],
         "id": "measure_RPM_changed",
         "title": {
           "en": "FAN RPM changed"
+        },
+        "titleFormatted": {
+          "en": "FAN RPM changed for [[device]]"
         },
         "tokens": [
           {
@@ -257,13 +258,6 @@
             },
             "type": "number"
           }
-        ],
-        "args": [
-          {
-            "type": "device",
-            "name": "device",
-            "filter": "driver_id=vento-expert"
-          }
         ]
       }
     ],
@@ -273,49 +267,41 @@
           {
             "type": "device",
             "name": "device",
-            "filter": "driver_id=smart-wifi"
-          },
-          {
-            "filter": "driver_id=smart-wifi",
-            "name": "device",
-            "type": "device"
+            "filter": "capabilities=alarm_boost"
           }
         ],
-        "id": "smartwifi_alarm_boost",
-        "title": {
-          "en": "Boost mode is !{{on|off}}"
-        },
-        "titleFormatted": {
-          "en": "Boost mode is !{{on|off}} for [[device]]"
-        }
-      },
-      {
         "id": "alarm_boost",
         "title": {
           "en": "The boost alarm is !{{on|off}}"
         },
+        "titleFormatted": {
+          "en": "The boost alarm is !{{on|off}} for [[device]]"
+        }
+      },
+      {
         "args": [
           {
             "type": "device",
             "name": "device",
-            "filter": "driver_id=vento-expert"
+            "filter": "capabilities=alarm_filter"
           }
-        ]
-      },
-      {
+        ],
         "id": "alarm_filter",
         "title": {
           "en": "The filter alarm is !{{on|off}}"
         },
+        "titleFormatted": {
+          "en": "The filter alarm is !{{on|off}} for [[device]]"
+        }
+      },
+      {
         "args": [
           {
             "type": "device",
             "name": "device",
-            "filter": "driver_id=vento-expert"
+            "filter": "capabilities=alarm_generic"
           }
-        ]
-      },
-      {
+        ],
         "id": "alarm_generic",
         "title": {
           "da": "Den generiske alarm er !{{tændt|slukket}}",
@@ -331,94 +317,40 @@
           "ru": "Общий сигнал !{{вкл.|выкл.}}",
           "sv": "Det generiska larmet är !{{på|av}}"
         },
-        "args": [
-          {
-            "type": "device",
-            "name": "device",
-            "filter": "driver_id=vento-expert"
-          }
-        ]
+        "titleFormatted": {
+          "da": "Den generiske alarm er !{{tændt|slukket}} for [[device]]",
+          "de": "Der allgemeine Alarm ist !{{an|aus}} für [[device]]",
+          "en": "The generic alarm is !{{on|off}} for [[device]]",
+          "es": "La alarma general está !{{activada|desactivada}} para [[device]]",
+          "fr": "L'alarme générique est !{{en marche|arrêtée}} pour [[device]]",
+          "it": "L'allarme generico è !{{acceso|spento}} per [[device]]",
+          "ko": "[[device]]에 대한 일반 알람 !{{켬|끔}}",
+          "nl": "Het algemene alarm is !{{aan|uit}} voor [[device]]",
+          "no": "Den generelle alarmen er !{{på|av}} for [[device]]",
+          "pl": "Alarm ogólny !{{włączony|wyłączony}} dla [[device]]",
+          "ru": "Общий сигнал !{{вкл.|выкл.}} для [[device]]",
+          "sv": "Det generiska larmet är !{{på|av}} för [[device]]"
+        }
       }
     ],
     "actions": [
       {
         "args": [
           {
-            "type": "device",
-            "name": "device",
-            "filter": "driver_id=smart-wifi"
-          },
-          {
-            "filter": "driver_id=smart-wifi",
-            "name": "device",
-            "type": "device"
-          },
-          {
-            "name": "boost",
-            "title": {
-              "en": "Boost"
-            },
-            "type": "checkbox"
-          }
-        ],
-        "id": "smartwifi_set_boost",
-        "title": {
-          "en": "Set boost mode"
-        },
-        "titleFormatted": {
-          "en": "Set [[device]] boost mode to [[boost]]"
-        }
-      },
-      {
-        "args": [
-          {
-            "type": "device",
-            "name": "device",
-            "filter": "driver_id=smart-wifi"
-          },
-          {
-            "filter": "driver_id=smart-wifi",
-            "name": "device",
-            "type": "device"
-          },
-          {
-            "name": "silent",
-            "title": {
-              "en": "Silent mode"
-            },
-            "type": "checkbox"
-          }
-        ],
-        "id": "smartwifi_set_silent_mode",
-        "title": {
-          "en": "Set silent mode"
-        },
-        "titleFormatted": {
-          "en": "Set [[device]] silent mode to [[silent]]"
-        }
-      },
-      {
-        "args": [
-          {
-            "type": "device",
-            "name": "device",
-            "filter": "driver_id=vento-expert"
-          },
-          {
-            "label": "%",
-            "labelDecimals": 0,
-            "labelMultiplier": 1,
-            "max": 100,
-            "min": 0,
+            "type": "range",
             "name": "speed",
+            "title": {
+              "en": "Speed"
+            },
             "placeholder": {
               "en": "Speed"
             },
+            "min": 0,
+            "max": 100,
             "step": 1,
-            "title": {
-              "en": "Speed"
-            },
-            "type": "range"
+            "label": "%",
+            "labelMultiplier": 1,
+            "labelDecimals": 0
           }
         ],
         "deprecated": true,
@@ -430,22 +362,17 @@
           "en": "Set the manual speed"
         },
         "titleFormatted": {
-          "en": "Sets the manualspeed of the device to [[speed]] "
+          "en": "Sets the manual speed of the device to [[speed]] "
         }
       },
       {
         "args": [
           {
-            "type": "device",
-            "name": "device",
-            "filter": "driver_id=vento-expert"
-          },
-          {
+            "type": "dropdown",
             "name": "operationMode",
             "title": {
               "en": "The desired operation mode"
             },
-            "type": "dropdown",
             "values": [
               {
                 "id": "0",
@@ -482,16 +409,47 @@
       {
         "args": [
           {
-            "type": "device",
-            "name": "device",
-            "filter": "driver_id=vento-expert"
-          },
+            "name": "boost",
+            "title": {
+              "en": "Boost"
+            },
+            "type": "checkbox"
+          }
+        ],
+        "id": "smartwifi_set_boost",
+        "title": {
+          "en": "Set boost mode"
+        },
+        "titleFormatted": {
+          "en": "Set boost mode to [[boost]]"
+        }
+      },
+      {
+        "args": [
           {
+            "name": "silent",
+            "title": {
+              "en": "Silent mode"
+            },
+            "type": "checkbox"
+          }
+        ],
+        "id": "smartwifi_set_silent_mode",
+        "title": {
+          "en": "Set silent mode"
+        },
+        "titleFormatted": {
+          "en": "Set silent mode to [[silent]]"
+        }
+      },
+      {
+        "args": [
+          {
+            "type": "dropdown",
             "name": "speedMode",
             "title": {
               "en": "The desired speed mode"
             },
-            "type": "dropdown",
             "values": [
               {
                 "id": "0",
@@ -540,16 +498,11 @@
       {
         "args": [
           {
-            "type": "device",
-            "name": "device",
-            "filter": "driver_id=vento-expert"
-          },
-          {
+            "type": "dropdown",
             "name": "timerMode",
             "title": {
               "en": "The desired timer mode"
             },
-            "type": "dropdown",
             "values": [
               {
                 "id": "0",
