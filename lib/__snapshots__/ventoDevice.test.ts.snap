@@ -95,25 +95,37 @@ exports[`ventoDevice should be able to get status from modbus on init 1`] = `
           VentoDevice {
             "_flowManualSpeed": FlowCard {
               "capability": "manualSpeed_set",
-              "device": [Circular],
+              "device": {
+                "Device": [Function],
+                "Driver": [Function],
+              },
               "registerRunListener": [Function],
               "trigger": [Function],
             },
             "_flowOperationMode": FlowCard {
               "capability": "operation_mode",
-              "device": [Circular],
+              "device": {
+                "Device": [Function],
+                "Driver": [Function],
+              },
               "registerRunListener": [Function],
               "trigger": [Function],
             },
             "_flowSpeedMode": FlowCard {
               "capability": "speed_mode",
-              "device": [Circular],
+              "device": {
+                "Device": [Function],
+                "Driver": [Function],
+              },
               "registerRunListener": [Function],
               "trigger": [Function],
             },
             "_flowTimerMode": FlowCard {
               "capability": "timer_mode",
-              "device": [Circular],
+              "device": {
+                "Device": [Function],
+                "Driver": [Function],
+              },
               "registerRunListener": [Function],
               "trigger": [Function],
             },
@@ -132,6 +144,11 @@ exports[`ventoDevice should be able to get status from modbus on init 1`] = `
               "error": [Function],
               "getDevices": [Function],
               "homey": {
+                "flow": {
+                  "getActionCard": [Function],
+                  "getConditionCard": [Function],
+                  "getDeviceTriggerCard": [Function],
+                },
                 "setInterval": [MockFunction],
                 "setTimeout": [MockFunction] {
                   "calls": [
@@ -367,6 +384,20 @@ exports[`ventoDevice should be able to get status from modbus on init 1`] = `
                 "getDeviceTriggerCard": [Function],
               },
               "setInterval": [MockFunction],
+              "setTimeout": [MockFunction] {
+                "calls": [
+                  [
+                    [Function],
+                    5000,
+                  ],
+                ],
+                "results": [
+                  {
+                    "type": "return",
+                    "value": undefined,
+                  },
+                ],
+              },
             },
             "log": [Function],
             "settings": {
@@ -396,25 +427,37 @@ exports[`ventoDevice should be able to get status from modbus on init 1`] = `
           VentoDevice {
             "_flowManualSpeed": FlowCard {
               "capability": "manualSpeed_set",
-              "device": [Circular],
+              "device": {
+                "Device": [Function],
+                "Driver": [Function],
+              },
               "registerRunListener": [Function],
               "trigger": [Function],
             },
             "_flowOperationMode": FlowCard {
               "capability": "operation_mode",
-              "device": [Circular],
+              "device": {
+                "Device": [Function],
+                "Driver": [Function],
+              },
               "registerRunListener": [Function],
               "trigger": [Function],
             },
             "_flowSpeedMode": FlowCard {
               "capability": "speed_mode",
-              "device": [Circular],
+              "device": {
+                "Device": [Function],
+                "Driver": [Function],
+              },
               "registerRunListener": [Function],
               "trigger": [Function],
             },
             "_flowTimerMode": FlowCard {
               "capability": "timer_mode",
-              "device": [Circular],
+              "device": {
+                "Device": [Function],
+                "Driver": [Function],
+              },
               "registerRunListener": [Function],
               "trigger": [Function],
             },
@@ -433,6 +476,11 @@ exports[`ventoDevice should be able to get status from modbus on init 1`] = `
               "error": [Function],
               "getDevices": [Function],
               "homey": {
+                "flow": {
+                  "getActionCard": [Function],
+                  "getConditionCard": [Function],
+                  "getDeviceTriggerCard": [Function],
+                },
                 "setInterval": [MockFunction],
                 "setTimeout": [MockFunction] {
                   "calls": [
@@ -668,6 +716,20 @@ exports[`ventoDevice should be able to get status from modbus on init 1`] = `
                 "getDeviceTriggerCard": [Function],
               },
               "setInterval": [MockFunction],
+              "setTimeout": [MockFunction] {
+                "calls": [
+                  [
+                    [Function],
+                    5000,
+                  ],
+                ],
+                "results": [
+                  {
+                    "type": "return",
+                    "value": undefined,
+                  },
+                ],
+              },
             },
             "log": [Function],
             "settings": {
@@ -697,25 +759,37 @@ exports[`ventoDevice should be able to get status from modbus on init 1`] = `
           VentoDevice {
             "_flowManualSpeed": FlowCard {
               "capability": "manualSpeed_set",
-              "device": [Circular],
+              "device": {
+                "Device": [Function],
+                "Driver": [Function],
+              },
               "registerRunListener": [Function],
               "trigger": [Function],
             },
             "_flowOperationMode": FlowCard {
               "capability": "operation_mode",
-              "device": [Circular],
+              "device": {
+                "Device": [Function],
+                "Driver": [Function],
+              },
               "registerRunListener": [Function],
               "trigger": [Function],
             },
             "_flowSpeedMode": FlowCard {
               "capability": "speed_mode",
-              "device": [Circular],
+              "device": {
+                "Device": [Function],
+                "Driver": [Function],
+              },
               "registerRunListener": [Function],
               "trigger": [Function],
             },
             "_flowTimerMode": FlowCard {
               "capability": "timer_mode",
-              "device": [Circular],
+              "device": {
+                "Device": [Function],
+                "Driver": [Function],
+              },
               "registerRunListener": [Function],
               "trigger": [Function],
             },
@@ -734,6 +808,11 @@ exports[`ventoDevice should be able to get status from modbus on init 1`] = `
               "error": [Function],
               "getDevices": [Function],
               "homey": {
+                "flow": {
+                  "getActionCard": [Function],
+                  "getConditionCard": [Function],
+                  "getDeviceTriggerCard": [Function],
+                },
                 "setInterval": [MockFunction],
                 "setTimeout": [MockFunction] {
                   "calls": [
@@ -969,6 +1048,20 @@ exports[`ventoDevice should be able to get status from modbus on init 1`] = `
                 "getDeviceTriggerCard": [Function],
               },
               "setInterval": [MockFunction],
+              "setTimeout": [MockFunction] {
+                "calls": [
+                  [
+                    [Function],
+                    5000,
+                  ],
+                ],
+                "results": [
+                  {
+                    "type": "return",
+                    "value": undefined,
+                  },
+                ],
+              },
             },
             "log": [Function],
             "settings": {
