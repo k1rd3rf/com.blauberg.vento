@@ -37,20 +37,18 @@ class FlowCard {
   };
 }
 
-const homey = {
-  flow: {
-    getActionCard: (capability: string) => new FlowCard(capability, this),
-    getConditionCard: (capability: string) => new FlowCard(capability, this),
-    getDeviceTriggerCard: (capability: string) =>
-      new FlowCard(capability, this),
-  },
-  setInterval: jest.fn(),
-  setTimeout: jest.fn(),
-};
-
 // eslint-disable-next-line import/prefer-default-export
 export class Device {
-  homey = homey;
+  homey = {
+    flow: {
+      getActionCard: (capability: string) => new FlowCard(capability, this),
+      getConditionCard: (capability: string) => new FlowCard(capability, this),
+      getDeviceTriggerCard: (capability: string) =>
+        new FlowCard(capability, this),
+    },
+    setInterval: jest.fn(),
+    setTimeout: jest.fn(),
+  };
 
   settings: Record<string, unknown> = {
     devicepwd: 'password',
@@ -141,7 +139,16 @@ export class Device {
 }
 
 export class Driver {
-  homey = homey;
+  homey = {
+    flow: {
+      getActionCard: (capability: string) => new FlowCard(capability, this),
+      getConditionCard: (capability: string) => new FlowCard(capability, this),
+      getDeviceTriggerCard: (capability: string) =>
+        new FlowCard(capability, this),
+    },
+    setInterval: jest.fn(),
+    setTimeout: jest.fn(),
+  };
 
   log = (...args: unknown[]) => logMock('log', ...args);
   error = (...args: unknown[]) => logMock('error', ...args);

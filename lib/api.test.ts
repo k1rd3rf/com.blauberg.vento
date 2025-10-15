@@ -12,12 +12,6 @@ describe('Api set functions', () => {
     jest.spyOn(global.console, 'error');
     api = new Api();
     await api.onInit();
-  });
-
-  afterEach(() => {
-    jest.clearAllMocks();
-  });
-  beforeEach(() => {
     (api.modbusClient?.send as jest.Mock).mockImplementation((packet, ip) =>
       Promise.resolve({ packet, ip })
     );
