@@ -1,14 +1,5 @@
 {
-  "id": "speed_mode",
-  "title": {
-    "en": "Set the speed mode"
-  },
-  "titleFormatted": {
-    "en": "Sets the speed mode of the device to [[speedMode]] "
-  },
-  "hint": {
-    "en": "Sets the device to the desired speed mode"
-  },
+  "$filter": "capabilities=speedMode",
   "args": [
     {
       "type": "dropdown",
@@ -49,5 +40,15 @@
         }
       ]
     }
-  ]
+  ],
+  "hint": {
+    "en": "Sets the device to the desired speed mode"
+  },
+  "id": "speed_mode",
+  "title": {
+    "en": "Set the speed mode"
+  },
+  "titleFormatted": {
+    "en": "Sets the speed mode of the device to [[speedMode]] "
+  }
 }

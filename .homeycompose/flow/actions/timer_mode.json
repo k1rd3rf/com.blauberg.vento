@@ -1,14 +1,5 @@
 {
-  "id": "timer_mode",
-  "title": {
-    "en": "Set the timer mode"
-  },
-  "titleFormatted": {
-    "en": "Sets the timer mode of the device to [[timerMode]] "
-  },
-  "hint": {
-    "en": "Sets the device to the desired timer mode"
-  },
+  "$filter": "capabilities=timerMode",
   "args": [
     {
       "type": "dropdown",
@@ -37,5 +28,15 @@
         }
       ]
     }
-  ]
+  ],
+  "hint": {
+    "en": "Sets the device to the desired timer mode"
+  },
+  "id": "timer_mode",
+  "title": {
+    "en": "Set the timer mode"
+  },
+  "titleFormatted": {
+    "en": "Sets the timer mode of the device to [[timerMode]] "
+  }
 }

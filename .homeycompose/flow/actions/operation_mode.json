@@ -1,14 +1,5 @@
 {
-  "id": "operation_mode",
-  "title": {
-    "en": "Set the operation mode"
-  },
-  "titleFormatted": {
-    "en": "Sets the operation mode of the device to [[operationMode]] "
-  },
-  "hint": {
-    "en": "Sets the device to the desired operation mode"
-  },
+  "$filter": "capabilities=operationMode",
   "args": [
     {
       "type": "dropdown",
@@ -37,5 +28,15 @@
         }
       ]
     }
-  ]
+  ],
+  "hint": {
+    "en": "Sets the device to the desired operation mode"
+  },
+  "id": "operation_mode",
+  "title": {
+    "en": "Set the operation mode"
+  },
+  "titleFormatted": {
+    "en": "Sets the operation mode of the device to [[operationMode]] "
+  }
 }

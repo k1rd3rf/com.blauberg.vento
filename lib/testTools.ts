@@ -1,6 +1,6 @@
 export const removeUndefinedDeep = (obj: Record<string, unknown>) => {
   const ret: Record<string, unknown> = {};
-  Object.keys(obj).forEach((key) => {
+  Object.keys(obj || {}).forEach((key) => {
     const value = obj[key];
     if (value !== undefined) {
       if (value && typeof value === 'object' && !Array.isArray(value)) {
