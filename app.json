@@ -29,6 +29,47 @@
   },
   "homeyCommunityTopicId": 111339,
   "source": "https://github.com/kaohlive/com.blauberg.vento",
+  "support": "https://github.com/kaohlive/com.blauberg.vento/issues",
+  "contributors": {
+    "developers": [
+      {
+        "name": "Vincent Boer"
+      },
+      {
+        "name": "Fredrik Oterholt"
+      }
+    ]
+  },
+  "tags": {
+    "en": [
+      "flexit",
+      "fan",
+      "hvac",
+      "climate",
+      "ecovent",
+      "roomie",
+      "duo",
+      "oxxify",
+      "twinfresh",
+      "duka",
+      "blauberg",
+      "vento"
+    ],
+    "no": [
+      "flexit",
+      "vifte",
+      "ventilasjon",
+      "klima",
+      "ecovent",
+      "roomie",
+      "duo",
+      "oxxify",
+      "twinfresh",
+      "duka",
+      "blauberg",
+      "vento"
+    ]
+  },
   "flow": {
     "triggers": [
       {
@@ -36,7 +77,10 @@
           {
             "filter": "capabilities=alarm_battery",
             "name": "device",
-            "type": "device"
+            "type": "device",
+            "title": {
+              "en": "Device"
+            }
           }
         ],
         "id": "alarm_battery_false",
@@ -52,7 +96,10 @@
           {
             "filter": "capabilities=alarm_battery",
             "name": "device",
-            "type": "device"
+            "type": "device",
+            "title": {
+              "en": "Device"
+            }
           }
         ],
         "id": "alarm_battery_true",
@@ -68,7 +115,10 @@
           {
             "type": "device",
             "name": "device",
-            "filter": "capabilities=alarm_boost"
+            "filter": "capabilities=alarm_boost",
+            "title": {
+              "en": "Device"
+            }
           }
         ],
         "id": "alarm_boost_false",
@@ -84,7 +134,10 @@
           {
             "type": "device",
             "name": "device",
-            "filter": "capabilities=alarm_boost"
+            "filter": "capabilities=alarm_boost",
+            "title": {
+              "en": "Device"
+            }
           }
         ],
         "id": "alarm_boost_true",
@@ -100,7 +153,10 @@
           {
             "type": "device",
             "name": "device",
-            "filter": "capabilities=alarm_filter"
+            "filter": "capabilities=alarm_filter",
+            "title": {
+              "en": "Device"
+            }
           }
         ],
         "id": "alarm_filter_false",
@@ -116,7 +172,10 @@
           {
             "type": "device",
             "name": "device",
-            "filter": "capabilities=alarm_filter"
+            "filter": "capabilities=alarm_filter",
+            "title": {
+              "en": "Device"
+            }
           }
         ],
         "id": "alarm_filter_true",
@@ -132,7 +191,10 @@
           {
             "type": "device",
             "name": "device",
-            "filter": "capabilities=alarm_generic"
+            "filter": "capabilities=alarm_generic",
+            "title": {
+              "en": "Device"
+            }
           }
         ],
         "id": "alarm_generic_false",
@@ -170,7 +232,10 @@
           {
             "type": "device",
             "name": "device",
-            "filter": "capabilities=alarm_generic"
+            "filter": "capabilities=alarm_generic",
+            "title": {
+              "en": "Device"
+            }
           }
         ],
         "id": "alarm_generic_true",
@@ -208,7 +273,10 @@
           {
             "type": "device",
             "name": "device",
-            "filter": "capabilities=manualSpeed"
+            "filter": "capabilities=manualSpeed",
+            "title": {
+              "en": "Device"
+            }
           }
         ],
         "deprecated": true,
@@ -237,7 +305,10 @@
           {
             "type": "device",
             "name": "device",
-            "filter": "capabilities=manualSpeed"
+            "filter": "capabilities=manualSpeed",
+            "title": {
+              "en": "Device"
+            }
           }
         ],
         "id": "measure_RPM_changed",
@@ -267,7 +338,10 @@
           {
             "type": "device",
             "name": "device",
-            "filter": "capabilities=alarm_boost"
+            "filter": "capabilities=alarm_boost",
+            "title": {
+              "en": "Device"
+            }
           }
         ],
         "id": "alarm_boost",
@@ -283,7 +357,10 @@
           {
             "type": "device",
             "name": "device",
-            "filter": "capabilities=alarm_filter"
+            "filter": "capabilities=alarm_filter",
+            "title": {
+              "en": "Device"
+            }
           }
         ],
         "id": "alarm_filter",
@@ -299,7 +376,10 @@
           {
             "type": "device",
             "name": "device",
-            "filter": "capabilities=alarm_generic"
+            "filter": "capabilities=alarm_generic",
+            "title": {
+              "en": "Device"
+            }
           }
         ],
         "id": "alarm_generic",

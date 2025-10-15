@@ -4,7 +4,10 @@
     {
       "filter": "capabilities=alarm_battery",
       "name": "device",
-      "type": "device"
+      "type": "device",
+      "title": {
+        "en": "Device"
+      }
     }
   ],
   "id": "alarm_battery_true",
