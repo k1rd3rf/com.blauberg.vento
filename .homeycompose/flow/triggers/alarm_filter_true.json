@@ -4,7 +4,10 @@
     {
       "type": "device",
       "name": "device",
-      "filter": "capabilities=alarm_filter"
+      "filter": "capabilities=alarm_filter",
+        "title": {
+            "en": "Device"
+        }
     }
   ],
   "id": "alarm_filter_true",

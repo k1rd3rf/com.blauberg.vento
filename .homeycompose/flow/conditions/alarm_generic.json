@@ -4,7 +4,10 @@
     {
       "type": "device",
       "name": "device",
-      "filter": "capabilities=alarm_generic"
+      "filter": "capabilities=alarm_generic",
+      "title": {
+        "en": "Device"
+      }
     }
   ],
   "id": "alarm_generic",

@@ -4,7 +4,10 @@
     {
       "type": "device",
       "name": "device",
-      "filter": "capabilities=alarm_boost"
+      "filter": "capabilities=alarm_boost",
+      "title": {
+        "en": "Device"
+      }
     }
   ],
   "id": "alarm_boost",
