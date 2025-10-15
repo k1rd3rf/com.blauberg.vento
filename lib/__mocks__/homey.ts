@@ -140,6 +140,7 @@ export class Device {
 export class Driver {
   homey = {
     setInterval: jest.fn(),
+    setTimeout: jest.fn(),
   };
 
   log = (...args: unknown[]) => logMock('log', ...args);
